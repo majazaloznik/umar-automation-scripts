@@ -57,7 +57,7 @@ current <- update_change_table(original, changes)
 ###############################################################################
 # save starting point table and current (which are right now the the same,
 # but current will keep updating and diverge of course
-saveRDS(original, here::here("data/original.rds"))
-saveRDS(current, here::here("data/current.rds"))
+saveRDS(original, here::here("data/surs-changes-api-original.rds"))
+saveRDS(current, here::here("data/surs-changes-api-current.rds"))
 
 
