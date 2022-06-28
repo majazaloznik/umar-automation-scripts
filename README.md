@@ -9,6 +9,6 @@ Scripts for automatically keeping track of the newly published changes on the Si
 The setup script `R/surs-changes-api-setup.R` was run only once, to get the original list of change (`data/surs-changes-api-original.rds`).
 
 
-The update script `R/surs-changes-api-update.R` sends emails to the listed recipients informing them of the newly published changes and the changes due today. ToDo: add changes due tomorrow, so email can be sent at the end of the day instead. 
+The update script `R/surs-changes-api-update.R` sends emails to the listed recipients informing them of the newly published changes and the changes due tomorrow. To be sent at the end of bussiness hours every day. 
 
 
