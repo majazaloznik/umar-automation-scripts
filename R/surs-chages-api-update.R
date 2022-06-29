@@ -15,7 +15,9 @@ gm_auth_configure(path ="data/credentials.json")
 gm_auth(email = TRUE, cache = ".secret")
 
 email_list <- c("maja.zaloznik@gmail.com",
-                "maja.zaloznik@gov.si")
+                "maja.zaloznik@gov.si",
+                "matevz.hribernik@gov.si",
+                "katarina.ivas@gov.si")
 
 ###############################################################################
 ##
