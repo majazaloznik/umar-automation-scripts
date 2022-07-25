@@ -21,7 +21,13 @@ email_list <- c("maja.zaloznik@gmail.com",
                 "janez.kusar@gov.si",
                 "mojca.koprivnikar@gov.si",
                 "bibijana.cirman-naglic@gov.si",
-                "peter.wostner@gov.si")
+                "peter.wostner@gov.si",
+                "dragica.suc@gov.si",
+                "janja.pecar@gov.si",
+                "andreja.kokalj@gov.si",
+                "andrej.kustrin@gov.si",
+                "marta.gregorcic@gov.si",
+                "barbara.bratuz-ferk@gov.si")
 
 ###############################################################################
 ##
