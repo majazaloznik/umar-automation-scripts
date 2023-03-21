@@ -7,7 +7,7 @@
 ###############################################################################
 setwd("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\")
 library(dplyr)
-devtools::install_github("majazaloznik/SURSfetchR", dependencies = FALSE)
+# devtools::install_github("majazaloznik/SURSfetchR", dependencies = FALSE)
 library(SURSfetchR)
 library(gmailr)
 options(gargle_oauth_email = TRUE)
