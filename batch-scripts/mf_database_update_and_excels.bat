@@ -6,4 +6,4 @@ git config --global http.proxy http://proxy.gov.si:80
 git add data\mf_bilance\raw_data\* data\mf_bilance\output_tables\*  logs\mf-database_update_and_excel_tables.Rout logs\mf_last_update.txt
 git commit -m "Umar data bot :robot: - monthly MF update."
 git push
-PAUSE
+CLS
