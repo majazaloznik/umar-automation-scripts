@@ -1,7 +1,13 @@
 ###############################################################################
 ## MF update script + prepare Excel tables
 ###############################################################################
-#
+# This script is run from a batch file run by the task scheduler at the end
+# of each month. it does the following:
+# - checks if a new email has arrived to umar.data.bot from Lejla containing
+#   xlsx files
+# - if the files are there it downloads them and writes the timestamp to a log file
+# - it updates the database with the parsed data
+# - it prepares three Excel output tables for Lejla
 ###############################################################################
 ## Preliminaries
 ###############################################################################
@@ -88,4 +94,4 @@ if(!is.null(purrr::pluck(msg, 1,1,1,"id"))){
   data_frame <- transform_series_12mK(raw_data_frame)
   stats_appendix_list <- prepare_stats_appendix(data_frame)
   write_excel_stats_appendix(stats_appendix_list, data_frame, "data/mf_bilance/output_tables/KBJF-stat-priloga.xlsx")
-}
+} else {print("There are no new emails from Lejla with excel files in them.")}
