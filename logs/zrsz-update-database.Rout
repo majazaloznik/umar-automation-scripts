@@ -1,0 +1,23 @@
+UMAR proxy is set!
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/Mesecno_gibanje_BO_1992-2023.xlsx'
+Content type 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' length 20245 bytes (19 KB)
+==================================================
+downloaded 19 KB
+
+Error in dbWriteTable(con, "tmp", df, temporary = TRUE, overwrite = TRUE) : 
+  could not find function "dbWriteTable"
+Calls: source ... zrsz_bo_script -> insert_new_data -> insert_data_points
+Error in dbExecute(con, sprintf("drop table tmp")) : 
+  could not find function "dbExecute"
+Calls: source ... zrsz_bo_script -> insert_new_data -> insert_data_points
+Execution halted
