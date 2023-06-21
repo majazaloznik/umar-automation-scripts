@@ -34,9 +34,6 @@ The following objects are masked from 'package:base':
 [1] "0 new rows inserted into the data_points table"
 [1] "0 new rows inserted into the flag_datapoint table"
 [1] "0 new rows inserted into the period table"
-[1] "76500 new rows inserted into the data_points table"
-[1] "3060 new rows inserted into the flag_datapoint table"
-[1] "0 new rows inserted into the period table"
 [1] "0 new rows inserted into the data_points table"
 [1] "0 new rows inserted into the flag_datapoint table"
 [1] "0 new rows inserted into the period table"
@@ -77,6 +74,9 @@ The following objects are masked from 'package:base':
 [1] "0 new rows inserted into the flag_datapoint table"
 [1] "0 new rows inserted into the period table"
 [1] "0 new rows inserted into the data_points table"
+[1] "0 new rows inserted into the flag_datapoint table"
+[1] "0 new rows inserted into the period table"
+[1] "70812 new rows inserted into the data_points table"
 [1] "0 new rows inserted into the flag_datapoint table"
 [1] "0 new rows inserted into the period table"
 [1] "0 new rows inserted into the data_points table"
@@ -398,7 +398,7 @@ List of 4
 
 label: unnamed-chunk-5 (with options) 
 List of 4
- $ code   : chr [1:71] "# get data" "df <- read.csv2(here::here(\"data/007.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" "# prepare data" ...
+ $ code   : chr [1:88] "# get data" "df <- read.csv2(here::here(\"data/007.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" "# prepare data" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -453,18 +453,19 @@ List of 4
   |                                                                              |............                                                          |  18%
 label: unnamed-chunk-10 (with options) 
 List of 4
- $ code   : chr [1:36] "# get data" "df <- read.csv2(here::here(\"data/004.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" "# prepare data" ...
+ $ code   : chr [1:60] "#### Investicijska dejavnost - option 2" "# get data" "df <- read.csv2(here::here(\"data/008.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
 
+Joining, by = "period"
   |                                                                              |.............                                                         |  18%
   ordinary text without R code
 
   |                                                                              |.............                                                         |  19%
 label: unnamed-chunk-11 (with options) 
 List of 4
- $ code   : chr [1:39] "# get data" "df <- read.csv2(here::here(\"data/005.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" "# prepare data" ...
+ $ code   : chr [1:36] "# get data" "df <- read.csv2(here::here(\"data/004.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" "# prepare data" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -475,12 +476,11 @@ List of 4
   |                                                                              |..............                                                        |  21%
 label: unnamed-chunk-12 (with options) 
 List of 4
- $ code   : chr [1:60] "#### Investicijska dejavnost - option 2" "# get data" "df <- read.csv2(here::here(\"data/008.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
+ $ code   : chr [1:39] "# get data" "df <- read.csv2(here::here(\"data/005.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" "# prepare data" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
 
-Joining, by = "period"
   |                                                                              |...............                                                       |  21%
   ordinary text without R code
 
@@ -529,9 +529,9 @@ List of 4
   ordinary text without R code
 
   |                                                                              |....................                                                  |  28%
-label: predelovalna (with options) 
+label: unnamed-chunk-16 (with options) 
 List of 4
- $ code   : chr [1:36] "# get data" "df <- read.csv2(here::here(\"data/006.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" "# prepare data" ...
+ $ code   : chr [1:74] "#### Prispevki rasti dodane vrednosti posameznih dejavnosti k rasti BDP" "# get data" "df <- read.csv2(here::here(\"data/029.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -540,31 +540,37 @@ List of 4
   ordinary text without R code
 
   |                                                                              |.....................                                                 |  29%
-label: dohodkovna (with options) 
+label: unnamed-chunk-17 (with options) 
 List of 4
- $ code   : chr [1:47] "# get data" "df <- read.csv2(here::here(\"data/028.csv\"), encoding = \"UTF-8\")" "df$group <- interaction(df$chart_no, drop = TRUE)" "spl <- split(df, df$group)" ...
+ $ code   : chr [1:116] "# get data" "df <- read.csv2(here::here(\"data/036.csv\"), encoding = \"UTF-8\")" "df$group <- interaction(df$chart_no, df$sub_chart, drop = TRUE)" "spl <- split(df, df$group)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
 
+Joining, by = "period"
+Joining, by = "period"
+Joining, by = "period"
   |                                                                              |.....................                                                 |  30%
   ordinary text without R code
 
   |                                                                              |......................                                                |  31%
-label: dohodkovna2 (with options) 
+label: unnamed-chunk-18 (with options) 
 List of 4
- $ code   : chr [1:52] "#### Prispevki agregatov potro�\241nje k rasti BDP" "# get data" "df <- read.csv2(here::here(\"data/030.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
+ $ code   : chr [1:113] "# get data" "df <- read.csv2(here::here(\"data/037.csv\"), encoding = \"UTF-8\")" "df$group <- interaction(df$chart_no, df$sub_chart, drop = TRUE)" "spl <- split(df, df$group)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
 
+Joining, by = "period"
+Joining, by = "period"
+Joining, by = "period"
   |                                                                              |......................                                                |  32%
   ordinary text without R code
 
   |                                                                              |.......................                                               |  32%
-label: unnamed-chunk-16 (with options) 
+label: predelovalna (with options) 
 List of 4
- $ code   : chr [1:74] "#### Prispevki rasti dodane vrednosti posameznih dejavnosti k rasti BDP" "# get data" "df <- read.csv2(here::here(\"data/029.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
+ $ code   : chr [1:36] "# get data" "df <- read.csv2(here::here(\"data/006.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" "# prepare data" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -573,30 +579,24 @@ List of 4
   ordinary text without R code
 
   |                                                                              |........................                                              |  34%
-label: unnamed-chunk-17 (with options) 
+label: dohodkovna (with options) 
 List of 4
- $ code   : chr [1:108] "# get data" "df <- read.csv2(here::here(\"data/036.csv\"), encoding = \"UTF-8\")" "df$group <- interaction(df$chart_no, df$sub_chart, drop = TRUE)" "spl <- split(df, df$group)" ...
+ $ code   : chr [1:51] "# get data" "df <- read.csv2(here::here(\"data/028.csv\"), encoding = \"UTF-8\")" "df$group <- interaction(df$chart_no, drop = TRUE)" "spl <- split(df, df$group)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
 
-Joining, by = "period"
-Joining, by = "period"
-Joining, by = "period"
   |                                                                              |........................                                              |  35%
   ordinary text without R code
 
   |                                                                              |.........................                                             |  35%
-label: unnamed-chunk-18 (with options) 
+label: dohodkovna2 (with options) 
 List of 4
- $ code   : chr [1:103] "# get data" "df <- read.csv2(here::here(\"data/037.csv\"), encoding = \"UTF-8\")" "df$group <- interaction(df$chart_no, df$sub_chart, drop = TRUE)" "spl <- split(df, df$group)" ...
+ $ code   : chr [1:52] "#### Prispevki agregatov potro�\241nje k rasti BDP" "# get data" "df <- read.csv2(here::here(\"data/030.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
 
-Joining, by = "period"
-Joining, by = "period"
-Joining, by = "period"
   |                                                                              |.........................                                             |  36%
   ordinary text without R code
 
@@ -658,7 +658,7 @@ List of 4
   |                                                                              |...............................                                       |  44%
 label: unnamed-chunk-22 (with options) 
 List of 4
- $ code   : chr [1:51] "#### Investicije" "# get data" "df <- read.csv2(here::here(\"data/038.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
+ $ code   : chr [1:56] "#### Investicije" "# get data" "df <- read.csv2(here::here(\"data/038.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -702,7 +702,7 @@ List of 4
   |                                                                              |...................................                                   |  50%
 label: unnamed-chunk-26 (with options) 
 List of 4
- $ code   : chr [1:46] "# get data" "df <- read.csv2(here::here(\"data/041.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" "# prepare data" ...
+ $ code   : chr [1:50] "# get data" "df <- read.csv2(here::here(\"data/041.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" "# prepare data" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -724,7 +724,7 @@ List of 4
   |                                                                              |.....................................                                 |  53%
 label: unnamed-chunk-28 (with options) 
 List of 4
- $ code   : chr [1:151] "# get data" "df <- read.csv2(here::here(\"data/042.csv\"), encoding = \"UTF-8\")" "df$group <- interaction(df$chart_no, df$sub_chart, drop = TRUE)" "spl <- split(df, df$group)" ...
+ $ code   : chr [1:166] "# get data" "df <- read.csv2(here::here(\"data/042.csv\"), encoding = \"UTF-8\")" "df$group <- interaction(df$chart_no, df$sub_chart, drop = TRUE)" "spl <- split(df, df$group)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -740,7 +740,7 @@ Joining, by = "period"
 
 label: unnamed-chunk-29 (with options) 
 List of 4
- $ code   : chr [1:66] "# get data" "df <- read.csv2(here::here(\"data/018.csv\"), encoding = \"UTF-8\")" "df$group <- interaction(df$chart_no, df$sub_chart, drop = TRUE)" "spl <- split(df, df$group)" ...
+ $ code   : chr [1:69] "# get data" "df <- read.csv2(here::here(\"data/018.csv\"), encoding = \"UTF-8\")" "df$group <- interaction(df$chart_no, df$sub_chart, drop = TRUE)" "spl <- split(df, df$group)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -773,7 +773,7 @@ List of 4
   |                                                                              |.........................................                             |  59%
 label: unnamed-chunk-32 (with options) 
 List of 4
- $ code   : chr [1:86] "# get data" "df <- read.csv2(here::here(\"data/027.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$sub_chart)" "# prepare data" ...
+ $ code   : chr [1:103] "# get data" "df <- read.csv2(here::here(\"data/027.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$sub_chart)" "# prepare data" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -960,7 +960,7 @@ List of 4
   |                                                                              |...........................................................           |  84%
 label: unnamed-chunk-49 (with options) 
 List of 4
- $ code   : chr [1:62] "#### Trg dela" "# get data" "df <- read.csv2(here::here(\"data/012.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
+ $ code   : chr [1:67] "#### Trg dela" "# get data" "df <- read.csv2(here::here(\"data/012.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -982,7 +982,7 @@ List of 4
   |                                                                              |.............................................................         |  87%
 label: unnamed-chunk-51 (with options) 
 List of 4
- $ code   : chr [1:59] "#### rast povpr plače" "# get data" "df <- read.csv2(here::here(\"data/013.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
+ $ code   : chr [1:74] "#### rast povpr plače" "# get data" "df <- read.csv2(here::here(\"data/013.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -1004,7 +1004,7 @@ List of 4
   |                                                                              |...............................................................       |  90%
 label: unnamed-chunk-53 (with options) 
 List of 4
- $ code   : chr [1:92] "#### rast povpr plače" "# get data" "df <- read.csv2(here::here(\"data/016.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
+ $ code   : chr [1:95] "#### rast povpr plače" "# get data" "df <- read.csv2(here::here(\"data/016.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -1015,7 +1015,7 @@ List of 4
   |                                                                              |................................................................      |  91%
 label: unnamed-chunk-54 (with options) 
 List of 4
- $ code   : chr [1:79] "#### rast povpr plače" "# get data" "df <- read.csv2(here::here(\"data/016.csv\"), encoding = \"UTF-8\")" "df <- df |> mutate(year_on_year = ifelse(year_on_year == \"y\", TRUE, year_on_year))" ...
+ $ code   : chr [1:82] "#### rast povpr plače" "# get data" "df <- read.csv2(here::here(\"data/016.csv\"), encoding = \"UTF-8\")" "df <- df |> mutate(year_on_year = ifelse(year_on_year == \"y\", TRUE, year_on_year))" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -1059,7 +1059,7 @@ List of 4
   |                                                                              |....................................................................  |  97%
 label: unnamed-chunk-58 (with options) 
 List of 4
- $ code   : chr [1:80] "# get data" "df <- read.csv2(here::here(\"data/016.csv\"), encoding = \"UTF-8\")" "df <- df |> mutate(year_on_year = ifelse(year_on_year == \"y\", TRUE, year_on_year))" "spl <- split(df, df$chart_no)" ...
+ $ code   : chr [1:61] "# get data" "df <- read.csv2(here::here(\"data/016.csv\"), encoding = \"UTF-8\")" "df <- df |> mutate(year_on_year = ifelse(year_on_year == \"y\", TRUE, year_on_year))" "spl <- split(df, df$chart_no)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -1081,7 +1081,7 @@ List of 4
   |                                                                              |......................................................................| 100%
 label: unnamed-chunk-60 (with options) 
 List of 4
- $ code   : chr [1:49] "# get data" "df <- read.csv2(here::here(\"data/016.csv\"), encoding = \"UTF-8\")" "df <- df |> mutate(year_on_year = ifelse(year_on_year == \"y\", TRUE, year_on_year))" "spl <- split(df, df$chart_no)" ...
+ $ code   : chr [1:47] "# get data" "df <- read.csv2(here::here(\"data/016.csv\"), encoding = \"UTF-8\")" "df <- df |> mutate(year_on_year = ifelse(year_on_year == \"y\", TRUE, year_on_year))" "spl <- split(df, df$chart_no)" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
@@ -1089,9 +1089,7 @@ List of 4
 
 output file: html_test.knit.md
 
-"C:/PROGRA~1/RStudio/bin/quarto/bin/pandoc" +RTS -K512m -RTS html_test.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2d58526b673a.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --self-contained --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpYPcgWX\rmarkdown-str2d581be217c7.html" --include-before-body custom.js 
-Error in convert(output_file, run_citeproc) : 
-  failed to copy rendered pandoc artefact to '\\192.168.38.7\public$\Avtomatizacija\data-platform\indikatorji_test.html'
-Calls: source ... withVisible -> eval -> eval -> <Anonymous> -> convert
-In addition: There were 50 or more warnings (use warnings() to see the first 50)
-Execution halted
+"C:/PROGRA~1/RStudio/bin/quarto/bin/pandoc" +RTS -K512m -RTS html_test.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandocafc14af2f8e.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --self-contained --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpqeF7xT\rmarkdown-strafc47e76687.html" --include-before-body custom.js 
+
+Output created: \\192.168.38.7\public$\Avtomatizacija\data-platform\indikatorji_test21.jun.2023_1006.html
+There were 50 or more warnings (use warnings() to see the first 50)
