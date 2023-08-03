@@ -2,10 +2,10 @@ UMAR proxy is set![1] "Rendering:  \\\\192.168.38.7\\user_home\\mzaloznik\\analy
 
 
 processing file: 01-nacionalni_kvartalno.Rmd
-  |                                                                              |                                                                      |   0%  |                                                                              |..........                                                            |  14%
+  |                                                                              |                                                                      |   0%  |                                                                              |........                                                              |  11%
   ordinary text without R code
 
-  |                                                                              |....................                                                  |  29%
+  |                                                                              |................                                                      |  22%
 label: setup (with options) 
 List of 5
  $ code   : chr [1:10] "#devtools::install_github(\"majazaloznik/UMARaccessR\", dependencies = FALSE, INSTALL_opts=c(\"--no-multiarch\"))" "#devtools::install_github(\"majazaloznik/UMARvisualisR\", dependencies = FALSE)" "" "library(UMARaccessR)" ...
@@ -238,10 +238,10 @@ Registering font with R using postscriptFont(): Trebuchet MS
 Registering font with R using postscriptFont(): Verdana
 Registering font with R using postscriptFont(): Webdings
 Registering font with R using postscriptFont(): Wingdings
-  |                                                                              |..............................                                        |  43%
+  |                                                                              |.......................                                               |  33%
   ordinary text without R code
 
-  |                                                                              |........................................                              |  57%
+  |                                                                              |...............................                                       |  44%
 label: intro (with options) 
 List of 5
  $ code   : chr [1:18] "con <- DBI::dbConnect(RPostgres::Postgres()," "                      dbname = \"platform\"," "                      host = \"192.168.38.21\"," "                      port = 5432," ...
@@ -250,10 +250,15 @@ List of 5
  $ warning: logi FALSE
  $ results: chr "asis"
 
-  |                                                                              |..................................................                    |  71%
+  |                                                                              |.......................................                               |  56%
   ordinary text without R code
 
-  |                                                                              |............................................................          |  86%
+  |                                                                              |...............................................                       |  67%
+label: slider
+  |                                                                              |......................................................                |  78%
+  ordinary text without R code
+
+  |                                                                              |..............................................................        |  89%
 label: medletnabdp (with options) 
 List of 4
  $ code   : chr [1:31] "log_file <- \"O:/Avtomatizacija/umar-automation-scripts/logs/logfile_inner.txt\" # update this with the path to your log file" "log_conn <- file(log_file, open = \"a\")" "" "writeLines(c(\"Debug info: this is my Rmd file!\"," ...
@@ -261,7 +266,7 @@ List of 4
  $ message: logi FALSE
  $ warning: logi FALSE
 
-Quitting from lines 25-25 (01-nacionalni_kvartalno.Rmd) 
+Quitting from lines 31-41 (01-nacionalni_kvartalno.Rmd) 
 Error in layout.plotly(plot, xaxis = list(rangeslider = list(thickness = slider_w)),  : 
   object 'slider_w' not found
 Calls: source ... modifyList -> stopifnot -> %||% -> layout -> layout.plotly
