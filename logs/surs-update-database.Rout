@@ -254,17 +254,17 @@ List of 5
   ordinary text without R code
 
   |                                                                              |............................................................          |  86%
-label: medletnabdp (with options) 
+label: cetrtlentabdp (with options) 
 List of 4
- $ code   : chr [1:23] "# get data" "df <- read.csv2(here::here(\"data/002.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" "# prepare data" ...
+ $ code   : chr [1:28] "# get data" "df <- read.csv2(here::here(\"data/009.csv\"), encoding = \"UTF-8\")" "spl <- split(df, df$chart_no)" "# prepare data" ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
 
-Quitting from lines 25-25 (01-nacionalni_kvartalno.Rmd) 
-Error in layout.plotly(plot, xaxis = list(rangeslider = list(thickness = slider_w)),  : 
-  object 'slider_w' not found
-Calls: source ... modifyList -> stopifnot -> %||% -> layout -> layout.plotly
+Quitting from lines 30-30 (01-nacionalni_kvartalno.Rmd) 
+Error in paste0("Posodobljeno: ", updated, " ", ifelse(!is.null(prep_l$transf_txt),  : 
+  object 'updated' not found
+Calls: source ... umar_layout -> layout -> layout.plotly -> umar_subtitle -> paste0
 In addition: Warning messages:
 1: In do_once((if (is_R_CMD_check()) stop else warning)("The function xfun::isFALSE() will be deprecated in the future. Please ",  :
   The function xfun::isFALSE() will be deprecated in the future. Please consider using base::isFALSE(x) or identical(x, FALSE) instead.
