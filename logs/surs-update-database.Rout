@@ -2,10 +2,10 @@ UMAR proxy is set![1] "Rendering:  \\\\192.168.38.7\\user_home\\mzaloznik\\analy
 
 
 processing file: 01-nacionalni_kvartalno.Rmd
-  |                                                                              |                                                                      |   0%  |                                                                              |..........                                                            |  14%
+  |                                                                              |                                                                      |   0%  |                                                                              |........                                                              |  11%
   ordinary text without R code
 
-  |                                                                              |....................                                                  |  29%
+  |                                                                              |................                                                      |  22%
 label: setup (with options) 
 List of 5
  $ code   : chr [1:10] "#devtools::install_github(\"majazaloznik/UMARaccessR\", dependencies = FALSE, INSTALL_opts=c(\"--no-multiarch\"))" "#devtools::install_github(\"majazaloznik/UMARvisualisR\", dependencies = FALSE)" "" "library(UMARaccessR)" ...
@@ -238,10 +238,10 @@ Registering font with R using postscriptFont(): Trebuchet MS
 Registering font with R using postscriptFont(): Verdana
 Registering font with R using postscriptFont(): Webdings
 Registering font with R using postscriptFont(): Wingdings
-  |                                                                              |..............................                                        |  43%
+  |                                                                              |.......................                                               |  33%
   ordinary text without R code
 
-  |                                                                              |........................................                              |  57%
+  |                                                                              |...............................                                       |  44%
 label: intro (with options) 
 List of 5
  $ code   : chr [1:18] "con <- DBI::dbConnect(RPostgres::Postgres()," "                      dbname = \"platform\"," "                      host = \"192.168.38.21\"," "                      port = 5432," ...
@@ -250,21 +250,21 @@ List of 5
  $ warning: logi FALSE
  $ results: chr "asis"
 
-  |                                                                              |..................................................                    |  71%
+  |                                                                              |.......................................                               |  56%
   ordinary text without R code
 
-  |                                                                              |............................................................          |  86%
-label: cetrtlentabdp (with options) 
+  |                                                                              |...............................................                       |  67%
+label: medletnabdp (with options) 
 List of 4
- $ code   : chr [1:35] "log_file <- \"O:/Avtomatizacija/umar-automation-scripts/logs/logfile_inner.txt\" # update this with the path to your log file" "log_conn <- file(log_file, open = \"a\")" "" "writeLines(c(\"Debug info: this is my Rmd file!\")," ...
+ $ code   : chr [1:30] "log_file <- \"O:/Avtomatizacija/umar-automation-scripts/logs/logfile_inner.txt\" # update this with the path to your log file" "log_conn <- file(log_file, open = \"a\")" "" "writeLines(c(\"Debug info: this is my Rmd file!\")," ...
  $ echo   : logi FALSE
  $ message: logi FALSE
  $ warning: logi FALSE
 
-Quitting from lines 30-30 (01-nacionalni_kvartalno.Rmd) 
-Error in paste0("Posodobljeno: ", updated, " ", ifelse(!is.null(prep_l$transf_txt),  : 
-  object 'updated' not found
-Calls: source ... umar_layout -> layout -> layout.plotly -> umar_subtitle -> paste0
+Quitting from lines 25-25 (01-nacionalni_kvartalno.Rmd) 
+Error in layout.plotly(plot, xaxis = list(rangeslider = list(thickness = slider_w)),  : 
+  object 'slider_w' not found
+Calls: source ... modifyList -> stopifnot -> %||% -> layout -> layout.plotly
 In addition: Warning messages:
 1: In do_once((if (is_R_CMD_check()) stop else warning)("The function xfun::isFALSE() will be deprecated in the future. Please ",  :
   The function xfun::isFALSE() will be deprecated in the future. Please consider using base::isFALSE(x) or identical(x, FALSE) instead.
