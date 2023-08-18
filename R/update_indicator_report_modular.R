@@ -44,29 +44,39 @@ mapply(render_rename, rmd_file = rmd_files, outfile_name = out_files)
 
 
 ### Update the index file
+index_update <- function(){
+  # Step 1: Read the file
+  lines <- readLines("\\\\192.168.38.7\\public$\\Avtomatizacija\\data-platform\\indikatorji\\00-index.html")
 
-# Step 1: Read the file
-lines <- readLines("\\\\192.168.38.7\\public$\\Avtomatizacija\\data-platform\\indikatorji\\00-index.html")
+  # Step 2: Generate timestamp
+  timestamp <- Sys.time()
 
-# Step 2: Generate timestamp
-timestamp <- Sys.time()
+  insert_at <- grep("</body>", lines)
+  timestamp_line <- grep("Posodobljeno:", lines)
 
-insert_at <- grep("</body>", lines)
-timestamp_line <- grep("Posodobljeno:", lines)
-
-# If timestamp exists, remove it
-if(length(timestamp_line) > 0) {
-  lines <- lines[-timestamp_line]
-  # If the timestamp line was before the insert point, decrease the insert point by 1
-  if(timestamp_line < insert_at) {
-    insert_at <- insert_at - 1
+  # If timestamp exists, remove it
+  if(length(timestamp_line) > 0) {
+    lines <- lines[-timestamp_line]
+    # If the timestamp line was before the insert point, decrease the insert point by 1
+    if(timestamp_line < insert_at) {
+      insert_at <- insert_at - 1
+    }
   }
+
+  # Step 4: Insert the timestamp
+  lines <- append(lines, sprintf("<p><i>Posodobljeno: %s</i></p>", timestamp), after = insert_at - 1)
+
+  # Step 5: Write the lines back to the file
+  writeLines(lines, "\\\\192.168.38.7\\public$\\Avtomatizacija\\data-platform\\indikatorji\\00-index.html")
 }
 
-# Step 4: Insert the timestamp
-lines <- append(lines, sprintf("<p><i>Posodobljeno: %s</i></p>", timestamp), after = insert_at - 1)
-
-# Step 5: Write the lines back to the file
-writeLines(lines, "\\\\192.168.38.7\\public$\\Avtomatizacija\\data-platform\\indikatorji\\00-index.html")
-
-
+tryCatch({
+  # Try to rename the file
+  index_update()
+}, warning = function(w) {
+  # Handle warnings here
+  print(paste("Warning: ", w))
+}, error = function(e) {
+  # Handle errors here
+  print(paste("Error: ", e))
+})

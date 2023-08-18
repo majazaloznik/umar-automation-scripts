@@ -1,8 +1,7 @@
 #devtools::install_github("majazaloznik/SURSfetchR")
 library(dplyr)
 library(SURSfetchR)
-print(getwd())
-print(Sys.getenv("PG_MZ_PSW"))
+
 # logging in as  maintainer
 con <- DBI::dbConnect(RPostgres::Postgres(),
                       dbname = "platform",
@@ -38,7 +37,10 @@ system.time(purrr::walk(df$code, ~insert_new_data(.x, con)))
 # df <- UMARaccessR::get_all_series_wtable_names(con)
 # UMARaccessR::create_selection_excel(df, outfile = "O:\\Avtomatizacija\\data-platform\\seznam_serij")
 
+
 source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\update_indicator_report_modular.R")
 
 
+
 source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\update_indicator_report.R")
+
