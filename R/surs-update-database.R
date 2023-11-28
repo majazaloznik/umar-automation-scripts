@@ -30,16 +30,12 @@ system.time(purrr::walk(df$code, ~insert_new_data(.x, con)))
 # # # insert table structures for a single matrix
 # add_new_table("0301925S", con)
 # # # insert data for single matrix
-# out <- insert_new_data("0301925S", con)
+out <- insert_new_data("0300230S", con)
 
-
+#
 # # # update series selection list
 # df <- UMARaccessR::get_all_series_wtable_names(con)
 # UMARaccessR::create_selection_excel(df, outfile = "O:\\Avtomatizacija\\data-platform\\seznam_serij")
-
-
-source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\update_indicator_report_modular.R")
-
 
 
 source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\update_indicator_report.R")
