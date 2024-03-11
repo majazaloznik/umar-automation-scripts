@@ -17,28 +17,8 @@ The following objects are masked from 'package:base':
 [1] "0 new rows inserted into the period table"
 [1] "0 new rows inserted into the data_points table"
 [1] "0 new rows inserted into the flag_datapoint table"
-[1] "0 new rows inserted into the vintage table"
-[1] "0 new rows inserted into the period table"
-[1] "0 new rows inserted into the data_points table"
-[1] "0 new rows inserted into the flag_datapoint table"
-[1] "0 new rows inserted into the vintage table"
-[1] "0 new rows inserted into the period table"
-[1] "0 new rows inserted into the data_points table"
-[1] "0 new rows inserted into the flag_datapoint table"
-[1] "0 new rows inserted into the vintage table"
-[1] "0 new rows inserted into the period table"
-[1] "0 new rows inserted into the data_points table"
-[1] "0 new rows inserted into the flag_datapoint table"
-[1] "0 new rows inserted into the vintage table"
-[1] "0 new rows inserted into the period table"
-[1] "0 new rows inserted into the data_points table"
-[1] "0 new rows inserted into the flag_datapoint table"
-[1] "0 new rows inserted into the vintage table"
-[1] "0 new rows inserted into the period table"
-[1] "0 new rows inserted into the data_points table"
-[1] "0 new rows inserted into the flag_datapoint table"
 Error in `map()`:
-i In index: 8.
+i In index: 3.
 Caused by error:
 ! Failed to prepare query: ERROR:  function platform.insert_new_vintage(unknown) does not exist
 LINE 1: SELECT * FROM "platform"."insert_new_vintage"($1)
@@ -76,6 +56,6 @@ Backtrace:
  28.     \-rlang::abort(...)
 Warning message:
 In prepare_vintage_table(code_no, con) :
-  The newly published data in table 2001301S seems to have a different structure to the series already in the database. The vintages were not imported, update the series table first.
-Timing stopped at: 9.2 0.58 16.53
+  The newly published data in table 1701102S seems to have a different structure to the series already in the database. The vintages were not imported, update the series table first.
+Timing stopped at: 4.11 0.26 8.57
 Execution halted
