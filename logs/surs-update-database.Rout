@@ -11,6 +11,46 @@ The following objects are masked from 'package:base':
 
 before con
 after con
-Error in cat(x) : argument 1 (type 'list') cannot be handled by 'cat'
-Calls: source -> withVisible -> eval -> eval -> cat
+7.892699e-320after x
+Error in `map()`:
+i In index: 1.
+Caused by error:
+! Failed to prepare query: ERROR:  function platform.insert_new_vintage(unknown) does not exist
+LINE 1: SELECT * FROM "platform"."insert_new_vintage"($1)
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+Backtrace:
+     x
+  1. +-base::source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\surs-update-database.R")
+  2. | +-base::withVisible(eval(ei, envir))
+  3. | \-base::eval(ei, envir)
+  4. |   \-base::eval(ei, envir)
+  5. +-base::system.time(purrr::walk(df$code, ~insert_new_data(.x, con)))
+  6. +-purrr::walk(df$code, ~insert_new_data(.x, con))
+  7. | \-purrr::map(.x, .f, ..., .progress = .progress)
+  8. |   \-purrr:::map_("list", .x, .f, ..., .progress = .progress)
+  9. |     +-purrr:::with_indexed_errors(...)
+ 10. |     | \-base::withCallingHandlers(...)
+ 11. |     +-purrr:::call_with_cleanup(...)
+ 12. |     \-global .f(.x[[i]], ...)
+ 13. |       \-SURSfetchR::insert_new_data(.x, con)
+ 14. |         \-SURSfetchR::sql_function_call(...)
+ 15. |           +-DBI::dbGetQuery(con, query, unname(args))
+ 16. |           \-DBI::dbGetQuery(con, query, unname(args))
+ 17. |             \-DBI (local) .local(conn, statement, ...)
+ 18. |               +-DBI::dbSendQuery(conn, statement, ...)
+ 19. |               \-RPostgres::dbSendQuery(conn, statement, ...)
+ 20. |                 \-RPostgres (local) .local(conn, statement, ...)
+ 21. |                   +-methods::new(...)
+ 22. |                   | +-methods::initialize(value, ...)
+ 23. |                   | \-methods::initialize(value, ...)
+ 24. |                   \-RPostgres:::result_create(conn@ptr, statement, immediate)
+ 25. +-base::stop(`<Rcpp::xc>`)
+ 26. \-purrr (local) `<fn>`(`<Rcpp::xc>`)
+ 27.   \-cli::cli_abort(...)
+ 28.     \-rlang::abort(...)
+Warning message:
+In prepare_vintage_table(code_no, con) :
+  The newly published data in table 0300230S seems to have a different structure to the series already in the database. The vintages were not imported, update the series table first.
+Timing stopped at: 1.22 0.15 1.75
 Execution halted
