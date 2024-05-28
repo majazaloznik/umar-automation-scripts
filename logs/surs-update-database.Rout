@@ -49,8 +49,10 @@ Backtrace:
  26. \-purrr (local) `<fn>`(`<Rcpp::xc>`)
  27.   \-cli::cli_abort(...)
  28.     \-rlang::abort(...)
-Warning message:
-In prepare_vintage_table(code_no, con) :
+Warning messages:
+1: In prepare_vintage_table("0300230S", con) :
   The newly published data in table 0300230S seems to have a different structure to the series already in the database. The vintages were not imported, update the series table first.
-Timing stopped at: 1.25 0.24 1.81
+2: In prepare_vintage_table(code_no, con) :
+  The newly published data in table 0300230S seems to have a different structure to the series already in the database. The vintages were not imported, update the series table first.
+Timing stopped at: 1.04 0.05 1.16
 Execution halted
