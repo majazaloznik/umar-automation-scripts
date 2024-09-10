@@ -6,4 +6,4 @@ git config --global http.proxy http://proxy.gov.si:80
 git add  logs\umar-add_new_data_full.Rout
 git commit -m "Umar data bot :robot: - automatic UMAR data update."
 git push
-PAUSE
+CLS

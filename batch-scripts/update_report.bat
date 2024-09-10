@@ -6,4 +6,4 @@ git config --global http.proxy http://proxy.gov.si:80
 git add  logs\update_indicator_report.Rout
 git commit -m "Umar data bot :robot: - indicator report update."
 git push
-CLS
+PAUSE

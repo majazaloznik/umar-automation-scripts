@@ -12,16 +12,16 @@ rmd_files <- c(
   "\\\\192.168.38.7\\user_home\\mzaloznik\\analysis\\umar_master_report\\docs\\10-tujina.Rmd"
 )
 
-out_files <-list.files("\\\\192.168.38.7\\public$\\Avtomatizacija\\data-platform\\indikatorji_po_poglavjih")[-1]
+out_files <-list.files("\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_po_poglavjih")[-1]
 
 time <- format(Sys.time(), "%d.%b%Y_%H%m")
 
 render_rename <- function(rmd_file, outfile_name) {
   # The file name with timestamp
-  outfile <- paste0("\\\\192.168.38.7\\public$\\Avtomatizacija\\data-platform\\indikatorji_po_poglavjih\\",
+  outfile <- paste0("\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_po_poglavjih\\",
                     format(Sys.time(), "%d.%b%Y_%H%m"), "_", outfile_name)
   # The file name without timestamp
-  origfile <- paste0("\\\\192.168.38.7\\public$\\Avtomatizacija\\data-platform\\indikatorji_po_poglavjih\\", outfile_name)
+  origfile <- paste0("\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_po_poglavjih\\", outfile_name)
 
   # Render the Rmd file
   rmarkdown::render(rmd_file, output_file = outfile)
@@ -48,7 +48,7 @@ mapply(render_rename, rmd_file = rmd_files, outfile_name = out_files)
 ### Update the index file
 index_update <- function(){
   # Step 1: Read the file
-  lines <- readLines("\\\\192.168.38.7\\public$\\Avtomatizacija\\data-platform\\indikatorji_po_poglavjih\\00-index.html")
+  lines <- readLines("\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_po_poglavjih\\00-index.html")
 
   # Step 2: Generate timestamp
   timestamp <- Sys.time()
@@ -69,7 +69,7 @@ index_update <- function(){
   lines <- append(lines, sprintf("<p><i>Posodobljeno: %s</i></p>", timestamp), after = insert_at - 1)
 
   # Step 5: Write the lines back to the file
-  writeLines(lines, "\\\\192.168.38.7\\public$\\Avtomatizacija\\data-platform\\indikatorji_po_poglavjih\\00-index.html")
+  writeLines(lines, "\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_po_poglavjih\\00-index.html")
 }
 
 tryCatch({

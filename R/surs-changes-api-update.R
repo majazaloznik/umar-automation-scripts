@@ -31,7 +31,9 @@ email_list <- c("maja.zaloznik@gmail.com",
                 "polona.osrajnik@gov.si",
                 "natasa.todorovic-jemec@gov.si",
                 "tanja.celebic@gov.si",
-                "mitja.perko@gov.si")
+                "mitja.perko@gov.si",
+                "tina.kocjancic@gov.si",
+                "Tina.Nenadic-Senica@gov.si")
 
 ###############################################################################
 ##

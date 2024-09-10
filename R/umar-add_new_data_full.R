@@ -45,10 +45,14 @@ for (i in seq(length(meta_filenames))){
                            path = log_path)
 }
 
+
+DBI::dbExecute(con, "set search_path to views")
+DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_latest_series_data_table_74")
+
+
 #
 # # run over single data file
-# initials <- "MH"
+# initials <- "AJPES"
 # meta_filename <- paste0(dir_path, "\\", initials, "\\umar_serije_metadata_", initials, ".xlsx")
 # data_filename <- paste0(dir_path, "\\", initials,"\\umar_serije_podatki_", initials, ".xlsx")
 # update_data(meta_filename, data_filename, con, schema, path = log_path)
-#

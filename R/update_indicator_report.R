@@ -6,9 +6,9 @@ source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\u
 
 # report outputs
 time <- format(Sys.time(), "%d.%b%Y_%H%m")
-outfile <- paste0("\\\\192.168.38.7\\public$\\Avtomatizacija\\data-platform\\indikatorji_porocilo",
+outfile <- paste0("\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_porocilo",
                   time, ".html")
-origfile <- paste0("\\\\192.168.38.7\\public$\\Avtomatizacija\\data-platform\\indikatorji_porocilo.html")
+origfile <- paste0("\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_porocilo.html")
 
 # # update html report
 rmarkdown::render("\\\\192.168.38.7\\user_home\\mzaloznik\\analysis\\umar_master_report\\docs\\html_test.Rmd",
