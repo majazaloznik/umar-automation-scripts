@@ -34,20 +34,20 @@ schema <- "platform"
 dir_path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-data"
 log_path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\logs\\UMARfetchR\\"
 
-# run over all metadata files
-meta_filenames <- list.files(path = dir_path, pattern = "^umar_serije_metadata_",
-                    recursive = TRUE, full.names = TRUE)
-data_filenames <- list.files(path = dir_path, pattern = "^umar_serije_podatki_",
-                             recursive = TRUE, full.names = TRUE)
+meta_filenames <- rev(list.files(path = dir_path, pattern = "^umar_serije_metadata_",
+                                 recursive = TRUE, full.names = TRUE))
+data_filenames <- rev(list.files(path = dir_path, pattern = "^umar_serije_podatki_",
+                                 recursive = TRUE, full.names = TRUE))
 
 for (i in seq(length(meta_filenames))){
   update_data(meta_filenames[i], data_filenames[i], con, schema,
                            path = log_path)
 }
 
-
+# update materialised views
 DBI::dbExecute(con, "set search_path to views")
 DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_latest_series_data_table_74")
+DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_latest_series_data_table_80")
 
 
 #

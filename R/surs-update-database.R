@@ -26,8 +26,8 @@ tbl(con, "table") %>%
 # update all SURS tables
 system.time(purrr::walk(df$code, ~insert_new_data(.x, con)))
 
-# # # insert table structures for a single matrix
-# add_new_table("0701015S", con)
+# # insert table structures for a single matrix
+# add_new_table("H281S", con)
 
 # # insert data for single matrix
 # out <- insert_new_data("0300230S", con)

@@ -9,7 +9,8 @@ rmd_files <- c(
   "\\\\192.168.38.7\\user_home\\mzaloznik\\analysis\\umar_master_report\\docs\\07-gradbenistvo.Rmd",
   "\\\\192.168.38.7\\user_home\\mzaloznik\\analysis\\umar_master_report\\docs\\08-predelovalne_dejavnosti.Rmd",
   "\\\\192.168.38.7\\user_home\\mzaloznik\\analysis\\umar_master_report\\docs\\09-mojca.Rmd",
-  "\\\\192.168.38.7\\user_home\\mzaloznik\\analysis\\umar_master_report\\docs\\10-tujina.Rmd"
+  "\\\\192.168.38.7\\user_home\\mzaloznik\\analysis\\umar_master_report\\docs\\10-zasebna.Rmd",
+  "\\\\192.168.38.7\\user_home\\mzaloznik\\analysis\\umar_master_report\\docs\\11-tujina.Rmd"
 )
 
 out_files <-list.files("\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_po_poglavjih")[-1]
