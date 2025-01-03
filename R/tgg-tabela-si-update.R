@@ -80,7 +80,7 @@ process_codes_vectorized <- function(codes, con, stotka = FALSE) {
     pivot_longer(-period_id, names_to = "code", values_to = "value") |>
     ({if(stotka) \(x) x |> mutate(value = value - 100) else \(x) x})() |>
     pivot_wider(names_from = "period_id", values_from = "value") |>
-    mutate(Zadnja = format(dates,"%d/%m/%Y")) |>
+    mutate(Zadnja = as.Date(dates)) |>
     relocate(Zadnja, .after = code)
 
 }
@@ -131,7 +131,7 @@ process_codes_rates <- function(codes, con, stotka = FALSE) {
          period_id = sub("M", " m ", period_id)) |>
     pivot_longer(-period_id, names_to = "code", values_to = "value") |>
     pivot_wider(names_from = "period_id", values_from = "value") |>
-    mutate(Zadnja = format(dates,"%d/%m/%Y")) |>
+    mutate(Zadnja = as.Date(dates)) |>
     relocate(Zadnja, .after = code)
 }
 
@@ -738,7 +738,8 @@ gm_auth(email = TRUE, cache = ".secret")
 email_list <- c("maja.zaloznik@gmail.com",
                 "maja.zaloznik@gov.si",
                 "Bibijana.Cirman-Naglic@gov.si",
-                "urska.brodar@gov.si")
+                "urska.brodar@gov.si",
+                "Tina.Nenadic-Senica@gov.si")
 
 email_body <- "To je avtomatsko generirano sporo\u010dilo o posodobitvi podatkov v tabeli TGG_tabela_slovenska_auto_update.<br><br>Tvoj Umar Data Bot &#129302;"
 
