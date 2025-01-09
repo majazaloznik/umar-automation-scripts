@@ -392,8 +392,9 @@ print("Local data ready")
 # this needs to be updated manually from their website once a year!
 # https://www.ess.gov.si/partnerji/trg-dela/koledar-objav/
 ################################################################################
-zrsz_days <- c(8, 5, 5, 4, 7, 5, 3, 5, 4, 3, 6, 4) # update this for next year
-reg_bp_datumi <- data.frame(datum = as.Date(paste0("2024-", 1:12, "-", zrsz_days))) |>
+zrsz_days <- c(8, 5, 5, 3, 7, 4, 3, 5, 3, 3, 5, 3) # update this for next year
+reg_bp_datumi <- data.frame(datum = as.Date(paste0("2025-", 1:12, "-", zrsz_days))) |>
+  bind_rows(data.frame(datum = as.Date("2024-12-04"))) |>
   filter(datum <= Sys.Date() |
                         datum == min(datum[datum > Sys.Date()])) |>
   filter(datum >= max(datum[datum <= Sys.Date()]) |
@@ -702,6 +703,14 @@ wb$add_data(sheet = "tabela",
             x = paste(fmt_txt("%", font = "Myriad Pro", size = 11),
                       fmt_txt("3", vert_align = "superscript", font = "Myriad Pro", size = 11)),  dims = "D59")
 
+# meseci zadnji
+wb$add_data(sheet = "tabela",  x =  klima[2:4,3:8],  dims = "E60", na.strings = ":")
+
+# prazne celice
+empty <- data.frame(a = NA, b = NA, c= NA, d = NA, e = NA, f = NA)
+wb$add_data(sheet = "tabela",  x = empty[1,],  dims = "E16",  col_names = FALSE, na.strings = ":")
+wb$add_data(sheet = "tabela",  x = empty[1,],  dims = "E17",  col_names = FALSE, na.strings = ":")
+
 # write back to file
 wb_save(wb, "\\\\192.168.38.7\\data$\\TGG/TGG_tabela_slovenska_auto_update.xlsx")
 
@@ -739,7 +748,9 @@ email_list <- c("maja.zaloznik@gmail.com",
                 "maja.zaloznik@gov.si",
                 "Bibijana.Cirman-Naglic@gov.si",
                 "urska.brodar@gov.si",
-                "Tina.Nenadic-Senica@gov.si")
+                "Tina.Nenadic-Senica@gov.si",
+                "Laura.Juznik-Rotar@gov.si",
+                "Barbara.Bratuz-Ferk@gov.si")
 
 email_body <- "To je avtomatsko generirano sporo\u010dilo o posodobitvi podatkov v tabeli TGG_tabela_slovenska_auto_update.<br><br>Tvoj Umar Data Bot &#129302;"
 
