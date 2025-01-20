@@ -30,13 +30,16 @@ system.time(purrr::walk(df$code, ~insert_new_data(.x, con)))
 # add_new_table("H281S", con)
 
 # # insert data for single matrix
-# out <- insert_new_data("0300230S", con)
+# out <- insert_new_data("0427602S", con)
 
 # # update series selection list
 # df <- UMARaccessR::get_all_series_wtable_names(con)
 # UMARaccessR::create_selection_excel(df, outfile = "O:\\Avtomatizacija\\indikatorji_porocilo\\navodila_za_avtorje\\seznam_serij")
 
-#
+DBI::dbExecute(con, "set search_path to views")
+DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW latest_data_points")
+
+
 source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\update_indicator_report.R")
 
 
