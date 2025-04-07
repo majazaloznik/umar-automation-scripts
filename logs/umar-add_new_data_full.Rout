@@ -9,13 +9,22 @@ The following objects are masked from 'package:base':
 
     body, date, labels, message
 
-i The gmailr package is using a cached token for 'umar.data.bot@gmail.com'.
-Auto-refreshing stale OAuth token.
-Error in gmailr_POST(c("messages", "send"), user_id, class = "gmail_message",  : 
-  Gmail API error: 401
-  Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
-Calls: source ... email_log -> <Anonymous> -> gmailr_POST -> gmailr_query
-In addition: Warning message:
-Unable to refresh token: invalid_grant
-* Bad Request 
+Error in `gm_auth()`:
+! Can't get Google credentials.
+! gmailr appears to be running in a non-interactive session and it can't
+  auto-discover credentials.
+  You may need to call `gm_auth()` directly with all necessary specifics.
+i See gargle's "Non-interactive auth" vignette for more details:
+i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
+i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
+  to see more detailed debugging information.
+Backtrace:
+    x
+ 1. +-base::source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\umar-add_new_data_full.R")
+ 2. | +-base::withVisible(eval(ei, envir))
+ 3. | \-base::eval(ei, envir)
+ 4. |   \-base::eval(ei, envir)
+ 5. \-gmailr::gm_auth(email = TRUE, cache = ".secret")
+ 6.   \-cli::cli_abort(...)
+ 7.     \-rlang::abort(...)
 Execution halted
