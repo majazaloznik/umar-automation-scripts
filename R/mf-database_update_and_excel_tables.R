@@ -37,9 +37,8 @@ DBI::dbExecute(con, "set search_path to test_platform")
 ###############################################################################
 #
 # check for new data
-options(gargle_oauth_email = TRUE)
 gm_auth_configure(path ="data/credentials.json")
-gm_auth(email = TRUE, cache = ".secret")
+gm_auth(email = "umar.data.bot@gmail.com", cache = ".secret")
 
 data_path <- "data/mf_bilance/raw_data"
 sender <- "lejla.fajic@gov.si"

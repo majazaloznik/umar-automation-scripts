@@ -740,9 +740,8 @@ print("Writing to file done, now emailing everyone.")
 
 setwd("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\")
 library(gmailr)
-options(gargle_oauth_email = TRUE)
 gm_auth_configure(path ="data/credentials.json")
-gm_auth(email = TRUE, cache = ".secret")
+gm_auth(email = "umar.data.bot@gmail.com", cache = ".secret")
 
 email_list <- c("maja.zaloznik@gmail.com",
                 "maja.zaloznik@gov.si",

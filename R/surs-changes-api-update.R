@@ -10,26 +10,22 @@ library(dplyr)
 # devtools::install_github("majazaloznik/SURSfetchR", dependencies = FALSE)
 library(SURSfetchR)
 library(gmailr)
-options(gargle_oauth_email = TRUE)
 gm_auth_configure(path ="data/credentials.json")
-gm_auth(email = TRUE, cache = ".secret")
+gm_auth(email = "umar.data.bot@gmail.com", cache = ".secret")
 
 email_list <- c("maja.zaloznik@gmail.com",
                 "maja.zaloznik@gov.si",
                 "matevz.hribernik@gov.si",
-                "katarina.ivas@gov.si",
                 "janez.kusar@gov.si",
                 "mojca.koprivnikar@gov.si",
                 "bibijana.cirman-naglic@gov.si",
                 "peter.wostner@gov.si",
-                "dragica.suc@gov.si",
                 "janja.pecar@gov.si",
                 "andreja.kokalj@gov.si",
                 "andrej.kustrin@gov.si",
                 "marta.gregorcic@gov.si",
                 "barbara.bratuz-ferk@gov.si",
                 "polona.osrajnik@gov.si",
-                "natasa.todorovic-jemec@gov.si",
                 "tanja.celebic@gov.si",
                 "mitja.perko@gov.si",
                 "tina.kocjancic@gov.si",

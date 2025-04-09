@@ -13,9 +13,8 @@ Sys.setenv(https_proxy_user="http://proxy.gov.si:80")
 
 
 library(gmailr)
-options(gargle_oauth_email = TRUE)
-gm_auth_configure(path ="data/credentials-umar.json")
-gm_auth(email = TRUE, cache = ".secret")
+gm_auth_configure(path ="data/credentials.json")
+gm_auth(email = "umar.data.bot@gmail.com", cache = ".secret")
 
 # package
 library(UMARfetchR)
