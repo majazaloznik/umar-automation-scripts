@@ -24,22 +24,3 @@ The following objects are masked from 'package:base':
 
     body, date, labels, message
 
-Error in `gm_auth()`:
-! Can't get Google credentials.
-! gmailr appears to be running in a non-interactive session and it can't
-  auto-discover credentials.
-  You may need to call `gm_auth()` directly with all necessary specifics.
-i See gargle's "Non-interactive auth" vignette for more details:
-i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
-i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
-  to see more detailed debugging information.
-Backtrace:
-    x
- 1. +-base::source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\surs-changes-api-update.R")
- 2. | +-base::withVisible(eval(ei, envir))
- 3. | \-base::eval(ei, envir)
- 4. |   \-base::eval(ei, envir)
- 5. \-gmailr::gm_auth(email = TRUE, cache = ".secret")
- 6.   \-cli::cli_abort(...)
- 7.     \-rlang::abort(...)
-Execution halted
