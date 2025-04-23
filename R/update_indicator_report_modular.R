@@ -16,30 +16,33 @@ rmd_files <- c(
 out_files <-list.files("\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_po_poglavjih")[-1]
 
 time <- format(Sys.time(), "%d.%b%Y_%H%m")
-
 render_rename <- function(rmd_file, outfile_name) {
+  # Create temp directory for intermediates
+  temp_dir <- file.path(tempdir(), "rmd_temp")
+  dir.create(temp_dir, showWarnings = FALSE, recursive = TRUE)
+
   # The file name with timestamp
   outfile <- paste0("\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_po_poglavjih\\",
                     format(Sys.time(), "%d.%b%Y_%H%m"), "_", outfile_name)
   # The file name without timestamp
   origfile <- paste0("\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_po_poglavjih\\", outfile_name)
 
-  # Render the Rmd file
-  rmarkdown::render(rmd_file, output_file = outfile)
+  # Render with explicit intermediates directory
+  rmarkdown::render(
+    input = rmd_file,
+    output_file = outfile,
+    intermediates_dir = temp_dir
+  )
 
   # Rename the file
   tryCatch({
-    # Try to rename the file
     file.rename(outfile, origfile)
   }, warning = function(w) {
-    # Handle warnings here
     print(paste("Warning: ", w))
   }, error = function(e) {
-    # Handle errors here
     print(paste("Error: ", e))
   })
 }
-
 
 ### render all the Rmd files
 # Apply the function to all Rmd files
