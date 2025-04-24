@@ -19,31 +19,16 @@ Importing data points from: 0700921S into schema platform
 Note: These vintages for table 0700921S are not new, they will not be inserted again.
 Skipping import for 0700921S due to vintage preparation issue: These vintages for table 0700921S are not new, they will not be inserted again.
 Importing data points from: 2012102S into schema platform
-Note: These vintages for table 2012102S are not new, they will not be inserted again.
-Skipping import for 2012102S due to vintage preparation issue: These vintages for table 2012102S are not new, they will not be inserted again.
-Importing data points from: 1912002S into schema platform
-Note: These vintages for table 1912002S are not new, they will not be inserted again.
-Skipping import for 1912002S due to vintage preparation issue: These vintages for table 1912002S are not new, they will not be inserted again.
-Importing data points from: 1700104S into schema platform
-Note: These vintages for table 1700104S are not new, they will not be inserted again.
-Skipping import for 1700104S due to vintage preparation issue: These vintages for table 1700104S are not new, they will not be inserted again.
-Importing data points from: 1700102S into schema platform
-Note: These vintages for table 1700102S are not new, they will not be inserted again.
-Skipping import for 1700102S due to vintage preparation issue: These vintages for table 1700102S are not new, they will not be inserted again.
-Importing data points from: 2007402S into schema platform
-Note: These vintages for table 2007402S are not new, they will not be inserted again.
-Skipping import for 2007402S due to vintage preparation issue: These vintages for table 2007402S are not new, they will not be inserted again.
-Importing data points from: 0811601S into schema platform
 
 === PostgreSQL Column Names ===
-value, MESEC, EKONOMSKI.KAZALNIKI, raw_time, time, flag, VRSTA.PODATKA, interval_id
+value, MESEC, EKONOMSKI.KAZALNIK, raw_time, time, flag, VRSTA.PODATKA, interval_id
 Data loaded into tmp_prepared_data. Sample rows:
-  VRSTA.PODATKA   MESEC value EKONOMSKI.KAZALNIKI raw_time    time flag
-1             1 1996M03   -17                   1  1996M03 1996M03     
-2             1 1996M03   -29                   2  1996M03 1996M03     
-3             1 1996M03   -14                   3  1996M03 1996M03     
-4             1 1996M03   -38                   4  1996M03 1996M03     
-5             1 1996M03    -8                   5  1996M03 1996M03     
+  VRSTA.PODATKA   MESEC     value EKONOMSKI.KAZALNIK raw_time    time flag
+1             1 2002M04 32.134359                  1  2002M04 2002M04     
+2             1 2002M04 15.488399                  2  2002M04 2002M04     
+3             1 2002M04 40.501605                  3  2002M04 2002M04     
+4             1 2002M04 -4.974023                  4  2002M04 2002M04     
+5             1 2002M04 19.836522                  5  2002M04 2002M04     
   interval_id
 1           M
 2           M
@@ -51,40 +36,81 @@ Data loaded into tmp_prepared_data. Sample rows:
 4           M
 5           M
 Matching dimensions:
-  - VRSTA PODATKA (ID: 56)
-  - EKONOMSKI KAZALNIKI (ID: 57)
+  - VRSTA PODATKA (ID: 41)
+  - EKONOMSKI KAZALNIK (ID: 42)
   - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
-  - Matched dimension: EKONOMSKI KAZALNIKI -> column: EKONOMSKI.KAZALNIKI
-Updated series_id for 9800 rows
-Updated vintage_id for 9800 rows
+  - Matched dimension: EKONOMSKI KAZALNIK -> column: EKONOMSKI.KAZALNIK
+Updated series_id for 5540 rows
+Updated vintage_id for 5540 rows
 After matching. Sample rows:
-  VRSTA.PODATKA   MESEC value EKONOMSKI.KAZALNIKI raw_time    time flag
-1             1 1996M03   -17                   1  1996M03 1996M03     
-2             1 1996M03   -29                   2  1996M03 1996M03     
-3             1 1996M03   -14                   3  1996M03 1996M03     
-4             1 1996M03   -38                   4  1996M03 1996M03     
-5             2 2001M12    NA                   8  2001M12 2001M12     
+  VRSTA.PODATKA   MESEC     value EKONOMSKI.KAZALNIK raw_time    time flag
+1             1 2002M04 32.134359                  1  2002M04 2002M04     
+2             1 2002M04 15.488399                  2  2002M04 2002M04     
+3             1 2002M04 40.501605                  3  2002M04 2002M04     
+4             1 2002M04 -4.974023                  4  2002M04 2002M04     
+5             1 2002M04 19.836522                  5  2002M04 2002M04     
   interval_id series_id vintage_id
-1           M      1945    7096344
-2           M      1947    7096346
-3           M      1949    7096348
-4           M      1951    7096350
-5           M      1960    7096359
-Rows with both series_id and vintage_id: 9800
+1           M      1863    7096378
+2           M      1865    7096380
+3           M      1867    7096382
+4           M      1869    7096384
+5           M      1871    7096386
+Rows with both series_id and vintage_id: 5540
 Inserted 0 new periods
-Inserted 9800 new data points
+Inserted 5540 new data points
 Inserted 0 new flags
-Importing data points from: 0811602S into schema platform
+Importing data points from: 1912002S into schema platform
+
+=== PostgreSQL Column Names ===
+value, MESEC, EKONOMSKI.KAZALNIK, raw_time, time, flag, VRSTA.PODATKA, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.PODATKA   MESEC      value EKONOMSKI.KAZALNIK raw_time    time flag
+1             1 2002M03 -28.322873                  1  2002M03 2002M03     
+2             1 2002M03   4.082872                  2  2002M03 2002M03     
+3             1 2002M03 -48.245588                  3  2002M03 2002M03     
+4             1 2002M03  -8.400159                  6  2002M03 2002M03     
+5             1 2002M03   2.227369                  8  2002M03 2002M03     
+  interval_id
+1           M
+2           M
+3           M
+4           M
+5           M
+Matching dimensions:
+  - VRSTA PODATKA (ID: 44)
+  - EKONOMSKI KAZALNIK (ID: 45)
+  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
+  - Matched dimension: EKONOMSKI KAZALNIK -> column: EKONOMSKI.KAZALNIK
+Updated series_id for 4448 rows
+Updated vintage_id for 4448 rows
+After matching. Sample rows:
+  VRSTA.PODATKA   MESEC     value EKONOMSKI.KAZALNIK raw_time    time flag
+1             1 2002M03 -28.32287                  1  2002M03 2002M03     
+2             1 2002M04 -19.99327                  1  2002M04 2002M04     
+3             1 2002M05 -26.50432                  1  2002M05 2002M05     
+4             1 2002M06 -25.75457                  1  2002M06 2002M06     
+5             1 2002M07 -17.90524                  1  2002M07 2002M07     
+  interval_id series_id vintage_id
+1           M      1881    7096398
+2           M      1881    7096398
+3           M      1881    7096398
+4           M      1881    7096398
+5           M      1881    7096398
+Rows with both series_id and vintage_id: 4448
+Inserted 0 new periods
+Inserted 4448 new data points
+Inserted 0 new flags
+Importing data points from: 1700104S into schema platform
 
 === PostgreSQL Column Names ===
 value, ÈETRTLETJE, EKONOMSKI.KAZALNIKI, raw_time, time, flag, VRSTA.PODATKA, interval_id
 Data loaded into tmp_prepared_data. Sample rows:
-  VRSTA.PODATKA ÈETRTLETJE value EKONOMSKI.KAZALNIKI raw_time   time flag
-1             1     2000Q3   -47                   1   2000Q3 2000Q3     
-2             1     2000Q3   -76                   2   2000Q3 2000Q3     
-3             1     2000Q3   -25                   3   2000Q3 2000Q3     
-4             2     2000Q3    NA                   1   2000Q3 2000Q3     
-5             2     2000Q3    NA                   2   2000Q3 2000Q3     
+  VRSTA.PODATKA ÈETRTLETJE    value EKONOMSKI.KAZALNIKI raw_time   time flag
+1             1     1996Q1 80.03386                   1   1996Q1 1996Q1     
+2             1     1996Q1 26.15915                   2   1996Q1 1996Q1     
+3             1     1996Q1       NA                   3   1996Q1 1996Q1     
+4             1     1996Q1       NA                   4   1996Q1 1996Q1     
+5             1     1996Q1       NA                   5   1996Q1 1996Q1     
   interval_id
 1           Q
 2           Q
@@ -92,29 +118,117 @@ Data loaded into tmp_prepared_data. Sample rows:
 4           Q
 5           Q
 Matching dimensions:
-  - VRSTA PODATKA (ID: 59)
-  - EKONOMSKI KAZALNIKI (ID: 60)
+  - VRSTA PODATKA (ID: 47)
+  - EKONOMSKI KAZALNIKI (ID: 48)
   - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
   - Matched dimension: EKONOMSKI KAZALNIKI -> column: EKONOMSKI.KAZALNIKI
-Updated series_id for 600 rows
-Updated vintage_id for 600 rows
+Updated series_id for 1416 rows
+Updated vintage_id for 1416 rows
 After matching. Sample rows:
-  VRSTA.PODATKA ÈETRTLETJE value EKONOMSKI.KAZALNIKI raw_time   time flag
-1             1     2000Q3   -47                   1   2000Q3 2000Q3     
-2             1     2000Q4   -47                   1   2000Q4 2000Q4     
-3             1     2001Q1   -48                   1   2001Q1 2001Q1     
-4             1     2001Q2   -48                   1   2001Q2 2001Q2     
-5             1     2001Q3   -56                   1   2001Q3 2001Q3     
+  VRSTA.PODATKA ÈETRTLETJE    value EKONOMSKI.KAZALNIKI raw_time   time flag
+1             1     1996Q2 79.85636                   1   1996Q2 1996Q2     
+2             1     1996Q3 77.90314                   1   1996Q3 1996Q3     
+3             1     1996Q4 79.57793                   1   1996Q4 1996Q4     
+4             1     1997Q1 79.05351                   1   1997Q1 1997Q1     
+5             1     1997Q2 78.56136                   1   1997Q2 1997Q2     
   interval_id series_id vintage_id
-1           Q      1973    7096372
-2           Q      1973    7096372
-3           Q      1973    7096372
-4           Q      1973    7096372
-5           Q      1973    7096372
-Rows with both series_id and vintage_id: 600
-Inserted 1 new periods
-Inserted 600 new data points
+1           Q      1895    7096414
+2           Q      1895    7096414
+3           Q      1895    7096414
+4           Q      1895    7096414
+5           Q      1895    7096414
+Rows with both series_id and vintage_id: 1416
+Inserted 0 new periods
+Inserted 1416 new data points
 Inserted 0 new flags
+Importing data points from: 1700102S into schema platform
+
+=== PostgreSQL Column Names ===
+value, MESEC, EKONOMSKI.KAZALNIK, raw_time, time, flag, VRSTA.PODATKA, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.PODATKA   MESEC      value EKONOMSKI.KAZALNIK raw_time    time flag
+1             1 1995M05   2.589260                  1  1995M05 1995M05     
+2             1 1995M05 -12.574334                  2  1995M05 1995M05     
+3             1 1995M05  -2.123937                  3  1995M05 1995M05     
+4             1 1995M05  -9.138045                  4  1995M05 1995M05     
+5             1 1995M05  15.850581                  5  1995M05 1995M05     
+  interval_id
+1           M
+2           M
+3           M
+4           M
+5           M
+Matching dimensions:
+  - VRSTA PODATKA (ID: 50)
+  - EKONOMSKI KAZALNIK (ID: 51)
+  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
+  - Matched dimension: EKONOMSKI KAZALNIK -> column: EKONOMSKI.KAZALNIK
+Updated series_id for 8640 rows
+Updated vintage_id for 8640 rows
+After matching. Sample rows:
+  VRSTA.PODATKA   MESEC      value EKONOMSKI.KAZALNIK raw_time    time flag
+1             1 1995M05   2.589260                  1  1995M05 1995M05     
+2             1 1995M05 -12.574334                  2  1995M05 1995M05     
+3             1 1995M05  -2.123937                  3  1995M05 1995M05     
+4             1 1995M05  -9.138045                  4  1995M05 1995M05     
+5             1 1995M05  15.850581                  5  1995M05 1995M05     
+  interval_id series_id vintage_id
+1           M      1907    7096426
+2           M      1909    7096428
+3           M      1911    7096430
+4           M      1913    7096432
+5           M      1915    7096434
+Rows with both series_id and vintage_id: 8640
+Inserted 0 new periods
+Inserted 8640 new data points
+Inserted 0 new flags
+Importing data points from: 2007402S into schema platform
+
+=== PostgreSQL Column Names ===
+value, MESEC, EKONOMSKI.KAZALNIK, raw_time, time, flag, VRSTA.PODATKA, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.PODATKA   MESEC      value EKONOMSKI.KAZALNIK raw_time    time flag
+1             1 1999M01  18.195616                 11  1999M01 1999M01     
+2             1 1999M01  34.551021                  2  1999M01 1999M01     
+3             1 1999M01   7.396575                  3  1999M01 1999M01     
+4             1 1999M01  38.037700                 12  1999M01 1999M01     
+5             1 1999M01 -31.230591                  5  1999M01 1999M01     
+  interval_id
+1           M
+2           M
+3           M
+4           M
+5           M
+Matching dimensions:
+  - VRSTA PODATKA (ID: 53)
+  - EKONOMSKI KAZALNIK (ID: 54)
+  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
+  - Matched dimension: EKONOMSKI KAZALNIK -> column: EKONOMSKI.KAZALNIK
+Updated series_id for 5056 rows
+Updated vintage_id for 5056 rows
+After matching. Sample rows:
+  VRSTA.PODATKA   MESEC     value EKONOMSKI.KAZALNIK raw_time    time flag
+1             1 1999M01 18.195616                 11  1999M01 1999M01     
+2             1 1999M02  9.447921                 11  1999M02 1999M02     
+3             1 1999M03 17.800649                 11  1999M03 1999M03     
+4             1 1999M04 31.442669                 11  1999M04 1999M04     
+5             1 1999M05 26.998379                 11  1999M05 1999M05     
+  interval_id series_id vintage_id
+1           M      1929    7096450
+2           M      1929    7096450
+3           M      1929    7096450
+4           M      1929    7096450
+5           M      1929    7096450
+Rows with both series_id and vintage_id: 5056
+Inserted 0 new periods
+Inserted 5056 new data points
+Inserted 0 new flags
+Importing data points from: 0811601S into schema platform
+Note: These vintages for table 0811601S are not new, they will not be inserted again.
+Skipping import for 0811601S due to vintage preparation issue: These vintages for table 0811601S are not new, they will not be inserted again.
+Importing data points from: 0811602S into schema platform
+Note: These vintages for table 0811602S are not new, they will not be inserted again.
+Skipping import for 0811602S due to vintage preparation issue: These vintages for table 0811602S are not new, they will not be inserted again.
 Importing data points from: 0400600S into schema platform
 Note: These vintages for table 0400600S are not new, they will not be inserted again.
 Skipping import for 0400600S due to vintage preparation issue: These vintages for table 0400600S are not new, they will not be inserted again.
@@ -140,8 +254,46 @@ Importing data points from: 1970713S into schema platform
 Note: These vintages for table 1970713S are not new, they will not be inserted again.
 Skipping import for 1970713S due to vintage preparation issue: These vintages for table 1970713S are not new, they will not be inserted again.
 Importing data points from: 2855901S into schema platform
-Note: These vintages for table 2855901S are not new, they will not be inserted again.
-Skipping import for 2855901S due to vintage preparation issue: These vintages for table 2855901S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, MESEC, VRSTA.PODATKA, raw_time, time, flag, EKONOMSKI.KAZALNIK, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  EKONOMSKI.KAZALNIK   MESEC   value VRSTA.PODATKA raw_time    time flag
+1                  1 1995M05      NA             1  1995M05 1995M05     
+2                  1 1995M05      NA             2  1995M05 1995M05     
+3                  2 1995M05 2.58926             1  1995M05 1995M05     
+4                  2 1995M05      NA             2  1995M05 1995M05     
+5                  3 1995M05      NA             1  1995M05 1995M05     
+  interval_id
+1           M
+2           M
+3           M
+4           M
+5           M
+Matching dimensions:
+  - EKONOMSKI KAZALNIK (ID: 111)
+  - VRSTA PODATKA (ID: 112)
+  - Matched dimension: EKONOMSKI KAZALNIK -> column: EKONOMSKI.KAZALNIK
+  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
+Updated series_id for 4320 rows
+Updated vintage_id for 4320 rows
+After matching. Sample rows:
+  EKONOMSKI.KAZALNIK   MESEC value VRSTA.PODATKA raw_time    time flag
+1                  1 1995M05    NA             1  1995M05 1995M05     
+2                  1 1995M06    NA             1  1995M06 1995M06     
+3                  1 1995M07    NA             1  1995M07 1995M07     
+4                  1 1995M08    NA             1  1995M08 1995M08     
+5                  1 1995M09    NA             1  1995M09 1995M09     
+  interval_id series_id vintage_id
+1           M     38146    7096466
+2           M     38146    7096466
+3           M     38146    7096466
+4           M     38146    7096466
+5           M     38146    7096466
+Rows with both series_id and vintage_id: 4320
+Inserted 0 new periods
+Inserted 4320 new data points
+Inserted 0 new flags
 Importing data points from: 0301915S into schema platform
 Note: These vintages for table 0301915S are not new, they will not be inserted again.
 Skipping import for 0301915S due to vintage preparation issue: These vintages for table 0301915S are not new, they will not be inserted again.
@@ -149,412 +301,30 @@ Importing data points from: 0301935S into schema platform
 Note: These vintages for table 0301935S are not new, they will not be inserted again.
 Skipping import for 0301935S due to vintage preparation issue: These vintages for table 0301935S are not new, they will not be inserted again.
 Importing data points from: 1700107S into schema platform
-Note: These vintages for table 1700107S are not new, they will not be inserted again.
-Skipping import for 1700107S due to vintage preparation issue: These vintages for table 1700107S are not new, they will not be inserted again.
-Importing data points from: 0300240S into schema platform
-Note: These vintages for table 0300240S are not new, they will not be inserted again.
-Skipping import for 0300240S due to vintage preparation issue: These vintages for table 0300240S are not new, they will not be inserted again.
-Importing data points from: 0301925S into schema platform
-Note: These vintages for table 0301925S are not new, they will not be inserted again.
-Skipping import for 0301925S due to vintage preparation issue: These vintages for table 0301925S are not new, they will not be inserted again.
-Importing data points from: 0457102S into schema platform
-Note: These vintages for table 0457102S are not new, they will not be inserted again.
-Skipping import for 0457102S due to vintage preparation issue: These vintages for table 0457102S are not new, they will not be inserted again.
-Importing data points from: 0457202S into schema platform
-Note: These vintages for table 0457202S are not new, they will not be inserted again.
-Skipping import for 0457202S due to vintage preparation issue: These vintages for table 0457202S are not new, they will not be inserted again.
-Importing data points from: 0457302S into schema platform
-Note: These vintages for table 0457302S are not new, they will not be inserted again.
-Skipping import for 0457302S due to vintage preparation issue: These vintages for table 0457302S are not new, they will not be inserted again.
-Importing data points from: 0425002S into schema platform
-Note: These vintages for table 0425002S are not new, they will not be inserted again.
-Skipping import for 0425002S due to vintage preparation issue: These vintages for table 0425002S are not new, they will not be inserted again.
-Importing data points from: 0419030S into schema platform
-Note: These vintages for table 0419030S are not new, they will not be inserted again.
-Skipping import for 0419030S due to vintage preparation issue: These vintages for table 0419030S are not new, they will not be inserted again.
-Importing data points from: 0419001S into schema platform
-Note: These vintages for table 0419001S are not new, they will not be inserted again.
-Skipping import for 0419001S due to vintage preparation issue: These vintages for table 0419001S are not new, they will not be inserted again.
-Importing data points from: 0886501S into schema platform
-Note: These vintages for table 0886501S are not new, they will not be inserted again.
-Skipping import for 0886501S due to vintage preparation issue: These vintages for table 0886501S are not new, they will not be inserted again.
-Importing data points from: 2001303S into schema platform
-Note: These vintages for table 2001303S are not new, they will not be inserted again.
-Skipping import for 2001303S due to vintage preparation issue: These vintages for table 2001303S are not new, they will not be inserted again.
-Importing data points from: 1957407S into schema platform
-Note: These vintages for table 1957407S are not new, they will not be inserted again.
-Skipping import for 1957407S due to vintage preparation issue: These vintages for table 1957407S are not new, they will not be inserted again.
-Importing data points from: 1957408S into schema platform
-Note: These vintages for table 1957408S are not new, they will not be inserted again.
-Skipping import for 1957408S due to vintage preparation issue: These vintages for table 1957408S are not new, they will not be inserted again.
-Importing data points from: 1701110S into schema platform
-Note: These vintages for table 1701110S are not new, they will not be inserted again.
-Skipping import for 1701110S due to vintage preparation issue: These vintages for table 1701110S are not new, they will not be inserted again.
-Importing data points from: 1701111S into schema platform
-Note: These vintages for table 1701111S are not new, they will not be inserted again.
-Skipping import for 1701111S due to vintage preparation issue: These vintages for table 1701111S are not new, they will not be inserted again.
-Importing data points from: 1701114S into schema platform
-Note: These vintages for table 1701114S are not new, they will not be inserted again.
-Skipping import for 1701114S due to vintage preparation issue: These vintages for table 1701114S are not new, they will not be inserted again.
-Importing data points from: 2013903S into schema platform
-Note: These vintages for table 2013903S are not new, they will not be inserted again.
-Skipping import for 2013903S due to vintage preparation issue: These vintages for table 2013903S are not new, they will not be inserted again.
-Importing data points from: 2080006S into schema platform
-Note: These vintages for table 2080006S are not new, they will not be inserted again.
-Skipping import for 2080006S due to vintage preparation issue: These vintages for table 2080006S are not new, they will not be inserted again.
-Importing data points from: 0701015S into schema platform
-Note: These vintages for table 0701015S are not new, they will not be inserted again.
-Skipping import for 0701015S due to vintage preparation issue: These vintages for table 0701015S are not new, they will not be inserted again.
-Importing data points from: 2164436S into schema platform
-Note: These vintages for table 2164436S are not new, they will not be inserted again.
-Skipping import for 2164436S due to vintage preparation issue: These vintages for table 2164436S are not new, they will not be inserted again.
-Importing data points from: 2222100S into schema platform
-Note: These vintages for table 2222100S are not new, they will not be inserted again.
-Skipping import for 2222100S due to vintage preparation issue: These vintages for table 2222100S are not new, they will not be inserted again.
-Importing data points from: 0325203S into schema platform
-Note: These vintages for table 0325203S are not new, they will not be inserted again.
-Skipping import for 0325203S due to vintage preparation issue: These vintages for table 0325203S are not new, they will not be inserted again.
-Importing data points from: 0457201S into schema platform
-Note: These vintages for table 0457201S are not new, they will not be inserted again.
-Skipping import for 0457201S due to vintage preparation issue: These vintages for table 0457201S are not new, they will not be inserted again.
-Importing data points from: 0314905S into schema platform
-Note: These vintages for table 0314905S are not new, they will not be inserted again.
-Skipping import for 0314905S due to vintage preparation issue: These vintages for table 0314905S are not new, they will not be inserted again.
-Importing data points from: H281S into schema platform
-Note: These vintages for table H281S are not new, they will not be inserted again.
-Skipping import for H281S due to vintage preparation issue: These vintages for table H281S are not new, they will not be inserted again.
-Importing data points from: 0325220S into schema platform
-Note: These vintages for table 0325220S are not new, they will not be inserted again.
-Skipping import for 0325220S due to vintage preparation issue: These vintages for table 0325220S are not new, they will not be inserted again.
-Importing data points from: 0325202S into schema platform
-Note: These vintages for table 0325202S are not new, they will not be inserted again.
-Skipping import for 0325202S due to vintage preparation issue: These vintages for table 0325202S are not new, they will not be inserted again.
-Importing data points from: 0301941S into schema platform
-Note: These vintages for table 0301941S are not new, they will not be inserted again.
-Skipping import for 0301941S due to vintage preparation issue: These vintages for table 0301941S are not new, they will not be inserted again.
-Importing data points from: 0309275S into schema platform
-Note: These vintages for table 0309275S are not new, they will not be inserted again.
-Skipping import for 0309275S due to vintage preparation issue: These vintages for table 0309275S are not new, they will not be inserted again.
-Importing data points from: 0314984S into schema platform
-Note: These vintages for table 0314984S are not new, they will not be inserted again.
-Skipping import for 0314984S due to vintage preparation issue: These vintages for table 0314984S are not new, they will not be inserted again.
-Importing data points from: 0400606S into schema platform
-Note: These vintages for table 0400606S are not new, they will not be inserted again.
-Skipping import for 0400606S due to vintage preparation issue: These vintages for table 0400606S are not new, they will not be inserted again.
-Importing data points from: 0400607S into schema platform
-Note: These vintages for table 0400607S are not new, they will not be inserted again.
-Skipping import for 0400607S due to vintage preparation issue: These vintages for table 0400607S are not new, they will not be inserted again.
-Importing data points from: 0762003S into schema platform
-Note: These vintages for table 0762003S are not new, they will not be inserted again.
-Skipping import for 0762003S due to vintage preparation issue: These vintages for table 0762003S are not new, they will not be inserted again.
-Importing data points from: 2711808S into schema platform
-Note: These vintages for table 2711808S are not new, they will not be inserted again.
-Skipping import for 2711808S due to vintage preparation issue: These vintages for table 2711808S are not new, they will not be inserted again.
-Importing data points from: H240S into schema platform
-Note: These vintages for table H240S are not new, they will not be inserted again.
-Skipping import for H240S due to vintage preparation issue: These vintages for table H240S are not new, they will not be inserted again.
-Importing data points from: 0309276S into schema platform
-Note: These vintages for table 0309276S are not new, they will not be inserted again.
-Skipping import for 0309276S due to vintage preparation issue: These vintages for table 0309276S are not new, they will not be inserted again.
-Importing data points from: 0314983S into schema platform
-Note: These vintages for table 0314983S are not new, they will not be inserted again.
-Skipping import for 0314983S due to vintage preparation issue: These vintages for table 0314983S are not new, they will not be inserted again.
-Importing data points from: 0715101S into schema platform
-Note: These vintages for table 0715101S are not new, they will not be inserted again.
-Skipping import for 0715101S due to vintage preparation issue: These vintages for table 0715101S are not new, they will not be inserted again.
-Importing data points from: H287S into schema platform
-Note: These vintages for table H287S are not new, they will not be inserted again.
-Skipping import for H287S due to vintage preparation issue: These vintages for table H287S are not new, they will not be inserted again.
-Importing data points from: 2207701S into schema platform
-Note: These vintages for table 2207701S are not new, they will not be inserted again.
-Skipping import for 2207701S due to vintage preparation issue: These vintages for table 2207701S are not new, they will not be inserted again.
-Calculating hashes for new vintages...
-No empty vintages found.
-Processed 34/34 vintages
-All vintage hashes updated successfully
-Processing all tables...
-Found 86 tables total
-Processing table 1/86: ID 1, keep_vintage = TRUE
-Table ID 1: Transaction committed successfully
-Table ID 1: Deleted 0 older vintages and 0 redundant vintages
-Processing table 2/86: ID 2, keep_vintage = TRUE
-Table ID 2: Transaction committed successfully
-Table ID 2: Deleted 0 older vintages and 0 redundant vintages
-Processing table 3/86: ID 3, keep_vintage = TRUE
-Table ID 3: Transaction committed successfully
-Table ID 3: Deleted 0 older vintages and 0 redundant vintages
-Processing table 4/86: ID 4, keep_vintage = TRUE
-Table ID 4: Transaction committed successfully
-Table ID 4: Deleted 0 older vintages and 0 redundant vintages
-Processing table 5/86: ID 5, keep_vintage = TRUE
-Table ID 5: Transaction committed successfully
-Table ID 5: Deleted 0 older vintages and 0 redundant vintages
-Processing table 6/86: ID 6, keep_vintage = TRUE
-Table ID 6: Transaction committed successfully
-Table ID 6: Deleted 0 older vintages and 0 redundant vintages
-Processing table 7/86: ID 7, keep_vintage = TRUE
-Table ID 7: Transaction committed successfully
-Table ID 7: Deleted 0 older vintages and 0 redundant vintages
-Processing table 8/86: ID 8, keep_vintage = TRUE
-Table ID 8: Transaction committed successfully
-Table ID 8: Deleted 0 older vintages and 0 redundant vintages
-Processing table 9/86: ID 9, keep_vintage = TRUE
-Table ID 9: Transaction committed successfully
-Table ID 9: Deleted 0 older vintages and 0 redundant vintages
-Processing table 10/86: ID 10, keep_vintage = TRUE
-Table ID 10: Transaction committed successfully
-Table ID 10: Deleted 0 older vintages and 0 redundant vintages
-Processing table 11/86: ID 12, keep_vintage = TRUE
-Table ID 12: Transaction committed successfully
-Table ID 12: Deleted 0 older vintages and 0 redundant vintages
-Processing table 12/86: ID 13, keep_vintage = TRUE
-Table ID 13: Transaction committed successfully
-Table ID 13: Deleted 0 older vintages and 0 redundant vintages
-Processing table 13/86: ID 14, keep_vintage = TRUE
-Table ID 14: Transaction committed successfully
-Table ID 14: Deleted 0 older vintages and 0 redundant vintages
-Processing table 14/86: ID 15, keep_vintage = TRUE
-Table ID 15: Transaction committed successfully
-Table ID 15: Deleted 0 older vintages and 0 redundant vintages
-Processing table 15/86: ID 16, keep_vintage = TRUE
-Table ID 16: Transaction committed successfully
-Table ID 16: Deleted 0 older vintages and 0 redundant vintages
-Processing table 16/86: ID 17, keep_vintage = TRUE
-Table ID 17: Transaction committed successfully
-Table ID 17: Deleted 0 older vintages and 0 redundant vintages
-Processing table 17/86: ID 18, keep_vintage = TRUE
-Table ID 18: Transaction committed successfully
-Table ID 18: Deleted 0 older vintages and 20 redundant vintages
-Processing table 18/86: ID 19, keep_vintage = TRUE
-Table ID 19: Transaction committed successfully
-Table ID 19: Deleted 0 older vintages and 6 redundant vintages
-Processing table 19/86: ID 20, keep_vintage = TRUE
-Table ID 20: Transaction committed successfully
-Table ID 20: Deleted 0 older vintages and 0 redundant vintages
-Processing table 20/86: ID 21, keep_vintage = TRUE
-Table ID 21: Transaction committed successfully
-Table ID 21: Deleted 0 older vintages and 0 redundant vintages
-Processing table 21/86: ID 22, keep_vintage = TRUE
-Table ID 22: Transaction committed successfully
-Table ID 22: Deleted 0 older vintages and 0 redundant vintages
-Processing table 22/86: ID 23, keep_vintage = TRUE
-Table ID 23: Transaction committed successfully
-Table ID 23: Deleted 0 older vintages and 0 redundant vintages
-Processing table 23/86: ID 24, keep_vintage = TRUE
-Table ID 24: Transaction committed successfully
-Table ID 24: Deleted 0 older vintages and 0 redundant vintages
-Processing table 24/86: ID 25, keep_vintage = TRUE
-Table ID 25: Transaction committed successfully
-Table ID 25: Deleted 0 older vintages and 0 redundant vintages
-Processing table 25/86: ID 26, keep_vintage = TRUE
-Table ID 26: Transaction committed successfully
-Table ID 26: Deleted 0 older vintages and 0 redundant vintages
-Processing table 26/86: ID 27, keep_vintage = TRUE
-Table ID 27: Transaction committed successfully
-Table ID 27: Deleted 0 older vintages and 0 redundant vintages
-Processing table 27/86: ID 28, keep_vintage = TRUE
-Table ID 28: Transaction committed successfully
-Table ID 28: Deleted 0 older vintages and 0 redundant vintages
-Processing table 28/86: ID 29, keep_vintage = TRUE
-Table ID 29: Transaction committed successfully
-Table ID 29: Deleted 0 older vintages and 0 redundant vintages
-Processing table 29/86: ID 30, keep_vintage = TRUE
-Table ID 30: Transaction committed successfully
-Table ID 30: Deleted 0 older vintages and 0 redundant vintages
-Processing table 30/86: ID 33, keep_vintage = TRUE
-Table ID 33: Transaction committed successfully
-Table ID 33: Deleted 0 older vintages and 0 redundant vintages
-Processing table 31/86: ID 34, keep_vintage = TRUE
-Table ID 34: Transaction committed successfully
-Table ID 34: Deleted 0 older vintages and 0 redundant vintages
-Processing table 32/86: ID 36, keep_vintage = TRUE
-Table ID 36: Transaction committed successfully
-Table ID 36: Deleted 0 older vintages and 0 redundant vintages
-Processing table 33/86: ID 38, keep_vintage = TRUE
-Table ID 38: Transaction committed successfully
-Table ID 38: Deleted 0 older vintages and 0 redundant vintages
-Processing table 34/86: ID 39, keep_vintage = TRUE
-Table ID 39: Transaction committed successfully
-Table ID 39: Deleted 0 older vintages and 0 redundant vintages
-Processing table 35/86: ID 40, keep_vintage = TRUE
-Table ID 40: Transaction committed successfully
-Table ID 40: Deleted 0 older vintages and 0 redundant vintages
-Processing table 36/86: ID 41, keep_vintage = TRUE
-Table ID 41: Transaction committed successfully
-Table ID 41: Deleted 0 older vintages and 0 redundant vintages
-Processing table 37/86: ID 42, keep_vintage = TRUE
-Table ID 42: Transaction committed successfully
-Table ID 42: Deleted 0 older vintages and 0 redundant vintages
-Processing table 38/86: ID 44, keep_vintage = TRUE
-Table ID 44: Transaction committed successfully
-Table ID 44: Deleted 0 older vintages and 0 redundant vintages
-Processing table 39/86: ID 45, keep_vintage = TRUE
-Table ID 45: Transaction committed successfully
-Table ID 45: Deleted 0 older vintages and 0 redundant vintages
-Processing table 40/86: ID 46, keep_vintage = TRUE
-Table ID 46: Transaction committed successfully
-Table ID 46: Deleted 0 older vintages and 0 redundant vintages
-Processing table 41/86: ID 47, keep_vintage = TRUE
-Table ID 47: Transaction committed successfully
-Table ID 47: Deleted 0 older vintages and 0 redundant vintages
-Processing table 42/86: ID 48, keep_vintage = TRUE
-Table ID 48: Transaction committed successfully
-Table ID 48: Deleted 0 older vintages and 0 redundant vintages
-Processing table 43/86: ID 49, keep_vintage = TRUE
-Table ID 49: Transaction committed successfully
-Table ID 49: Deleted 0 older vintages and 0 redundant vintages
-Processing table 44/86: ID 50, keep_vintage = TRUE
-Table ID 50: Transaction committed successfully
-Table ID 50: Deleted 0 older vintages and 0 redundant vintages
-Processing table 45/86: ID 51, keep_vintage = TRUE
-Table ID 51: Transaction committed successfully
-Table ID 51: Deleted 0 older vintages and 0 redundant vintages
-Processing table 46/86: ID 57, keep_vintage = TRUE
-Table ID 57: Transaction committed successfully
-Table ID 57: Deleted 0 older vintages and 0 redundant vintages
-Processing table 47/86: ID 58, keep_vintage = TRUE
-Table ID 58: Transaction committed successfully
-Table ID 58: Deleted 0 older vintages and 0 redundant vintages
-Processing table 48/86: ID 59, keep_vintage = TRUE
-Table ID 59: Transaction committed successfully
-Table ID 59: Deleted 0 older vintages and 0 redundant vintages
-Processing table 49/86: ID 60, keep_vintage = TRUE
-Table ID 60: Transaction committed successfully
-Table ID 60: Deleted 0 older vintages and 0 redundant vintages
-Processing table 50/86: ID 61, keep_vintage = TRUE
-Table ID 61: Transaction committed successfully
-Table ID 61: Deleted 0 older vintages and 0 redundant vintages
-Processing table 51/86: ID 62, keep_vintage = TRUE
-Table ID 62: Transaction committed successfully
-Table ID 62: Deleted 0 older vintages and 0 redundant vintages
-Processing table 52/86: ID 63, keep_vintage = TRUE
-Table ID 63: Transaction committed successfully
-Table ID 63: Deleted 0 older vintages and 0 redundant vintages
-Processing table 53/86: ID 64, keep_vintage = TRUE
-Table ID 64: Transaction committed successfully
-Table ID 64: Deleted 0 older vintages and 0 redundant vintages
-Processing table 54/86: ID 65, keep_vintage = TRUE
-Table ID 65: Transaction committed successfully
-Table ID 65: Deleted 0 older vintages and 0 redundant vintages
-Processing table 55/86: ID 66, keep_vintage = TRUE
-Table ID 66: Transaction committed successfully
-Table ID 66: Deleted 0 older vintages and 0 redundant vintages
-Processing table 56/86: ID 67, keep_vintage = TRUE
-Table ID 67: Transaction committed successfully
-Table ID 67: Deleted 0 older vintages and 0 redundant vintages
-Processing table 57/86: ID 68, keep_vintage = TRUE
-Table ID 68: Transaction committed successfully
-Table ID 68: Deleted 0 older vintages and 0 redundant vintages
-Processing table 58/86: ID 69, keep_vintage = TRUE
-Table ID 69: Transaction committed successfully
-Table ID 69: Deleted 0 older vintages and 0 redundant vintages
-Processing table 59/86: ID 70, keep_vintage = TRUE
-Table ID 70: Transaction committed successfully
-Table ID 70: Deleted 0 older vintages and 0 redundant vintages
-Processing table 60/86: ID 71, keep_vintage = TRUE
-Table ID 71: Transaction committed successfully
-Table ID 71: Deleted 0 older vintages and 0 redundant vintages
-Processing table 61/86: ID 72, keep_vintage = TRUE
-Table ID 72: Transaction committed successfully
-Table ID 72: Deleted 0 older vintages and 0 redundant vintages
-Processing table 62/86: ID 73, keep_vintage = TRUE
-Table ID 73: Transaction committed successfully
-Table ID 73: Deleted 0 older vintages and 0 redundant vintages
-Processing table 63/86: ID 74, keep_vintage = TRUE
-Table ID 74: Transaction committed successfully
-Table ID 74: Deleted 0 older vintages and 0 redundant vintages
-Processing table 64/86: ID 77, keep_vintage = TRUE
-Table ID 77: Transaction committed successfully
-Table ID 77: Deleted 0 older vintages and 0 redundant vintages
-Processing table 65/86: ID 78, keep_vintage = TRUE
-Table ID 78: Transaction committed successfully
-Table ID 78: Deleted 0 older vintages and 0 redundant vintages
-Processing table 66/86: ID 79, keep_vintage = TRUE
-Table ID 79: Transaction committed successfully
-Table ID 79: Deleted 0 older vintages and 0 redundant vintages
-Processing table 67/86: ID 80, keep_vintage = TRUE
-Table ID 80: Transaction committed successfully
-Table ID 80: Deleted 0 older vintages and 0 redundant vintages
-Processing table 68/86: ID 82, keep_vintage = TRUE
-Table ID 82: Transaction committed successfully
-Table ID 82: Deleted 0 older vintages and 0 redundant vintages
-Processing table 69/86: ID 83, keep_vintage = TRUE
-Table ID 83: Transaction committed successfully
-Table ID 83: Deleted 0 older vintages and 0 redundant vintages
-Processing table 70/86: ID 84, keep_vintage = TRUE
-Table ID 84: Transaction committed successfully
-Table ID 84: Deleted 0 older vintages and 0 redundant vintages
-Processing table 71/86: ID 115, keep_vintage = TRUE
-Table ID 115: Transaction committed successfully
-Table ID 115: Deleted 0 older vintages and 0 redundant vintages
-Processing table 72/86: ID 116, keep_vintage = TRUE
-Table ID 116: Transaction committed successfully
-Table ID 116: Deleted 0 older vintages and 0 redundant vintages
-Processing table 73/86: ID 118, keep_vintage = TRUE
-Table ID 118: Transaction committed successfully
-Table ID 118: Deleted 0 older vintages and 0 redundant vintages
-Processing table 74/86: ID 119, keep_vintage = TRUE
-Table ID 119: Transaction committed successfully
-Table ID 119: Deleted 0 older vintages and 0 redundant vintages
-Processing table 75/86: ID 120, keep_vintage = TRUE
-Table ID 120: Transaction committed successfully
-Table ID 120: Deleted 0 older vintages and 0 redundant vintages
-Processing table 76/86: ID 121, keep_vintage = TRUE
-Table ID 121: Transaction committed successfully
-Table ID 121: Deleted 0 older vintages and 0 redundant vintages
-Processing table 77/86: ID 122, keep_vintage = TRUE
-Table ID 122: Transaction committed successfully
-Table ID 122: Deleted 0 older vintages and 0 redundant vintages
-Processing table 78/86: ID 123, keep_vintage = TRUE
-Table ID 123: Transaction committed successfully
-Table ID 123: Deleted 0 older vintages and 0 redundant vintages
-Processing table 79/86: ID 124, keep_vintage = TRUE
-Table ID 124: Transaction committed successfully
-Table ID 124: Deleted 0 older vintages and 0 redundant vintages
-Processing table 80/86: ID 125, keep_vintage = TRUE
-Table ID 125: Transaction committed successfully
-Table ID 125: Deleted 0 older vintages and 0 redundant vintages
-Processing table 81/86: ID 126, keep_vintage = TRUE
-Table ID 126: Transaction committed successfully
-Table ID 126: Deleted 0 older vintages and 0 redundant vintages
-Processing table 82/86: ID 127, keep_vintage = TRUE
-Table ID 127: Transaction committed successfully
-Table ID 127: Deleted 0 older vintages and 0 redundant vintages
-Processing table 83/86: ID 137, keep_vintage = TRUE
-Table ID 137: Transaction committed successfully
-Table ID 137: Deleted 0 older vintages and 0 redundant vintages
-Processing table 84/86: ID 143, keep_vintage = TRUE
-Table ID 143: Transaction committed successfully
-Table ID 143: Deleted 0 older vintages and 0 redundant vintages
-Processing table 85/86: ID 148, keep_vintage = TRUE
-Table ID 148: Transaction committed successfully
-Table ID 148: Deleted 0 older vintages and 0 redundant vintages
-Processing table 86/86: ID 209, keep_vintage = FALSE
-Table ID 209: Transaction committed successfully
-Table ID 209: Deleted 0 older vintages and 0 redundant vintages
-Cleanup completed: Processed 86 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
-Deleted 26 redundant vintages from tables with keep_vintage = TRUE
-Cleanup completed successfully. Removing progress file.
-
-
-processing file: 01-nacionalni_kvartalno.Rmd
-1/43                   
-2/43 [setup]           
-3/43                   
-4/43 [medletnabdp]     
-Error in `!continue`:
-! invalid argument type
+Error in `map()`:
+i In index: 22.
+Caused by error in `$<-.data.frame`:
+! replacement has 1 row, data has 0
 Backtrace:
-  1. rmarkdown::render(rmd_file, output_file = outfile)
-  2. knitr::knit(knit_input, knit_output, envir = envir, quiet = quiet)
-  3. knitr:::process_file(text, output)
-  6. knitr:::process_group(group)
-  7. knitr:::call_block(x)
-  8. knitr:::block_exec(params)
-  9. knitr:::eng_r(options)
- 12. knitr (local) evaluate(...)
- 13. evaluate::evaluate(...)
-
-Quitting from lines 22-22 [medletnabdp] (01-nacionalni_kvartalno.Rmd)
+     x
+  1. +-base::source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\surs-update-database.R")
+  2. | +-base::withVisible(eval(ei, envir))
+  3. | \-base::eval(ei, envir)
+  4. |   \-base::eval(ei, envir)
+  5. +-purrr::walk(...)
+  6. | \-purrr::map(.x, .f, ..., .progress = .progress)
+  7. |   \-purrr:::map_("list", .x, .f, ..., .progress = .progress)
+  8. |     +-purrr:::with_indexed_errors(...)
+  9. |     | \-base::withCallingHandlers(...)
+ 10. |     +-purrr:::call_with_cleanup(...)
+ 11. |     \-global .f(.x[[i]], ...)
+ 12. |       \-SURSfetchR::SURS_import_data_points(.x, con, schema = "platform")
+ 13. |         \-SURSfetchR::prepare_surs_data_for_insert(code_no, con, schema)
+ 14. |           +-base::`$<-`(`*tmp*`, "interval_id", value = `<chr>`)
+ 15. |           \-base::`$<-.data.frame`(`*tmp*`, "interval_id", value = `<chr>`)
+ 16. |             \-base::stop(...)
+ 17. \-base::.handleSimpleError(...)
+ 18.   \-purrr (local) h(simpleError(msg, call))
+ 19.     \-cli::cli_abort(...)
+ 20.       \-rlang::abort(...)
 Execution halted
