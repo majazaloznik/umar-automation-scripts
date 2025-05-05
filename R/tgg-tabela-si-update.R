@@ -53,15 +53,15 @@ dolg_slo <- c("SURS--0314905S--B9--XDC_R_B1GQ--A",
 
 klima_slo <- "SURS--2855901S--1--2--M"
 
-process_codes_vectorized <- function(codes, con, stotka = FALSE) {
+process_codes_vectorized <- function(codes, con, schema = "platform", stotka = FALSE) {
   # Process all codes at once using map
   results <- codes %>%
     map(~{
-      vin <- get_vintage_from_series_code(.x, con)
+      vin <- sql_get_vintage_from_series_code(con, .x, schema = schema)
       list(
-        df = get_data_points_from_vintage(vin, con) %>%
+        df = sql_get_data_points_from_vintage(con, vin, schema) %>%
           rename(!!.x := value),
-        date = as_date(get_date_published_from_vintage(vin, con)[1,1])
+        date = as_date(sql_get_date_published_from_vintage(vin, con, schema))
       )
     })
   # Extract all dates
@@ -85,15 +85,15 @@ process_codes_vectorized <- function(codes, con, stotka = FALSE) {
 
 }
 
-process_codes_rates <- function(codes, con, stotka = FALSE) {
+process_codes_rates <- function(codes, con, schema = "platform", stotka = FALSE) {
   # Process all codes at once using map
   results <- codes %>%
     map(~{
-      vin <- get_vintage_from_series_code(.x, con)
+      vin <- sql_get_vintage_from_series_code(con, .x, schema = schema)
       list(
-        df = get_data_points_from_vintage(vin, con) %>%
+        df = sql_get_data_points_from_vintage(con, vin, schema) %>%
           rename(!!.x := value),
-        date = as_date(get_date_published_from_vintage(vin, con)[1,1])
+        date = as_date(sql_get_date_published_from_vintage(vin, con, schema))
       )
     })
   # Extract all dates
