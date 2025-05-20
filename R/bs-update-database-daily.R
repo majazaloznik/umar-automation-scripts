@@ -1,9 +1,9 @@
-# devtools::install_github("majazaloznik/SURSfetchR")
+# devtools::install_github("majazaloznik/BSfetchR")
 # devtools::install_github("majazaloznik/UMARimportR")
 # devtools::install_github("majazaloznik/UMARaccessR")
 
 library(dplyr)
-library(SURSfetchR)
+library(BSfetchR)
 # logging in as  maintainer
 con <- DBI::dbConnect(RPostgres::Postgres(),
                       dbname = "platform",
@@ -12,29 +12,35 @@ con <- DBI::dbConnect(RPostgres::Postgres(),
                       user = "postgres",
                       password = Sys.getenv("PG_PG_PSW"),
                       client_encoding = "utf8")
-# set schema search path
-DBI::dbExecute(con, "set search_path to platform")
+
+
 # get tables to update
-update_tables <- UMARaccessR::sql_get_tables_from_source(con, "platform", 1, TRUE)
-# update all the tables from SUR
-purrr::walk(update_tables$code, ~SURS_import_data_points(.x, con, schema = "platform"))
+update_tables <- UMARaccessR::sql_get_tables_from_source(con, "platform", 5, TRUE)
+# update all the tables from BS
+purrr::walk(update_tables$code, ~BS_import_data_points(.x, con, schema = "platform"))
 # cleanup hashes for all tables.
 UMARimportR::vintage_cleanup(con, schema = "platform")
 
-# # import single table
-# SURS_import_structure("0762001S", con, "platform")
+
+# # add single table, selecting levels
+# BS_import_structure("FSR_IUS", con, "platform", all_levels = FALSE, keep_vintage = FALSE)
+
 # # update single table
-# SURS_import_data_points("0762001S", con, "platform")
+# BS_import_data_points("I1_5BBS", con, "platform")
 # if data point import failed but vintages were created, run
 # UMARimportR::remove_empty_vintages(con, "platform")
 
+# # remove specific table
+# UMARimportR::delete_table(con, 219, "platform")
 
 # # update series selection list
-# df <- UMARaccessR::get_all_series_wtable_names(con)
+# df <- UMARaccessR::sql_get_all_series_wtable_names(con, "platform")
 # UMARaccessR::create_selection_excel(df, outfile = "O:\\Avtomatizacija\\indikatorji_porocilo\\navodila_za_avtorje\\seznam_serij")
 
 DBI::dbExecute(con, "set search_path to views")
 DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW latest_data_points")
 
-source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\update_indicator_report.R")
+
+
+
 

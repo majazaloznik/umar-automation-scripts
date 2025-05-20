@@ -1,14 +1,12 @@
 ################################################################################
-
 # setup packages and connections
 home <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\furs-surs-soap\\"
 setwd(home)
 Sys.setenv(http_proxy="http://proxy.gov.si:80")
-Sys.setenv(http_proxy_user="http://proxy.gov.si:80")
 Sys.setenv(https_proxy="http://proxy.gov.si:80")
-Sys.setenv(https_proxy_user="http://proxy.gov.si:80")
 
 # devtools::install_github("majazaloznik/UMARfetchR")
+# devtools::install_github("majazaloznik/UMARimportR")
 # devtools::install_github("majazaloznik/UMARaccessR", dependencies = FALSE,  INSTALL_opts=c("--no-multiarch"))
 
 
