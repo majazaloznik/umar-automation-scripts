@@ -20,5 +20,9 @@ x <- ZRSZ_import_data_points(meta, con, schema = "platform")
 meta <- ZRSZfetchR:::meta[2,]
 x <- ZRSZ_import_data_points(meta, con, schema = "platform")
 
-source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\update_indicator_report.R")
+# source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\update_indicator_report.R")
+
+DBI::dbExecute(con, "set search_path to views")
+DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW latest_data_points")
+
 

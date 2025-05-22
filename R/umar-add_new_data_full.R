@@ -41,10 +41,12 @@ for (i in seq(length(meta_filenames))){
                            path = log_path)
 }
 
+# cleanup hashes for all tables.
+UMARimportR::vintage_cleanup(con, schema = "platform")
+
 # update materialised views
 DBI::dbExecute(con, "set search_path to views")
-DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_latest_series_data_table_74")
-DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_latest_series_data_table_80")
+
 
 
 #

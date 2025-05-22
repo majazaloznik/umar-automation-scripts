@@ -1,11 +1,7 @@
 ################################################################################
 # setup packages and connections
-home <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\furs-surs-soap\\"
-setwd(home)
 Sys.setenv(http_proxy="http://proxy.gov.si:80")
-Sys.setenv(http_proxy_user="http://proxy.gov.si:80")
 Sys.setenv(https_proxy="http://proxy.gov.si:80")
-Sys.setenv(https_proxy_user="http://proxy.gov.si:80")
 
 library(gmailr)
 gm_auth_configure(path ="data/credentials.json")
@@ -46,6 +42,7 @@ if (length(args) < 1) {
 }
 
 initials <- args[1]
+initials <- "JK"
 
 meta_filename <- paste0(dir_path, "\\", initials, "\\umar_serije_metadata_", initials, ".xlsx")
 update_metadata(meta_filename, con, schema = "platform",

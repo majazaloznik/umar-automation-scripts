@@ -22,11 +22,12 @@ purrr::walk(update_tables$code, ~BS_import_data_points(.x, con, schema = "platfo
 UMARimportR::vintage_cleanup(con, schema = "platform")
 
 
-# # add single table, selecting levels
-# BS_import_structure("FSR_IUS", con, "platform", all_levels = FALSE, keep_vintage = FALSE)
+# # # add single table, selecting levels
+# BS_import_structure("i_32_6ms", con, "platform", all_levels = FALSE, keep_vintage = FALSE)
+#
+# # # update single table
+# BS_import_data_points("i_32_6ms", con, "platform")
 
-# # update single table
-# BS_import_data_points("I1_5BBS", con, "platform")
 # if data point import failed but vintages were created, run
 # UMARimportR::remove_empty_vintages(con, "platform")
 

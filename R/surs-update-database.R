@@ -21,16 +21,19 @@ purrr::walk(update_tables$code, ~SURS_import_data_points(.x, con, schema = "plat
 # cleanup hashes for all tables.
 UMARimportR::vintage_cleanup(con, schema = "platform")
 
-# # import single table
-# SURS_import_structure("0762001S", con, "platform")
-# # update single table
-# SURS_import_data_points("0762001S", con, "platform")
+# # # import single table
+# SURS_import_structure("0400600S", con, "platform", all_levels = FALSE)
+# # # update single table
+# SURS_import_data_points("0400600S", con, "platform")
 # if data point import failed but vintages were created, run
 # UMARimportR::remove_empty_vintages(con, "platform")
 
+# # delete a table!!
+# UMARaccessR::sql_get_table_id_from_table_code(con, "1701116S", "platform")
+# UMARimportR::delete_table(con, 252, "platform")
 
 # # update series selection list
-# df <- UMARaccessR::get_all_series_wtable_names(con)
+# df <- UMARaccessR::sql_get_all_series_wtable_names(con)
 # UMARaccessR::create_selection_excel(df, outfile = "O:\\Avtomatizacija\\indikatorji_porocilo\\navodila_za_avtorje\\seznam_serij")
 
 DBI::dbExecute(con, "set search_path to views")
