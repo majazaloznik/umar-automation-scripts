@@ -16,8 +16,46 @@ Importing data points from: 0300220S into schema platform
 Note: These vintages for table 0300220S are not new, they will not be inserted again.
 Skipping import for 0300220S due to vintage preparation issue: These vintages for table 0300220S are not new, they will not be inserted again.
 Importing data points from: 0700921S into schema platform
-Note: These vintages for table 0700921S are not new, they will not be inserted again.
-Skipping import for 0700921S due to vintage preparation issue: These vintages for table 0700921S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, SKD.DEJAVNOST, DELOVNO.AKTIVNO.PREBIVALSTVO, raw_time, time, flag, MESEC, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+    MESEC SKD.DEJAVNOST  value DELOVNO.AKTIVNO.PREBIVALSTVO raw_time    time
+1 2000M01           SKD 790098                            1  2000M01 2000M01
+2 2000M02           SKD 793218                            1  2000M02 2000M02
+3 2000M03           SKD 796192                            1  2000M03 2000M03
+4 2000M04           SKD 799716                            1  2000M04 2000M04
+5 2000M05           SKD 802636                            1  2000M05 2000M05
+  flag interval_id
+1                M
+2                M
+3                M
+4                M
+5                M
+Matching dimensions:
+  - SKD DEJAVNOST (ID: 27)
+  - DELOVNO AKTIVNO PREBIVALSTVO (ID: 28)
+  - Matched dimension: SKD DEJAVNOST -> column: SKD.DEJAVNOST
+  - Matched dimension: DELOVNO AKTIVNO PREBIVALSTVO -> column: DELOVNO.AKTIVNO.PREBIVALSTVO
+Updated series_id for 234080 rows
+Updated vintage_id for 234080 rows
+After matching. Sample rows:
+    MESEC SKD.DEJAVNOST  value DELOVNO.AKTIVNO.PREBIVALSTVO raw_time    time
+1 2000M01           SKD 790098                            1  2000M01 2000M01
+2 2000M02           SKD 793218                            1  2000M02 2000M02
+3 2000M03           SKD 796192                            1  2000M03 2000M03
+4 2000M04           SKD 799716                            1  2000M04 2000M04
+5 2000M05           SKD 802636                            1  2000M05 2000M05
+  flag interval_id series_id vintage_id
+1                M       760    7138877
+2                M       760    7138877
+3                M       760    7138877
+4                M       760    7138877
+5                M       760    7138877
+Rows with both series_id and vintage_id: 234080
+Inserted 0 new periods
+Inserted 234080 new data points
+Inserted 0 new flags
 Importing data points from: 2012102S into schema platform
 Note: These vintages for table 2012102S are not new, they will not be inserted again.
 Skipping import for 2012102S due to vintage preparation issue: These vintages for table 2012102S are not new, they will not be inserted again.
@@ -133,8 +171,40 @@ Importing data points from: 2164436S into schema platform
 Note: These vintages for table 2164436S are not new, they will not be inserted again.
 Skipping import for 2164436S due to vintage preparation issue: These vintages for table 2164436S are not new, they will not be inserted again.
 Importing data points from: 2222100S into schema platform
-Note: These vintages for table 2222100S are not new, they will not be inserted again.
-Skipping import for 2222100S due to vintage preparation issue: These vintages for table 2222100S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, MESEC, MERITVE, raw_time, time, flag, VRSTA.VOZILA, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.VOZILA   MESEC value MERITVE raw_time    time flag interval_id
+1          TOT 1998M01  4941       3  1998M01 1998M01                M
+2          TOT 1998M01  4585       4  1998M01 1998M01                M
+3          TOT 1998M01  3935       5  1998M01 1998M01                M
+4          TOT 1998M01  3651       6  1998M01 1998M01                M
+5            1 1998M01  4849       3  1998M01 1998M01                M
+Matching dimensions:
+  - VRSTA VOZILA (ID: 206)
+  - MERITVE (ID: 207)
+  - Matched dimension: VRSTA VOZILA -> column: VRSTA.VOZILA
+  - Matched dimension: MERITVE -> column: MERITVE
+Updated series_id for 26240 rows
+Updated vintage_id for 26240 rows
+After matching. Sample rows:
+  VRSTA.VOZILA   MESEC value MERITVE raw_time    time flag interval_id
+1          TOT 1998M01  4941       3  1998M01 1998M01                M
+2          TOT 1998M01  4585       4  1998M01 1998M01                M
+3          TOT 1998M01  3935       5  1998M01 1998M01                M
+4          TOT 1998M01  3651       6  1998M01 1998M01                M
+5            1 1998M01  4849       3  1998M01 1998M01                M
+  series_id vintage_id
+1     42055    7139647
+2     42075    7139667
+3     42095    7139687
+4     42115    7139707
+5     42056    7139648
+Rows with both series_id and vintage_id: 26240
+Inserted 0 new periods
+Inserted 26240 new data points
+Inserted 0 new flags
 Importing data points from: 0325203S into schema platform
 Note: These vintages for table 0325203S are not new, they will not be inserted again.
 Skipping import for 0325203S due to vintage preparation issue: These vintages for table 0325203S are not new, they will not be inserted again.
@@ -169,50 +239,8 @@ Importing data points from: 0400607S into schema platform
 Note: These vintages for table 0400607S are not new, they will not be inserted again.
 Skipping import for 0400607S due to vintage preparation issue: These vintages for table 0400607S are not new, they will not be inserted again.
 Importing data points from: 0762003S into schema platform
-
-=== PostgreSQL Column Names ===
-ÈETRTLETJE, KOHEZIJSKA.REGIJA, value, STAROSTNA.SKUPINA, SPOL, MERITVE, raw_time, time, flag, interval_id
-Data loaded into tmp_prepared_data. Sample rows:
-  ÈETRTLETJE KOHEZIJSKA.REGIJA value STAROSTNA.SKUPINA SPOL MERITVE raw_time
-1     2008Q1                 0  1023                 0    0    1100   2008Q1
-2     2008Q2                 0  1033                 0    0    1100   2008Q2
-3     2008Q3                 0  1066                 0    0    1100   2008Q3
-4     2008Q4                 0  1046                 0    0    1100   2008Q4
-5     2009Q1                 0  1016                 0    0    1100   2009Q1
-    time flag interval_id
-1 2008Q1                Q
-2 2008Q2                Q
-3 2008Q3                Q
-4 2008Q4                Q
-5 2009Q1                Q
-Matching dimensions:
-  - KOHEZIJSKA REGIJA (ID: 266)
-  - STAROSTNA SKUPINA (ID: 267)
-  - SPOL (ID: 268)
-  - MERITVE (ID: 269)
-  - Matched dimension: KOHEZIJSKA REGIJA -> column: KOHEZIJSKA.REGIJA
-  - Matched dimension: STAROSTNA SKUPINA -> column: STAROSTNA.SKUPINA
-  - Matched dimension: SPOL -> column: SPOL
-  - Matched dimension: MERITVE -> column: MERITVE
-Updated series_id for 43470 rows
-Updated vintage_id for 43470 rows
-After matching. Sample rows:
-  ÈETRTLETJE KOHEZIJSKA.REGIJA value STAROSTNA.SKUPINA SPOL MERITVE raw_time
-1     2008Q3                 1    NA                 8    1    4000   2008Q3
-2     2018Q2                 2    NA                 1    2    4000   2018Q2
-3     2010Q2                 2    NA                 5    0    1120   2010Q2
-4     2008Q1                 0  1023                 0    0    1100   2008Q1
-5     2008Q2                 0  1033                 0    0    1100   2008Q2
-    time flag interval_id series_id vintage_id
-1 2008Q3                Q     54672    7138599
-2 2018Q2                Q     54682    7138609
-3 2010Q2                Q     54274    7138201
-4 2008Q1                Q     54077    7138004
-5 2008Q2                Q     54077    7138004
-Rows with both series_id and vintage_id: 43470
-Inserted 0 new periods
-Inserted 43470 new data points
-Inserted 0 new flags
+Note: These vintages for table 0762003S are not new, they will not be inserted again.
+Skipping import for 0762003S due to vintage preparation issue: These vintages for table 0762003S are not new, they will not be inserted again.
 Importing data points from: 2711808S into schema platform
 Note: These vintages for table 2711808S are not new, they will not be inserted again.
 Skipping import for 2711808S due to vintage preparation issue: These vintages for table 2711808S are not new, they will not be inserted again.
@@ -235,483 +263,442 @@ Importing data points from: 2207701S into schema platform
 Note: These vintages for table 2207701S are not new, they will not be inserted again.
 Skipping import for 2207701S due to vintage preparation issue: These vintages for table 2207701S are not new, they will not be inserted again.
 Importing data points from: 0762010S into schema platform
-
-=== PostgreSQL Column Names ===
-ÈETRTLETJE, KOHEZIJSKA.REGIJA, value, SPOL, MERITVE, raw_time, time, flag, interval_id
-Data loaded into tmp_prepared_data. Sample rows:
-  ÈETRTLETJE KOHEZIJSKA.REGIJA value SPOL MERITVE raw_time   time flag
-1     2008Q1                 0  40.4    0       1   2008Q1 2008Q1     
-2     2008Q2                 0  40.4    0       1   2008Q2 2008Q2     
-3     2008Q3                 0  40.7    0       1   2008Q3 2008Q3     
-4     2008Q4                 0  40.4    0       1   2008Q4 2008Q4     
-5     2009Q1                 0  40.0    0       1   2009Q1 2009Q1     
-  interval_id
-1           Q
-2           Q
-3           Q
-4           Q
-5           Q
-Matching dimensions:
-  - KOHEZIJSKA REGIJA (ID: 440)
-  - SPOL (ID: 441)
-  - MERITVE (ID: 442)
-  - Matched dimension: KOHEZIJSKA REGIJA -> column: KOHEZIJSKA.REGIJA
-  - Matched dimension: SPOL -> column: SPOL
-  - Matched dimension: MERITVE -> column: MERITVE
-Updated series_id for 1242 rows
-Updated vintage_id for 1242 rows
-After matching. Sample rows:
-  ÈETRTLETJE KOHEZIJSKA.REGIJA value SPOL MERITVE raw_time   time flag
-1     2008Q1                 0  40.4    0       1   2008Q1 2008Q1     
-2     2016Q3                 0  39.3    0       1   2016Q3 2016Q3     
-3     2016Q2                 0  39.4    0       1   2016Q2 2016Q2     
-4     2016Q1                 0  39.3    0       1   2016Q1 2016Q1     
-5     2015Q4                 0  39.5    0       1   2015Q4 2015Q4     
-  interval_id series_id vintage_id
-1           Q     56397    7138634
-2           Q     56397    7138634
-3           Q     56397    7138634
-4           Q     56397    7138634
-5           Q     56397    7138634
-Rows with both series_id and vintage_id: 1242
-Inserted 0 new periods
-Inserted 1242 new data points
-Inserted 0 new flags
+Note: These vintages for table 0762010S are not new, they will not be inserted again.
+Skipping import for 0762010S due to vintage preparation issue: These vintages for table 0762010S are not new, they will not be inserted again.
 Importing data points from: 1970710S into schema platform
 Note: These vintages for table 1970710S are not new, they will not be inserted again.
 Skipping import for 1970710S due to vintage preparation issue: These vintages for table 1970710S are not new, they will not be inserted again.
 Importing data points from: 0762001S into schema platform
-
-=== PostgreSQL Column Names ===
-ÈETRTLETJE, KOHEZIJSKA.REGIJA, value, PREBIVALSTVO, SPOL, raw_time, time, flag, interval_id
-Data loaded into tmp_prepared_data. Sample rows:
-  ÈETRTLETJE KOHEZIJSKA.REGIJA value PREBIVALSTVO SPOL raw_time   time flag
-1     2008Q1                 0  2026         0000    0   2008Q1 2008Q1     
-2     2008Q2                 0  2026         0000    0   2008Q2 2008Q2     
-3     2008Q3                 0  2039         0000    0   2008Q3 2008Q3     
-4     2008Q4                 0  2040         0000    0   2008Q4 2008Q4     
-5     2009Q1                 0  2032         0000    0   2009Q1 2009Q1     
-  interval_id
-1           Q
-2           Q
-3           Q
-4           Q
-5           Q
-Matching dimensions:
-  - KOHEZIJSKA REGIJA (ID: 530)
-  - PREBIVALSTVO (ID: 531)
-  - SPOL (ID: 532)
-  - Matched dimension: KOHEZIJSKA REGIJA -> column: KOHEZIJSKA.REGIJA
-  - Matched dimension: PREBIVALSTVO -> column: PREBIVALSTVO
-  - Matched dimension: SPOL -> column: SPOL
-Updated series_id for 11178 rows
-Updated vintage_id for 11178 rows
-After matching. Sample rows:
-  ÈETRTLETJE KOHEZIJSKA.REGIJA value PREBIVALSTVO SPOL raw_time   time flag
-1     2008Q1                 0  2026         0000    0   2008Q1 2008Q1     
-2     2008Q2                 0  2026         0000    0   2008Q2 2008Q2     
-3     2008Q3                 0  2039         0000    0   2008Q3 2008Q3     
-4     2021Q1                 1    NA      1110.22    1   2021Q1 2021Q1     
-5     2021Q1                 2    NA       1110.3    1   2021Q1 2021Q1     
-  interval_id series_id vintage_id
-1           Q     57026    7138652
-2           Q     57026    7138652
-3           Q     57026    7138652
-4           Q     57099    7138725
-5           Q     57106    7138732
-Rows with both series_id and vintage_id: 11178
-Inserted 0 new periods
-Inserted 11178 new data points
-Inserted 0 new flags
+Note: These vintages for table 0762001S are not new, they will not be inserted again.
+Skipping import for 0762001S due to vintage preparation issue: These vintages for table 0762001S are not new, they will not be inserted again.
 Importing data points from: 1701116S into schema platform
 Note: These vintages for table 1701116S are not new, they will not be inserted again.
 Skipping import for 1701116S due to vintage preparation issue: These vintages for table 1701116S are not new, they will not be inserted again.
 Importing data points from: 2222101S into schema platform
-Note: These vintages for table 2222101S are not new, they will not be inserted again.
-Skipping import for 2222101S due to vintage preparation issue: These vintages for table 2222101S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, MESEC, VRSTA.PODATKA, time, flag, interval_id, raw_time
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.PODATKA   MESEC    value raw_time    time flag interval_id
+1             1 1998M01 69.89410  1998M01 1998M01                M
+2             2 1998M01 78.42136  1998M01 1998M01                M
+3             3 1998M01 70.88141  1998M01 1998M01                M
+4             1 1998M02 90.04539  1998M02 1998M02                M
+5             2 1998M02 83.37234  1998M02 1998M02                M
+Matching dimensions:
+  - VRSTA PODATKA (ID: 537)
+  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
+Updated series_id for 984 rows
+Updated vintage_id for 984 rows
+After matching. Sample rows:
+  VRSTA.PODATKA   MESEC     value raw_time    time flag interval_id series_id
+1             1 1998M02  90.04539  1998M02 1998M02                M     57191
+2             1 1998M03 111.26943  1998M03 1998M03                M     57191
+3             1 1998M04  94.56746  1998M04 1998M04                M     57191
+4             1 1998M05  99.20506  1998M05 1998M05                M     57191
+5             1 1998M06 104.98143  1998M06 1998M06                M     57191
+  vintage_id
+1    7139727
+2    7139727
+3    7139727
+4    7139727
+5    7139727
+Rows with both series_id and vintage_id: 984
+Inserted 0 new periods
+Inserted 984 new data points
+Inserted 0 new flags
+Importing data points from: 0701087S into schema platform
+Note: These vintages for table 0701087S are not new, they will not be inserted again.
+Skipping import for 0701087S due to vintage preparation issue: These vintages for table 0701087S are not new, they will not be inserted again.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 100/810 vintages
-Processed 200/810 vintages
-Processed 300/810 vintages
-Processed 400/810 vintages
-Processed 500/810 vintages
-Processed 600/810 vintages
-Processed 700/810 vintages
-Processed 800/810 vintages
-Processed 810/810 vintages
+Processed 100/853 vintages
+Processed 200/853 vintages
+Processed 300/853 vintages
+Processed 400/853 vintages
+Processed 500/853 vintages
+Processed 600/853 vintages
+Processed 700/853 vintages
+Processed 800/853 vintages
+Processed 853/853 vintages
 All vintage hashes updated successfully
 Processing all tables...
-Found 122 tables total
-Processing table 1/122: ID 1, keep_vintage = TRUE
+Found 124 tables total
+Processing table 1/124: ID 1, keep_vintage = TRUE
 Table ID 1: Transaction committed successfully
 Table ID 1: Deleted 0 older vintages and 0 redundant vintages
-Processing table 2/122: ID 2, keep_vintage = TRUE
+Processing table 2/124: ID 2, keep_vintage = TRUE
 Table ID 2: Transaction committed successfully
 Table ID 2: Deleted 0 older vintages and 0 redundant vintages
-Processing table 3/122: ID 3, keep_vintage = TRUE
+Processing table 3/124: ID 3, keep_vintage = TRUE
 Table ID 3: Transaction committed successfully
 Table ID 3: Deleted 0 older vintages and 0 redundant vintages
-Processing table 4/122: ID 4, keep_vintage = TRUE
+Processing table 4/124: ID 4, keep_vintage = TRUE
 Table ID 4: Transaction committed successfully
 Table ID 4: Deleted 0 older vintages and 0 redundant vintages
-Processing table 5/122: ID 5, keep_vintage = TRUE
+Processing table 5/124: ID 5, keep_vintage = TRUE
 Table ID 5: Transaction committed successfully
 Table ID 5: Deleted 0 older vintages and 0 redundant vintages
-Processing table 6/122: ID 6, keep_vintage = TRUE
+Processing table 6/124: ID 6, keep_vintage = TRUE
 Table ID 6: Transaction committed successfully
 Table ID 6: Deleted 0 older vintages and 0 redundant vintages
-Processing table 7/122: ID 7, keep_vintage = TRUE
+Processing table 7/124: ID 7, keep_vintage = TRUE
 Table ID 7: Transaction committed successfully
 Table ID 7: Deleted 0 older vintages and 0 redundant vintages
-Processing table 8/122: ID 8, keep_vintage = TRUE
+Processing table 8/124: ID 8, keep_vintage = TRUE
 Table ID 8: Transaction committed successfully
 Table ID 8: Deleted 0 older vintages and 0 redundant vintages
-Processing table 9/122: ID 9, keep_vintage = TRUE
+Processing table 9/124: ID 9, keep_vintage = TRUE
 Table ID 9: Transaction committed successfully
-Table ID 9: Deleted 0 older vintages and 0 redundant vintages
-Processing table 10/122: ID 10, keep_vintage = TRUE
+Table ID 9: Deleted 0 older vintages and 770 redundant vintages
+Processing table 10/124: ID 10, keep_vintage = TRUE
 Table ID 10: Transaction committed successfully
 Table ID 10: Deleted 0 older vintages and 0 redundant vintages
-Processing table 11/122: ID 12, keep_vintage = TRUE
+Processing table 11/124: ID 12, keep_vintage = TRUE
 Table ID 12: Transaction committed successfully
 Table ID 12: Deleted 0 older vintages and 0 redundant vintages
-Processing table 12/122: ID 13, keep_vintage = TRUE
+Processing table 12/124: ID 13, keep_vintage = TRUE
 Table ID 13: Transaction committed successfully
 Table ID 13: Deleted 0 older vintages and 0 redundant vintages
-Processing table 13/122: ID 14, keep_vintage = TRUE
+Processing table 13/124: ID 14, keep_vintage = TRUE
 Table ID 14: Transaction committed successfully
 Table ID 14: Deleted 0 older vintages and 0 redundant vintages
-Processing table 14/122: ID 15, keep_vintage = TRUE
+Processing table 14/124: ID 15, keep_vintage = TRUE
 Table ID 15: Transaction committed successfully
 Table ID 15: Deleted 0 older vintages and 0 redundant vintages
-Processing table 15/122: ID 16, keep_vintage = TRUE
+Processing table 15/124: ID 16, keep_vintage = TRUE
 Table ID 16: Transaction committed successfully
 Table ID 16: Deleted 0 older vintages and 0 redundant vintages
-Processing table 16/122: ID 17, keep_vintage = TRUE
+Processing table 16/124: ID 17, keep_vintage = TRUE
 Table ID 17: Transaction committed successfully
 Table ID 17: Deleted 0 older vintages and 0 redundant vintages
-Processing table 17/122: ID 18, keep_vintage = TRUE
+Processing table 17/124: ID 18, keep_vintage = TRUE
 Table ID 18: Transaction committed successfully
 Table ID 18: Deleted 0 older vintages and 0 redundant vintages
-Processing table 18/122: ID 19, keep_vintage = TRUE
+Processing table 18/124: ID 19, keep_vintage = TRUE
 Table ID 19: Transaction committed successfully
 Table ID 19: Deleted 0 older vintages and 0 redundant vintages
-Processing table 19/122: ID 20, keep_vintage = TRUE
+Processing table 19/124: ID 20, keep_vintage = TRUE
 Table ID 20: Transaction committed successfully
 Table ID 20: Deleted 0 older vintages and 0 redundant vintages
-Processing table 20/122: ID 21, keep_vintage = TRUE
+Processing table 20/124: ID 21, keep_vintage = TRUE
 Table ID 21: Transaction committed successfully
 Table ID 21: Deleted 0 older vintages and 0 redundant vintages
-Processing table 21/122: ID 22, keep_vintage = TRUE
+Processing table 21/124: ID 22, keep_vintage = TRUE
 Table ID 22: Transaction committed successfully
 Table ID 22: Deleted 0 older vintages and 0 redundant vintages
-Processing table 22/122: ID 23, keep_vintage = TRUE
+Processing table 22/124: ID 23, keep_vintage = TRUE
 Table ID 23: Transaction committed successfully
 Table ID 23: Deleted 0 older vintages and 0 redundant vintages
-Processing table 23/122: ID 29, keep_vintage = TRUE
+Processing table 23/124: ID 29, keep_vintage = TRUE
 Table ID 29: Transaction committed successfully
 Table ID 29: Deleted 0 older vintages and 0 redundant vintages
-Processing table 24/122: ID 30, keep_vintage = TRUE
+Processing table 24/124: ID 30, keep_vintage = TRUE
 Table ID 30: Transaction committed successfully
 Table ID 30: Deleted 0 older vintages and 0 redundant vintages
-Processing table 25/122: ID 33, keep_vintage = TRUE
+Processing table 25/124: ID 33, keep_vintage = TRUE
 Table ID 33: Transaction committed successfully
 Table ID 33: Deleted 0 older vintages and 0 redundant vintages
-Processing table 26/122: ID 34, keep_vintage = TRUE
+Processing table 26/124: ID 34, keep_vintage = TRUE
 Table ID 34: Transaction committed successfully
 Table ID 34: Deleted 0 older vintages and 0 redundant vintages
-Processing table 27/122: ID 36, keep_vintage = TRUE
+Processing table 27/124: ID 36, keep_vintage = TRUE
 Table ID 36: Transaction committed successfully
 Table ID 36: Deleted 0 older vintages and 0 redundant vintages
-Processing table 28/122: ID 38, keep_vintage = TRUE
+Processing table 28/124: ID 38, keep_vintage = TRUE
 Table ID 38: Transaction committed successfully
 Table ID 38: Deleted 0 older vintages and 0 redundant vintages
-Processing table 29/122: ID 39, keep_vintage = TRUE
+Processing table 29/124: ID 39, keep_vintage = TRUE
 Table ID 39: Transaction committed successfully
 Table ID 39: Deleted 0 older vintages and 0 redundant vintages
-Processing table 30/122: ID 40, keep_vintage = TRUE
+Processing table 30/124: ID 40, keep_vintage = TRUE
 Table ID 40: Transaction committed successfully
 Table ID 40: Deleted 0 older vintages and 0 redundant vintages
-Processing table 31/122: ID 41, keep_vintage = TRUE
+Processing table 31/124: ID 41, keep_vintage = TRUE
 Table ID 41: Transaction committed successfully
 Table ID 41: Deleted 0 older vintages and 0 redundant vintages
-Processing table 32/122: ID 42, keep_vintage = TRUE
+Processing table 32/124: ID 42, keep_vintage = TRUE
 Table ID 42: Transaction committed successfully
 Table ID 42: Deleted 0 older vintages and 0 redundant vintages
-Processing table 33/122: ID 44, keep_vintage = TRUE
+Processing table 33/124: ID 44, keep_vintage = TRUE
 Table ID 44: Transaction committed successfully
 Table ID 44: Deleted 0 older vintages and 0 redundant vintages
-Processing table 34/122: ID 45, keep_vintage = TRUE
+Processing table 34/124: ID 45, keep_vintage = TRUE
 Table ID 45: Transaction committed successfully
 Table ID 45: Deleted 0 older vintages and 0 redundant vintages
-Processing table 35/122: ID 46, keep_vintage = TRUE
+Processing table 35/124: ID 46, keep_vintage = TRUE
 Table ID 46: Transaction committed successfully
 Table ID 46: Deleted 0 older vintages and 0 redundant vintages
-Processing table 36/122: ID 47, keep_vintage = TRUE
+Processing table 36/124: ID 47, keep_vintage = TRUE
 Table ID 47: Transaction committed successfully
 Table ID 47: Deleted 0 older vintages and 0 redundant vintages
-Processing table 37/122: ID 48, keep_vintage = TRUE
+Processing table 37/124: ID 48, keep_vintage = TRUE
 Table ID 48: Transaction committed successfully
 Table ID 48: Deleted 0 older vintages and 0 redundant vintages
-Processing table 38/122: ID 49, keep_vintage = TRUE
+Processing table 38/124: ID 49, keep_vintage = TRUE
 Table ID 49: Transaction committed successfully
 Table ID 49: Deleted 0 older vintages and 0 redundant vintages
-Processing table 39/122: ID 50, keep_vintage = TRUE
+Processing table 39/124: ID 50, keep_vintage = TRUE
 Table ID 50: Transaction committed successfully
 Table ID 50: Deleted 0 older vintages and 0 redundant vintages
-Processing table 40/122: ID 51, keep_vintage = TRUE
+Processing table 40/124: ID 51, keep_vintage = TRUE
 Table ID 51: Transaction committed successfully
 Table ID 51: Deleted 0 older vintages and 0 redundant vintages
-Processing table 41/122: ID 57, keep_vintage = TRUE
+Processing table 41/124: ID 57, keep_vintage = TRUE
 Table ID 57: Transaction committed successfully
 Table ID 57: Deleted 0 older vintages and 0 redundant vintages
-Processing table 42/122: ID 58, keep_vintage = TRUE
+Processing table 42/124: ID 58, keep_vintage = TRUE
 Table ID 58: Transaction committed successfully
 Table ID 58: Deleted 0 older vintages and 0 redundant vintages
-Processing table 43/122: ID 59, keep_vintage = TRUE
+Processing table 43/124: ID 59, keep_vintage = TRUE
 Table ID 59: Transaction committed successfully
 Table ID 59: Deleted 0 older vintages and 0 redundant vintages
-Processing table 44/122: ID 60, keep_vintage = TRUE
+Processing table 44/124: ID 60, keep_vintage = TRUE
 Table ID 60: Transaction committed successfully
 Table ID 60: Deleted 0 older vintages and 0 redundant vintages
-Processing table 45/122: ID 61, keep_vintage = TRUE
+Processing table 45/124: ID 61, keep_vintage = TRUE
 Table ID 61: Transaction committed successfully
 Table ID 61: Deleted 0 older vintages and 0 redundant vintages
-Processing table 46/122: ID 62, keep_vintage = TRUE
+Processing table 46/124: ID 62, keep_vintage = TRUE
 Table ID 62: Transaction committed successfully
 Table ID 62: Deleted 0 older vintages and 0 redundant vintages
-Processing table 47/122: ID 63, keep_vintage = TRUE
+Processing table 47/124: ID 63, keep_vintage = TRUE
 Table ID 63: Transaction committed successfully
 Table ID 63: Deleted 0 older vintages and 0 redundant vintages
-Processing table 48/122: ID 64, keep_vintage = TRUE
+Processing table 48/124: ID 64, keep_vintage = TRUE
 Table ID 64: Transaction committed successfully
 Table ID 64: Deleted 0 older vintages and 0 redundant vintages
-Processing table 49/122: ID 65, keep_vintage = TRUE
+Processing table 49/124: ID 65, keep_vintage = TRUE
 Table ID 65: Transaction committed successfully
 Table ID 65: Deleted 0 older vintages and 0 redundant vintages
-Processing table 50/122: ID 66, keep_vintage = TRUE
+Processing table 50/124: ID 66, keep_vintage = TRUE
 Table ID 66: Transaction committed successfully
 Table ID 66: Deleted 0 older vintages and 0 redundant vintages
-Processing table 51/122: ID 67, keep_vintage = TRUE
+Processing table 51/124: ID 67, keep_vintage = TRUE
 Table ID 67: Transaction committed successfully
 Table ID 67: Deleted 0 older vintages and 0 redundant vintages
-Processing table 52/122: ID 68, keep_vintage = TRUE
+Processing table 52/124: ID 68, keep_vintage = TRUE
 Table ID 68: Transaction committed successfully
 Table ID 68: Deleted 0 older vintages and 0 redundant vintages
-Processing table 53/122: ID 69, keep_vintage = TRUE
+Processing table 53/124: ID 69, keep_vintage = TRUE
 Table ID 69: Transaction committed successfully
 Table ID 69: Deleted 0 older vintages and 0 redundant vintages
-Processing table 54/122: ID 70, keep_vintage = TRUE
+Processing table 54/124: ID 70, keep_vintage = TRUE
 Table ID 70: Transaction committed successfully
 Table ID 70: Deleted 0 older vintages and 0 redundant vintages
-Processing table 55/122: ID 71, keep_vintage = TRUE
+Processing table 55/124: ID 71, keep_vintage = TRUE
 Table ID 71: Transaction committed successfully
 Table ID 71: Deleted 0 older vintages and 0 redundant vintages
-Processing table 56/122: ID 72, keep_vintage = TRUE
+Processing table 56/124: ID 72, keep_vintage = TRUE
 Table ID 72: Transaction committed successfully
 Table ID 72: Deleted 0 older vintages and 0 redundant vintages
-Processing table 57/122: ID 73, keep_vintage = TRUE
+Processing table 57/124: ID 73, keep_vintage = TRUE
 Table ID 73: Transaction committed successfully
 Table ID 73: Deleted 0 older vintages and 0 redundant vintages
-Processing table 58/122: ID 74, keep_vintage = TRUE
+Processing table 58/124: ID 74, keep_vintage = TRUE
 Table ID 74: Transaction committed successfully
 Table ID 74: Deleted 0 older vintages and 0 redundant vintages
-Processing table 59/122: ID 77, keep_vintage = TRUE
+Processing table 59/124: ID 77, keep_vintage = TRUE
 Table ID 77: Transaction committed successfully
 Table ID 77: Deleted 0 older vintages and 0 redundant vintages
-Processing table 60/122: ID 78, keep_vintage = TRUE
+Processing table 60/124: ID 78, keep_vintage = TRUE
 Table ID 78: Transaction committed successfully
-Table ID 78: Deleted 0 older vintages and 0 redundant vintages
-Processing table 61/122: ID 79, keep_vintage = TRUE
+Table ID 78: Deleted 0 older vintages and 80 redundant vintages
+Processing table 61/124: ID 79, keep_vintage = TRUE
 Table ID 79: Transaction committed successfully
 Table ID 79: Deleted 0 older vintages and 0 redundant vintages
-Processing table 62/122: ID 80, keep_vintage = TRUE
+Processing table 62/124: ID 80, keep_vintage = TRUE
 Table ID 80: Transaction committed successfully
 Table ID 80: Deleted 0 older vintages and 0 redundant vintages
-Processing table 63/122: ID 82, keep_vintage = TRUE
+Processing table 63/124: ID 82, keep_vintage = TRUE
 Table ID 82: Transaction committed successfully
 Table ID 82: Deleted 0 older vintages and 0 redundant vintages
-Processing table 64/122: ID 83, keep_vintage = TRUE
+Processing table 64/124: ID 83, keep_vintage = TRUE
 Table ID 83: Transaction committed successfully
 Table ID 83: Deleted 0 older vintages and 0 redundant vintages
-Processing table 65/122: ID 84, keep_vintage = TRUE
+Processing table 65/124: ID 84, keep_vintage = TRUE
 Table ID 84: Transaction committed successfully
 Table ID 84: Deleted 0 older vintages and 0 redundant vintages
-Processing table 66/122: ID 115, keep_vintage = TRUE
+Processing table 66/124: ID 115, keep_vintage = TRUE
 Table ID 115: Transaction committed successfully
 Table ID 115: Deleted 0 older vintages and 0 redundant vintages
-Processing table 67/122: ID 116, keep_vintage = TRUE
+Processing table 67/124: ID 116, keep_vintage = TRUE
 Table ID 116: Transaction committed successfully
 Table ID 116: Deleted 0 older vintages and 0 redundant vintages
-Processing table 68/122: ID 118, keep_vintage = TRUE
+Processing table 68/124: ID 118, keep_vintage = TRUE
 Table ID 118: Transaction committed successfully
 Table ID 118: Deleted 0 older vintages and 0 redundant vintages
-Processing table 69/122: ID 119, keep_vintage = TRUE
+Processing table 69/124: ID 119, keep_vintage = TRUE
 Table ID 119: Transaction committed successfully
 Table ID 119: Deleted 0 older vintages and 0 redundant vintages
-Processing table 70/122: ID 120, keep_vintage = TRUE
+Processing table 70/124: ID 120, keep_vintage = TRUE
 Table ID 120: Transaction committed successfully
 Table ID 120: Deleted 0 older vintages and 0 redundant vintages
-Processing table 71/122: ID 121, keep_vintage = TRUE
+Processing table 71/124: ID 121, keep_vintage = TRUE
 Table ID 121: Transaction committed successfully
 Table ID 121: Deleted 0 older vintages and 0 redundant vintages
-Processing table 72/122: ID 122, keep_vintage = TRUE
+Processing table 72/124: ID 122, keep_vintage = TRUE
 Table ID 122: Transaction committed successfully
 Table ID 122: Deleted 0 older vintages and 0 redundant vintages
-Processing table 73/122: ID 123, keep_vintage = TRUE
+Processing table 73/124: ID 123, keep_vintage = TRUE
 Table ID 123: Transaction committed successfully
-Table ID 123: Deleted 0 older vintages and 630 redundant vintages
-Processing table 74/122: ID 124, keep_vintage = TRUE
+Table ID 123: Deleted 0 older vintages and 0 redundant vintages
+Processing table 74/124: ID 124, keep_vintage = TRUE
 Table ID 124: Transaction committed successfully
 Table ID 124: Deleted 0 older vintages and 0 redundant vintages
-Processing table 75/122: ID 125, keep_vintage = TRUE
+Processing table 75/124: ID 125, keep_vintage = TRUE
 Table ID 125: Transaction committed successfully
 Table ID 125: Deleted 0 older vintages and 0 redundant vintages
-Processing table 76/122: ID 126, keep_vintage = TRUE
+Processing table 76/124: ID 126, keep_vintage = TRUE
 Table ID 126: Transaction committed successfully
 Table ID 126: Deleted 0 older vintages and 0 redundant vintages
-Processing table 77/122: ID 127, keep_vintage = TRUE
+Processing table 77/124: ID 127, keep_vintage = TRUE
 Table ID 127: Transaction committed successfully
 Table ID 127: Deleted 0 older vintages and 0 redundant vintages
-Processing table 78/122: ID 137, keep_vintage = TRUE
+Processing table 78/124: ID 137, keep_vintage = TRUE
 Table ID 137: Transaction committed successfully
 Table ID 137: Deleted 0 older vintages and 0 redundant vintages
-Processing table 79/122: ID 143, keep_vintage = TRUE
+Processing table 79/124: ID 143, keep_vintage = TRUE
 Table ID 143: Transaction committed successfully
 Table ID 143: Deleted 0 older vintages and 0 redundant vintages
-Processing table 80/122: ID 148, keep_vintage = TRUE
+Processing table 80/124: ID 148, keep_vintage = TRUE
 Table ID 148: Transaction committed successfully
 Table ID 148: Deleted 0 older vintages and 0 redundant vintages
-Processing table 81/122: ID 209, keep_vintage = FALSE
+Processing table 81/124: ID 209, keep_vintage = FALSE
 Table ID 209: Transaction committed successfully
 Table ID 209: Deleted 0 older vintages and 0 redundant vintages
-Processing table 82/122: ID 220, keep_vintage = FALSE
+Processing table 82/124: ID 220, keep_vintage = FALSE
 Table ID 220: Transaction committed successfully
 Table ID 220: Deleted 0 older vintages and 0 redundant vintages
-Processing table 83/122: ID 221, keep_vintage = FALSE
+Processing table 83/124: ID 221, keep_vintage = FALSE
 Table ID 221: Transaction committed successfully
 Table ID 221: Deleted 0 older vintages and 0 redundant vintages
-Processing table 84/122: ID 222, keep_vintage = FALSE
+Processing table 84/124: ID 222, keep_vintage = FALSE
 Table ID 222: Transaction committed successfully
 Table ID 222: Deleted 0 older vintages and 0 redundant vintages
-Processing table 85/122: ID 224, keep_vintage = FALSE
+Processing table 85/124: ID 224, keep_vintage = FALSE
 Table ID 224: Transaction committed successfully
-Table ID 224: Deleted 18 older vintages and 0 redundant vintages
-Processing table 86/122: ID 226, keep_vintage = FALSE
+Table ID 224: Deleted 0 older vintages and 0 redundant vintages
+Processing table 86/124: ID 226, keep_vintage = FALSE
 Table ID 226: Transaction committed successfully
 Table ID 226: Deleted 0 older vintages and 0 redundant vintages
-Processing table 87/122: ID 227, keep_vintage = FALSE
+Processing table 87/124: ID 227, keep_vintage = FALSE
 Table ID 227: Transaction committed successfully
 Table ID 227: Deleted 0 older vintages and 0 redundant vintages
-Processing table 88/122: ID 228, keep_vintage = FALSE
+Processing table 88/124: ID 228, keep_vintage = FALSE
 Table ID 228: Transaction committed successfully
 Table ID 228: Deleted 0 older vintages and 0 redundant vintages
-Processing table 89/122: ID 232, keep_vintage = FALSE
+Processing table 89/124: ID 232, keep_vintage = FALSE
 Table ID 232: Transaction committed successfully
 Table ID 232: Deleted 0 older vintages and 0 redundant vintages
-Processing table 90/122: ID 233, keep_vintage = FALSE
+Processing table 90/124: ID 233, keep_vintage = FALSE
 Table ID 233: Transaction committed successfully
 Table ID 233: Deleted 0 older vintages and 0 redundant vintages
-Processing table 91/122: ID 234, keep_vintage = FALSE
+Processing table 91/124: ID 234, keep_vintage = FALSE
 Table ID 234: Transaction committed successfully
 Table ID 234: Deleted 0 older vintages and 0 redundant vintages
-Processing table 92/122: ID 235, keep_vintage = FALSE
+Processing table 92/124: ID 235, keep_vintage = FALSE
 Table ID 235: Transaction committed successfully
 Table ID 235: Deleted 0 older vintages and 0 redundant vintages
-Processing table 93/122: ID 236, keep_vintage = FALSE
+Processing table 93/124: ID 236, keep_vintage = FALSE
 Table ID 236: Transaction committed successfully
 Table ID 236: Deleted 0 older vintages and 0 redundant vintages
-Processing table 94/122: ID 237, keep_vintage = FALSE
+Processing table 94/124: ID 237, keep_vintage = FALSE
 Table ID 237: Transaction committed successfully
 Table ID 237: Deleted 0 older vintages and 0 redundant vintages
-Processing table 95/122: ID 238, keep_vintage = FALSE
+Processing table 95/124: ID 238, keep_vintage = FALSE
 Table ID 238: Transaction committed successfully
 Table ID 238: Deleted 0 older vintages and 0 redundant vintages
-Processing table 96/122: ID 239, keep_vintage = FALSE
+Processing table 96/124: ID 239, keep_vintage = FALSE
 Table ID 239: Transaction committed successfully
 Table ID 239: Deleted 0 older vintages and 0 redundant vintages
-Processing table 97/122: ID 240, keep_vintage = FALSE
+Processing table 97/124: ID 240, keep_vintage = FALSE
 Table ID 240: Transaction committed successfully
 Table ID 240: Deleted 0 older vintages and 0 redundant vintages
-Processing table 98/122: ID 241, keep_vintage = FALSE
+Processing table 98/124: ID 241, keep_vintage = FALSE
 Table ID 241: Transaction committed successfully
 Table ID 241: Deleted 0 older vintages and 0 redundant vintages
-Processing table 99/122: ID 242, keep_vintage = FALSE
+Processing table 99/124: ID 242, keep_vintage = FALSE
 Table ID 242: Transaction committed successfully
 Table ID 242: Deleted 0 older vintages and 0 redundant vintages
-Processing table 100/122: ID 243, keep_vintage = FALSE
+Processing table 100/124: ID 243, keep_vintage = FALSE
 Table ID 243: Transaction committed successfully
 Table ID 243: Deleted 0 older vintages and 0 redundant vintages
-Processing table 101/122: ID 244, keep_vintage = FALSE
+Processing table 101/124: ID 244, keep_vintage = FALSE
 Table ID 244: Transaction committed successfully
 Table ID 244: Deleted 0 older vintages and 0 redundant vintages
-Processing table 102/122: ID 245, keep_vintage = FALSE
+Processing table 102/124: ID 245, keep_vintage = FALSE
 Table ID 245: Transaction committed successfully
 Table ID 245: Deleted 0 older vintages and 0 redundant vintages
-Processing table 103/122: ID 246, keep_vintage = FALSE
+Processing table 103/124: ID 246, keep_vintage = FALSE
 Table ID 246: Transaction committed successfully
 Table ID 246: Deleted 0 older vintages and 0 redundant vintages
-Processing table 104/122: ID 247, keep_vintage = FALSE
+Processing table 104/124: ID 247, keep_vintage = FALSE
 Table ID 247: Transaction committed successfully
 Table ID 247: Deleted 0 older vintages and 0 redundant vintages
-Processing table 105/122: ID 248, keep_vintage = FALSE
+Processing table 105/124: ID 248, keep_vintage = FALSE
 Table ID 248: Transaction committed successfully
 Table ID 248: Deleted 0 older vintages and 0 redundant vintages
-Processing table 106/122: ID 249, keep_vintage = FALSE
+Processing table 106/124: ID 249, keep_vintage = FALSE
 Table ID 249: Transaction committed successfully
 Table ID 249: Deleted 0 older vintages and 0 redundant vintages
-Processing table 107/122: ID 251, keep_vintage = FALSE
+Processing table 107/124: ID 251, keep_vintage = FALSE
 Table ID 251: Transaction committed successfully
 Table ID 251: Deleted 0 older vintages and 0 redundant vintages
-Processing table 108/122: ID 253, keep_vintage = FALSE
+Processing table 108/124: ID 253, keep_vintage = FALSE
 Table ID 253: Transaction committed successfully
-Table ID 253: Deleted 162 older vintages and 0 redundant vintages
-Processing table 109/122: ID 254, keep_vintage = FALSE
+Table ID 253: Deleted 0 older vintages and 0 redundant vintages
+Processing table 109/124: ID 254, keep_vintage = FALSE
 Table ID 254: Transaction committed successfully
 Table ID 254: Deleted 0 older vintages and 0 redundant vintages
-Processing table 110/122: ID 255, keep_vintage = FALSE
+Processing table 110/124: ID 255, keep_vintage = FALSE
 Table ID 255: Transaction committed successfully
-Table ID 255: Deleted 0 older vintages and 0 redundant vintages
-Processing table 111/122: ID 257, keep_vintage = FALSE
+Table ID 255: Deleted 3 older vintages and 0 redundant vintages
+Processing table 111/124: ID 257, keep_vintage = FALSE
 Table ID 257: Transaction committed successfully
 Table ID 257: Deleted 0 older vintages and 0 redundant vintages
-Processing table 112/122: ID 260, keep_vintage = FALSE
+Processing table 112/124: ID 260, keep_vintage = FALSE
 Table ID 260: Transaction committed successfully
 Table ID 260: Deleted 0 older vintages and 0 redundant vintages
-Processing table 113/122: ID 261, keep_vintage = FALSE
+Processing table 113/124: ID 261, keep_vintage = FALSE
 Table ID 261: Transaction committed successfully
 Table ID 261: Deleted 0 older vintages and 0 redundant vintages
-Processing table 114/122: ID 262, keep_vintage = FALSE
+Processing table 114/124: ID 262, keep_vintage = FALSE
 Table ID 262: Transaction committed successfully
 Table ID 262: Deleted 0 older vintages and 0 redundant vintages
-Processing table 115/122: ID 263, keep_vintage = FALSE
+Processing table 115/124: ID 263, keep_vintage = FALSE
 Table ID 263: Transaction committed successfully
 Table ID 263: Deleted 0 older vintages and 0 redundant vintages
-Processing table 116/122: ID 264, keep_vintage = FALSE
+Processing table 116/124: ID 264, keep_vintage = FALSE
 Table ID 264: Transaction committed successfully
 Table ID 264: Deleted 0 older vintages and 0 redundant vintages
-Processing table 117/122: ID 265, keep_vintage = FALSE
+Processing table 117/124: ID 265, keep_vintage = FALSE
 Table ID 265: Transaction committed successfully
 Table ID 265: Deleted 0 older vintages and 0 redundant vintages
-Processing table 118/122: ID 296, keep_vintage = FALSE
+Processing table 118/124: ID 296, keep_vintage = FALSE
 Table ID 296: Transaction committed successfully
 Table ID 296: Deleted 0 older vintages and 0 redundant vintages
-Processing table 119/122: ID 297, keep_vintage = FALSE
+Processing table 119/124: ID 297, keep_vintage = FALSE
 Table ID 297: Transaction committed successfully
 Table ID 297: Deleted 0 older vintages and 0 redundant vintages
-Processing table 120/122: ID 298, keep_vintage = FALSE
+Processing table 120/124: ID 298, keep_vintage = FALSE
 Table ID 298: Transaction committed successfully
 Table ID 298: Deleted 0 older vintages and 0 redundant vintages
-Processing table 121/122: ID 299, keep_vintage = FALSE
+Processing table 121/124: ID 299, keep_vintage = FALSE
 Table ID 299: Transaction committed successfully
 Table ID 299: Deleted 0 older vintages and 0 redundant vintages
-Processing table 122/122: ID 300, keep_vintage = FALSE
+Processing table 122/124: ID 300, keep_vintage = FALSE
 Table ID 300: Transaction committed successfully
 Table ID 300: Deleted 0 older vintages and 0 redundant vintages
-Cleanup completed: Processed 122 tables
-Deleted 180 vintages from tables with keep_vintage = FALSE
-Deleted 630 redundant vintages from tables with keep_vintage = TRUE
+Processing table 123/124: ID 303, keep_vintage = FALSE
+Table ID 303: Transaction committed successfully
+Table ID 303: Deleted 0 older vintages and 0 redundant vintages
+Processing table 124/124: ID 306, keep_vintage = FALSE
+Table ID 306: Transaction committed successfully
+Table ID 306: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 124 tables
+Deleted 3 vintages from tables with keep_vintage = FALSE
+Deleted 850 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 
 
@@ -759,11 +746,11 @@ processing file: 01-nacionalni_kvartalno.Rmd
 41/43                   
 42/43 [dohodkovna2]     
 43/43                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpmUqseS/rmd_temp/01-nacionalni_kvartalno.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpEDJgh3/rmd_temp/01-nacionalni_kvartalno.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpmUqseS\rmd_temp\01-nacionalni_kvartalno.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc1f207e4173bf.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpmUqseS\rmarkdown-str1f20618528ca.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpEDJgh3\rmd_temp\01-nacionalni_kvartalno.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc350fcf5d77.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpEDJgh3\rmarkdown-str3504be85ce1.html" --include-before-body custom2.js 
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\11.jun.2025_1006_01-nacionalni_kvartalno.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\17.jun.2025_1406_01-nacionalni_kvartalno.html
 
 
 processing file: 02-nacionalni_letno.Rmd
@@ -794,11 +781,11 @@ processing file: 02-nacionalni_letno.Rmd
 25/27                      
 26/27 [unnamed-chunk-10]   
 27/27                      
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpmUqseS/rmd_temp/02-nacionalni_letno.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpEDJgh3/rmd_temp/02-nacionalni_letno.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpmUqseS\rmd_temp\02-nacionalni_letno.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc1f204b3f12f5.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpmUqseS\rmarkdown-str1f204be51e33.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpEDJgh3\rmd_temp\02-nacionalni_letno.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc35025ba3afb.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpEDJgh3\rmarkdown-str35046c15e7f.html" --include-before-body custom2.js 
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\11.jun.2025_1006_02-nacionalni_letno.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\17.jun.2025_1406_02-nacionalni_letno.html
 
 
 processing file: 03-kazalniki_razpolozenja.Rmd
@@ -845,11 +832,11 @@ processing file: 03-kazalniki_razpolozenja.Rmd
 41/43                   
 42/43 [unnamed-chunk-20]
 43/43                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpmUqseS/rmd_temp/03-kazalniki_razpolozenja.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpEDJgh3/rmd_temp/03-kazalniki_razpolozenja.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpmUqseS\rmd_temp\03-kazalniki_razpolozenja.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc1f201e6929f9.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpmUqseS\rmarkdown-str1f206c842bb6.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpEDJgh3\rmd_temp\03-kazalniki_razpolozenja.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc350466f2e.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpEDJgh3\rmarkdown-str3506cfe7d94.html" --include-before-body custom2.js 
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\11.jun.2025_1006_03-kazalniki_razpolozenja.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\17.jun.2025_1406_03-kazalniki_razpolozenja.html
 
 
 processing file: 04-kazalniki_aktivnosti.Rmd
@@ -894,11 +881,11 @@ processing file: 04-kazalniki_aktivnosti.Rmd
 39/41                     
 40/41 [unnamed-chunk-18]  
 41/41                     
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpmUqseS/rmd_temp/04-kazalniki_aktivnosti.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpEDJgh3/rmd_temp/04-kazalniki_aktivnosti.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpmUqseS\rmd_temp\04-kazalniki_aktivnosti.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc1f206a3f5eb3.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpmUqseS\rmarkdown-str1f2024df28.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpEDJgh3\rmd_temp\04-kazalniki_aktivnosti.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc350480e4b42.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpEDJgh3\rmarkdown-str350250215fe.html" --include-before-body custom2.js 
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\11.jun.2025_1006_04-kazalniki_aktivnosti.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\17.jun.2025_1406_04-kazalniki_aktivnosti.html
 
 
 processing file: 05-trg_dela.Rmd
@@ -937,11 +924,11 @@ processing file: 05-trg_dela.Rmd
 33/35                   
 34/35 [unnamed-chunk-16]
 35/35                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpmUqseS/rmd_temp/05-trg_dela.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpEDJgh3/rmd_temp/05-trg_dela.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpmUqseS\rmd_temp\05-trg_dela.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc1f2045a763ab.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpmUqseS\rmarkdown-str1f204f473444.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpEDJgh3\rmd_temp\05-trg_dela.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc3502a745bf1.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpEDJgh3\rmarkdown-str35040b76799.html" --include-before-body custom2.js 
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\11.jun.2025_1006_05-trg_dela.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\17.jun.2025_1406_05-trg_dela.html
 
 
 processing file: 06-cene.Rmd
@@ -970,11 +957,11 @@ processing file: 06-cene.Rmd
 23/25                   
 24/25 [unnamed-chunk-11]
 25/25                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpmUqseS/rmd_temp/06-cene.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpEDJgh3/rmd_temp/06-cene.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpmUqseS\rmd_temp\06-cene.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc1f20243f6b8c.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpmUqseS\rmarkdown-str1f20498020f3.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpEDJgh3\rmd_temp\06-cene.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc35033743c4c.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpEDJgh3\rmarkdown-str35056054010.html" --include-before-body custom2.js 
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\11.jun.2025_1006_06-cene.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\17.jun.2025_1406_06-cene.html
 
 
 processing file: 07-gradbenistvo.Rmd
@@ -1003,11 +990,11 @@ processing file: 07-gradbenistvo.Rmd
 23/25                   
 24/25 [unnamed-chunk-11]
 25/25                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpmUqseS/rmd_temp/07-gradbenistvo.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpEDJgh3/rmd_temp/07-gradbenistvo.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpmUqseS\rmd_temp\07-gradbenistvo.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc1f2060ccb4d.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpmUqseS\rmarkdown-str1f205c3064fe.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpEDJgh3\rmd_temp\07-gradbenistvo.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc3501a7d56f8.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpEDJgh3\rmarkdown-str350647c3c98.html" --include-before-body custom2.js 
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\11.jun.2025_1006_07-gradbenistvo.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\17.jun.2025_1406_07-gradbenistvo.html
 
 
 processing file: 08-predelovalne_dejavnosti.Rmd
@@ -1048,11 +1035,11 @@ processing file: 08-predelovalne_dejavnosti.Rmd
 35/37                   
 36/37 [unnamed-chunk-17]
 37/37                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpmUqseS/rmd_temp/08-predelovalne_dejavnosti.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpEDJgh3/rmd_temp/08-predelovalne_dejavnosti.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpmUqseS\rmd_temp\08-predelovalne_dejavnosti.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc1f20735a3672.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpmUqseS\rmarkdown-str1f2042046b5a.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpEDJgh3\rmd_temp\08-predelovalne_dejavnosti.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc350760e7bae.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpEDJgh3\rmarkdown-str3502f7d79aa.html" --include-before-body custom2.js 
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\11.jun.2025_1006_08-predelovalne_dejavnosti.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\17.jun.2025_1406_08-predelovalne_dejavnosti.html
 
 
 processing file: 09-mojca.Rmd
@@ -1069,11 +1056,11 @@ processing file: 09-mojca.Rmd
 11/13             
 12/13 [socialni]  
 13/13             
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpmUqseS/rmd_temp/09-mojca.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpEDJgh3/rmd_temp/09-mojca.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpmUqseS\rmd_temp\09-mojca.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc1f201940536a.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpmUqseS\rmarkdown-str1f2046e53a3b.html" --include-before-body custom.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpEDJgh3\rmd_temp\09-mojca.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc35061c936da.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpEDJgh3\rmarkdown-str3506e23493a.html" --include-before-body custom.js 
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\11.jun.2025_1006_09-mojca.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\17.jun.2025_1406_09-mojca.html
 
 
 processing file: 10-zasebna.Rmd
@@ -1096,11 +1083,11 @@ processing file: 10-zasebna.Rmd
 17/19                  
 18/19 [varcevanje]     
 19/19                  
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpmUqseS/rmd_temp/10-zasebna.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpEDJgh3/rmd_temp/10-zasebna.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpmUqseS\rmd_temp\10-zasebna.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc1f2050463b40.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpmUqseS\rmarkdown-str1f202f96bb4.html" --include-before-body custom.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpEDJgh3\rmd_temp\10-zasebna.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc35023b9388e.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpEDJgh3\rmarkdown-str3505d0a7d3e.html" --include-before-body custom.js 
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\11.jun.2025_1006_10-zasebna.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\17.jun.2025_1406_10-zasebna.html
 
 
 processing file: 11-tujina.Rmd
@@ -1122,11 +1109,11 @@ processing file: 11-tujina.Rmd
 16/18 [uvoz_blago_po_regijah] 
 17/18                         
 18/18 [izvoz_razpolozenje]    
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpmUqseS/rmd_temp/11-tujina.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpEDJgh3/rmd_temp/11-tujina.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpmUqseS\rmd_temp\11-tujina.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc1f205b9f746d.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpmUqseS\rmarkdown-str1f2013c300f.html" --include-before-body custom.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpEDJgh3\rmd_temp\11-tujina.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc3505c454190.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpEDJgh3\rmarkdown-str35073567012.html" --include-before-body custom.js 
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\11.jun.2025_1006_11-tujina.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\17.jun.2025_1406_11-tujina.html
 
 
 processing file: html_test.Rmd
@@ -1426,6 +1413,6 @@ processing file: html_test.Rmd
 294/294 [izvoz_razpolozenje]      
 output file: html_test.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS html_test.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc1f206c1f6339.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpmUqseS\rmarkdown-str1f20eed56e5.html" --include-before-body custom.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS html_test.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc3501a362e04.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpEDJgh3\rmarkdown-str35040a751a5.html" --include-before-body custom.js 
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_porocilo11.jun.2025_1106.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_porocilo17.jun.2025_1406.html
