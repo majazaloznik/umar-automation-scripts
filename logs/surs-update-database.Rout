@@ -91,8 +91,40 @@ Importing data points from: 0457302S into schema platform
 Note: These vintages for table 0457302S are not new, they will not be inserted again.
 Skipping import for 0457302S due to vintage preparation issue: These vintages for table 0457302S are not new, they will not be inserted again.
 Importing data points from: 0425002S into schema platform
-Note: These vintages for table 0425002S are not new, they will not be inserted again.
-Skipping import for 0425002S due to vintage preparation issue: These vintages for table 0425002S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, NAMENSKE.SKUPINE, INDEKS, raw_time, time, flag, MESEC, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+    MESEC NAMENSKE.SKUPINE value INDEKS raw_time    time flag interval_id
+1 2006M01           B_TO_E    NA     12  2006M01 2006M01                M
+2 2006M01           B_TO_E 100.3     03  2006M01 2006M01                M
+3 2006M01           B_TO_E 100.3     01  2006M01 2006M01                M
+4 2006M01           B_TO_E 103.4     02  2006M01 2006M01                M
+5 2006M01           B_TO_E    NA     06  2006M01 2006M01                M
+Matching dimensions:
+  - NAMENSKE SKUPINE (ID: 142)
+  - INDEKS (ID: 144)
+  - Matched dimension: NAMENSKE SKUPINE -> column: NAMENSKE.SKUPINE
+  - Matched dimension: INDEKS -> column: INDEKS
+Updated series_id for 13104 rows
+Updated vintage_id for 13104 rows
+After matching. Sample rows:
+    MESEC NAMENSKE.SKUPINE value INDEKS raw_time    time flag interval_id
+1 2006M01           B_TO_E    NA     12  2006M01 2006M01                M
+2 2006M01           B_TO_E 100.3     03  2006M01 2006M01                M
+3 2006M01           B_TO_E 100.3     01  2006M01 2006M01                M
+4 2006M12           B_TO_E 107.1     02  2006M12 2006M12                M
+5 2007M11           B_TO_E 104.3     06  2007M11 2007M11                M
+  series_id vintage_id
+1     40994    7232969
+2     41001    7232976
+3     41008    7232983
+4     41015    7232990
+5     41022    7232997
+Rows with both series_id and vintage_id: 13104
+Inserted 0 new periods
+Inserted 13104 new data points
+Inserted 0 new flags
 Importing data points from: 0419030S into schema platform
 Note: These vintages for table 0419030S are not new, they will not be inserted again.
 Skipping import for 0419030S due to vintage preparation issue: These vintages for table 0419030S are not new, they will not be inserted again.
@@ -124,8 +156,40 @@ Importing data points from: 2013903S into schema platform
 Note: These vintages for table 2013903S are not new, they will not be inserted again.
 Skipping import for 2013903S due to vintage preparation issue: These vintages for table 2013903S are not new, they will not be inserted again.
 Importing data points from: 2080006S into schema platform
-Note: These vintages for table 2080006S are not new, they will not be inserted again.
-Skipping import for 2080006S due to vintage preparation issue: These vintages for table 2080006S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, VRSTA.PODATKA, SKD.DEJAVNOST, raw_time, time, flag, MESEC, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+    MESEC VRSTA.PODATKA value SKD.DEJAVNOST raw_time    time flag interval_id
+1 2010M01             1  63.6 G+H+I+J+L+M+N  2010M01 2010M01                M
+2 2010M01             1  62.4             G  2010M01 2010M01                M
+3 2010M01             1  46.1           G45  2010M01 2010M01                M
+4 2010M01             1  60.8           G46  2010M01 2010M01                M
+5 2010M01             1  70.8           G47  2010M01 2010M01                M
+Matching dimensions:
+  - VRSTA PODATKA (ID: 192)
+  - SKD DEJAVNOST (ID: 194)
+  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
+  - Matched dimension: SKD DEJAVNOST -> column: SKD.DEJAVNOST
+Updated series_id for 20535 rows
+Updated vintage_id for 20535 rows
+After matching. Sample rows:
+    MESEC VRSTA.PODATKA value SKD.DEJAVNOST raw_time    time flag interval_id
+1 2024M07             2  92.4           N78  2024M07 2024M07                M
+2 2010M01             1  63.6 G+H+I+J+L+M+N  2010M01 2010M01                M
+3 2010M01             1  62.4             G  2010M01 2010M01                M
+4 2010M01             1  46.1           G45  2010M01 2010M01                M
+5 2010M01             1  60.8           G46  2010M01 2010M01                M
+  series_id vintage_id
+1     41669    7233122
+2     41572    7233025
+3     41575    7233028
+4     41578    7233031
+5     41581    7233034
+Rows with both series_id and vintage_id: 20535
+Inserted 0 new periods
+Inserted 20535 new data points
+Inserted 1110 new flags
 Importing data points from: 0701015S into schema platform
 Note: These vintages for table 0701015S are not new, they will not be inserted again.
 Skipping import for 0701015S due to vintage preparation issue: These vintages for table 0701015S are not new, they will not be inserted again.
@@ -212,7 +276,9 @@ Note: These vintages for table 0701087S are not new, they will not be inserted a
 Skipping import for 0701087S due to vintage preparation issue: These vintages for table 0701087S are not new, they will not be inserted again.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 100/167 vintages
+Processed 167/167 vintages
+All vintage hashes updated successfully
 Processing all tables...
 Found 126 tables total
 Processing table 1/126: ID 1, keep_vintage = TRUE
@@ -328,7 +394,7 @@ Table ID 48: Transaction committed successfully
 Table ID 48: Deleted 0 older vintages and 0 redundant vintages
 Processing table 38/126: ID 49, keep_vintage = TRUE
 Table ID 49: Transaction committed successfully
-Table ID 49: Deleted 0 older vintages and 0 redundant vintages
+Table ID 49: Deleted 0 older vintages and 56 redundant vintages
 Processing table 39/126: ID 50, keep_vintage = TRUE
 Table ID 50: Transaction committed successfully
 Table ID 50: Deleted 0 older vintages and 0 redundant vintages
@@ -382,7 +448,7 @@ Table ID 71: Transaction committed successfully
 Table ID 71: Deleted 0 older vintages and 0 redundant vintages
 Processing table 56/126: ID 72, keep_vintage = TRUE
 Table ID 72: Transaction committed successfully
-Table ID 72: Deleted 0 older vintages and 0 redundant vintages
+Table ID 72: Deleted 0 older vintages and 6 redundant vintages
 Processing table 57/126: ID 73, keep_vintage = TRUE
 Table ID 73: Transaction committed successfully
 Table ID 73: Deleted 0 older vintages and 0 redundant vintages
@@ -595,7 +661,7 @@ Table ID 309: Transaction committed successfully
 Table ID 309: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 126 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
-Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Deleted 62 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Error: Failed to fetch row: ERROR:  relation "latest_data_points" does not exist
 Execution halted
