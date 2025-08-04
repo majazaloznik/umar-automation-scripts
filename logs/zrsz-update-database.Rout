@@ -10,36 +10,14 @@ Content type 'application/vnd.ms-excel' length 280064 bytes (273 KB)
 ==================================================
 downloaded 273 KB
 
-
-=== PostgreSQL Column Names ===
-value, time, Vrednost, flag
-Data loaded into tmp_prepared_data. Sample rows:
-     time     value Vrednost flag
-1 2005M01 10.384209        0     
-2 2005M02 10.342438        0     
-3 2005M03 10.239058        0     
-4 2005M04 10.136737        0     
-5 2005M05  9.930898        0     
-Matching dimensions:
-  - Vrednost (ID: 281)
-  - Matched dimension: Vrednost -> column: Vrednost
-Updated series_id for 245 rows
-Updated vintage_id for 245 rows
-After matching. Sample rows:
-     time     value Vrednost flag series_id vintage_id
-1 2005M01 10.384209        0          54956    7233144
-2 2005M02 10.342438        0          54956    7233144
-3 2005M03 10.239058        0          54956    7233144
-4 2005M04 10.136737        0          54956    7233144
-5 2005M05  9.930898        0          54956    7233144
-Rows with both series_id and vintage_id: 245
-Inserted 0 new periods
-Inserted 244 new data points
-Inserted 0 new flags
 Error: Failed to fetch row: ERROR:  relation "latest_data_points" does not exist
 In addition: Warning messages:
 1: In prepare_vintage_table(meta, df, con, schema) :
   These monthly vintages for table BO are not new, they will not be inserted again.
 2: In ZRSZ_import_data_points(meta, con, schema = "platform") :
+  No new vintages to insert, exiting.
+3: In prepare_vintage_table(meta, df, con, schema) :
+  These monthly vintages for table BO_OS are not new, they will not be inserted again.
+4: In ZRSZ_import_data_points(meta, con, schema = "platform") :
   No new vintages to insert, exiting.
 Execution halted
