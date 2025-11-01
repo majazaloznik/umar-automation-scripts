@@ -173,13 +173,55 @@ Note: These vintages for table I1_4PS are not new, they will not be inserted aga
 Skipping import for I1_4PS due to vintage preparation issue: These vintages for table I1_4PS are not new, they will not be inserted again.
 Importing data points from: FSR_IUS into schema platform
 trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/10_denar_mfi/50_izbrani_pod_bilanc/FSR_IUS.px'
-Content type 'application/octet-stream' length 27734 bytes (27 KB)
+Content type 'application/octet-stream' length 27806 bytes (27 KB)
 ==================================================
 downloaded 27 KB
 
 File has BOM, using UTF-16LE
-Note: These vintages for table FSR_IUS are not new, they will not be inserted again.
-Skipping import for FSR_IUS due to vintage preparation issue: These vintages for table FSR_IUS are not new, they will not be inserted again.
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/10_denar_mfi/50_izbrani_pod_bilanc/FSR_IUS.px'
+Content type 'application/octet-stream' length 27806 bytes (27 KB)
+==================================================
+downloaded 27 KB
+
+File has BOM, using UTF-16LE
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/10_denar_mfi/50_izbrani_pod_bilanc/FSR_IUS.px'
+Content type 'application/octet-stream' length 27806 bytes (27 KB)
+==================================================
+downloaded 27 KB
+
+File has BOM, using UTF-16LE
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/10_denar_mfi/50_izbrani_pod_bilanc/FSR_IUS.px'
+Content type 'application/octet-stream' length 27806 bytes (27 KB)
+==================================================
+downloaded 27 KB
+
+File has BOM, using UTF-16LE
+
+=== PostgreSQL Column Names ===
+Postavke, Datum, value, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  Postavke   Datum   value    time flag interval_id
+1        0 1993M12   0.069 1993M12                M
+2        1 1993M12  -1.309 1993M12                M
+3        2 1993M12  -1.240 1993M12                M
+4        3 1993M12 -16.765 1993M12                M
+5        4 1993M12 -18.207 1993M12                M
+Matching dimensions:
+  - Postavke (ID: 522)
+  - Matched dimension: Postavke -> column: Postavke
+Updated series_id for 1905 rows
+Updated vintage_id for 1905 rows
+After matching. Sample rows:
+  Postavke   Datum  value    time flag interval_id series_id vintage_id
+1        0 1993M12  0.069 1993M12                M     57019    7293504
+2        0 1994M02 20.670 1994M02                M     57019    7293504
+3        0 1994M01  8.707 1994M01                M     57019    7293504
+4        1 1993M12 -1.309 1993M12                M     57020    7293505
+5        1 1994M02  8.557 1994M02                M     57020    7293505
+Rows with both series_id and vintage_id: 1905
+Inserted 0 new periods
+Inserted 1905 new data points
+Inserted 0 new flags
 Importing data points from: i_32_6ms into schema platform
 trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
 Content type 'application/octet-stream' length 543192 bytes (530 KB)
@@ -191,7 +233,8 @@ Note: These vintages for table i_32_6ms are not new, they will not be inserted a
 Skipping import for i_32_6ms due to vintage preparation issue: These vintages for table i_32_6ms are not new, they will not be inserted again.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 5/5 vintages
+All vintage hashes updated successfully
 Processing single table ID 220...
 Processing table 1/1: ID 220, keep_vintage = FALSE
 Table ID 220: Transaction committed successfully
@@ -393,9 +436,9 @@ No vintages need hash updates.
 Processing single table ID 249...
 Processing table 1/1: ID 249, keep_vintage = FALSE
 Table ID 249: Transaction committed successfully
-Table ID 249: Deleted 0 older vintages and 0 redundant vintages
+Table ID 249: Deleted 5 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 5 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
