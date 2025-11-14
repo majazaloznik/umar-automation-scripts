@@ -187,54 +187,11 @@ Content type 'application/octet-stream' length 544665 bytes (531 KB)
 downloaded 531 KB
 
 File has BOM, using UTF-16LE
-trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
-Content type 'application/octet-stream' length 544665 bytes (531 KB)
-==================================================
-downloaded 531 KB
-
-File has BOM, using UTF-16LE
-trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
-Content type 'application/octet-stream' length 544665 bytes (531 KB)
-==================================================
-downloaded 531 KB
-
-File has BOM, using UTF-16LE
-trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
-Content type 'application/octet-stream' length 544665 bytes (531 KB)
-==================================================
-downloaded 531 KB
-
-File has BOM, using UTF-16LE
-
-=== PostgreSQL Column Names ===
-value, Postavke, Datum, time, flag, interval_id
-Data loaded into tmp_prepared_data. Sample rows:
-  Postavke   Datum      value    time flag interval_id
-1        0 1994M01  85.996111 1994M01                M
-2        3 1994M01   9.705617 1994M01                M
-3        4 1994M01 325.660811 1994M01                M
-4        5 1994M01 315.955193 1994M01                M
-5        6 1994M01  56.687228 1994M01                M
-Matching dimensions:
-  - Postavke (ID: 542)
-  - Matched dimension: Postavke -> column: Postavke
-Updated series_id for 12192 rows
-Updated vintage_id for 12192 rows
-After matching. Sample rows:
-  Postavke   Datum      value    time flag interval_id series_id vintage_id
-1       41 1994M01 0.00000000 1994M01                M        NA         NA
-2       42 1994M01 0.02659677 1994M01                M        NA         NA
-3       44 1994M01 0.00000000 1994M01                M        NA         NA
-4       45 1994M01 1.59907665 1994M01                M        NA         NA
-5       41 1994M02 0.00000000 1994M02                M        NA         NA
-Rows with both series_id and vintage_id: 12192
-Inserted 0 new periods
-Inserted 12192 new data points
-Inserted 0 new flags
+Note: These vintages for table i_32_6ms are not new, they will not be inserted again.
+Skipping import for i_32_6ms due to vintage preparation issue: These vintages for table i_32_6ms are not new, they will not be inserted again.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 32/32 vintages
-All vintage hashes updated successfully
+No vintages need hash updates.
 Processing single table ID 220...
 Processing table 1/1: ID 220, keep_vintage = FALSE
 Table ID 220: Transaction committed successfully
@@ -447,8 +404,8 @@ No vintages need hash updates.
 Processing single table ID 257...
 Processing table 1/1: ID 257, keep_vintage = FALSE
 Table ID 257: Transaction committed successfully
-Table ID 257: Deleted 32 older vintages and 0 redundant vintages
+Table ID 257: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 32 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
