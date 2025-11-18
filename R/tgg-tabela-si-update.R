@@ -19,39 +19,7 @@ con <- DBI::dbConnect(RPostgres::Postgres(),
 # set schema search path
 DBI::dbExecute(con, "set search_path to platform")
 
-# setup series that we need for different sections
-makro_slo <-  c("SURS--0300230S--B1GQ--G1--Y--Q",
-                "SURS--0300230S--B1GQ--GO4--N--Q",
-                "SURS--0300230S--P31_S14_D--G1--Y--Q",
-                "SURS--0300230S--P31_S14_D--G4--N--Q",
-                "SURS--0300230S--P3_S13--G1--Y--Q",
-                "SURS--0300230S--P3_S13--G4--N--Q",
-                "SURS--0300230S--P5--G1--Y--Q",
-                "SURS--0300230S--P5--G4--N--Q",
-                "SURS--0300230S--P6--G1--Y--Q",
-                "SURS--0300230S--P6--G4--N--Q",
-                "SURS--0300230S--P7--G1--Y--Q",
-                "SURS--0300230S--P7--G4--N--Q")
 
-inflacija_slo <- c("SURS--H281S--1--M",
-                   "SURS--H281S--2--M")
-
-indpro_slo <- c("SURS--0457201S--B_TO_E--01--M",
-                "SURS--0457201S--B_TO_E--02--M")
-
-za_rast_slo <-  c("SURS--1701111S--sa--C[skd]--M",
-                  "SURS--1701111S--orig--C[skd]--M",
-                  "SURS--1957408S--SA--CC--M",
-                  "SURS--1957408S--O--CC--M",
-                  "SURS--2001303S--2--2--G--M",
-                  "SURS--2001303S--2--1--G--M",
-                  "SURS--2080006S--2--H+I+J+L+M+N--M",
-                  "SURS--2080006S--1--H+I+J+L+M+N--M")
-
-dolg_slo <- c("SURS--0314905S--B9--XDC_R_B1GQ--A",
-          "SURS--0314905S--GD--XDC_R_B1GQ--A")
-
-klima_slo <- "SURS--2855901S--1--2--M"
 
 process_codes_vectorized <- function(codes, con, schema = "platform", stotka = FALSE) {
   # Process all codes at once using map
@@ -61,12 +29,13 @@ process_codes_vectorized <- function(codes, con, schema = "platform", stotka = F
       list(
         df = sql_get_data_points_from_vintage(con, vin, schema) %>%
           rename(!!.x := value),
-        date = as_date(sql_get_date_published_from_vintage(vin, con, schema))
+        date = sql_get_date_published_from_vintage(vin, con, schema)
       )
     })
   # Extract all dates
   dates <- map(results, "date") |>
     unlist() |>
+    as_datetime(tz = "CET") |>
     as_date()
 
   # Extract and combine all dataframes
@@ -93,7 +62,7 @@ process_codes_rates <- function(codes, con, schema = "platform", stotka = FALSE)
       list(
         df = sql_get_data_points_from_vintage(con, vin, schema) %>%
           rename(!!.x := value),
-        date = as_date(sql_get_date_published_from_vintage(vin, con, schema))
+        date = as_date(lubridate::with_tz(sql_get_date_published_from_vintage(vin, con, schema)), "CET")
       )
     })
   # Extract all dates
@@ -137,6 +106,40 @@ process_codes_rates <- function(codes, con, schema = "platform", stotka = FALSE)
 
 print("start preparing SURS data from the database")
 
+# setup series that we need for different sections
+makro_slo <-  c("SURS--0300230S--B1GQ--G1--Y--Q",
+                "SURS--0300230S--B1GQ--GO4--N--Q",
+                "SURS--0300230S--P31_S14_D--G1--Y--Q",
+                "SURS--0300230S--P31_S14_D--G4--N--Q",
+                "SURS--0300230S--P3_S13--G1--Y--Q",
+                "SURS--0300230S--P3_S13--G4--N--Q",
+                "SURS--0300230S--P5--G1--Y--Q",
+                "SURS--0300230S--P5--G4--N--Q",
+                "SURS--0300230S--P6--G1--Y--Q",
+                "SURS--0300230S--P6--G4--N--Q",
+                "SURS--0300230S--P7--G1--Y--Q",
+                "SURS--0300230S--P7--G4--N--Q")
+
+inflacija_slo <- c("SURS--H281S--1--M",
+                   "SURS--H281S--2--M")
+
+indpro_slo <- c("SURS--0457201S--B_TO_E--01--M",
+                "SURS--0457201S--B_TO_E--02--M")
+
+za_rast_slo <-  c("SURS--1701111S--sa--C[skd]--M",
+                  "SURS--1701111S--orig--C[skd]--M",
+                  "SURS--1957408S--SA--CC--M",
+                  "SURS--1957408S--O--CC--M",
+                  "SURS--2001303S--2--2--G--M",
+                  "SURS--2001303S--2--1--G--M",
+                  "SURS--2080006S--2--H+I+J+L+M+N--M",
+                  "SURS--2080006S--1--H+I+J+L+M+N--M")
+
+dolg_slo <- c("SURS--0314905S--B9--XDC_R_B1GQ--A",
+              "SURS--0314905S--GD--XDC_R_B1GQ--A")
+
+klima_slo <- "SURS--2855901S--1--2--M"
+
 makro <- process_codes_vectorized(makro_slo, con)
 
 inflacija <- process_codes_vectorized(inflacija_slo, stotka = TRUE,con)
@@ -165,6 +168,27 @@ indpro <-  indpro |>
   bind_rows(rast)
 
 print("SURS data from the database ready")
+
+
+print("start preparing BS data from the database")
+
+pl_b_slo <- c("BS--i_32_6ms--3--M",
+              "BS--i_32_6ms--0--M")
+pl_b <- process_codes_vectorized(pl_b_slo, con)
+
+pl_b <- klima[0,] |>
+  bind_rows(pl_b) |>
+  select(any_of(names(klima)))
+
+print("start preparing Eurostat data from the database")
+money_slo <- c("EUROSTAT--teimf200--USD--M")
+
+money <- process_codes_vectorized(money_slo, con)
+
+money <- klima[0,] |>
+  bind_rows(money) |>
+  select(any_of(names(klima)))
+
 ################################################################################
 # Data series from Excel files on the network drives
 ################################################################################
@@ -351,7 +375,7 @@ path <- paste(path, most_recent_year, most_recent_month, "Izvoz blaga - real.xls
 
 ex <- rates_from_excel(path, "ex")
 
-ex <- klima[0,] |>
+ex <- pl_b |>
   bind_rows(ex) |>
   select(any_of(names(klima)))
 
@@ -618,12 +642,11 @@ print("Release dates ready, start writing to file")
 # write tto excel table
 ################################################################################
 # load file
-wb <- wb_load("\\\\192.168.38.7\\data$\\TGG/TGG_tabela_slovenska_auto_update.xlsx")
+wb <- wb_load("\\\\192.168.38.7\\data$\\GT/GT_tabela_slovenska_auto_update.xlsx")
 # clear cells to be updated
-wb$clean_sheet(sheet = 1, dims = "B3:C14", styles = FALSE)
-wb$clean_sheet(sheet = 1, dims = "E3:J15", styles = FALSE)
-wb$clean_sheet(sheet = 1, dims = "B18:C59", styles = FALSE)
-wb$clean_sheet(sheet = 1, dims = "E18:J59", styles = FALSE)
+wb$clean_sheet(sheet = 1, dims = "B3:C59", styles = FALSE)
+wb$clean_sheet(sheet = 1, dims = "E3:J59", styles = FALSE)
+
 
 # makro
 wb$add_data(sheet = "tabela",  x = makro[2],  dims = "B2")
@@ -632,9 +655,9 @@ wb$add_data(sheet = "tabela",  x = data.frame(datum = rep(makro_datumi[2],12)),
             colNames = FALSE,dims = "C3")
 
 # uvozizvoz
-wb$add_data(sheet = "tabela",  x = im_ex[0,3:8],  dims = "E15")
-wb$add_data(sheet = "tabela",  x = im_ex[3:8],  dims = "E18",
-            colNames = FALSE,  na.strings = ":")
+wb$add_data(sheet = "tabela",  x = im_ex[2],  dims = "B16", colNames = FALSE)
+wb$add_data(sheet = "tabela",  x = im_ex[3:8],  dims = "E15",
+            na.strings = ":")
 wb$add_data(sheet = "tabela",  x = data.frame(datum1 = rep(im_ex_datumi[1],4),
                                               datum2 = rep(im_ex_datumi[2],4)),
             colNames = FALSE,dims = "B18")
@@ -706,17 +729,19 @@ wb$add_data(sheet = "tabela",
 # meseci zadnji
 wb$add_data(sheet = "tabela",  x =  klima[2:4,3:8],  dims = "E60", na.strings = ":")
 
-# prazne celice
-empty <- data.frame(a = NA, b = NA, c= NA, d = NA, e = NA, f = NA)
-wb$add_data(sheet = "tabela",  x = empty[1,],  dims = "E16",  col_names = FALSE, na.strings = ":")
-wb$add_data(sheet = "tabela",  x = empty[1,],  dims = "E17",  col_names = FALSE, na.strings = ":")
+wb$add_data(sheet = "tabela",  x =  money[3:8],  dims = "E63", na.strings = ":", colNames = FALSE)
+
+# # prazne celice
+# empty <- data.frame(a = NA, b = NA, c= NA, d = NA, e = NA, f = NA)
+# wb$add_data(sheet = "tabela",  x = empty[1,],  dims = "E16",  col_names = FALSE, na.strings = ":")
+# wb$add_data(sheet = "tabela",  x = empty[1,],  dims = "E17",  col_names = FALSE, na.strings = ":")
 
 # write back to file
-wb_save(wb, "\\\\192.168.38.7\\data$\\TGG/TGG_tabela_slovenska_auto_update.xlsx")
+wb_save(wb, "\\\\192.168.38.7\\data$\\GT/GT_tabela_slovenska_auto_update.xlsx")
 
 # First create fallback filename with timestamp
 timestamp <- format(Sys.time(), "%Y-%m-%d_%H-%M-%S")
-original_path <- "\\\\192.168.38.7\\data$\\TGG/TGG_tabela_slovenska_auto_update.xlsx"
+original_path <- "\\\\192.168.38.7\\data$\\GT/GT_tabela_slovenska_auto_update.xlsx"
 backup_path <- sub("\\.xlsx$", paste0("_", timestamp, ".xlsx"), original_path)
 
 # Try to save, if fails, use backup path
@@ -751,9 +776,9 @@ email_list <- c("maja.zaloznik@gmail.com",
                 "Laura.Juznik-Rotar@gov.si",
                 "Barbara.Bratuz-Ferk@gov.si")
 
-email_body <- "To je avtomatsko generirano sporo\u010dilo o posodobitvi podatkov v tabeli TGG_tabela_slovenska_auto_update.<br><br>Tvoj Umar Data Bot &#129302;"
+email_body <- "To je avtomatsko generirano sporo\u010dilo o posodobitvi podatkov v tabeli GT_tabela_slovenska_auto_update.<br><br>Tvoj Umar Data Bot &#129302;"
 
 text_msg <- gmailr::gm_mime() %>% gmailr::gm_bcc(email_list) %>%
-  gmailr::gm_subject("Posodobitev slovenske TGG tabele") %>%
+  gmailr::gm_subject("Posodobitev slovenske GT tabele") %>%
   gmailr::gm_html_body(email_body)
 gmailr::gm_send_message(text_msg)

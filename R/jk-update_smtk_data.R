@@ -54,4 +54,4 @@ message("Output written to:", output_file, "\n")
 message("Q sheet rows:", nrow(q_data), "\n")
 message("M sheet rows:", nrow(m_data), "\n")
 
-source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\umar-add_new_data_full.R")
+# source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\umar-add_new_data_full.R")

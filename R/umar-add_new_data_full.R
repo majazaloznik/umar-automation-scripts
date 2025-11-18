@@ -42,16 +42,24 @@ for (i in seq(length(meta_filenames))){
 }
 
 # cleanup hashes for all tables.
-UMARimportR::vintage_cleanup(con, schema = "platform")
+table_ids <- c(57:63, 74, 80, 226:228, 232, 260, 261:265, 306, 308, 309, 313)
+# clean up vintages and add new hashes
+purrr::map(table_ids, ~UMARimportR::vintage_cleanup(con, .x,
+                                                   schema = "platform"))
 
-# update materialised views
+
+# # update materialised views
 DBI::dbExecute(con, "set search_path to views")
+DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_latest_series_insolvency_skd21")
+DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_latest_series_stecaji_skd21")
 
 
-
-#
 # # run over single data file
 # initials <- "AJPES"
 # meta_filename <- paste0(dir_path, "\\", initials, "\\umar_serije_metadata_", initials, ".xlsx")
 # data_filename <- paste0(dir_path, "\\", initials,"\\umar_serije_podatki_", initials, ".xlsx")
 # update_data(meta_filename, data_filename, con, schema, path = log_path)
+# DBI::dbExecute(con, "set search_path to views")
+# DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_latest_series_insolvency_skd21")
+# DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_latest_series_stecaji_skd21")
+# DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW latest_data_points")

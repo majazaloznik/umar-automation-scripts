@@ -7,8 +7,8 @@ con <- DBI::dbConnect(RPostgres::Postgres(),
                       dbname = "platform",
                       host = "localhost",
                       port = 5432,
-                      user = "majaz",
-                      password = Sys.getenv("PG_MZ_PSW"),
+                      user = "postgres",
+                      password = Sys.getenv("PG_PG_PSW"),
                       client_encoding = "utf8")
 
 

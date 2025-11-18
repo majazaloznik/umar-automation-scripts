@@ -1,9 +1,9 @@
-# devtools::install_github("majazaloznik/SURSfetchR")
+# devtools::install_github("majazaloznik/EUROSTATfetchR")
 # devtools::install_github("majazaloznik/UMARimportR")
 # devtools::install_github("majazaloznik/UMARaccessR")
 
 library(dplyr)
-library(SURSfetchR)
+library(EUROSTATfetchR)
 # logging in as  maintainer
 con <- DBI::dbConnect(RPostgres::Postgres(),
                       dbname = "platform",
@@ -13,24 +13,23 @@ con <- DBI::dbConnect(RPostgres::Postgres(),
                       password = Sys.getenv("PG_PG_PSW"),
                       client_encoding = "utf8")
 # set schema search path
-DBI::dbExecute(con, "set search_path to platform")
+# DBI::dbExecute(con, "set search_path to platform")
 # get tables to update
-update_tables <- UMARaccessR::sql_get_tables_from_source(con, "platform", 1, TRUE)
-# update all the tables from SUR
-purrr::walk(update_tables$code, ~SURS_import_data_points(.x, con, schema = "platform"))
-# cleanup hashes for all tables.
-UMARimportR::vintage_cleanup(con, schema = "platform")
+update_tables <- UMARaccessR::sql_get_tables_from_source(con, "platform", 7, TRUE)
+# update all the tables from eurosat
+purrr::walk(update_tables$code, ~EUROSTAT_import_data_points(.x, con, schema = "platform"))
+# cleanup hashes for Eurostat tables.
+purrr::walk(update_tables$id, ~UMARimportR::vintage_cleanup(con, .x, schema = "platform"))
+
 
 # # # # import single table
-# SURS_import_structure("0701087S", con, "platform", all_levels = FALSE)
+# EUROSTAT_import_structure( con, "sts_sepr_m", source_id = 7,
+#                            schema = "platform", all_levels = FALSE,
+#                            keep_vintage = FALSE)
 
-# if table is archived and no timeval is defined, then you need
-# debugonce(get_table_levels_from_px)
-# and then mtd$variables[[1]]$time <- TRUE or whichever dimension is the time one
-# then continue normally.
 
 # # update single table
-# SURS_import_data_points("0701087S", con, "platform")
+# EUROSTAT_import_data_points("teina010", con, "platform")
 # if data point import failed but vintages were created, run
 # UMARimportR::remove_empty_vintages(con, "platform")
 
@@ -45,5 +44,5 @@ UMARimportR::vintage_cleanup(con, schema = "platform")
 DBI::dbExecute(con, "set search_path to views")
 DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_latest_data_points")
 
-source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\update_indicator_report.R")
+#source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\update_indicator_report.R")
 
