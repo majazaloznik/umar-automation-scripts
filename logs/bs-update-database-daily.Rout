@@ -115,60 +115,8 @@ Content type 'application/octet-stream' length 145763 bytes (142 KB)
 downloaded 142 KB
 
 File has BOM, using UTF-16LE
-trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/10_denar_mfi/70_obvez_mfi/I1_6CCS.px'
-Content type 'application/octet-stream' length 145763 bytes (142 KB)
-==================================================
-downloaded 142 KB
-
-File has BOM, using UTF-16LE
-trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/10_denar_mfi/70_obvez_mfi/I1_6CCS.px'
-Content type 'application/octet-stream' length 145763 bytes (142 KB)
-==================================================
-downloaded 142 KB
-
-File has BOM, using UTF-16LE
-trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/10_denar_mfi/70_obvez_mfi/I1_6CCS.px'
-Content type 'application/octet-stream' length 145763 bytes (142 KB)
-==================================================
-downloaded 142 KB
-
-File has BOM, using UTF-16LE
-
-=== PostgreSQL Column Names ===
-value, Frekvenca, Postavke, Datum, time, flag, Valuta, interval_id
-Data loaded into tmp_prepared_data. Sample rows:
-  Valuta Frekvenca Postavke   Datum value    time flag interval_id
-1      1         0        0 2004M12    NA 2004M12                M
-2      1         0        1 2004M12    NA 2004M12                M
-3      1         0        2 2004M12    NA 2004M12                M
-4      1         0        3 2004M12    NA 2004M12                M
-5      1         0        4 2004M12    NA 2004M12                M
-Matching dimensions:
-  - Valuta (ID: 494)
-  - Frekvenca (ID: 495)
-  - Postavke (ID: 496)
-  - Matched dimension: Valuta -> column: Valuta
-  - Matched dimension: Frekvenca -> column: Frekvenca
-  - Matched dimension: Postavke -> column: Postavke
-Updated series_id for 5522 rows
-Updated vintage_id for 5522 rows
-After matching. Sample rows:
-  Valuta Frekvenca Postavke   Datum value    time flag interval_id series_id
-1      1         0        0 2004M12    NA 2004M12                M     56872
-2      1         0        0 2005M01    NA 2005M01                M     56872
-3      1         0        0 2005M04    NA 2005M04                M     56872
-4      1         0        0 2005M03    NA 2005M03                M     56872
-5      1         0        0 2005M02    NA 2005M02                M     56872
-  vintage_id
-1    7312936
-2    7312936
-3    7312936
-4    7312936
-5    7312936
-Rows with both series_id and vintage_id: 5522
-Inserted 0 new periods
-Inserted 5522 new data points
-Inserted 0 new flags
+Note: These vintages for table I1_6CCS are not new, they will not be inserted again.
+Skipping import for I1_6CCS due to vintage preparation issue: These vintages for table I1_6CCS are not new, they will not be inserted again.
 Importing data points from: I1_6DDS into schema platform
 trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/10_denar_mfi/70_obvez_mfi/I1_6DDS.px'
 Content type 'application/octet-stream' length 146973 bytes (143 KB)
@@ -242,8 +190,8 @@ File has BOM, using UTF-16LE
 Note: These vintages for table i_32_6ms are not new, they will not be inserted again.
 Skipping import for i_32_6ms due to vintage preparation issue: These vintages for table i_32_6ms are not new, they will not be inserted again.
 Calculating hashes for new vintages...
-Removed 2 empty vintages.
-Processed 35/35 vintages
+No empty vintages found.
+Processed 4/4 vintages
 All vintage hashes updated successfully
 Processing single table ID 220...
 Processing table 1/1: ID 220, keep_vintage = FALSE
@@ -369,9 +317,9 @@ No vintages need hash updates.
 Processing single table ID 242...
 Processing table 1/1: ID 242, keep_vintage = FALSE
 Table ID 242: Transaction committed successfully
-Table ID 242: Deleted 22 older vintages and 0 redundant vintages
+Table ID 242: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 22 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
