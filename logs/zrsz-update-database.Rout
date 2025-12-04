@@ -1,23 +1,66 @@
 UMAR proxy is set!Importing data points from: BO into schema platform
 trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/Mesecno_gibanje_BO_1992-2025.xlsx'
-Content type 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' length 24562 bytes (23 KB)
+Content type 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' length 25104 bytes (24 KB)
 ==================================================
-downloaded 23 KB
+downloaded 24 KB
 
+
+=== PostgreSQL Column Names ===
+value, time, Vrednost, flag
+Data loaded into tmp_prepared_data. Sample rows:
+     time value Vrednost flag
+1 1987M01 14526        0     
+2 1987M02 14593        0     
+3 1987M03 14336        0     
+4 1987M04 14068        0     
+5 1987M05 13882        0     
+Matching dimensions:
+  - Vrednost (ID: 92)
+  - Matched dimension: Vrednost -> column: Vrednost
+Updated series_id for 466 rows
+Updated vintage_id for 466 rows
+After matching. Sample rows:
+     time value Vrednost flag series_id vintage_id
+1 1987M01 14526        0          33963    7317870
+2 1987M02 14593        0          33963    7317870
+3 1987M03 14336        0          33963    7317870
+4 1987M04 14068        0          33963    7317870
+5 1987M05 13882        0          33963    7317870
+Rows with both series_id and vintage_id: 466
+Inserted 0 new periods
+Inserted 466 new data points
+Inserted 0 new flags
 Importing data points from: BO_OS into schema platform
 trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Stopnje/Stopnja_BO_OS_2005-2025.xls'
-Content type 'application/vnd.ms-excel' length 275968 bytes (269 KB)
+Content type 'application/vnd.ms-excel' length 276480 bytes (270 KB)
 ==================================================
-downloaded 269 KB
+downloaded 270 KB
 
+
+=== PostgreSQL Column Names ===
+value, time, Vrednost, flag
+Data loaded into tmp_prepared_data. Sample rows:
+     time     value Vrednost flag
+1 2005M01 10.384209        0     
+2 2005M02 10.342438        0     
+3 2005M03 10.239058        0     
+4 2005M04 10.136737        0     
+5 2005M05  9.930898        0     
+Matching dimensions:
+  - Vrednost (ID: 281)
+  - Matched dimension: Vrednost -> column: Vrednost
+Updated series_id for 249 rows
+Updated vintage_id for 249 rows
+After matching. Sample rows:
+     time     value Vrednost flag series_id vintage_id
+1 2005M01 10.384209        0          54956    7317871
+2 2005M02 10.342438        0          54956    7317871
+3 2005M03 10.239058        0          54956    7317871
+4 2005M04 10.136737        0          54956    7317871
+5 2005M05  9.930898        0          54956    7317871
+Rows with both series_id and vintage_id: 249
+Inserted 0 new periods
+Inserted 248 new data points
+Inserted 0 new flags
 Error: Failed to fetch row: ERROR:  relation "latest_data_points" does not exist
-In addition: Warning messages:
-1: In prepare_vintage_table(meta, df, con, schema) :
-  These monthly vintages for table BO are not new, they will not be inserted again.
-2: In ZRSZ_import_data_points(meta, con, schema = "platform") :
-  No new vintages to insert, exiting.
-3: In prepare_vintage_table(meta, df, con, schema) :
-  These monthly vintages for table BO_OS are not new, they will not be inserted again.
-4: In ZRSZ_import_data_points(meta, con, schema = "platform") :
-  No new vintages to insert, exiting.
 Execution halted
