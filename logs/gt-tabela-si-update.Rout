@@ -1,0 +1,55 @@
+UMAR proxy is set!
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: 'lubridate'
+
+The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union
+
+[1] "start preparing SURS data from the database"
+[1] "SURS data from the database ready"
+[1] "start preparing BS data from the database"
+[1] "start preparing Eurostat data from the database"
+[1] "start preparing ECB data from the database"
+[1] "start preparing data from local drives"
+[1] "Local data ready"
+[1] "start getting release calendar dates"
+[1] "Release dates ready, start writing to file"
+File saved successfully to original location
+File saved successfully to original location
+[1] "Writing to file done, now emailing everyone."
+
+Attaching package: 'gmailr'
+
+The following object is masked from 'package:lubridate':
+
+    date
+
+The following object is masked from 'package:dplyr':
+
+    id
+
+The following object is masked from 'package:utils':
+
+    history
+
+The following objects are masked from 'package:base':
+
+    body, date, labels, message
+
+Auto-refreshing stale OAuth token.
+Warning message:
+There was 1 warning in `filter()`.
+i In argument: `datum <= Sys.Date() | datum == min(datum[datum > Sys.Date()])`.
+Caused by warning in `min.default()`:
+! no non-missing arguments to min; returning Inf 
