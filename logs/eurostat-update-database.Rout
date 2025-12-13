@@ -115,46 +115,8 @@ Skipping import for teiis010 due to vintage preparation issue: These vintages fo
 =================================================================
 Importing data points from: teiis011
 =================================================================
-
-=== PostgreSQL Column Names ===
-value, TIME_PERIOD, nace_r2, s_adj, unit, geo, flag, interval_id, time, indic_bt
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id indic_bt nace_r2 s_adj        unit  geo flag TIME_PERIOD value
-1           M  PRC_IMP     B-D   NSA PCH_M12_NSA EA20 <NA>  2024-12-01   0.5
-2           M  PRC_IMP     B-D   NSA PCH_M12_NSA EA20 <NA>  2025-01-01   2.1
-3           M  PRC_IMP     B-D   NSA PCH_M12_NSA EA20 <NA>  2025-02-01   2.5
-4           M  PRC_IMP     B-D   NSA PCH_M12_NSA EA20 <NA>  2025-03-01   1.1
-5           M  PRC_IMP     B-D   NSA PCH_M12_NSA EA20 <NA>  2025-04-01  -1.1
-     time
-1 2024M12
-2 2025M01
-3 2025M02
-4 2025M03
-5 2025M04
-Matching dimensions:
-  - unit (ID: 698)
-  - geo (ID: 699)
-  - Matched dimension: unit -> column: unit
-  - Matched dimension: geo -> column: geo
-Updated series_id for 22 rows
-Updated vintage_id for 22 rows
-After matching. Sample rows:
-  interval_id indic_bt nace_r2 s_adj       unit  geo flag TIME_PERIOD value
-1           M  PRC_IMP     B-D   NSA PCH_M1_NSA EA20    i  2025-10-01  -0.1
-2           M  PRC_IMP     B-D   NSA PCH_M1_NSA EA20 <NA>  2024-12-01   0.3
-3           M  PRC_IMP     B-D   NSA PCH_M1_NSA EA20 <NA>  2025-01-01   0.9
-4           M  PRC_IMP     B-D   NSA PCH_M1_NSA EA20 <NA>  2025-02-01   0.3
-5           M  PRC_IMP     B-D   NSA PCH_M1_NSA EA20 <NA>  2025-03-01  -1.3
-     time series_id vintage_id
-1 2025M10    117522    7326068
-2 2024M12    117522    7326068
-3 2025M01    117522    7326068
-4 2025M02    117522    7326068
-5 2025M03    117522    7326068
-Rows with both series_id and vintage_id: 22
-Inserted 0 new periods
-Inserted 22 new data points
-Inserted 2 new flags
+Note: These vintages for table teiis011 are not new, they will not be inserted again.
+Skipping import for teiis011 due to vintage preparation issue: These vintages for table teiis011 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teiis080
@@ -165,40 +127,8 @@ Skipping import for teiis080 due to vintage preparation issue: These vintages fo
 =================================================================
 Importing data points from: teiis500
 =================================================================
-
-=== PostgreSQL Column Names ===
-value, TIME_PERIOD, nace_r2, unit, geo, flag, interval_id, time, indic_bt
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id indic_bt nace_r2       unit  geo flag TIME_PERIOD value    time
-1           M      PRD       F PCH_M12_CA EA20 <NA>  2024-11-01   0.5 2024M11
-2           M      PRD       F PCH_M12_CA EA20 <NA>  2024-12-01   0.3 2024M12
-3           M      PRD       F PCH_M12_CA EA20 <NA>  2025-01-01   0.6 2025M01
-4           M      PRD       F PCH_M12_CA EA20 <NA>  2025-02-01  -0.3 2025M02
-5           M      PRD       F PCH_M12_CA EA20 <NA>  2025-03-01  -1.2 2025M03
-Matching dimensions:
-  - unit (ID: 702)
-  - geo (ID: 703)
-  - Matched dimension: unit -> column: unit
-  - Matched dimension: geo -> column: geo
-Updated series_id for 22 rows
-Updated vintage_id for 22 rows
-After matching. Sample rows:
-  interval_id indic_bt nace_r2       unit  geo flag TIME_PERIOD value    time
-1           M      PRD       F PCH_M1_SCA EA20    i  2025-09-01  -0.5 2025M09
-2           M      PRD       F PCH_M1_SCA EA20 <NA>  2024-11-01   1.2 2024M11
-3           M      PRD       F PCH_M1_SCA EA20 <NA>  2024-12-01   0.1 2024M12
-4           M      PRD       F PCH_M1_SCA EA20 <NA>  2025-01-01   0.7 2025M01
-5           M      PRD       F PCH_M1_SCA EA20 <NA>  2025-02-01  -1.2 2025M02
-  series_id vintage_id
-1    117526    7326070
-2    117526    7326070
-3    117526    7326070
-4    117526    7326070
-5    117526    7326070
-Rows with both series_id and vintage_id: 22
-Inserted 0 new periods
-Inserted 22 new data points
-Inserted 2 new flags
+Note: These vintages for table teiis500 are not new, they will not be inserted again.
+Skipping import for teiis500 due to vintage preparation issue: These vintages for table teiis500 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teiis240
@@ -228,11 +158,11 @@ After matching. Sample rows:
 4           M  VOL_SLS     G47 PCH_M1_SCA EA20 <NA>  2025-01-01   0.0 2025M01
 5           M  VOL_SLS     G47 PCH_M1_SCA EA20 <NA>  2025-02-01   0.2 2025M02
   series_id vintage_id
-1    117528    7326072
-2    117528    7326072
-3    117528    7326072
-4    117528    7326072
-5    117528    7326072
+1    117528    7326074
+2    117528    7326074
+3    117528    7326074
+4    117528    7326074
+5    117528    7326074
 Rows with both series_id and vintage_id: 24
 Inserted 0 new periods
 Inserted 24 new data points
@@ -287,7 +217,8 @@ Note: These vintages for table prc_hicp_manr are not new, they will not be inser
 Skipping import for prc_hicp_manr due to vintage preparation issue: These vintages for table prc_hicp_manr are not new, they will not be inserted again.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 2/2 vintages
+All vintage hashes updated successfully
 Processing single table ID 343...
 Processing table 1/1: ID 343, keep_vintage = TRUE
 Table ID 343: Transaction committed successfully
@@ -478,9 +409,9 @@ No vintages need hash updates.
 Processing single table ID 366...
 Processing table 1/1: ID 366, keep_vintage = FALSE
 Table ID 366: Transaction committed successfully
-Table ID 366: Deleted 2 older vintages and 0 redundant vintages
+Table ID 366: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 2 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
@@ -500,9 +431,9 @@ No vintages need hash updates.
 Processing single table ID 368...
 Processing table 1/1: ID 368, keep_vintage = FALSE
 Table ID 368: Transaction committed successfully
-Table ID 368: Deleted 2 older vintages and 0 redundant vintages
+Table ID 368: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 2 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
@@ -511,9 +442,9 @@ No vintages need hash updates.
 Processing single table ID 369...
 Processing table 1/1: ID 369, keep_vintage = FALSE
 Table ID 369: Transaction committed successfully
-Table ID 369: Deleted 0 older vintages and 0 redundant vintages
+Table ID 369: Deleted 2 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 2 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
@@ -604,6 +535,3 @@ Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
-Warning message:
-In file.remove(progress_file) :
-  cannot remove file 'vintage_cleanup_progress.rds', reason 'Permission denied'
