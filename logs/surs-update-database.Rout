@@ -106,11 +106,75 @@ Importing data points from: 2001303S into schema platform
 Note: These vintages for table 2001303S are not new, they will not be inserted again.
 Skipping import for 2001303S due to vintage preparation issue: These vintages for table 2001303S are not new, they will not be inserted again.
 Importing data points from: 1957407S into schema platform
-Note: These vintages for table 1957407S are not new, they will not be inserted again.
-Skipping import for 1957407S due to vintage preparation issue: These vintages for table 1957407S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, MESEC, SKD.DEJAVNOST, raw_time, time, flag, VRSTA.INDEKSA, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.INDEKSA   MESEC value SKD.DEJAVNOST raw_time    time flag interval_id
+1           nom 2000M01  28.6            CC  2000M01 2000M01                M
+2           nom 2000M01  60.1             1  2000M01 2000M01                M
+3           nom 2000M01  19.7            11  2000M01 2000M01                M
+4           nom 2000M01  86.6            12  2000M01 2000M01                M
+5           nom 2000M01  20.5             2  2000M01 2000M01                M
+Matching dimensions:
+  - VRSTA INDEKSA (ID: 176)
+  - SKD DEJAVNOST (ID: 177)
+  - Matched dimension: VRSTA INDEKSA -> column: VRSTA.INDEKSA
+  - Matched dimension: SKD DEJAVNOST -> column: SKD.DEJAVNOST
+Updated series_id for 3720 rows
+Updated vintage_id for 3720 rows
+After matching. Sample rows:
+  VRSTA.INDEKSA   MESEC value SKD.DEJAVNOST raw_time    time flag interval_id
+1           nom 2025M04 162.5            11  2025M04 2025M04                M
+2           nom 2000M05  58.0            CC  2000M05 2000M05                M
+3           nom 2000M04  48.4            CC  2000M04 2000M04                M
+4           nom 2000M01  28.6            CC  2000M01 2000M01                M
+5           nom 2000M02  33.3            CC  2000M02 2000M02                M
+  series_id vintage_id
+1     41375    7326080
+2     41371    7326076
+3     41371    7326076
+4     41371    7326076
+5     41371    7326076
+Rows with both series_id and vintage_id: 3720
+Inserted 0 new periods
+Inserted 3720 new data points
+Inserted 72 new flags
 Importing data points from: 1957408S into schema platform
-Note: These vintages for table 1957408S are not new, they will not be inserted again.
-Skipping import for 1957408S due to vintage preparation issue: These vintages for table 1957408S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, MESEC, SKD.DEJAVNOST, raw_time, time, flag, VRSTA.PODATKA, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.PODATKA   MESEC value SKD.DEJAVNOST raw_time    time flag interval_id
+1             O 2000M01  62.1            CC  2000M01 2000M01                M
+2             O 2000M01 136.3             1  2000M01 2000M01                M
+3             O 2000M01  44.6            11  2000M01 2000M01                M
+4             O 2000M01 196.6            12  2000M01 2000M01                M
+5             O 2000M01  45.3             2  2000M01 2000M01                M
+Matching dimensions:
+  - VRSTA PODATKA (ID: 179)
+  - SKD DEJAVNOST (ID: 180)
+  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
+  - Matched dimension: SKD DEJAVNOST -> column: SKD.DEJAVNOST
+Updated series_id for 5580 rows
+Updated vintage_id for 5580 rows
+After matching. Sample rows:
+  VRSTA.PODATKA   MESEC value SKD.DEJAVNOST raw_time    time flag interval_id
+1             O 2000M02  71.5            CC  2000M02 2000M02                M
+2             O 2000M01  62.1            CC  2000M01 2000M01                M
+3            SA 2000M01 102.5            CC  2000M01 2000M01                M
+4            SA 2000M02 105.9            CC  2000M02 2000M02                M
+5           WDA 2000M01  62.1            CC  2000M01 2000M01                M
+  series_id vintage_id
+1     41383    7326088
+2     41383    7326088
+3     41384    7326089
+4     41384    7326089
+5     41385    7326090
+Rows with both series_id and vintage_id: 5580
+Inserted 0 new periods
+Inserted 5580 new data points
+Inserted 108 new flags
 Importing data points from: 1701110S into schema platform
 Note: These vintages for table 1701110S are not new, they will not be inserted again.
 Skipping import for 1701110S due to vintage preparation issue: These vintages for table 1701110S are not new, they will not be inserted again.
@@ -133,8 +197,40 @@ Importing data points from: 2164436S into schema platform
 Note: These vintages for table 2164436S are not new, they will not be inserted again.
 Skipping import for 2164436S due to vintage preparation issue: These vintages for table 2164436S are not new, they will not be inserted again.
 Importing data points from: 2222100S into schema platform
-Note: These vintages for table 2222100S are not new, they will not be inserted again.
-Skipping import for 2222100S due to vintage preparation issue: These vintages for table 2222100S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, MESEC, MERITVE, raw_time, time, flag, VRSTA.VOZILA, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.VOZILA   MESEC value MERITVE raw_time    time flag interval_id
+1          TOT 1998M01  4941       3  1998M01 1998M01                M
+2          TOT 1998M01  4585       4  1998M01 1998M01                M
+3          TOT 1998M01  3935       5  1998M01 1998M01                M
+4          TOT 1998M01  3651       6  1998M01 1998M01                M
+5            1 1998M01  4849       3  1998M01 1998M01                M
+Matching dimensions:
+  - VRSTA VOZILA (ID: 206)
+  - MERITVE (ID: 207)
+  - Matched dimension: VRSTA VOZILA -> column: VRSTA.VOZILA
+  - Matched dimension: MERITVE -> column: MERITVE
+Updated series_id for 26720 rows
+Updated vintage_id for 26720 rows
+After matching. Sample rows:
+  VRSTA.VOZILA   MESEC value MERITVE raw_time    time flag interval_id
+1          TOT 1998M01  4941       3  1998M01 1998M01                M
+2          TOT 1998M01  4585       4  1998M01 1998M01                M
+3          TOT 1998M01  3935       5  1998M01 1998M01                M
+4          TOT 1998M01  3651       6  1998M01 1998M01                M
+5            1 1998M01  4849       3  1998M01 1998M01                M
+  series_id vintage_id
+1     42055    7326106
+2     42075    7326126
+3     42095    7326146
+4     42115    7326166
+5     42056    7326107
+Rows with both series_id and vintage_id: 26720
+Inserted 0 new periods
+Inserted 26720 new data points
+Inserted 0 new flags
 Importing data points from: 0325203S into schema platform
 Note: These vintages for table 0325203S are not new, they will not be inserted again.
 Skipping import for 0325203S due to vintage preparation issue: These vintages for table 0325203S are not new, they will not be inserted again.
@@ -205,8 +301,38 @@ Importing data points from: 1701116S into schema platform
 Note: These vintages for table 1701116S are not new, they will not be inserted again.
 Skipping import for 1701116S due to vintage preparation issue: These vintages for table 1701116S are not new, they will not be inserted again.
 Importing data points from: 2222101S into schema platform
-Note: These vintages for table 2222101S are not new, they will not be inserted again.
-Skipping import for 2222101S due to vintage preparation issue: These vintages for table 2222101S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, MESEC, VRSTA.PODATKA, time, flag, interval_id, raw_time
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.PODATKA   MESEC    value raw_time    time flag interval_id
+1             1 1998M01 69.89000  1998M01 1998M01                M
+2             2 1998M01 78.50704  1998M01 1998M01                M
+3             3 1998M01 70.89854  1998M01 1998M01                M
+4             1 1998M02 90.04539  1998M02 1998M02                M
+5             2 1998M02 83.43531  1998M02 1998M02                M
+Matching dimensions:
+  - VRSTA PODATKA (ID: 537)
+  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
+Updated series_id for 1002 rows
+Updated vintage_id for 1002 rows
+After matching. Sample rows:
+  VRSTA.PODATKA   MESEC    value raw_time    time flag interval_id series_id
+1             1 1999M02 107.8861  1999M02 1999M02                M     57191
+2             1 1999M03 165.3033  1999M03 1999M03                M     57191
+3             1 1998M06 104.9814  1998M06 1998M06                M     57191
+4             1 1999M04 115.4119  1999M04 1999M04                M     57191
+5             1 1998M03 111.2694  1998M03 1998M03                M     57191
+  vintage_id
+1    7326186
+2    7326186
+3    7326186
+4    7326186
+5    7326186
+Rows with both series_id and vintage_id: 1002
+Inserted 0 new periods
+Inserted 1002 new data points
+Inserted 0 new flags
 Importing data points from: 0701087S into schema platform
 Note: These vintages for table 0701087S are not new, they will not be inserted again.
 Skipping import for 0701087S due to vintage preparation issue: These vintages for table 0701087S are not new, they will not be inserted again.
@@ -215,7 +341,9 @@ Note: These vintages for table 0457301S are not new, they will not be inserted a
 Skipping import for 0457301S due to vintage preparation issue: These vintages for table 0457301S are not new, they will not be inserted again.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 100/113 vintages
+Processed 113/113 vintages
+All vintage hashes updated successfully
 Processing single table ID 1...Processing single table ID 2...Processing single table ID 9...Processing single table ID 13...Processing single table ID 14...Processing single table ID 15...Processing single table ID 16...Processing single table ID 17...Processing single table ID 18...Processing single table ID 19...Processing single table ID 20...Processing single table ID 21...Processing single table ID 22...Processing single table ID 23...Processing single table ID 29...Processing single table ID 30...Processing single table ID 34...Processing single table ID 38...Processing single table ID 39...Processing single table ID 40...Processing single table ID 41...Processing single table ID 42...Processing single table ID 44...Processing single table ID 45...Processing single table ID 46...Processing single table ID 47...Processing single table ID 48...Processing single table ID 49...Processing single table ID 50...Processing single table ID 51...Processing single table ID 64...Processing single table ID 65...Processing single table ID 66...Processing single table ID 67...Processing single table ID 68...Processing single table ID 69...Processing single table ID 70...Processing single table ID 71...Processing single table ID 72...Processing single table ID 73...Processing single table ID 77...Processing single table ID 78...Processing single table ID 79...Processing single table ID 82...Processing single table ID 83...Processing single table ID 84...Processing single table ID 115...Processing single table ID 116...Processing single table ID 118...Processing single table ID 119...Processing single table ID 120...Processing single table ID 121...Processing single table ID 122...Processing single table ID 123...Processing single table ID 124...Processing single table ID 125...Processing single table ID 126...Processing single table ID 137...Processing single table ID 143...Processing single table ID 148...Processing single table ID 209...Processing single table ID 224...Processing single table ID 251...Processing single table ID 253...Processing single table ID 254...Processing single table ID 255...Processing single table ID 303...Processing single table ID 383...
 Error: Expecting a single string value: [type=character; extent=68].
 Execution halted
