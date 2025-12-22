@@ -227,7 +227,8 @@ Note: These vintages for table I2_4_4AS are not new, they will not be inserted a
 Skipping import for I2_4_4AS due to vintage preparation issue: These vintages for table I2_4_4AS are not new, they will not be inserted again.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 2/2 vintages
+All vintage hashes updated successfully
 Processing single table ID 220...
 Processing table 1/1: ID 220, keep_vintage = FALSE
 Table ID 220: Transaction committed successfully
@@ -283,6 +284,7 @@ Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
 No vintages need hash updates.
+Starting a new run (not resuming). Existing progress file will be overwritten.
 Processing single table ID 236...
 Processing table 1/1: ID 236, keep_vintage = FALSE
 Table ID 236: Transaction committed successfully
@@ -470,6 +472,7 @@ Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
 No vintages need hash updates.
+Starting a new run (not resuming). Existing progress file will be overwritten.
 Processing single table ID 404...
 Processing table 1/1: ID 404, keep_vintage = FALSE
 Table ID 404: Transaction committed successfully
@@ -488,4 +491,6 @@ Table ID 405: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
-Cleanup completed successfully. Removing progress file.
+Warning message:
+In file.remove(progress_file) :
+  cannot remove file 'vintage_cleanup_progress.rds', reason 'Permission denied'
