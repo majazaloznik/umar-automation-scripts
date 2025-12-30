@@ -91,8 +91,40 @@ Importing data points from: 0457302S into schema platform
 Note: These vintages for table 0457302S are not new, they will not be inserted again.
 Skipping import for 0457302S due to vintage preparation issue: These vintages for table 0457302S are not new, they will not be inserted again.
 Importing data points from: 0425002S into schema platform
-Note: These vintages for table 0425002S are not new, they will not be inserted again.
-Skipping import for 0425002S due to vintage preparation issue: These vintages for table 0425002S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, NAMENSKE.SKUPINE, INDEKS, raw_time, time, flag, MESEC, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+    MESEC NAMENSKE.SKUPINE value INDEKS raw_time    time flag interval_id
+1 2006M01           B_TO_E    NA     12  2006M01 2006M01                M
+2 2006M01           B_TO_E 100.3     03  2006M01 2006M01                M
+3 2006M01           B_TO_E 100.3     01  2006M01 2006M01                M
+4 2006M01           B_TO_E 103.4     02  2006M01 2006M01                M
+5 2006M01           B_TO_E    NA     06  2006M01 2006M01                M
+Matching dimensions:
+  - NAMENSKE SKUPINE (ID: 142)
+  - INDEKS (ID: 144)
+  - Matched dimension: NAMENSKE SKUPINE -> column: NAMENSKE.SKUPINE
+  - Matched dimension: INDEKS -> column: INDEKS
+Updated series_id for 13384 rows
+Updated vintage_id for 13384 rows
+After matching. Sample rows:
+    MESEC NAMENSKE.SKUPINE value INDEKS raw_time    time flag interval_id
+1 2006M01           B_TO_E    NA     12  2006M01 2006M01                M
+2 2006M01           B_TO_E 100.3     03  2006M01 2006M01                M
+3 2006M01           B_TO_E 100.3     01  2006M01 2006M01                M
+4 2006M01           B_TO_E 103.4     02  2006M01 2006M01                M
+5 2006M01           B_TO_E    NA     06  2006M01 2006M01                M
+  series_id vintage_id
+1     40994    7331017
+2     41001    7331024
+3     41008    7331031
+4     41015    7331038
+5     41022    7331045
+Rows with both series_id and vintage_id: 13384
+Inserted 0 new periods
+Inserted 13384 new data points
+Inserted 0 new flags
 Importing data points from: 0419030S into schema platform
 Note: These vintages for table 0419030S are not new, they will not be inserted again.
 Skipping import for 0419030S due to vintage preparation issue: These vintages for table 0419030S are not new, they will not be inserted again.
@@ -103,48 +135,8 @@ Importing data points from: 0886501S into schema platform
 Note: These vintages for table 0886501S are not new, they will not be inserted again.
 Skipping import for 0886501S due to vintage preparation issue: These vintages for table 0886501S are not new, they will not be inserted again.
 Importing data points from: 2001303S into schema platform
-
-=== PostgreSQL Column Names ===
-MESEC, INDEKS, value, VRSTA.PODATKA, SKD.DEJAVNOST, raw_time, time, flag, interval_id
-Data loaded into tmp_prepared_data. Sample rows:
-    MESEC INDEKS    value VRSTA.PODATKA  SKD.DEJAVNOST raw_time    time flag
-1 2000M01      1 27.35464             1              G  2000M01 2000M01     
-2 2000M01      1 26.31923             1             45  2000M01 2000M01     
-3 2000M01      1 25.53423             1 45.1+45.3+45.4  2000M01 2000M01     
-4 2000M01      1 32.33334             1           45.2  2000M01 2000M01     
-5 2000M01      1 26.79531             1             46  2000M01 2000M01     
-  interval_id
-1           M
-2           M
-3           M
-4           M
-5           M
-Matching dimensions:
-  - INDEKS (ID: 171)
-  - VRSTA PODATKA (ID: 172)
-  - SKD DEJAVNOST (ID: 174)
-  - Matched dimension: INDEKS -> column: INDEKS
-  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
-  - Matched dimension: SKD DEJAVNOST -> column: SKD.DEJAVNOST
-Updated series_id for 39186 rows
-Updated vintage_id for 39186 rows
-After matching. Sample rows:
-    MESEC INDEKS    value VRSTA.PODATKA SKD.DEJAVNOST raw_time    time flag
-1 2001M10      1 74.51126             1         47.19  2001M10 2001M10     
-2 2003M12      1 53.09764             1            47  2003M12 2003M12     
-3 2004M04      1 75.88961             1         47.19  2004M04 2004M04     
-4 2006M06      1 60.76957             1            47  2006M06 2006M06     
-5 2006M10      1 71.55829             1         47.19  2006M10 2006M10     
-  interval_id series_id vintage_id
-1           M     41317    7330963
-2           M     41275    7330921
-3           M     41317    7330963
-4           M     41275    7330921
-5           M     41317    7330963
-Rows with both series_id and vintage_id: 39186
-Inserted 0 new periods
-Inserted 39186 new data points
-Inserted 1134 new flags
+Note: These vintages for table 2001303S are not new, they will not be inserted again.
+Skipping import for 2001303S due to vintage preparation issue: These vintages for table 2001303S are not new, they will not be inserted again.
 Importing data points from: 1957407S into schema platform
 Note: These vintages for table 1957407S are not new, they will not be inserted again.
 Skipping import for 1957407S due to vintage preparation issue: These vintages for table 1957407S are not new, they will not be inserted again.
@@ -164,8 +156,40 @@ Importing data points from: 2013903S into schema platform
 Note: These vintages for table 2013903S are not new, they will not be inserted again.
 Skipping import for 2013903S due to vintage preparation issue: These vintages for table 2013903S are not new, they will not be inserted again.
 Importing data points from: 2080006S into schema platform
-Note: These vintages for table 2080006S are not new, they will not be inserted again.
-Skipping import for 2080006S due to vintage preparation issue: These vintages for table 2080006S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, VRSTA.PODATKA, SKD.DEJAVNOST, raw_time, time, flag, MESEC, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+    MESEC VRSTA.PODATKA value SKD.DEJAVNOST raw_time    time flag interval_id
+1 2010M01             1  63.6 G+H+I+J+L+M+N  2010M01 2010M01                M
+2 2010M01             1  62.4             G  2010M01 2010M01                M
+3 2010M01             1  46.1           G45  2010M01 2010M01                M
+4 2010M01             1  60.8           G46  2010M01 2010M01                M
+5 2010M01             1  70.8           G47  2010M01 2010M01                M
+Matching dimensions:
+  - VRSTA PODATKA (ID: 192)
+  - SKD DEJAVNOST (ID: 194)
+  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
+  - Matched dimension: SKD DEJAVNOST -> column: SKD.DEJAVNOST
+Updated series_id for 21090 rows
+Updated vintage_id for 21090 rows
+After matching. Sample rows:
+    MESEC VRSTA.PODATKA value SKD.DEJAVNOST raw_time    time flag interval_id
+1 2013M03             3    NA             L  2013M03 2013M03                M
+2 2010M01             1  63.6 G+H+I+J+L+M+N  2010M01 2010M01                M
+3 2010M01             1  62.4             G  2010M01 2010M01                M
+4 2010M01             1  46.1           G45  2010M01 2010M01                M
+5 2010M01             1  60.8           G46  2010M01 2010M01                M
+  series_id vintage_id
+1     41640    7331141
+2     41572    7331073
+3     41575    7331076
+4     41578    7331079
+5     41581    7331082
+Rows with both series_id and vintage_id: 21090
+Inserted 0 new periods
+Inserted 21090 new data points
+Inserted 1110 new flags
 Importing data points from: 0701015S into schema platform
 Note: These vintages for table 0701015S are not new, they will not be inserted again.
 Skipping import for 0701015S due to vintage preparation issue: These vintages for table 0701015S are not new, they will not be inserted again.
@@ -185,11 +209,67 @@ Importing data points from: 0314905S into schema platform
 Note: These vintages for table 0314905S are not new, they will not be inserted again.
 Skipping import for 0314905S due to vintage preparation issue: These vintages for table 0314905S are not new, they will not be inserted again.
 Importing data points from: H281S into schema platform
-Note: These vintages for table H281S are not new, they will not be inserted again.
-Skipping import for H281S due to vintage preparation issue: These vintages for table H281S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, MESEC, INDEKS, time, flag, interval_id, raw_time
+Data loaded into tmp_prepared_data. Sample rows:
+  INDEKS   MESEC value raw_time    time flag interval_id
+1      1 1991M01 105.8  1991M01 1991M01                M
+2      2 1991M01 151.2  1991M01 1991M01                M
+3      3 1991M01 151.2  1991M01 1991M01                M
+4      1 1991M02 107.9  1991M02 1991M02                M
+5      2 1991M02 148.7  1991M02 1991M02                M
+Matching dimensions:
+  - INDEKS (ID: 223)
+  - Matched dimension: INDEKS -> column: INDEKS
+Updated series_id for 1260 rows
+Updated vintage_id for 1260 rows
+After matching. Sample rows:
+  INDEKS   MESEC value raw_time    time flag interval_id series_id vintage_id
+1      1 1991M07 105.7  1991M07 1991M07                M     44896    7331184
+2      1 1991M01 105.8  1991M01 1991M01                M     44896    7331184
+3      1 1991M02 107.9  1991M02 1991M02                M     44896    7331184
+4      1 1991M08 108.8  1991M08 1991M08                M     44896    7331184
+5      1 1991M04 105.0  1991M04 1991M04                M     44896    7331184
+Rows with both series_id and vintage_id: 1260
+Inserted 0 new periods
+Inserted 1260 new data points
+Inserted 0 new flags
 Importing data points from: 0325220S into schema platform
-Note: These vintages for table 0325220S are not new, they will not be inserted again.
-Skipping import for 0325220S due to vintage preparation issue: These vintages for table 0325220S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, TRANSAKCIJA, SEKTOR, raw_time, time, flag, ÈETRTLETJE, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  ÈETRTLETJE TRANSAKCIJA value SEKTOR raw_time   time flag interval_id
+1     2005Q1       P7REC    NA    S.1   2005Q1 2005Q1                Q
+2     2005Q2       P7REC    NA    S.1   2005Q2 2005Q2                Q
+3     2005Q3       P7REC    NA    S.1   2005Q3 2005Q3                Q
+4     2005Q4       P7REC    NA    S.1   2005Q4 2005Q4                Q
+5     2006Q1       P7REC    NA    S.1   2006Q1 2006Q1                Q
+Matching dimensions:
+  - TRANSAKCIJA (ID: 240)
+  - SEKTOR (ID: 241)
+  - Matched dimension: TRANSAKCIJA -> column: TRANSAKCIJA
+  - Matched dimension: SEKTOR -> column: SEKTOR
+Updated series_id for 51128 rows
+Updated vintage_id for 51128 rows
+After matching. Sample rows:
+  ÈETRTLETJE TRANSAKCIJA    value SEKTOR raw_time   time flag interval_id
+1     2025Q3      D41REC       NA   S.1N   2025Q3 2025Q3                Q
+2     2019Q2      D41PAY 102.3107    S.2   2019Q2 2019Q2                Q
+3     2005Q1       P7REC       NA    S.1   2005Q1 2005Q1                Q
+4     2005Q2       P7REC       NA    S.1   2005Q2 2005Q2                Q
+5     2005Q3       P7REC       NA    S.1   2005Q3 2005Q3                Q
+  series_id vintage_id
+1     45542    7331639
+2     45670    7331767
+3     45090    7331187
+4     45090    7331187
+5     45090    7331187
+Rows with both series_id and vintage_id: 51128
+Inserted 0 new periods
+Inserted 51128 new data points
+Inserted 0 new flags
 Importing data points from: 0325202S into schema platform
 Note: These vintages for table 0325202S are not new, they will not be inserted again.
 Skipping import for 0325202S due to vintage preparation issue: These vintages for table 0325202S are not new, they will not be inserted again.
@@ -200,8 +280,44 @@ Importing data points from: 0309275S into schema platform
 Note: These vintages for table 0309275S are not new, they will not be inserted again.
 Skipping import for 0309275S due to vintage preparation issue: These vintages for table 0309275S are not new, they will not be inserted again.
 Importing data points from: 0314984S into schema platform
-Note: These vintages for table 0314984S are not new, they will not be inserted again.
-Skipping import for 0314984S due to vintage preparation issue: These vintages for table 0314984S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, KATEGORIJE.IN.TRANSAKCIJE, ÈETRTLETJE, time, flag, interval_id, raw_time
+Data loaded into tmp_prepared_data. Sample rows:
+  ÈETRTLETJE KATEGORIJE.IN.TRANSAKCIJE    value raw_time   time flag
+1     1999Q1                        P1 786.1801   1999Q1 1999Q1     
+2     1999Q2                        P1 835.7396   1999Q2 1999Q2     
+3     1999Q3                        P1 853.6416   1999Q3 1999Q3     
+4     1999Q4                        P1 897.5724   1999Q4 1999Q4     
+5     2000Q1                        P1 884.0444   2000Q1 2000Q1     
+  interval_id
+1           Q
+2           Q
+3           Q
+4           Q
+5           Q
+Matching dimensions:
+  - KATEGORIJE IN TRANSAKCIJE (ID: 258)
+  - Matched dimension: KATEGORIJE IN TRANSAKCIJE -> column: KATEGORIJE.IN.TRANSAKCIJE
+Updated series_id for 7490 rows
+Updated vintage_id for 7490 rows
+After matching. Sample rows:
+  ÈETRTLETJE KATEGORIJE.IN.TRANSAKCIJE    value raw_time   time flag
+1     1999Q1                        P1 786.1801   1999Q1 1999Q1     
+2     1999Q2                        P1 835.7396   1999Q2 1999Q2     
+3     1999Q3                        P1 853.6416   1999Q3 1999Q3     
+4     1999Q4                        P1 897.5724   1999Q4 1999Q4     
+5     2000Q1                        P1 884.0444   2000Q1 2000Q1     
+  interval_id series_id vintage_id
+1           Q     49627    7331803
+2           Q     49627    7331803
+3           Q     49627    7331803
+4           Q     49627    7331803
+5           Q     49627    7331803
+Rows with both series_id and vintage_id: 7490
+Inserted 0 new periods
+Inserted 7490 new data points
+Inserted 0 new flags
 Importing data points from: 0400606S into schema platform
 Note: These vintages for table 0400606S are not new, they will not be inserted again.
 Skipping import for 0400606S due to vintage preparation issue: These vintages for table 0400606S are not new, they will not be inserted again.
@@ -221,14 +337,78 @@ Importing data points from: 0309276S into schema platform
 Note: These vintages for table 0309276S are not new, they will not be inserted again.
 Skipping import for 0309276S due to vintage preparation issue: These vintages for table 0309276S are not new, they will not be inserted again.
 Importing data points from: 0314983S into schema platform
-Note: These vintages for table 0314983S are not new, they will not be inserted again.
-Skipping import for 0314983S due to vintage preparation issue: These vintages for table 0314983S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, KATEGORIJA, MERITVE, VRSTA.PODATKA, raw_time, time, flag, ÈETRTLETJE, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  ÈETRTLETJE KATEGORIJA value MERITVE VRSTA.PODATKA raw_time   time flag
+1     1994Q4         B9    NA     XDC             N   1994Q4 1994Q4     
+2     1995Q1         B9    NA     XDC             N   1995Q1 1995Q1     
+3     1995Q2         B9    NA     XDC             N   1995Q2 1995Q2     
+4     1995Q3         B9    NA     XDC             N   1995Q3 1995Q3     
+5     1995Q4         B9    NA     XDC             N   1995Q4 1995Q4     
+  interval_id
+1           Q
+2           Q
+3           Q
+4           Q
+5           Q
+Matching dimensions:
+  - KATEGORIJA (ID: 282)
+  - MERITVE (ID: 283)
+  - VRSTA PODATKA (ID: 284)
+  - Matched dimension: KATEGORIJA -> column: KATEGORIJA
+  - Matched dimension: MERITVE -> column: MERITVE
+  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
+Updated series_id for 2976 rows
+Updated vintage_id for 2976 rows
+After matching. Sample rows:
+  ÈETRTLETJE KATEGORIJA value MERITVE VRSTA.PODATKA raw_time   time flag
+1     1994Q4         B9    NA     XDC             N   1994Q4 1994Q4     
+2     1995Q1         B9    NA     XDC             N   1995Q1 1995Q1     
+3     1995Q2         B9    NA     XDC             N   1995Q2 1995Q2     
+4     1995Q3         B9    NA     XDC             N   1995Q3 1995Q3     
+5     1995Q4         B9    NA     XDC             N   1995Q4 1995Q4     
+  interval_id series_id vintage_id
+1           Q     54957    7331873
+2           Q     54957    7331873
+3           Q     54957    7331873
+4           Q     54957    7331873
+5           Q     54957    7331873
+Rows with both series_id and vintage_id: 2976
+Inserted 0 new periods
+Inserted 2976 new data points
+Inserted 0 new flags
 Importing data points from: 0715101S into schema platform
 Note: These vintages for table 0715101S are not new, they will not be inserted again.
 Skipping import for 0715101S due to vintage preparation issue: These vintages for table 0715101S are not new, they will not be inserted again.
 Importing data points from: H287S into schema platform
-Note: These vintages for table H287S are not new, they will not be inserted again.
-Skipping import for H287S due to vintage preparation issue: These vintages for table H287S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, MESEC, MERITVE, time, flag, interval_id, raw_time
+Data loaded into tmp_prepared_data. Sample rows:
+  MERITVE   MESEC value raw_time    time flag interval_id
+1       1 1995M08  0.50  1995M08 1995M08                M
+2       2 1995M08  6.05  1995M08 1995M08                M
+3       1 1995M09  0.50  1995M09 1995M09                M
+4       2 1995M09  6.26  1995M09 1995M09                M
+5       1 1995M10  0.70  1995M10 1995M10                M
+Matching dimensions:
+  - MERITVE (ID: 315)
+  - Matched dimension: MERITVE -> column: MERITVE
+Updated series_id for 732 rows
+Updated vintage_id for 732 rows
+After matching. Sample rows:
+  MERITVE   MESEC value raw_time    time flag interval_id series_id vintage_id
+1       1 1995M10   0.7  1995M10 1995M10                M     55225    7331897
+2       1 1996M03   1.0  1996M03 1996M03                M     55225    7331897
+3       1 1995M12   1.1  1995M12 1995M12                M     55225    7331897
+4       1 1995M09   0.5  1995M09 1995M09                M     55225    7331897
+5       1 1996M01   0.8  1996M01 1996M01                M     55225    7331897
+Rows with both series_id and vintage_id: 732
+Inserted 1 new periods
+Inserted 732 new data points
+Inserted 0 new flags
 Importing data points from: 2207701S into schema platform
 Note: These vintages for table 2207701S are not new, they will not be inserted again.
 Skipping import for 2207701S due to vintage preparation issue: These vintages for table 2207701S are not new, they will not be inserted again.
@@ -273,8 +453,15 @@ Note: These vintages for table 2490411S are not new, they will not be inserted a
 Skipping import for 2490411S due to vintage preparation issue: These vintages for table 2490411S are not new, they will not be inserted again.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 100/126 vintages
-Processed 126/126 vintages
+Processed 100/882 vintages
+Processed 200/882 vintages
+Processed 300/882 vintages
+Processed 400/882 vintages
+Processed 500/882 vintages
+Processed 600/882 vintages
+Processed 700/882 vintages
+Processed 800/882 vintages
+Processed 882/882 vintages
 All vintage hashes updated successfully
 Processing single table ID 1...Processing single table ID 2...Processing single table ID 9...Processing single table ID 13...Processing single table ID 14...Processing single table ID 15...Processing single table ID 16...Processing single table ID 17...Processing single table ID 18...Processing single table ID 19...Processing single table ID 20...Processing single table ID 21...Processing single table ID 22...Processing single table ID 23...Processing single table ID 29...Processing single table ID 30...Processing single table ID 34...Processing single table ID 38...Processing single table ID 39...Processing single table ID 40...Processing single table ID 41...Processing single table ID 42...Processing single table ID 44...Processing single table ID 45...Processing single table ID 46...Processing single table ID 47...Processing single table ID 48...Processing single table ID 49...Processing single table ID 50...Processing single table ID 51...Processing single table ID 64...Processing single table ID 65...Processing single table ID 66...Processing single table ID 67...Processing single table ID 68...Processing single table ID 69...Processing single table ID 70...Processing single table ID 71...Processing single table ID 72...Processing single table ID 73...Processing single table ID 77...Processing single table ID 78...Processing single table ID 79...Processing single table ID 82...Processing single table ID 83...Processing single table ID 84...Processing single table ID 115...Processing single table ID 116...Processing single table ID 118...Processing single table ID 119...Processing single table ID 120...Processing single table ID 121...Processing single table ID 122...Processing single table ID 123...Processing single table ID 124...Processing single table ID 125...Processing single table ID 126...Processing single table ID 137...Processing single table ID 143...Processing single table ID 148...Processing single table ID 209...Processing single table ID 224...Processing single table ID 251...Processing single table ID 253...Processing single table ID 254...Processing single table ID 255...Processing single table ID 303...Processing single table ID 383...Processing single table ID 398...Processing single table ID 399...Processing single table ID 400...Processing single table ID 407...Processing single table ID 408...Processing single table ID 424...
 Error: Expecting a single string value: [type=character; extent=74].
