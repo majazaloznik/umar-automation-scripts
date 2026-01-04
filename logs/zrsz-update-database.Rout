@@ -12,36 +12,9 @@ Content type 'application/vnd.ms-excel' length 276480 bytes (270 KB)
 ==================================================
 downloaded 270 KB
 
-
-=== PostgreSQL Column Names ===
-value, time, Vrednost, flag
-Data loaded into tmp_prepared_data. Sample rows:
-     time     value Vrednost flag
-1 2005M01 10.384209        0     
-2 2005M02 10.342438        0     
-3 2005M03 10.239058        0     
-4 2005M04 10.136737        0     
-5 2005M05  9.930898        0     
-Matching dimensions:
-  - Vrednost (ID: 281)
-  - Matched dimension: Vrednost -> column: Vrednost
-Updated series_id for 250 rows
-Updated vintage_id for 250 rows
-After matching. Sample rows:
-     time     value Vrednost flag series_id vintage_id
-1 2005M01 10.384209        0          54956    7336746
-2 2005M02 10.342438        0          54956    7336746
-3 2005M03 10.239058        0          54956    7336746
-4 2005M04 10.136737        0          54956    7336746
-5 2005M05  9.930898        0          54956    7336746
-Rows with both series_id and vintage_id: 250
-Inserted 0 new periods
-Inserted 249 new data points
-Inserted 0 new flags
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 1/1 vintages
-All vintage hashes updated successfully
+No vintages need hash updates.
 Processing single table ID 33...
 Processing table 1/1: ID 33, keep_vintage = TRUE
 Table ID 33: Transaction committed successfully
@@ -56,10 +29,10 @@ No vintages need hash updates.
 Processing single table ID 127...
 Processing table 1/1: ID 127, keep_vintage = TRUE
 Table ID 127: Transaction committed successfully
-Table ID 127: Deleted 0 older vintages and 1 redundant vintages
+Table ID 127: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
-Deleted 1 redundant vintages from tables with keep_vintage = TRUE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Error: Failed to fetch row: ERROR:  relation "latest_data_points" does not exist
 In addition: Warning messages:
@@ -71,4 +44,8 @@ In addition: Warning messages:
   No new vintages to insert, exiting.
 4: In download.file(url, destfile = temp_file, mode = "wb") :
   cannot open URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Stopnje/Stopnja_BO_OS_2005-2026.xls': HTTP status was '404 Not Found'
+5: In prepare_vintage_table(meta, df, con, schema) :
+  These monthly vintages for table BO_OS are not new, they will not be inserted again.
+6: In ZRSZ_import_data_points(meta, con, schema = "platform") :
+  No new vintages to insert, exiting.
 Execution halted
