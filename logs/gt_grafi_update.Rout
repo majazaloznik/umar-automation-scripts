@@ -1,8 +1,33 @@
-UMAR proxy is set!Preparing data for the chart in EO_05_kratk.kazal_auto.xlsx
+UMAR proxy is set!
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+Running gt & eo grafi update on 2026-01-09
+Preparing data for the chart in EO_05_kratk.kazal_auto.xlsx
+Data available up to 2025-11-01
+EO_05_kratk.kazal_auto.xlsx saved successfully to original location
+Preparing data for the chart in EO_08_zasebna_potrosnja_auto.xlsx
+Data available up to 2025Q4
+EO_08_zasebna_potrosnja_auto.xlsx saved successfully to original location
+Preparing data for the chart in EO_11_financni_trgi_auto.xlsx
+Data available up to 2025-11-01
+EO_11_financni_trgi_auto.xlsx saved successfully to original location
+Running gt & eo grafi update on 2026-01-09
+Preparing data for the chart in EO_12_javne_finance_A_O_auto.xlsx
 Error in `map()`:
-i In index: 1.
-Caused by error in `arrange()`:
-! could not find function "arrange"
+i In index: 4.
+Caused by error in `dplyr::select()`:
+i In argument: `dplyr::all_of(codes2)`.
+Caused by error in `dplyr::all_of()`:
+! Can't subset elements that don't exist.
+x Elements `MF--KBJF--4--M`, `MF--KBJF--916--M`, `MF--KBJF--913--M`, `MF--KBJF--917--M`, `MF--KBJF--409--M`, etc. don't exist.
 Backtrace:
      x
   1. +-base::source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\gt_eo_grafi_update.R")
@@ -19,8 +44,30 @@ Backtrace:
  12. |       +-base::withVisible(eval(ei, envir))
  13. |       \-base::eval(ei, envir)
  14. |         \-base::eval(ei, envir)
- 15. \-base::.handleSimpleError(...)
- 16.   \-purrr (local) h(simpleError(msg, call))
- 17.     \-cli::cli_abort(...)
- 18.       \-rlang::abort(...)
+ 15. +-dplyr::mutate(...)
+ 16. +-utils::tail(...)
+ 17. +-dplyr::filter(...)
+ 18. +-dplyr::select(...)
+ 19. +-dplyr:::select.data.frame(...)
+ 20. | \-tidyselect::eval_select(expr(c(...)), data = .data, error_call = error_call)
+ 21. |   \-tidyselect:::eval_select_impl(...)
+ 22. |     +-tidyselect:::with_subscript_errors(...)
+ 23. |     | \-base::withCallingHandlers(...)
+ 24. |     \-tidyselect:::vars_select_eval(...)
+ 25. |       \-tidyselect:::walk_data_tree(expr, data_mask, context_mask)
+ 26. |         \-tidyselect:::eval_c(expr, data_mask, context_mask)
+ 27. |           \-tidyselect:::reduce_sels(node, data_mask, context_mask, init = init)
+ 28. |             \-tidyselect:::walk_data_tree(new, data_mask, context_mask)
+ 29. |               \-tidyselect:::eval_context(expr, context_mask, call = error_call)
+ 30. |                 +-tidyselect:::with_chained_errors(...)
+ 31. |                 | \-base::withCallingHandlers(...)
+ 32. |                 \-rlang::eval_tidy(as_quosure(expr, env), context_mask)
+ 33. +-dplyr::all_of(codes2)
+ 34. | \-tidyselect:::as_indices_impl(x, vars = vars, strict = TRUE)
+ 35. |   \-tidyselect:::chr_as_locations(x, vars, call = call, arg = arg)
+ 36. |     \-vctrs::vec_as_location(...)
+ 37. \-vctrs (local) `<fn>`()
+ 38.   \-vctrs:::stop_subscript_oob(...)
+ 39.     \-vctrs:::stop_subscript(...)
+ 40.       \-rlang::abort(...)
 Execution halted
