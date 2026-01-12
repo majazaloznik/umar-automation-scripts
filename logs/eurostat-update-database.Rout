@@ -175,8 +175,44 @@ Skipping import for teimf200 due to vintage preparation issue: These vintages fo
 =================================================================
 Importing data points from: sts_sepr_m
 =================================================================
-Note: These vintages for table sts_sepr_m are not new, they will not be inserted again.
-Skipping import for sts_sepr_m due to vintage preparation issue: These vintages for table sts_sepr_m are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, TIME_PERIOD, nace_r2, s_adj, unit, geo, flag, interval_id, time, indic_bt
+Data loaded into tmp_prepared_data. Sample rows:
+  interval_id indic_bt nace_r2 s_adj   unit  geo flag TIME_PERIOD value    time
+1           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-01-01   4.6 2016M01
+2           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-02-01   5.1 2016M02
+3           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-03-01   3.9 2016M03
+4           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-04-01   4.0 2016M04
+5           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-05-01   5.0 2016M05
+Matching dimensions:
+  - nace_r2 (ID: 716)
+  - s_adj (ID: 717)
+  - unit (ID: 718)
+  - geo (ID: 719)
+  - Matched dimension: nace_r2 -> column: nace_r2
+  - Matched dimension: s_adj -> column: s_adj
+  - Matched dimension: unit -> column: unit
+  - Matched dimension: geo -> column: geo
+Updated series_id for 247 rows
+Updated vintage_id for 247 rows
+After matching. Sample rows:
+  interval_id indic_bt nace_r2 s_adj   unit  geo flag TIME_PERIOD value    time
+1           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-02-01   5.1 2016M02
+2           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-03-01   3.9 2016M03
+3           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-04-01   4.0 2016M04
+4           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-05-01   5.0 2016M05
+5           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-06-01   3.6 2016M06
+  series_id vintage_id
+1    117542    7345715
+2    117542    7345715
+3    117542    7345715
+4    117542    7345715
+5    117542    7345715
+Rows with both series_id and vintage_id: 247
+Inserted 0 new periods
+Inserted 247 new data points
+Inserted 144 new flags
 
 =================================================================
 Importing data points from: prc_hicp_manr
