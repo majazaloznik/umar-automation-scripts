@@ -1,12 +1,198 @@
 UMAR proxy is set!ECB package patched to use new API endpoint: data-api.ecb.europa.eu
 Processing: BPS.Q.N.I9.W1.S1.S1.LE.N.FA._T.F._Z.EUR._T._X.N.ALL
 Preparing vintage for: BPS.Q.N.I9.W1.S1.S1.LE.N.FA._T.F._Z.EUR._T._X.N.ALL into schema platform
-No updates since 2025-10-28 10:55:46 no new vintages will be inserted.
-Skipping import for BPS.Q.N.I9.W1.S1.S1.LE.N.FA._T.F._Z.EUR._T._X.N.ALL due to vintage preparation issue: 
+Vintage imported for: BPS.Q.N.I9.W1.S1.S1.LE.N.FA._T.F._Z.EUR._T._X.N.ALL
+
+=== PostgreSQL Column Names ===
+value, ADJUSTMENT, REF_AREA, COUNTERPART_AREA, REF_SECTOR, COUNTERPART_SECTOR, FLOW_STOCK_ENTRY, ACCOUNTING_ENTRY, INT_ACC_ITEM, FUNCTIONAL_CAT, INSTR_ASSET, MATURITY, UNIT_MEASURE, CURRENCY_DENOM, VALUATION, COMP_METHOD, TYPE_ENTITY, time, FREQ, flag
+Data loaded into tmp_prepared_data. Sample rows:
+  FREQ ADJUSTMENT REF_AREA COUNTERPART_AREA REF_SECTOR COUNTERPART_SECTOR
+1    Q          N       I9               W1         S1                 S1
+2    Q          N       I9               W1         S1                 S1
+3    Q          N       I9               W1         S1                 S1
+4    Q          N       I9               W1         S1                 S1
+5    Q          N       I9               W1         S1                 S1
+  FLOW_STOCK_ENTRY ACCOUNTING_ENTRY INT_ACC_ITEM FUNCTIONAL_CAT INSTR_ASSET
+1               LE                N           FA             _T           F
+2               LE                N           FA             _T           F
+3               LE                N           FA             _T           F
+4               LE                N           FA             _T           F
+5               LE                N           FA             _T           F
+  MATURITY UNIT_MEASURE CURRENCY_DENOM VALUATION COMP_METHOD TYPE_ENTITY   time
+1       _Z          EUR             _T        _X           N         ALL 2013Q1
+2       _Z          EUR             _T        _X           N         ALL 2013Q2
+3       _Z          EUR             _T        _X           N         ALL 2013Q3
+4       _Z          EUR             _T        _X           N         ALL 2013Q4
+5       _Z          EUR             _T        _X           N         ALL 2014Q1
+     value flag
+1 -2239160     
+2 -2367084     
+3 -2304183     
+4 -2283170     
+5 -2323345     
+Matching dimensions:
+  - FREQ (ID: 724)
+  - ADJUSTMENT (ID: 725)
+  - REF_AREA (ID: 726)
+  - COUNTERPART_AREA (ID: 727)
+  - REF_SECTOR (ID: 728)
+  - COUNTERPART_SECTOR (ID: 729)
+  - FLOW_STOCK_ENTRY (ID: 730)
+  - ACCOUNTING_ENTRY (ID: 731)
+  - INT_ACC_ITEM (ID: 732)
+  - FUNCTIONAL_CAT (ID: 733)
+  - INSTR_ASSET (ID: 734)
+  - MATURITY (ID: 735)
+  - UNIT_MEASURE (ID: 736)
+  - CURRENCY_DENOM (ID: 737)
+  - VALUATION (ID: 738)
+  - COMP_METHOD (ID: 739)
+  - TYPE_ENTITY (ID: 740)
+  - Matched dimension: FREQ -> column: FREQ
+  - Matched dimension: ADJUSTMENT -> column: ADJUSTMENT
+  - Matched dimension: REF_AREA -> column: REF_AREA
+  - Matched dimension: COUNTERPART_AREA -> column: COUNTERPART_AREA
+  - Matched dimension: REF_SECTOR -> column: REF_SECTOR
+  - Matched dimension: COUNTERPART_SECTOR -> column: COUNTERPART_SECTOR
+  - Matched dimension: FLOW_STOCK_ENTRY -> column: FLOW_STOCK_ENTRY
+  - Matched dimension: ACCOUNTING_ENTRY -> column: ACCOUNTING_ENTRY
+  - Matched dimension: INT_ACC_ITEM -> column: INT_ACC_ITEM
+  - Matched dimension: FUNCTIONAL_CAT -> column: FUNCTIONAL_CAT
+  - Matched dimension: INSTR_ASSET -> column: INSTR_ASSET
+  - Matched dimension: MATURITY -> column: MATURITY
+  - Matched dimension: UNIT_MEASURE -> column: UNIT_MEASURE
+  - Matched dimension: CURRENCY_DENOM -> column: CURRENCY_DENOM
+  - Matched dimension: VALUATION -> column: VALUATION
+  - Matched dimension: COMP_METHOD -> column: COMP_METHOD
+  - Matched dimension: TYPE_ENTITY -> column: TYPE_ENTITY
+Updated series_id for 51 rows
+Updated vintage_id for 51 rows
+After matching. Sample rows:
+  FREQ ADJUSTMENT REF_AREA COUNTERPART_AREA REF_SECTOR COUNTERPART_SECTOR
+1    Q          N       I9               W1         S1                 S1
+2    Q          N       I9               W1         S1                 S1
+3    Q          N       I9               W1         S1                 S1
+4    Q          N       I9               W1         S1                 S1
+5    Q          N       I9               W1         S1                 S1
+  FLOW_STOCK_ENTRY ACCOUNTING_ENTRY INT_ACC_ITEM FUNCTIONAL_CAT INSTR_ASSET
+1               LE                N           FA             _T           F
+2               LE                N           FA             _T           F
+3               LE                N           FA             _T           F
+4               LE                N           FA             _T           F
+5               LE                N           FA             _T           F
+  MATURITY UNIT_MEASURE CURRENCY_DENOM VALUATION COMP_METHOD TYPE_ENTITY   time
+1       _Z          EUR             _T        _X           N         ALL 2013Q1
+2       _Z          EUR             _T        _X           N         ALL 2013Q2
+3       _Z          EUR             _T        _X           N         ALL 2013Q3
+4       _Z          EUR             _T        _X           N         ALL 2013Q4
+5       _Z          EUR             _T        _X           N         ALL 2014Q1
+     value flag series_id vintage_id
+1 -2239160         117545    7345725
+2 -2367084         117545    7345725
+3 -2304183         117545    7345725
+4 -2283170         117545    7345725
+5 -2323345         117545    7345725
+Rows with both series_id and vintage_id: 51
+Inserted 0 new periods
+Inserted 51 new data points
+Inserted 0 new flags
 Processing: BPS.Q.N.I9.W1.S1.S1.T.B.CA._Z._Z._Z.EUR_R_B1GQ._T._X.N.ALL
 Preparing vintage for: BPS.Q.N.I9.W1.S1.S1.T.B.CA._Z._Z._Z.EUR_R_B1GQ._T._X.N.ALL into schema platform
-No updates since 2025-10-28 10:55:46 no new vintages will be inserted.
-Skipping import for BPS.Q.N.I9.W1.S1.S1.T.B.CA._Z._Z._Z.EUR_R_B1GQ._T._X.N.ALL due to vintage preparation issue: 
+Vintage imported for: BPS.Q.N.I9.W1.S1.S1.T.B.CA._Z._Z._Z.EUR_R_B1GQ._T._X.N.ALL
+
+=== PostgreSQL Column Names ===
+value, ADJUSTMENT, REF_AREA, COUNTERPART_AREA, REF_SECTOR, COUNTERPART_SECTOR, FLOW_STOCK_ENTRY, ACCOUNTING_ENTRY, INT_ACC_ITEM, FUNCTIONAL_CAT, INSTR_ASSET, MATURITY, UNIT_MEASURE, CURRENCY_DENOM, VALUATION, COMP_METHOD, TYPE_ENTITY, time, FREQ, flag
+Data loaded into tmp_prepared_data. Sample rows:
+  FREQ ADJUSTMENT REF_AREA COUNTERPART_AREA REF_SECTOR COUNTERPART_SECTOR
+1    Q          N       I9               W1         S1                 S1
+2    Q          N       I9               W1         S1                 S1
+3    Q          N       I9               W1         S1                 S1
+4    Q          N       I9               W1         S1                 S1
+5    Q          N       I9               W1         S1                 S1
+  FLOW_STOCK_ENTRY ACCOUNTING_ENTRY INT_ACC_ITEM FUNCTIONAL_CAT INSTR_ASSET
+1                T                B           CA             _Z          _Z
+2                T                B           CA             _Z          _Z
+3                T                B           CA             _Z          _Z
+4                T                B           CA             _Z          _Z
+5                T                B           CA             _Z          _Z
+  MATURITY UNIT_MEASURE CURRENCY_DENOM VALUATION COMP_METHOD TYPE_ENTITY   time
+1       _Z   EUR_R_B1GQ             _T        _X           N         ALL 2013Q1
+2       _Z   EUR_R_B1GQ             _T        _X           N         ALL 2013Q2
+3       _Z   EUR_R_B1GQ             _T        _X           N         ALL 2013Q3
+4       _Z   EUR_R_B1GQ             _T        _X           N         ALL 2013Q4
+5       _Z   EUR_R_B1GQ             _T        _X           N         ALL 2014Q1
+   value flag
+1 0.5982     
+2 1.7211     
+3 2.0920     
+4 3.1140     
+5 0.8578     
+Matching dimensions:
+  - FREQ (ID: 724)
+  - ADJUSTMENT (ID: 725)
+  - REF_AREA (ID: 726)
+  - COUNTERPART_AREA (ID: 727)
+  - REF_SECTOR (ID: 728)
+  - COUNTERPART_SECTOR (ID: 729)
+  - FLOW_STOCK_ENTRY (ID: 730)
+  - ACCOUNTING_ENTRY (ID: 731)
+  - INT_ACC_ITEM (ID: 732)
+  - FUNCTIONAL_CAT (ID: 733)
+  - INSTR_ASSET (ID: 734)
+  - MATURITY (ID: 735)
+  - UNIT_MEASURE (ID: 736)
+  - CURRENCY_DENOM (ID: 737)
+  - VALUATION (ID: 738)
+  - COMP_METHOD (ID: 739)
+  - TYPE_ENTITY (ID: 740)
+  - Matched dimension: FREQ -> column: FREQ
+  - Matched dimension: ADJUSTMENT -> column: ADJUSTMENT
+  - Matched dimension: REF_AREA -> column: REF_AREA
+  - Matched dimension: COUNTERPART_AREA -> column: COUNTERPART_AREA
+  - Matched dimension: REF_SECTOR -> column: REF_SECTOR
+  - Matched dimension: COUNTERPART_SECTOR -> column: COUNTERPART_SECTOR
+  - Matched dimension: FLOW_STOCK_ENTRY -> column: FLOW_STOCK_ENTRY
+  - Matched dimension: ACCOUNTING_ENTRY -> column: ACCOUNTING_ENTRY
+  - Matched dimension: INT_ACC_ITEM -> column: INT_ACC_ITEM
+  - Matched dimension: FUNCTIONAL_CAT -> column: FUNCTIONAL_CAT
+  - Matched dimension: INSTR_ASSET -> column: INSTR_ASSET
+  - Matched dimension: MATURITY -> column: MATURITY
+  - Matched dimension: UNIT_MEASURE -> column: UNIT_MEASURE
+  - Matched dimension: CURRENCY_DENOM -> column: CURRENCY_DENOM
+  - Matched dimension: VALUATION -> column: VALUATION
+  - Matched dimension: COMP_METHOD -> column: COMP_METHOD
+  - Matched dimension: TYPE_ENTITY -> column: TYPE_ENTITY
+Updated series_id for 51 rows
+Updated vintage_id for 51 rows
+After matching. Sample rows:
+  FREQ ADJUSTMENT REF_AREA COUNTERPART_AREA REF_SECTOR COUNTERPART_SECTOR
+1    Q          N       I9               W1         S1                 S1
+2    Q          N       I9               W1         S1                 S1
+3    Q          N       I9               W1         S1                 S1
+4    Q          N       I9               W1         S1                 S1
+5    Q          N       I9               W1         S1                 S1
+  FLOW_STOCK_ENTRY ACCOUNTING_ENTRY INT_ACC_ITEM FUNCTIONAL_CAT INSTR_ASSET
+1                T                B           CA             _Z          _Z
+2                T                B           CA             _Z          _Z
+3                T                B           CA             _Z          _Z
+4                T                B           CA             _Z          _Z
+5                T                B           CA             _Z          _Z
+  MATURITY UNIT_MEASURE CURRENCY_DENOM VALUATION COMP_METHOD TYPE_ENTITY   time
+1       _Z   EUR_R_B1GQ             _T        _X           N         ALL 2013Q1
+2       _Z   EUR_R_B1GQ             _T        _X           N         ALL 2013Q2
+3       _Z   EUR_R_B1GQ             _T        _X           N         ALL 2013Q3
+4       _Z   EUR_R_B1GQ             _T        _X           N         ALL 2013Q4
+5       _Z   EUR_R_B1GQ             _T        _X           N         ALL 2014Q1
+   value flag series_id vintage_id
+1 0.5982         117544    7345726
+2 1.7211         117544    7345726
+3 2.0920         117544    7345726
+4 3.1140         117544    7345726
+5 0.8578         117544    7345726
+Rows with both series_id and vintage_id: 51
+Inserted 0 new periods
+Inserted 51 new data points
+Inserted 0 new flags
 Processing: FM.M.U2.EUR.RT.MM.EURIBOR3MD_.HSTA
 Preparing vintage for: FM.M.U2.EUR.RT.MM.EURIBOR3MD_.HSTA into schema platform
 No updates since 2026-01-01 06:39:06 no new vintages will be inserted.
@@ -17,13 +203,14 @@ No updates since 2026-01-01 06:39:06 no new vintages will be inserted.
 Skipping import for FM.M.U2.EUR.RT.MM.EURIBOR6MD_.HSTA due to vintage preparation issue: 
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 2/2 vintages
+All vintage hashes updated successfully
 Processing single table ID 381...
 Processing table 1/1: ID 381, keep_vintage = FALSE
 Table ID 381: Transaction committed successfully
-Table ID 381: Deleted 0 older vintages and 0 redundant vintages
+Table ID 381: Deleted 2 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 2 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
