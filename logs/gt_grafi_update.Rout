@@ -9,7 +9,7 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-Running gt & eo grafi update on 2026-01-18
+Running gt & eo grafi update on 2026-01-19
 
 
 Preparing data for the chart in EO_04_tecaji_auto.xlsx
@@ -63,7 +63,10 @@ GT_03_industrija_auto.xlsx saved successfully to original location
 
 Preparing data for the chart in GT_04_gradbenistvo_auto.xlsx
 Data available up to 2025-11-01
-GT_04_gradbenistvo_auto.xlsx saved successfully to original location
+Could not save to original file, likely opened by another user
+Error was: Failed to save workbook
+Saving to backup location: \\192.168.38.7\data$\GT\SLIKE\GT slike avtomatizirane\GT_04_gradbenistvo_auto_2026-01-19_11-04-09.xlsx
+GT_04_gradbenistvo_auto.xlsx File saved successfully to backup location
 
 Preparing data for the chart in GT_05_trgovina_auto.xlsx
 Data available up to 2025-10-01
@@ -108,6 +111,8 @@ GT_15_PPI_auto.xlsx saved successfully to original location
 Preparing data for the chart in GT_17_tr_auto.xlsx
 Data available up to 2025-11-01
 GT_17_tr_auto.xlsx saved successfully to original location
-Warning message:
-In Sys.setlocale("LC_CTYPE", "Slovenian_Slovenia.utf8") :
+Warning messages:
+1: In Sys.setlocale("LC_CTYPE", "Slovenian_Slovenia.utf8") :
   OS reports request to set locale to "Slovenian_Slovenia.utf8" cannot be honored
+2: In file.create(to[okay]) :
+  cannot create file '\\192.168.38.7\data$\GT\SLIKE\GT slike avtomatizirane\GT_04_gradbenistvo_auto.xlsx', reason 'Permission denied'
