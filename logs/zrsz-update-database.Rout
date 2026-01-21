@@ -1,27 +1,218 @@
-UMAR proxy is set!Importing data points from: BO into schema platform
+UMAR proxy is set!Processing table: BO
+Importing data points from: BO into schema platform
 trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/Mesecno_gibanje_BO_1992-2026.xlsx'
 trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/Mesecno_gibanje_BO_1992-2025.xlsx'
-Content type 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' length 25109 bytes (24 KB)
+Content type 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' length 25110 bytes (24 KB)
 ==================================================
 downloaded 24 KB
 
+
+=== PostgreSQL Column Names ===
+value, time, Vrednost, flag
+Data loaded into tmp_prepared_data. Sample rows:
+     time value Vrednost flag
+1 1987M01 14526        0     
+2 1987M02 14593        0     
+3 1987M03 14336        0     
+4 1987M04 14068        0     
+5 1987M05 13882        0     
+Matching dimensions:
+  - Vrednost (ID: 92)
+  - Matched dimension: Vrednost -> column: Vrednost
+Updated series_id for 468 rows
+Updated vintage_id for 468 rows
+After matching. Sample rows:
+     time value Vrednost flag series_id vintage_id
+1 1987M01 14526        0          33963    7348043
+2 1987M02 14593        0          33963    7348043
+3 1987M03 14336        0          33963    7348043
+4 1987M04 14068        0          33963    7348043
+5 1987M05 13882        0          33963    7348043
+Rows with both series_id and vintage_id: 468
+Inserted 0 new periods
+Inserted 468 new data points
+Inserted 0 new flags
+Processing table: BO_OS
 Importing data points from: BO_OS into schema platform
 trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Stopnje/Stopnja_BO_OS_2005-2026.xls'
 trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Stopnje/Stopnja_BO_OS_2005-2025.xls'
-Content type 'application/vnd.ms-excel' length 276480 bytes (270 KB)
+Content type 'application/vnd.ms-excel' length 276992 bytes (270 KB)
 ==================================================
 downloaded 270 KB
 
+
+=== PostgreSQL Column Names ===
+value, time, Vrednost, flag
+Data loaded into tmp_prepared_data. Sample rows:
+     time     value Vrednost flag
+1 2005M01 10.384209        0     
+2 2005M02 10.342438        0     
+3 2005M03 10.239058        0     
+4 2005M04 10.136737        0     
+5 2005M05  9.930898        0     
+Matching dimensions:
+  - Vrednost (ID: 281)
+  - Matched dimension: Vrednost -> column: Vrednost
+Updated series_id for 251 rows
+Updated vintage_id for 251 rows
+After matching. Sample rows:
+     time     value Vrednost flag series_id vintage_id
+1 2005M01 10.384209        0          54956    7348044
+2 2005M02 10.342438        0          54956    7348044
+3 2005M03 10.239058        0          54956    7348044
+4 2005M04 10.136737        0          54956    7348044
+5 2005M05  9.930898        0          54956    7348044
+Rows with both series_id and vintage_id: 251
+Inserted 0 new periods
+Inserted 250 new data points
+Inserted 0 new flags
+Processing table: BO_SLO_izob
+Importing data points from: BO_SLO_izob into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_izob_2005-2026.xls'
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_izob_2005-2025.xls'
+Content type 'application/vnd.ms-excel' length 195584 bytes (191 KB)
+==================================================
+downloaded 191 KB
+
+
+=== PostgreSQL Column Names ===
+value, izobrazba, time, flag
+Data loaded into tmp_prepared_data. Sample rows:
+  izobrazba    time value flag
+1        I1 2014M01 36509     
+2        I1 2014M02 36890     
+3        I1 2014M03 35703     
+4        I1 2014M04 34704     
+5        I1 2014M05 33669     
+Matching dimensions:
+  - izobrazba (ID: 892)
+  - Matched dimension: izobrazba -> column: izobrazba
+Updated series_id for 576 rows
+Updated vintage_id for 576 rows
+After matching. Sample rows:
+  izobrazba    time value flag series_id vintage_id
+1        I1 2014M01 36509         336482    7348045
+2        I1 2014M02 36890         336482    7348045
+3        I1 2014M03 35703         336482    7348045
+4        I1 2014M04 34704         336482    7348045
+5        I1 2014M05 33669         336482    7348045
+Rows with both series_id and vintage_id: 576
+Inserted 0 new periods
+Inserted 576 new data points
+Inserted 0 new flags
+Processing table: BO_SLO_starost
+Importing data points from: BO_SLO_starost into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_starost_2005-2026.xls'
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_starost_2005-2025.xls'
+Content type 'application/vnd.ms-excel' length 194560 bytes (190 KB)
+==================================================
+downloaded 190 KB
+
+
+=== PostgreSQL Column Names ===
+value, starost, time, flag
+Data loaded into tmp_prepared_data. Sample rows:
+  starost    time value flag
+1      S1 2014M01 12719     
+2      S1 2014M02 12858     
+3      S1 2014M03 12491     
+4      S1 2014M04 11992     
+5      S1 2014M05 11220     
+Matching dimensions:
+  - starost (ID: 893)
+  - Matched dimension: starost -> column: starost
+Updated series_id for 864 rows
+Updated vintage_id for 864 rows
+After matching. Sample rows:
+  starost    time value flag series_id vintage_id
+1      S1 2014M01 12719         336486    7348049
+2      S1 2014M02 12858         336486    7348049
+3      S1 2014M03 12491         336486    7348049
+4      S1 2014M04 11992         336486    7348049
+5      S1 2014M05 11220         336486    7348049
+Rows with both series_id and vintage_id: 864
+Inserted 0 new periods
+Inserted 864 new data points
+Inserted 0 new flags
+Processing table: BO_SLO_trajanje
+Importing data points from: BO_SLO_trajanje into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_trajanje_2005-2026.xls'
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_trajanje_2005-2025.xls'
+Content type 'application/vnd.ms-excel' length 202240 bytes (197 KB)
+==================================================
+downloaded 197 KB
+
+
+=== PostgreSQL Column Names ===
+value, trajanje, time, flag
+Data loaded into tmp_prepared_data. Sample rows:
+  trajanje    time value flag
+1       T1 2014M01 31045     
+2       T1 2014M02 28863     
+3       T1 2014M03 24394     
+4       T1 2014M04 18754     
+5       T1 2014M05 17337     
+Matching dimensions:
+  - trajanje (ID: 894)
+  - Matched dimension: trajanje -> column: trajanje
+Updated series_id for 1008 rows
+Updated vintage_id for 1008 rows
+After matching. Sample rows:
+  trajanje    time value flag series_id vintage_id
+1       T1 2014M01 31045         336492    7348055
+2       T1 2014M02 28863         336492    7348055
+3       T1 2014M03 24394         336492    7348055
+4       T1 2014M04 18754         336492    7348055
+5       T1 2014M05 17337         336492    7348055
+Rows with both series_id and vintage_id: 1008
+Inserted 0 new periods
+Inserted 1008 new data points
+Inserted 0 new flags
+Processing table: BO_SLO_spol
+Importing data points from: BO_SLO_spol into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_spol_2005-2026.xls'
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_spol_2005-2025.xls'
+Content type 'application/vnd.ms-excel' length 188928 bytes (184 KB)
+==================================================
+downloaded 184 KB
+
+
+=== PostgreSQL Column Names ===
+value, spol, time, flag
+Data loaded into tmp_prepared_data. Sample rows:
+  spol    time value flag
+1    F 2005M01 48929     
+2    F 2005M02 48778     
+3    F 2005M03 48750     
+4    F 2005M04 48966     
+5    F 2005M05 48405     
+Matching dimensions:
+  - spol (ID: 895)
+  - Matched dimension: spol -> column: spol
+Updated series_id for 504 rows
+Updated vintage_id for 504 rows
+After matching. Sample rows:
+  spol    time value flag series_id vintage_id
+1    F 2005M01 48929         336500    7348063
+2    F 2005M02 48778         336500    7348063
+3    F 2005M03 48750         336500    7348063
+4    F 2005M04 48966         336500    7348063
+5    F 2005M05 48405         336500    7348063
+Rows with both series_id and vintage_id: 504
+Inserted 0 new periods
+Inserted 504 new data points
+Inserted 0 new flags
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 21/21 vintages
+All vintage hashes updated successfully
 Processing single table ID 33...
 Processing table 1/1: ID 33, keep_vintage = TRUE
 Table ID 33: Transaction committed successfully
-Table ID 33: Deleted 0 older vintages and 0 redundant vintages
+Table ID 33: Deleted 0 older vintages and 1 redundant vintages
 Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
-Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Deleted 1 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
@@ -29,7 +220,51 @@ No vintages need hash updates.
 Processing single table ID 127...
 Processing table 1/1: ID 127, keep_vintage = TRUE
 Table ID 127: Transaction committed successfully
-Table ID 127: Deleted 0 older vintages and 0 redundant vintages
+Table ID 127: Deleted 0 older vintages and 1 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 1 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+No vintages need hash updates.
+Processing single table ID 444...
+Processing table 1/1: ID 444, keep_vintage = FALSE
+Table ID 444: Transaction committed successfully
+Table ID 444: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+No vintages need hash updates.
+Processing single table ID 445...
+Processing table 1/1: ID 445, keep_vintage = FALSE
+Table ID 445: Transaction committed successfully
+Table ID 445: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+No vintages need hash updates.
+Processing single table ID 446...
+Processing table 1/1: ID 446, keep_vintage = FALSE
+Table ID 446: Transaction committed successfully
+Table ID 446: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+No vintages need hash updates.
+Processing single table ID 447...
+Processing table 1/1: ID 447, keep_vintage = FALSE
+Table ID 447: Transaction committed successfully
+Table ID 447: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
@@ -38,14 +273,14 @@ Error: Failed to fetch row: ERROR:  relation "latest_data_points" does not exist
 In addition: Warning messages:
 1: In download.file(url, destfile = temp_file, mode = "wb") :
   cannot open URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/Mesecno_gibanje_BO_1992-2026.xlsx': HTTP status was '404 Not Found'
-2: In prepare_vintage_table(meta, df, con, schema) :
-  These monthly vintages for table BO are not new, they will not be inserted again.
-3: In ZRSZ_import_data_points(meta, con, schema = "platform") :
-  No new vintages to insert, exiting.
-4: In download.file(url, destfile = temp_file, mode = "wb") :
+2: In download.file(url, destfile = temp_file, mode = "wb") :
   cannot open URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Stopnje/Stopnja_BO_OS_2005-2026.xls': HTTP status was '404 Not Found'
-5: In prepare_vintage_table(meta, df, con, schema) :
-  These monthly vintages for table BO_OS are not new, they will not be inserted again.
-6: In ZRSZ_import_data_points(meta, con, schema = "platform") :
-  No new vintages to insert, exiting.
+3: In download.file(url, destfile = temp_file, mode = "wb") :
+  cannot open URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_izob_2005-2026.xls': HTTP status was '404 Not Found'
+4: In download.file(url, destfile = temp_file, mode = "wb") :
+  cannot open URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_starost_2005-2026.xls': HTTP status was '404 Not Found'
+5: In download.file(url, destfile = temp_file, mode = "wb") :
+  cannot open URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_trajanje_2005-2026.xls': HTTP status was '404 Not Found'
+6: In download.file(url, destfile = temp_file, mode = "wb") :
+  cannot open URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_spol_2005-2026.xls': HTTP status was '404 Not Found'
 Execution halted
