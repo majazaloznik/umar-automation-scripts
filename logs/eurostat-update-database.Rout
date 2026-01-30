@@ -19,152 +19,26 @@ Skipping import for teicp000 due to vintage preparation issue: These vintages fo
 =================================================================
 Importing data points from: teina010
 =================================================================
-
-=== PostgreSQL Column Names ===
-interval_id, na_item, s_adj, unit, geo, flag, TIME_PERIOD, value, time
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id na_item s_adj        unit  geo flag TIME_PERIOD   value   time
-1           Q    B1GQ   SCA MIO_EUR_SCA EA20 <NA>  2022-10-01 3535437 2022Q4
-2           Q    B1GQ   SCA MIO_EUR_SCA EA20 <NA>  2023-01-01 3607611 2023Q1
-3           Q    B1GQ   SCA MIO_EUR_SCA EA20 <NA>  2023-04-01 3655117 2023Q2
-4           Q    B1GQ   SCA MIO_EUR_SCA EA20 <NA>  2023-07-01 3683829 2023Q3
-5           Q    B1GQ   SCA MIO_EUR_SCA EA20 <NA>  2023-10-01 3724014 2023Q4
-Matching dimensions:
-  - geo (ID: 666)
-  - Matched dimension: geo -> column: geo
-Updated series_id for 12 rows
-Updated vintage_id for 12 rows
-After matching. Sample rows:
-  interval_id na_item s_adj        unit  geo flag TIME_PERIOD   value   time
-1           Q    B1GQ   SCA MIO_EUR_SCA EA20 <NA>  2022-10-01 3535437 2022Q4
-2           Q    B1GQ   SCA MIO_EUR_SCA EA20 <NA>  2023-01-01 3607611 2023Q1
-3           Q    B1GQ   SCA MIO_EUR_SCA EA20 <NA>  2023-04-01 3655117 2023Q2
-4           Q    B1GQ   SCA MIO_EUR_SCA EA20 <NA>  2023-07-01 3683829 2023Q3
-5           Q    B1GQ   SCA MIO_EUR_SCA EA20 <NA>  2023-10-01 3724014 2023Q4
-  series_id vintage_id
-1    117498    7350948
-2    117498    7350948
-3    117498    7350948
-4    117498    7350948
-5    117498    7350948
-Rows with both series_id and vintage_id: 12
-Inserted 0 new periods
-Inserted 12 new data points
-Inserted 0 new flags
+Note: These vintages for table teina010 are not new, they will not be inserted again.
+Skipping import for teina010 due to vintage preparation issue: These vintages for table teina010 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teina011
 =================================================================
-
-=== PostgreSQL Column Names ===
-interval_id, na_item, unit, geo, flag, TIME_PERIOD, value, time
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id na_item       unit  geo flag TIME_PERIOD value   time
-1           Q    B1GQ PCH_Q1_SCA EA20 <NA>  2023-01-01   0.0 2023Q1
-2           Q    B1GQ PCH_Q1_SCA EA20 <NA>  2023-04-01   0.2 2023Q2
-3           Q    B1GQ PCH_Q1_SCA EA20 <NA>  2023-07-01   0.0 2023Q3
-4           Q    B1GQ PCH_Q1_SCA EA20 <NA>  2023-10-01   0.1 2023Q4
-5           Q    B1GQ PCH_Q1_SCA EA20 <NA>  2024-01-01   0.3 2024Q1
-Matching dimensions:
-  - unit (ID: 667)
-  - geo (ID: 668)
-  - Matched dimension: unit -> column: unit
-  - Matched dimension: geo -> column: geo
-Updated series_id for 24 rows
-Updated vintage_id for 24 rows
-After matching. Sample rows:
-  interval_id na_item       unit  geo flag TIME_PERIOD value   time series_id
-1           Q    B1GQ PCH_Q1_SCA EA20 <NA>  2023-01-01   0.0 2023Q1    117499
-2           Q    B1GQ PCH_Q1_SCA EA20 <NA>  2023-04-01   0.2 2023Q2    117499
-3           Q    B1GQ PCH_Q1_SCA EA20 <NA>  2023-07-01   0.0 2023Q3    117499
-4           Q    B1GQ PCH_Q1_SCA EA20 <NA>  2023-10-01   0.1 2023Q4    117499
-5           Q    B1GQ PCH_Q1_SCA EA20 <NA>  2024-01-01   0.3 2024Q1    117499
-  vintage_id
-1    7350949
-2    7350949
-3    7350949
-4    7350949
-5    7350949
-Rows with both series_id and vintage_id: 24
-Inserted 0 new periods
-Inserted 24 new data points
-Inserted 0 new flags
+Note: These vintages for table teina011 are not new, they will not be inserted again.
+Skipping import for teina011 due to vintage preparation issue: These vintages for table teina011 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teina021
 =================================================================
-
-=== PostgreSQL Column Names ===
-interval_id, unit, na_item, geo, flag, TIME_PERIOD, value, time
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id       unit     na_item  geo flag TIME_PERIOD value   time
-1           Q PCH_Q1_SCA P31_S14_S15 EA20 <NA>  2023-01-01   0.4 2023Q1
-2           Q PCH_Q1_SCA P31_S14_S15 EA20 <NA>  2023-04-01   0.3 2023Q2
-3           Q PCH_Q1_SCA P31_S14_S15 EA20 <NA>  2023-07-01  -0.1 2023Q3
-4           Q PCH_Q1_SCA P31_S14_S15 EA20 <NA>  2023-10-01   0.1 2023Q4
-5           Q PCH_Q1_SCA P31_S14_S15 EA20 <NA>  2024-01-01   0.5 2024Q1
-Matching dimensions:
-  - unit (ID: 671)
-  - geo (ID: 672)
-  - Matched dimension: unit -> column: unit
-  - Matched dimension: geo -> column: geo
-Updated series_id for 22 rows
-Updated vintage_id for 22 rows
-After matching. Sample rows:
-  interval_id       unit     na_item  geo flag TIME_PERIOD value   time
-1           Q PCH_Q1_SCA P31_S14_S15 EA20 <NA>  2023-01-01   0.4 2023Q1
-2           Q PCH_Q1_SCA P31_S14_S15 EA20 <NA>  2023-04-01   0.3 2023Q2
-3           Q PCH_Q1_SCA P31_S14_S15 EA20 <NA>  2023-07-01  -0.1 2023Q3
-4           Q PCH_Q1_SCA P31_S14_S15 EA20 <NA>  2023-10-01   0.1 2023Q4
-5           Q PCH_Q1_SCA P31_S14_S15 EA20 <NA>  2024-01-01   0.5 2024Q1
-  series_id vintage_id
-1    117505    7350981
-2    117505    7350981
-3    117505    7350981
-4    117505    7350981
-5    117505    7350981
-Rows with both series_id and vintage_id: 22
-Inserted 0 new periods
-Inserted 22 new data points
-Inserted 0 new flags
+Note: These vintages for table teina021 are not new, they will not be inserted again.
+Skipping import for teina021 due to vintage preparation issue: These vintages for table teina021 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teina041
 =================================================================
-
-=== PostgreSQL Column Names ===
-interval_id, na_item, unit, geo, flag, TIME_PERIOD, value, time
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id na_item       unit  geo flag TIME_PERIOD value   time
-1           Q    P51G PCH_Q1_SCA EA20 <NA>  2023-01-01   2.1 2023Q1
-2           Q    P51G PCH_Q1_SCA EA20 <NA>  2023-04-01  -0.2 2023Q2
-3           Q    P51G PCH_Q1_SCA EA20 <NA>  2023-07-01   0.2 2023Q3
-4           Q    P51G PCH_Q1_SCA EA20 <NA>  2023-10-01   0.9 2023Q4
-5           Q    P51G PCH_Q1_SCA EA20 <NA>  2024-01-01  -1.9 2024Q1
-Matching dimensions:
-  - unit (ID: 673)
-  - geo (ID: 674)
-  - Matched dimension: unit -> column: unit
-  - Matched dimension: geo -> column: geo
-Updated series_id for 22 rows
-Updated vintage_id for 22 rows
-After matching. Sample rows:
-  interval_id na_item       unit  geo flag TIME_PERIOD value   time series_id
-1           Q    P51G PCH_Q1_SCA EA20 <NA>  2023-01-01   2.1 2023Q1    117507
-2           Q    P51G PCH_Q1_SCA EA20 <NA>  2023-04-01  -0.2 2023Q2    117507
-3           Q    P51G PCH_Q1_SCA EA20 <NA>  2023-07-01   0.2 2023Q3    117507
-4           Q    P51G PCH_Q1_SCA EA20 <NA>  2023-10-01   0.9 2023Q4    117507
-5           Q    P51G PCH_Q1_SCA EA20 <NA>  2024-01-01  -1.9 2024Q1    117507
-  vintage_id
-1    7351013
-2    7351013
-3    7351013
-4    7351013
-5    7351013
-Rows with both series_id and vintage_id: 22
-Inserted 0 new periods
-Inserted 22 new data points
-Inserted 0 new flags
+Note: These vintages for table teina041 are not new, they will not be inserted again.
+Skipping import for teina041 due to vintage preparation issue: These vintages for table teina041 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teina500
@@ -199,40 +73,8 @@ Skipping import for teiet215 due to vintage preparation issue: These vintages fo
 =================================================================
 Importing data points from: teilm020
 =================================================================
-
-=== PostgreSQL Column Names ===
-interval_id, s_adj, age, sex, unit, geo, flag, TIME_PERIOD, value, time
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id s_adj   age sex   unit  geo flag TIME_PERIOD value    time
-1           M    SA TOTAL   T PC_ACT EA20 <NA>  2025-01-01   6.3 2025M01
-2           M    SA TOTAL   T PC_ACT EA20 <NA>  2025-02-01   6.3 2025M02
-3           M    SA TOTAL   T PC_ACT EA20 <NA>  2025-03-01   6.4 2025M03
-4           M    SA TOTAL   T PC_ACT EA20 <NA>  2025-04-01   6.3 2025M04
-5           M    SA TOTAL   T PC_ACT EA20 <NA>  2025-05-01   6.4 2025M05
-Matching dimensions:
-  - sex (ID: 684)
-  - geo (ID: 685)
-  - Matched dimension: sex -> column: sex
-  - Matched dimension: geo -> column: geo
-Updated series_id for 12 rows
-Updated vintage_id for 12 rows
-After matching. Sample rows:
-  interval_id s_adj   age sex   unit  geo flag TIME_PERIOD value    time
-1           M    SA TOTAL   T PC_ACT EA20 <NA>  2025-01-01   6.3 2025M01
-2           M    SA TOTAL   T PC_ACT EA20 <NA>  2025-02-01   6.3 2025M02
-3           M    SA TOTAL   T PC_ACT EA20 <NA>  2025-03-01   6.4 2025M03
-4           M    SA TOTAL   T PC_ACT EA20 <NA>  2025-04-01   6.3 2025M04
-5           M    SA TOTAL   T PC_ACT EA20 <NA>  2025-05-01   6.4 2025M05
-  series_id vintage_id
-1    117514    7351015
-2    117514    7351015
-3    117514    7351015
-4    117514    7351015
-5    117514    7351015
-Rows with both series_id and vintage_id: 12
-Inserted 0 new periods
-Inserted 12 new data points
-Inserted 0 new flags
+Note: These vintages for table teilm020 are not new, they will not be inserted again.
+Skipping import for teilm020 due to vintage preparation issue: These vintages for table teilm020 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teilm310
@@ -243,84 +85,14 @@ Skipping import for teilm310 due to vintage preparation issue: These vintages fo
 =================================================================
 Importing data points from: teina310
 =================================================================
-
-=== PostgreSQL Column Names ===
-interval_id, unit, nace_r2, na_item, geo, flag, TIME_PERIOD, value, time
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id             unit nace_r2 na_item  geo flag TIME_PERIOD value
-1           Q PCH_PRE_PERS_SCA   TOTAL  EMP_DC EA20 <NA>  2023-01-01   0.5
-2           Q PCH_PRE_PERS_SCA   TOTAL  EMP_DC EA20 <NA>  2023-04-01   0.3
-3           Q PCH_PRE_PERS_SCA   TOTAL  EMP_DC EA20 <NA>  2023-07-01   0.2
-4           Q PCH_PRE_PERS_SCA   TOTAL  EMP_DC EA20 <NA>  2023-10-01   0.4
-5           Q PCH_PRE_PERS_SCA   TOTAL  EMP_DC EA20 <NA>  2024-01-01   0.2
-    time
-1 2023Q1
-2 2023Q2
-3 2023Q3
-4 2023Q4
-5 2024Q1
-Matching dimensions:
-  - nace_r2 (ID: 688)
-  - geo (ID: 689)
-  - Matched dimension: nace_r2 -> column: nace_r2
-  - Matched dimension: geo -> column: geo
-Updated series_id for 11 rows
-Updated vintage_id for 11 rows
-After matching. Sample rows:
-  interval_id             unit nace_r2 na_item  geo flag TIME_PERIOD value
-1           Q PCH_PRE_PERS_SCA   TOTAL  EMP_DC EA20 <NA>  2023-01-01   0.5
-2           Q PCH_PRE_PERS_SCA   TOTAL  EMP_DC EA20 <NA>  2023-04-01   0.3
-3           Q PCH_PRE_PERS_SCA   TOTAL  EMP_DC EA20 <NA>  2023-07-01   0.2
-4           Q PCH_PRE_PERS_SCA   TOTAL  EMP_DC EA20 <NA>  2023-10-01   0.4
-5           Q PCH_PRE_PERS_SCA   TOTAL  EMP_DC EA20 <NA>  2024-01-01   0.2
-    time series_id vintage_id
-1 2023Q1    117516    7351046
-2 2023Q2    117516    7351046
-3 2023Q3    117516    7351046
-4 2023Q4    117516    7351046
-5 2024Q1    117516    7351046
-Rows with both series_id and vintage_id: 11
-Inserted 0 new periods
-Inserted 11 new data points
-Inserted 0 new flags
+Note: These vintages for table teina310 are not new, they will not be inserted again.
+Skipping import for teina310 due to vintage preparation issue: These vintages for table teina310 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teina306
 =================================================================
-
-=== PostgreSQL Column Names ===
-interval_id, unit, nace_r2, na_item, geo, flag, TIME_PERIOD, value, time
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id           unit nace_r2 na_item  geo flag TIME_PERIOD value   time
-1           Q PCH_SM_PER_SCA   TOTAL  EMP_DC EA20 <NA>  2023-01-01   1.7 2023Q1
-2           Q PCH_SM_PER_SCA   TOTAL  EMP_DC EA20 <NA>  2023-04-01   1.5 2023Q2
-3           Q PCH_SM_PER_SCA   TOTAL  EMP_DC EA20 <NA>  2023-07-01   1.4 2023Q3
-4           Q PCH_SM_PER_SCA   TOTAL  EMP_DC EA20 <NA>  2023-10-01   1.4 2023Q4
-5           Q PCH_SM_PER_SCA   TOTAL  EMP_DC EA20 <NA>  2024-01-01   1.1 2024Q1
-Matching dimensions:
-  - nace_r2 (ID: 690)
-  - geo (ID: 691)
-  - Matched dimension: nace_r2 -> column: nace_r2
-  - Matched dimension: geo -> column: geo
-Updated series_id for 11 rows
-Updated vintage_id for 11 rows
-After matching. Sample rows:
-  interval_id           unit nace_r2 na_item  geo flag TIME_PERIOD value   time
-1           Q PCH_SM_PER_SCA   TOTAL  EMP_DC EA20 <NA>  2023-01-01   1.7 2023Q1
-2           Q PCH_SM_PER_SCA   TOTAL  EMP_DC EA20 <NA>  2023-04-01   1.5 2023Q2
-3           Q PCH_SM_PER_SCA   TOTAL  EMP_DC EA20 <NA>  2023-07-01   1.4 2023Q3
-4           Q PCH_SM_PER_SCA   TOTAL  EMP_DC EA20 <NA>  2023-10-01   1.4 2023Q4
-5           Q PCH_SM_PER_SCA   TOTAL  EMP_DC EA20 <NA>  2024-01-01   1.1 2024Q1
-  series_id vintage_id
-1    117517    7351069
-2    117517    7351069
-3    117517    7351069
-4    117517    7351069
-5    117517    7351069
-Rows with both series_id and vintage_id: 11
-Inserted 0 new periods
-Inserted 11 new data points
-Inserted 0 new flags
+Note: These vintages for table teina306 are not new, they will not be inserted again.
+Skipping import for teina306 due to vintage preparation issue: These vintages for table teina306 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teilm120
@@ -337,46 +109,8 @@ Skipping import for teilm130 due to vintage preparation issue: These vintages fo
 =================================================================
 Importing data points from: teiis010
 =================================================================
-
-=== PostgreSQL Column Names ===
-interval_id, indic_bt, nace_r2, s_adj, unit, geo, flag, TIME_PERIOD, value, time
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id    indic_bt nace_r2 s_adj        unit  geo flag TIME_PERIOD value
-1           M PRC_PRR_DOM   B-E36   NSA PCH_M12_NSA EA20 <NA>  2025-01-01   1.7
-2           M PRC_PRR_DOM   B-E36   NSA PCH_M12_NSA EA20 <NA>  2025-02-01   3.1
-3           M PRC_PRR_DOM   B-E36   NSA PCH_M12_NSA EA20 <NA>  2025-03-01   1.9
-4           M PRC_PRR_DOM   B-E36   NSA PCH_M12_NSA EA20 <NA>  2025-04-01   0.7
-5           M PRC_PRR_DOM   B-E36   NSA PCH_M12_NSA EA20 <NA>  2025-05-01   0.3
-     time
-1 2025M01
-2 2025M02
-3 2025M03
-4 2025M04
-5 2025M05
-Matching dimensions:
-  - unit (ID: 696)
-  - geo (ID: 697)
-  - Matched dimension: unit -> column: unit
-  - Matched dimension: geo -> column: geo
-Updated series_id for 22 rows
-Updated vintage_id for 22 rows
-After matching. Sample rows:
-  interval_id    indic_bt nace_r2 s_adj       unit  geo flag TIME_PERIOD value
-1           M PRC_PRR_DOM   B-E36   NSA PCH_M1_NSA EA20 <NA>  2025-11-01   0.5
-2           M PRC_PRR_DOM   B-E36   NSA PCH_M1_NSA EA20 <NA>  2025-01-01   0.8
-3           M PRC_PRR_DOM   B-E36   NSA PCH_M1_NSA EA20 <NA>  2025-02-01   0.3
-4           M PRC_PRR_DOM   B-E36   NSA PCH_M1_NSA EA20 <NA>  2025-03-01  -1.7
-5           M PRC_PRR_DOM   B-E36   NSA PCH_M1_NSA EA20 <NA>  2025-04-01  -2.2
-     time series_id vintage_id
-1 2025M11    117520    7351070
-2 2025M01    117520    7351070
-3 2025M02    117520    7351070
-4 2025M03    117520    7351070
-5 2025M04    117520    7351070
-Rows with both series_id and vintage_id: 22
-Inserted 0 new periods
-Inserted 22 new data points
-Inserted 0 new flags
+Note: These vintages for table teiis010 are not new, they will not be inserted again.
+Skipping import for teiis010 due to vintage preparation issue: These vintages for table teiis010 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teiis011
@@ -393,78 +127,14 @@ Skipping import for teiis080 due to vintage preparation issue: These vintages fo
 =================================================================
 Importing data points from: teiis500
 =================================================================
-
-=== PostgreSQL Column Names ===
-interval_id, indic_bt, nace_r2, unit, geo, flag, TIME_PERIOD, value, time
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id indic_bt nace_r2       unit  geo flag TIME_PERIOD value    time
-1           M      PRD       F PCH_M12_CA EA20 <NA>  2025-01-01   0.6 2025M01
-2           M      PRD       F PCH_M12_CA EA20 <NA>  2025-02-01  -0.3 2025M02
-3           M      PRD       F PCH_M12_CA EA20 <NA>  2025-03-01  -1.2 2025M03
-4           M      PRD       F PCH_M12_CA EA20 <NA>  2025-04-01   1.7 2025M04
-5           M      PRD       F PCH_M12_CA EA20 <NA>  2025-05-01   0.7 2025M05
-Matching dimensions:
-  - unit (ID: 702)
-  - geo (ID: 703)
-  - Matched dimension: unit -> column: unit
-  - Matched dimension: geo -> column: geo
-Updated series_id for 22 rows
-Updated vintage_id for 22 rows
-After matching. Sample rows:
-  interval_id indic_bt nace_r2       unit  geo flag TIME_PERIOD value    time
-1           M      PRD       F PCH_M1_SCA EA20    i  2025-11-01  -1.1 2025M11
-2           M      PRD       F PCH_M1_SCA EA20 <NA>  2025-01-01   0.7 2025M01
-3           M      PRD       F PCH_M1_SCA EA20 <NA>  2025-02-01  -1.2 2025M02
-4           M      PRD       F PCH_M1_SCA EA20 <NA>  2025-03-01  -0.1 2025M03
-5           M      PRD       F PCH_M1_SCA EA20 <NA>  2025-04-01   0.9 2025M04
-  series_id vintage_id
-1    117526    7351094
-2    117526    7351094
-3    117526    7351094
-4    117526    7351094
-5    117526    7351094
-Rows with both series_id and vintage_id: 22
-Inserted 0 new periods
-Inserted 22 new data points
-Inserted 2 new flags
+Note: These vintages for table teiis500 are not new, they will not be inserted again.
+Skipping import for teiis500 due to vintage preparation issue: These vintages for table teiis500 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teiis240
 =================================================================
-
-=== PostgreSQL Column Names ===
-interval_id, indic_bt, nace_r2, unit, geo, flag, TIME_PERIOD, value, time
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id indic_bt nace_r2       unit  geo flag TIME_PERIOD value    time
-1           M  VOL_SLS     G47 PCH_M12_CA EA20 <NA>  2025-01-01   2.3 2025M01
-2           M  VOL_SLS     G47 PCH_M12_CA EA20 <NA>  2025-02-01   2.4 2025M02
-3           M  VOL_SLS     G47 PCH_M12_CA EA20 <NA>  2025-03-01   2.4 2025M03
-4           M  VOL_SLS     G47 PCH_M12_CA EA20 <NA>  2025-04-01   3.0 2025M04
-5           M  VOL_SLS     G47 PCH_M12_CA EA20 <NA>  2025-05-01   2.3 2025M05
-Matching dimensions:
-  - unit (ID: 704)
-  - geo (ID: 705)
-  - Matched dimension: unit -> column: unit
-  - Matched dimension: geo -> column: geo
-Updated series_id for 22 rows
-Updated vintage_id for 22 rows
-After matching. Sample rows:
-  interval_id indic_bt nace_r2       unit  geo flag TIME_PERIOD value    time
-1           M  VOL_SLS     G47 PCH_M1_SCA EA20    i  2025-11-01   0.2 2025M11
-2           M  VOL_SLS     G47 PCH_M1_SCA EA20 <NA>  2025-01-01  -0.1 2025M01
-3           M  VOL_SLS     G47 PCH_M1_SCA EA20 <NA>  2025-02-01   0.3 2025M02
-4           M  VOL_SLS     G47 PCH_M1_SCA EA20 <NA>  2025-03-01   0.4 2025M03
-5           M  VOL_SLS     G47 PCH_M1_SCA EA20 <NA>  2025-04-01   0.5 2025M04
-  series_id vintage_id
-1    117528    7351118
-2    117528    7351118
-3    117528    7351118
-4    117528    7351118
-5    117528    7351118
-Rows with both series_id and vintage_id: 22
-Inserted 0 new periods
-Inserted 22 new data points
-Inserted 2 new flags
+Note: These vintages for table teiis240 are not new, they will not be inserted again.
+Skipping import for teiis240 due to vintage preparation issue: These vintages for table teiis240 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teicp270
@@ -505,44 +175,8 @@ Skipping import for teimf200 due to vintage preparation issue: These vintages fo
 =================================================================
 Importing data points from: sts_sepr_m
 =================================================================
-
-=== PostgreSQL Column Names ===
-value, TIME_PERIOD, nace_r2, s_adj, unit, geo, flag, interval_id, time, indic_bt
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id indic_bt nace_r2 s_adj   unit  geo flag TIME_PERIOD value    time
-1           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-01-01   4.6 2016M01
-2           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-02-01   5.1 2016M02
-3           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-03-01   3.9 2016M03
-4           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-04-01   4.0 2016M04
-5           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-05-01   5.0 2016M05
-Matching dimensions:
-  - nace_r2 (ID: 716)
-  - s_adj (ID: 717)
-  - unit (ID: 718)
-  - geo (ID: 719)
-  - Matched dimension: nace_r2 -> column: nace_r2
-  - Matched dimension: s_adj -> column: s_adj
-  - Matched dimension: unit -> column: unit
-  - Matched dimension: geo -> column: geo
-Updated series_id for 247 rows
-Updated vintage_id for 247 rows
-After matching. Sample rows:
-  interval_id indic_bt nace_r2 s_adj   unit  geo flag TIME_PERIOD value    time
-1           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-02-01   5.1 2016M02
-2           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-03-01   3.9 2016M03
-3           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-04-01   4.0 2016M04
-4           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-05-01   5.0 2016M05
-5           M      PRD H-N_X_K    CA PCH_SM EA20    i  2016-06-01   3.6 2016M06
-  series_id vintage_id
-1    117542    7351143
-2    117542    7351143
-3    117542    7351143
-4    117542    7351143
-5    117542    7351143
-Rows with both series_id and vintage_id: 247
-Inserted 0 new periods
-Inserted 247 new data points
-Inserted 144 new flags
+Note: These vintages for table sts_sepr_m are not new, they will not be inserted again.
+Skipping import for sts_sepr_m due to vintage preparation issue: These vintages for table sts_sepr_m are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: prc_hicp_manr
@@ -562,11 +196,8 @@ Importing data points from: prc_ipc_g20
 Note: These vintages for table prc_ipc_g20 are not new, they will not be inserted again.
 Skipping import for prc_ipc_g20 due to vintage preparation issue: These vintages for table prc_ipc_g20 are not new, they will not be inserted again.
 Calculating hashes for new vintages...
-Removed 22 empty vintages.
-Processed 100/398 vintages
-Processed 200/398 vintages
-Processed 300/398 vintages
-Processed 398/398 vintages
+No empty vintages found.
+Processed 30/30 vintages
 All vintage hashes updated successfully
 Processing single table ID 343...
 Processing table 1/1: ID 343, keep_vintage = TRUE
@@ -578,7 +209,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 344...
 Processing table 1/1: ID 344, keep_vintage = TRUE
 Table ID 344: Transaction committed successfully
@@ -589,18 +221,20 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 345...
 Processing table 1/1: ID 345, keep_vintage = TRUE
 Table ID 345: Transaction committed successfully
-Table ID 345: Deleted 0 older vintages and 2 redundant vintages
+Table ID 345: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
-Deleted 2 redundant vintages from tables with keep_vintage = TRUE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 347...
 Processing table 1/1: ID 347, keep_vintage = TRUE
 Table ID 347: Transaction committed successfully
@@ -611,7 +245,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 348...
 Processing table 1/1: ID 348, keep_vintage = TRUE
 Table ID 348: Transaction committed successfully
@@ -622,7 +257,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 349...
 Processing table 1/1: ID 349, keep_vintage = FALSE
 Table ID 349: Transaction committed successfully
@@ -633,7 +269,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 350...
 Processing table 1/1: ID 350, keep_vintage = FALSE
 Table ID 350: Transaction committed successfully
@@ -644,7 +281,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 351...
 Processing table 1/1: ID 351, keep_vintage = FALSE
 Table ID 351: Transaction committed successfully
@@ -655,7 +293,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 352...
 Processing table 1/1: ID 352, keep_vintage = FALSE
 Table ID 352: Transaction committed successfully
@@ -666,7 +305,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 355...
 Processing table 1/1: ID 355, keep_vintage = FALSE
 Table ID 355: Transaction committed successfully
@@ -677,18 +317,20 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 359...
 Processing table 1/1: ID 359, keep_vintage = FALSE
 Table ID 359: Transaction committed successfully
-Table ID 359: Deleted 1 older vintages and 0 redundant vintages
+Table ID 359: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 1 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 360...
 Processing table 1/1: ID 360, keep_vintage = FALSE
 Table ID 360: Transaction committed successfully
@@ -699,29 +341,32 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 361...
 Processing table 1/1: ID 361, keep_vintage = FALSE
 Table ID 361: Transaction committed successfully
-Table ID 361: Deleted 1 older vintages and 0 redundant vintages
+Table ID 361: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 1 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 362...
 Processing table 1/1: ID 362, keep_vintage = FALSE
 Table ID 362: Transaction committed successfully
-Table ID 362: Deleted 1 older vintages and 0 redundant vintages
+Table ID 362: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 1 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 363...
 Processing table 1/1: ID 363, keep_vintage = FALSE
 Table ID 363: Transaction committed successfully
@@ -732,7 +377,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 364...
 Processing table 1/1: ID 364, keep_vintage = FALSE
 Table ID 364: Transaction committed successfully
@@ -743,18 +389,20 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 365...
 Processing table 1/1: ID 365, keep_vintage = FALSE
 Table ID 365: Transaction committed successfully
-Table ID 365: Deleted 2 older vintages and 0 redundant vintages
+Table ID 365: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 2 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 366...
 Processing table 1/1: ID 366, keep_vintage = FALSE
 Table ID 366: Transaction committed successfully
@@ -765,7 +413,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 367...
 Processing table 1/1: ID 367, keep_vintage = FALSE
 Table ID 367: Transaction committed successfully
@@ -776,29 +425,32 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 368...
 Processing table 1/1: ID 368, keep_vintage = FALSE
 Table ID 368: Transaction committed successfully
-Table ID 368: Deleted 2 older vintages and 0 redundant vintages
+Table ID 368: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 2 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 369...
 Processing table 1/1: ID 369, keep_vintage = FALSE
 Table ID 369: Transaction committed successfully
-Table ID 369: Deleted 2 older vintages and 0 redundant vintages
+Table ID 369: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 2 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 370...
 Processing table 1/1: ID 370, keep_vintage = FALSE
 Table ID 370: Transaction committed successfully
@@ -809,7 +461,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 371...
 Processing table 1/1: ID 371, keep_vintage = FALSE
 Table ID 371: Transaction committed successfully
@@ -820,7 +473,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 372...
 Processing table 1/1: ID 372, keep_vintage = FALSE
 Table ID 372: Transaction committed successfully
@@ -831,7 +485,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 373...
 Processing table 1/1: ID 373, keep_vintage = FALSE
 Table ID 373: Transaction committed successfully
@@ -842,7 +497,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 374...
 Processing table 1/1: ID 374, keep_vintage = FALSE
 Table ID 374: Transaction committed successfully
@@ -853,7 +509,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 375...
 Processing table 1/1: ID 375, keep_vintage = FALSE
 Table ID 375: Transaction committed successfully
@@ -864,18 +521,20 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 377...
 Processing table 1/1: ID 377, keep_vintage = FALSE
 Table ID 377: Transaction committed successfully
-Table ID 377: Deleted 2 older vintages and 0 redundant vintages
+Table ID 377: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 2 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 394...
 Processing table 1/1: ID 394, keep_vintage = FALSE
 Table ID 394: Transaction committed successfully
@@ -886,7 +545,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 409...
 Processing table 1/1: ID 409, keep_vintage = FALSE
 Table ID 409: Transaction committed successfully
@@ -897,7 +557,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-No vintages need hash updates.
+Processed 30/30 vintages
+All vintage hashes updated successfully
 Processing single table ID 442...
 Processing table 1/1: ID 442, keep_vintage = FALSE
 Table ID 442: Transaction committed successfully
