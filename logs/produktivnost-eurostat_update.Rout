@@ -1,0 +1,67 @@
+UMAR proxy is set!
+Attaching package: 'gmailr'
+
+The following object is masked from 'package:utils':
+
+    history
+
+The following objects are masked from 'package:base':
+
+    body, date, labels, message
+
+
+Attaching package: 'dplyr'
+
+The following object is masked from 'package:kableExtra':
+
+    group_rows
+
+The following object is masked from 'package:gmailr':
+
+    id
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+Table nama_10_gdp cached at C:\Users\MZALOZ~1\AppData\Local\Temp\Rtmpo1pr7Z/eurostat/dd8ed645e4483931c15a900ab21d97a3.rds
+Table nama_10_a10_e cached at C:\Users\MZALOZ~1\AppData\Local\Temp\Rtmpo1pr7Z/eurostat/a38e3dce3eabfcad6d9eb79a5dc640d1.rds
+Table nama_10_pe cached at C:\Users\MZALOZ~1\AppData\Local\Temp\Rtmpo1pr7Z/eurostat/23cff66a84e185e589cc11b35f96d7ce.rds
+Table demo_pjan cached at C:\Users\MZALOZ~1\AppData\Local\Temp\Rtmpo1pr7Z/eurostat/8c7e3a52372f999ebc633d38b41109bc.rds
+Error in `mutate()`:
+i In argument: `GDP_PC_PPS_EU27_100 = GDP_PC_PPS/GDP_PC_PPS[geo ==
+  "EU27_2020"] * 100`.
+i In group 31: `time = 2025-01-01`.
+Caused by error:
+! `GDP_PC_PPS_EU27_100` must be size 7 or 1, not 0.
+Backtrace:
+     x
+  1. +-base::source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar_produktivnost\\R\\update_eurostat.R")
+  2. | +-base::withVisible(eval(ei, envir))
+  3. | \-base::eval(ei, envir)
+  4. |   \-base::eval(ei, envir)
+  5. +-base::source("R\\01_produktivnost_makro.R", encoding = "UTF-8")
+  6. | +-base::withVisible(eval(ei, envir))
+  7. | \-base::eval(ei, envir)
+  8. |   \-base::eval(ei, envir)
+  9. +-dplyr::select(...)
+ 10. +-dplyr::mutate(...)
+ 11. +-dplyr::ungroup(...)
+ 12. +-dplyr::mutate(...)
+ 13. +-dplyr:::mutate.data.frame(...)
+ 14. | \-dplyr:::mutate_cols(.data, dplyr_quosures(...), by)
+ 15. |   +-base::withCallingHandlers(...)
+ 16. |   \-dplyr:::mutate_col(dots[[i]], data, mask, new_columns)
+ 17. |     \-mask$eval_all_mutate(quo)
+ 18. |       \-dplyr (local) eval()
+ 19. +-dplyr:::dplyr_internal_error(...)
+ 20. | \-rlang::abort(class = c(class, "dplyr:::internal_error"), dplyr_error_data = data)
+ 21. |   \-rlang:::signal_abort(cnd, .file)
+ 22. |     \-base::signalCondition(cnd)
+ 23. \-dplyr (local) `<fn>`(`<dpl:::__>`)
+ 24.   \-rlang::abort(message, class = error_class, parent = parent, call = error_call)
+Execution halted
