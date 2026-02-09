@@ -145,8 +145,32 @@ Importing data points from: 0314905S into schema platform
 Note: These vintages for table 0314905S are not new, they will not be inserted again.
 Skipping import for 0314905S due to vintage preparation issue: These vintages for table 0314905S are not new, they will not be inserted again.
 Importing data points from: H281S into schema platform
-Note: These vintages for table H281S are not new, they will not be inserted again.
-Skipping import for H281S due to vintage preparation issue: These vintages for table H281S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+value, MESEC, INDEKS, time, flag, interval_id, raw_time
+Data loaded into tmp_prepared_data. Sample rows:
+  INDEKS   MESEC value raw_time    time flag interval_id
+1      1 1991M01 105.8  1991M01 1991M01                M
+2      2 1991M01 151.2  1991M01 1991M01                M
+3      3 1991M01 151.2  1991M01 1991M01                M
+4      1 1991M02 107.9  1991M02 1991M02                M
+5      2 1991M02 148.7  1991M02 1991M02                M
+Matching dimensions:
+  - INDEKS (ID: 223)
+  - Matched dimension: INDEKS -> column: INDEKS
+Updated series_id for 1263 rows
+Updated vintage_id for 1263 rows
+After matching. Sample rows:
+  INDEKS   MESEC value raw_time    time flag interval_id series_id vintage_id
+1      1 1991M07 105.7  1991M07 1991M07                M     44896    7360328
+2      1 1991M01 105.8  1991M01 1991M01                M     44896    7360328
+3      1 1991M02 107.9  1991M02 1991M02                M     44896    7360328
+4      1 1991M04 105.0  1991M04 1991M04                M     44896    7360328
+5      1 1991M05 110.4  1991M05 1991M05                M     44896    7360328
+Rows with both series_id and vintage_id: 1263
+Inserted 0 new periods
+Inserted 1263 new data points
+Inserted 0 new flags
 Importing data points from: 0325220S into schema platform
 Note: These vintages for table 0325220S are not new, they will not be inserted again.
 Skipping import for 0325220S due to vintage preparation issue: These vintages for table 0325220S are not new, they will not be inserted again.
@@ -251,7 +275,7 @@ Note: These vintages for table 0700915S are not new, they will not be inserted a
 Skipping import for 0700915S due to vintage preparation issue: These vintages for table 0700915S are not new, they will not be inserted again.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 30/30 vintages
+Processed 33/33 vintages
 All vintage hashes updated successfully
 Processing single table ID 1...Processing single table ID 2...Processing single table ID 9...Processing single table ID 13...Processing single table ID 14...Processing single table ID 15...Processing single table ID 16...Processing single table ID 17...Processing single table ID 18...Processing single table ID 19...Processing single table ID 20...Processing single table ID 21...Processing single table ID 22...Processing single table ID 23...Processing single table ID 29...Processing single table ID 30...Processing single table ID 34...Processing single table ID 38...Processing single table ID 39...Processing single table ID 40...Processing single table ID 41...Processing single table ID 42...Processing single table ID 44...Processing single table ID 45...Processing single table ID 46...Processing single table ID 47...Processing single table ID 48...Processing single table ID 49...Processing single table ID 50...Processing single table ID 51...Processing single table ID 64...Processing single table ID 65...Processing single table ID 66...Processing single table ID 67...Processing single table ID 68...Processing single table ID 69...Processing single table ID 70...Processing single table ID 71...Processing single table ID 72...Processing single table ID 73...Processing single table ID 77...Processing single table ID 78...Processing single table ID 79...Processing single table ID 82...Processing single table ID 83...Processing single table ID 84...Processing single table ID 115...Processing single table ID 116...Processing single table ID 118...Processing single table ID 119...Processing single table ID 120...Processing single table ID 121...Processing single table ID 122...Processing single table ID 123...Processing single table ID 124...Processing single table ID 125...Processing single table ID 126...Processing single table ID 137...Processing single table ID 143...Processing single table ID 148...Processing single table ID 209...Processing single table ID 224...Processing single table ID 251...Processing single table ID 253...Processing single table ID 254...Processing single table ID 255...Processing single table ID 303...Processing single table ID 383...Processing single table ID 398...Processing single table ID 399...Processing single table ID 400...Processing single table ID 407...Processing single table ID 408...Processing single table ID 424...Processing single table ID 426...Processing single table ID 427...Processing single table ID 428...Processing single table ID 440...Processing single table ID 441...Processing single table ID 449...
 Error: Expecting a single string value: [type=character; extent=80].
