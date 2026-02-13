@@ -24,31 +24,13 @@ The following objects are masked from 'package:base':
 [1] "start preparing data from local drives"
 [1] "Local data ready"
 [1] "start getting release calendar dates"
-[1] "Release dates ready, start writing to file"
-File saved successfully to original location
-File saved successfully to original location
-[1] "Writing to file done, now emailing everyone."
-
-Attaching package: 'gmailr'
-
-The following object is masked from 'package:lubridate':
-
-    date
-
-The following object is masked from 'package:dplyr':
-
-    id
-
-The following object is masked from 'package:utils':
-
-    history
-
-The following objects are masked from 'package:base':
-
-    body, date, labels, message
-
-Warning message:
+Error in curl::curl_fetch_memory(url, handle = handle) : 
+  Timeout was reached [www.stat.si]:
+Connection timed out after 10016 milliseconds
+Calls: source ... request_fetch.write_memory -> <Anonymous> -> raise_libcurl_error
+In addition: Warning message:
 There was 1 warning in `filter()`.
 i In argument: `datum <= Sys.Date() | datum == min(datum[datum > Sys.Date()])`.
 Caused by warning in `min.default()`:
 ! no non-missing arguments to min; returning Inf 
+Execution halted
