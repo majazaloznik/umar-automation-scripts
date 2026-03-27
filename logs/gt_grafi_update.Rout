@@ -9,7 +9,7 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-Running gt & eo grafi update on 2026-03-26
+Running gt & eo grafi update on 2026-03-27
 
 
 Preparing data for the chart in EO_04_tecaji_auto.xlsx
@@ -17,7 +17,7 @@ Data available up to Q4 25
 EO_04_tecaji_auto.xlsx saved successfully to original location
 
 Preparing data for the chart in EO_05_kratk.kazal_auto.xlsx
-Data available up to 2026-01-01
+Data available up to 2026-02-01
 EO_05_kratk.kazal_auto.xlsx saved successfully to original location
 
 Preparing data for the chart in EO_09_financna_vzdrznost_auto.xlsx
@@ -25,15 +25,16 @@ Data available up to 2025-12-01
 EO_09_financna_vzdrznost_auto.xlsx saved successfully to original location
 
 Preparing data for the chart in EO_08_zasebna_potrosnja_auto.xlsx
-Data available up to 2025Q4
-EO_08_zasebna_potrosnja_auto.xlsx saved successfully to original location
+
+***Failed:*** eo_08_zasebna.R - object 'note' not found***Failed!***
+
 
 Preparing data for the chart in EO_10_prejemniki_pomoci_auto.xlsx
 Data available up to 2026-01-01
 EO_10_prejemniki_pomoci_auto.xlsx saved successfully to original location
 
 Preparing data for the chart in EO_11_financni_trgi_auto.xlsx
-Data available up to 2026-01-01
+Data available up to 2026-02-01
 EO_11_financni_trgi_auto.xlsx saved successfully to original location
 
 Preparing data for the chart in EO_12_javne_finance_A_O_auto.xlsx
@@ -77,7 +78,7 @@ Data available up to 2026-01-01
 GT_04_gradbenistvo_auto.xlsx saved successfully to original location
 
 Preparing data for the chart in GT_05_trgovina_auto.xlsx
-Data available up to 2025-12-01
+Data available up to 2026-01-01
 GT_05_trgovina_auto.xlsx saved successfully to original location
 
 Preparing data for the chart in GT_06_trz.stor_auto.xlsx
@@ -94,7 +95,10 @@ GT_08_cestni.zelez_auto.xlsx saved successfully to original location
 
 Preparing data for the chart in GT_09_tendence_auto.xlsx
 Data available up to 2026-03-01
-GT_09_tendence_auto.xlsx saved successfully to original location
+Could not save to original file, likely opened by another user
+Error was: Failed to save workbook
+Saving to backup location: \\192.168.38.7\data$\GT\SLIKE\GT slike avtomatizirane\GT_09_tendence_auto_2026-03-27_11-05-11.xlsx
+GT_09_tendence_auto.xlsx File saved successfully to backup location
 
 Preparing data for the chart in GT_10_place_auto.xlsx
 Data available up to 2026-01-01
@@ -137,3 +141,5 @@ Warning messages:
 2: Missing values are always removed in SQL aggregation functions.
 Use `na.rm = TRUE` to silence this warning
 This warning is displayed once every 8 hours. 
+3: In file.create(to[okay]) :
+  cannot create file '\\192.168.38.7\data$\GT\SLIKE\GT slike avtomatizirane\GT_09_tendence_auto.xlsx', reason 'Permission denied'
