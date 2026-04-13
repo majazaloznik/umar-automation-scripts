@@ -182,13 +182,55 @@ Note: These vintages for table FSR_IUS are not new, they will not be inserted ag
 Skipping import for FSR_IUS due to vintage preparation issue: These vintages for table FSR_IUS are not new, they will not be inserted again.
 Importing data points from: i_32_6ms into schema platform
 trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
-Content type 'application/octet-stream' length 551061 bytes (538 KB)
+Content type 'application/octet-stream' length 555951 bytes (542 KB)
 ==================================================
-downloaded 538 KB
+downloaded 542 KB
 
 File has BOM, using UTF-16LE
-Note: These vintages for table i_32_6ms are not new, they will not be inserted again.
-Skipping import for i_32_6ms due to vintage preparation issue: These vintages for table i_32_6ms are not new, they will not be inserted again.
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
+Content type 'application/octet-stream' length 555951 bytes (542 KB)
+==================================================
+downloaded 542 KB
+
+File has BOM, using UTF-16LE
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
+Content type 'application/octet-stream' length 555951 bytes (542 KB)
+==================================================
+downloaded 542 KB
+
+File has BOM, using UTF-16LE
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
+Content type 'application/octet-stream' length 555951 bytes (542 KB)
+==================================================
+downloaded 542 KB
+
+File has BOM, using UTF-16LE
+
+=== PostgreSQL Column Names ===
+value, Postavke, Datum, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  Postavke   Datum      value    time flag interval_id
+1        0 1994M01  85.996111 1994M01                M
+2        3 1994M01   9.705617 1994M01                M
+3        4 1994M01 325.660811 1994M01                M
+4        5 1994M01 315.955193 1994M01                M
+5        6 1994M01  56.687228 1994M01                M
+Matching dimensions:
+  - Postavke (ID: 542)
+  - Matched dimension: Postavke -> column: Postavke
+Updated series_id for 20458 rows
+Updated vintage_id for 20458 rows
+After matching. Sample rows:
+  Postavke   Datum value    time flag interval_id series_id vintage_id
+1       68 1994M10    NA 1994M10                M    111448    7403910
+2       68 1996M05    NA 1996M05                M    111448    7403910
+3       68 1997M05    NA 1997M05                M    111448    7403910
+4       68 1998M12    NA 1998M12                M    111448    7403910
+5       68 1999M12    NA 1999M12                M    111448    7403910
+Rows with both series_id and vintage_id: 20458
+Inserted 0 new periods
+Inserted 20458 new data points
+Inserted 0 new flags
 Importing data points from: I1_2AS into schema platform
 trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/10_denar_mfi/20_kons_bilanca_mfi/I1_2AS.px'
 Content type 'application/octet-stream' length 138525 bytes (135 KB)
@@ -226,8 +268,9 @@ File has BOM, using UTF-16LE
 Note: These vintages for table I2_4_4AS are not new, they will not be inserted again.
 Skipping import for I2_4_4AS due to vintage preparation issue: These vintages for table I2_4_4AS are not new, they will not be inserted again.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 46/46 vintages
+Removed 25 empty vintages.
+Processed 100/142 vintages
+Processed 142/142 vintages
 All vintage hashes updated successfully
 Processing single table ID 220...
 Processing table 1/1: ID 220, keep_vintage = FALSE
@@ -239,7 +282,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 222...
 Processing table 1/1: ID 222, keep_vintage = FALSE
@@ -251,7 +294,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 233...
 Processing table 1/1: ID 233, keep_vintage = FALSE
@@ -263,7 +306,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 234...
 Processing table 1/1: ID 234, keep_vintage = FALSE
@@ -275,7 +318,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 235...
 Processing table 1/1: ID 235, keep_vintage = FALSE
@@ -287,7 +330,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 236...
 Processing table 1/1: ID 236, keep_vintage = FALSE
@@ -299,7 +342,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 237...
 Processing table 1/1: ID 237, keep_vintage = FALSE
@@ -311,7 +354,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 238...
 Processing table 1/1: ID 238, keep_vintage = FALSE
@@ -323,7 +366,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 239...
 Processing table 1/1: ID 239, keep_vintage = FALSE
@@ -335,7 +378,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 240...
 Processing table 1/1: ID 240, keep_vintage = FALSE
@@ -347,7 +390,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 241...
 Processing table 1/1: ID 241, keep_vintage = FALSE
@@ -359,7 +402,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 242...
 Processing table 1/1: ID 242, keep_vintage = FALSE
@@ -371,7 +414,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 243...
 Processing table 1/1: ID 243, keep_vintage = FALSE
@@ -383,7 +426,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 244...
 Processing table 1/1: ID 244, keep_vintage = FALSE
@@ -395,7 +438,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 245...
 Processing table 1/1: ID 245, keep_vintage = FALSE
@@ -407,7 +450,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 246...
 Processing table 1/1: ID 246, keep_vintage = FALSE
@@ -419,7 +462,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 247...
 Processing table 1/1: ID 247, keep_vintage = FALSE
@@ -431,7 +474,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 248...
 Processing table 1/1: ID 248, keep_vintage = FALSE
@@ -443,7 +486,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 249...
 Processing table 1/1: ID 249, keep_vintage = FALSE
@@ -455,19 +498,19 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 257...
 Processing table 1/1: ID 257, keep_vintage = FALSE
 Table ID 257: Transaction committed successfully
-Table ID 257: Deleted 0 older vintages and 0 redundant vintages
+Table ID 257: Deleted 53 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 53 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 401...
 Processing table 1/1: ID 401, keep_vintage = FALSE
@@ -479,7 +522,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 403...
 Processing table 1/1: ID 403, keep_vintage = FALSE
@@ -491,7 +534,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 404...
 Processing table 1/1: ID 404, keep_vintage = FALSE
@@ -503,7 +546,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 46/46 vintages
+Processed 53/53 vintages
 All vintage hashes updated successfully
 Processing single table ID 405...
 Processing table 1/1: ID 405, keep_vintage = FALSE
