@@ -8,13 +8,13 @@
 
 # masa plač nova read
 ################################################################################
-path <- "\\\\192.168.38.7\\public$\\Users\\DRogan\\EO\\Pla\u010de (SKD skupine).xlsx"
+path <- "\\\\192.168.38.7\\public$\\Users\\DRogan\\EO\\Pla\u010de (nove SKD skupine).xlsx"
 
 df <- readxl::read_excel(path,
                          col_names = FALSE)
 
 df <- df[-2, ]  # remove row 2
-df <- df[1:21,]
+df <- df[1:22,]
 df <- df[, !sapply(df, function(x) all(is.na(x[-1])))]
 # Set proper column names
 names(df)[1] <- "category"
@@ -29,30 +29,33 @@ df_transposed <- df |>
                      values_from = value) |>
   dplyr::mutate(period = as.Date(period))
 
-colnames(df_transposed) <- c("period", "UMAR-SURS--DR005--A--M",
-"UMAR-SURS--DR005--B--M",
-"UMAR-SURS--DR005--C--M",
-"UMAR-SURS--DR005--D--M",
-"UMAR-SURS--DR005--E--M",
-"UMAR-SURS--DR005--F--M",
-"UMAR-SURS--DR005--G--M",
-"UMAR-SURS--DR005--H--M",
-"UMAR-SURS--DR005--I--M",
-"UMAR-SURS--DR005--J--M",
-"UMAR-SURS--DR005--K--M",
-"UMAR-SURS--DR005--L--M",
-"UMAR-SURS--DR005--M--M",
-"UMAR-SURS--DR005--N--M",
-"UMAR-SURS--DR005--O--M",
-"UMAR-SURS--DR005--P--M",
-"UMAR-SURS--DR005--Q--M",
-"UMAR-SURS--DR005--R--M",
-"UMAR-SURS--DR005--S--M",
-"UMAR-SURS--DR005--TOT--M")
+colnames(df_transposed) <- c("period",
+                             "UMAR-SURS--DR012--A--M",
+                             "UMAR-SURS--DR012--B--M",
+                             "UMAR-SURS--DR012--C--M",
+                             "UMAR-SURS--DR012--D--M",
+                             "UMAR-SURS--DR012--E--M",
+                             "UMAR-SURS--DR012--F--M",
+                             "UMAR-SURS--DR012--G--M",
+                             "UMAR-SURS--DR012--H--M",
+                             "UMAR-SURS--DR012--I--M",
+                             "UMAR-SURS--DR012--J--M",
+                             "UMAR-SURS--DR012--K--M",
+                             "UMAR-SURS--DR012--L--M",
+                             "UMAR-SURS--DR012--M--M",
+                             "UMAR-SURS--DR012--N--M",
+                             "UMAR-SURS--DR012--O--M",
+                             "UMAR-SURS--DR012--P--M",
+                             "UMAR-SURS--DR012--Q--M",
+                             "UMAR-SURS--DR012--R--M",
+                             "UMAR-SURS--DR012--S--M",
+                             "UMAR-SURS--DR012--T--M",
+                             "UMAR-SURS--DR012--TOT--M")
 
 path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-data\\DR\\umar_serije_podatki_DR.xlsx"
 # Read existing file
-existing <- readxl::read_excel(path)
+existing <- readxl::read_excel(path)|>
+  dplyr::mutate(dplyr::across(-1, as.numeric))
 
 # Update/merge with new data
 updated <- existing |>
@@ -66,13 +69,13 @@ openxlsx::write.xlsx(updated,
 
 # prejemniki plač novi read
 ################################################################################
-path <- "\\\\192.168.38.7\\public$\\Users\\DRogan\\EO\\Pla\u010de (SKD skupine).xlsx"
+path <- "\\\\192.168.38.7\\public$\\Users\\DRogan\\EO\\Pla\u010de (nove SKD skupine).xlsx"
 
-df <- readxl::read_excel(path,
+ df <- readxl::read_excel(path,
                          col_names = FALSE)
 
-df <- df[-(2:24), ]  # remove row 2
-df <- df[1:21,]
+df <- df[-(2:25), ]  # remove row 2
+df <- df[1:22,]
 df <- df[, !sapply(df, function(x) all(is.na(x[-1])))]
 # Set proper column names
 names(df)[1] <- "category"
@@ -88,30 +91,33 @@ df_transposed <- df |>
                      values_from = value) |>
   dplyr::mutate(period = as.Date(period))
 
-colnames(df_transposed) <- c("period", "UMAR-SURS--DR006--A--M",
-  "UMAR-SURS--DR006--B--M",
-  "UMAR-SURS--DR006--C--M",
-  "UMAR-SURS--DR006--D--M",
-  "UMAR-SURS--DR006--E--M",
-  "UMAR-SURS--DR006--F--M",
-  "UMAR-SURS--DR006--G--M",
-  "UMAR-SURS--DR006--H--M",
-  "UMAR-SURS--DR006--I--M",
-  "UMAR-SURS--DR006--J--M",
-  "UMAR-SURS--DR006--K--M",
-  "UMAR-SURS--DR006--L--M",
-  "UMAR-SURS--DR006--M--M",
-  "UMAR-SURS--DR006--N--M",
-  "UMAR-SURS--DR006--O--M",
-  "UMAR-SURS--DR006--P--M",
-  "UMAR-SURS--DR006--Q--M",
-  "UMAR-SURS--DR006--R--M",
-  "UMAR-SURS--DR006--S--M",
-  "UMAR-SURS--DR006--TOT--M")
+colnames(df_transposed) <- c("period",
+                             "UMAR-SURS--DR013--A--M",
+                             "UMAR-SURS--DR013--B--M",
+                             "UMAR-SURS--DR013--C--M",
+                             "UMAR-SURS--DR013--D--M",
+                             "UMAR-SURS--DR013--E--M",
+                             "UMAR-SURS--DR013--F--M",
+                             "UMAR-SURS--DR013--G--M",
+                             "UMAR-SURS--DR013--H--M",
+                             "UMAR-SURS--DR013--I--M",
+                             "UMAR-SURS--DR013--J--M",
+                             "UMAR-SURS--DR013--K--M",
+                             "UMAR-SURS--DR013--L--M",
+                             "UMAR-SURS--DR013--M--M",
+                             "UMAR-SURS--DR013--N--M",
+                             "UMAR-SURS--DR013--O--M",
+                             "UMAR-SURS--DR013--P--M",
+                             "UMAR-SURS--DR013--Q--M",
+                             "UMAR-SURS--DR013--R--M",
+                             "UMAR-SURS--DR013--S--M",
+                             "UMAR-SURS--DR013--T--M",
+                             "UMAR-SURS--DR013--TOT--M")
 
 path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-data\\DR\\umar_serije_podatki_DR.xlsx"
 # Read existing file
-existing <- readxl::read_excel(path)
+existing <- readxl::read_excel(path)|>
+  dplyr::mutate(dplyr::across(-1, as.numeric))
 
 # Update/merge with new data
 updated <- existing |>
