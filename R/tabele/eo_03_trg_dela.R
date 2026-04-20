@@ -147,7 +147,7 @@ wb$add_data(sheet = 3,  x = t(colnames(out)[-1]),  dims = "B1", colNames = FALSE
 wb$add_data(sheet = 3,  x = out[1:30,-1],  dims = "B2", colNames = FALSE, na.strings = "")
 try_save_id_en()
 
-out <- process_indicators(xx, full = TRUE)
+out <- process_indicators(xx, full = TRUE,  agg_fun = "mean")
 
 wb <- load_wb_ex()  |> fix_wb_encoding()
 wb$clean_sheet(sheet = 3, dims = "B2:BE31", styles = FALSE)
