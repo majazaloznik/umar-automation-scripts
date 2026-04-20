@@ -1,3 +1,359 @@
-UMAR proxy is set!Error in library(ZRSZfetchR) : there is no package called 'ZRSZfetchR'
-Calls: source -> withVisible -> eval -> eval -> library
-Execution halted
+UMAR proxy is set!Processing table: BO
+Importing data points from: BO into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/Mesecno_gibanje_BO_1992-2026.xlsx'
+Content type 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' length 25216 bytes (24 KB)
+==================================================
+downloaded 24 KB
+
+
+=== PostgreSQL Column Names ===
+value, time, Vrednost, flag
+Data loaded into tmp_prepared_data. Sample rows:
+     time value Vrednost flag
+1 1987M01 14526        0     
+2 1987M02 14593        0     
+3 1987M03 14336        0     
+4 1987M04 14068        0     
+5 1987M05 13882        0     
+Matching dimensions:
+  - Vrednost (ID: 92)
+  - Matched dimension: Vrednost -> column: Vrednost
+Updated series_id for 471 rows
+Updated vintage_id for 471 rows
+After matching. Sample rows:
+     time value Vrednost flag series_id vintage_id
+1 1987M01 14526        0          33963    7406031
+2 1987M02 14593        0          33963    7406031
+3 1987M03 14336        0          33963    7406031
+4 1987M04 14068        0          33963    7406031
+5 1987M05 13882        0          33963    7406031
+Rows with both series_id and vintage_id: 471
+Inserted 0 new periods
+Inserted 471 new data points
+Inserted 0 new flags
+Processing table: BO_OS
+Importing data points from: BO_OS into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Stopnje/Stopnja_BO_OS_2005-2026.xls'
+Content type 'application/vnd.ms-excel' length 290816 bytes (284 KB)
+==================================================
+downloaded 284 KB
+
+
+=== PostgreSQL Column Names ===
+value, time, Vrednost, flag
+Data loaded into tmp_prepared_data. Sample rows:
+     time     value Vrednost flag
+1 2005M01 10.384209        0     
+2 2005M02 10.342438        0     
+3 2005M03 10.239058        0     
+4 2005M04 10.136737        0     
+5 2005M05  9.930898        0     
+Matching dimensions:
+  - Vrednost (ID: 281)
+  - Matched dimension: Vrednost -> column: Vrednost
+Updated series_id for 253 rows
+Updated vintage_id for 253 rows
+After matching. Sample rows:
+     time     value Vrednost flag series_id vintage_id
+1 2005M01 10.384209        0          54956    7406032
+2 2005M02 10.342438        0          54956    7406032
+3 2005M03 10.239058        0          54956    7406032
+4 2005M04 10.136737        0          54956    7406032
+5 2005M05  9.930898        0          54956    7406032
+Rows with both series_id and vintage_id: 253
+Inserted 0 new periods
+Inserted 252 new data points
+Inserted 0 new flags
+Processing table: BO_SLO_izob
+Importing data points from: BO_SLO_izob into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_izob_2005-2026.xls'
+Content type 'application/vnd.ms-excel' length 202752 bytes (198 KB)
+==================================================
+downloaded 198 KB
+
+
+=== PostgreSQL Column Names ===
+value, izobrazba, time, flag
+Data loaded into tmp_prepared_data. Sample rows:
+  izobrazba    time value flag
+1        I1 2014M01 36509     
+2        I1 2014M02 36890     
+3        I1 2014M03 35703     
+4        I1 2014M04 34704     
+5        I1 2014M05 33669     
+Matching dimensions:
+  - izobrazba (ID: 892)
+  - Matched dimension: izobrazba -> column: izobrazba
+Updated series_id for 588 rows
+Updated vintage_id for 588 rows
+After matching. Sample rows:
+  izobrazba    time value flag series_id vintage_id
+1        I1 2014M01 36509         336482    7406033
+2        I1 2014M02 36890         336482    7406033
+3        I1 2014M03 35703         336482    7406033
+4        I1 2014M04 34704         336482    7406033
+5        I1 2014M05 33669         336482    7406033
+Rows with both series_id and vintage_id: 588
+Inserted 0 new periods
+Inserted 588 new data points
+Inserted 0 new flags
+Processing table: BO_SLO_starost
+Importing data points from: BO_SLO_starost into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_starost_2005-2026.xls'
+Content type 'application/vnd.ms-excel' length 201728 bytes (197 KB)
+==================================================
+downloaded 197 KB
+
+Processing table: BO_SLO_trajanje
+Importing data points from: BO_SLO_trajanje into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_trajanje_2005-2026.xls'
+Content type 'application/vnd.ms-excel' length 209408 bytes (204 KB)
+==================================================
+downloaded 204 KB
+
+
+=== PostgreSQL Column Names ===
+value, trajanje, time, flag
+Data loaded into tmp_prepared_data. Sample rows:
+  trajanje    time value flag
+1       T1 2014M01 31045     
+2       T1 2014M02 28863     
+3       T1 2014M03 24394     
+4       T1 2014M04 18754     
+5       T1 2014M05 17337     
+Matching dimensions:
+  - trajanje (ID: 894)
+  - Matched dimension: trajanje -> column: trajanje
+Updated series_id for 1029 rows
+Updated vintage_id for 1029 rows
+After matching. Sample rows:
+  trajanje    time value flag series_id vintage_id
+1       T1 2014M01 31045         336492    7406037
+2       T1 2014M02 28863         336492    7406037
+3       T1 2014M03 24394         336492    7406037
+4       T1 2014M04 18754         336492    7406037
+5       T1 2014M05 17337         336492    7406037
+Rows with both series_id and vintage_id: 1029
+Inserted 0 new periods
+Inserted 1029 new data points
+Inserted 0 new flags
+Processing table: BO_SLO_spol
+Importing data points from: BO_SLO_spol into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_spol_2005-2026.xls'
+Content type 'application/vnd.ms-excel' length 195584 bytes (191 KB)
+==================================================
+downloaded 191 KB
+
+
+=== PostgreSQL Column Names ===
+value, spol, time, flag
+Data loaded into tmp_prepared_data. Sample rows:
+  spol    time value flag
+1    F 2005M01 48929     
+2    F 2005M02 48778     
+3    F 2005M03 48750     
+4    F 2005M04 48966     
+5    F 2005M05 48405     
+Matching dimensions:
+  - spol (ID: 895)
+  - Matched dimension: spol -> column: spol
+Updated series_id for 510 rows
+Updated vintage_id for 510 rows
+After matching. Sample rows:
+  spol    time value flag series_id vintage_id
+1    F 2005M01 48929         336500    7406045
+2    F 2005M02 48778         336500    7406045
+3    F 2005M03 48750         336500    7406045
+4    F 2005M04 48966         336500    7406045
+5    F 2005M05 48405         336500    7406045
+Rows with both series_id and vintage_id: 510
+Inserted 0 new periods
+Inserted 510 new data points
+Inserted 0 new flags
+Processing table: DN
+Importing data points from: DN into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Pravica_iz_zavarovanja/Prejemniki_DN_2007-2026.xls'
+Content type 'application/vnd.ms-excel' length 220160 bytes (215 KB)
+==================================================
+downloaded 215 KB
+
+
+=== PostgreSQL Column Names ===
+value, time, Vrednost, flag
+Data loaded into tmp_prepared_data. Sample rows:
+     time value Vrednost flag
+1 2007M01 16604        0     
+2 2007M02 16240        0     
+3 2007M03 15756        0     
+4 2007M04 15124        0     
+5 2007M05 15112        0     
+Matching dimensions:
+  - Vrednost (ID: 901)
+  - Matched dimension: Vrednost -> column: Vrednost
+Updated series_id for 230 rows
+Updated vintage_id for 230 rows
+After matching. Sample rows:
+     time value Vrednost flag series_id vintage_id
+1 2007M01 16604        0         342475    7406046
+2 2007M02 16240        0         342475    7406046
+3 2007M03 15756        0         342475    7406046
+4 2007M04 15124        0         342475    7406046
+5 2007M05 15112        0         342475    7406046
+Rows with both series_id and vintage_id: 230
+Inserted 0 new periods
+Inserted 230 new data points
+Inserted 0 new flags
+Processing table: TOK
+Importing data points from: TOK into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Prijavljeni_in_odjavljeni/Prijave_odjave_2005-2026.xls'
+Content type 'application/vnd.ms-excel' length 290816 bytes (284 KB)
+==================================================
+downloaded 284 KB
+
+Error processing TOK: Can't transform a data frame with duplicate names.
+Processing table: DD
+Importing data points from: DD into schema platform
+trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Zaposlovanje_tujcev/Veljavna_DD_spol_2005-2026.xls'
+Content type 'application/vnd.ms-excel' length 266240 bytes (260 KB)
+==================================================
+downloaded 260 KB
+
+
+=== PostgreSQL Column Names ===
+value, time, Vrednost, flag
+Data loaded into tmp_prepared_data. Sample rows:
+     time value Vrednost flag
+1 2012M01 34184        0     
+2 2012M02 34187        0     
+3 2012M03 34228        0     
+4 2012M04 34735        0     
+5 2012M05 34410        0     
+Matching dimensions:
+  - Vrednost (ID: 907)
+  - Matched dimension: Vrednost -> column: Vrednost
+Updated series_id for 171 rows
+Updated vintage_id for 171 rows
+After matching. Sample rows:
+     time value Vrednost flag series_id vintage_id
+1 2012M01 34184        0         342513    7406047
+2 2012M02 34187        0         342513    7406047
+3 2012M03 34228        0         342513    7406047
+4 2012M04 34735        0         342513    7406047
+5 2012M05 34410        0         342513    7406047
+Rows with both series_id and vintage_id: 171
+Inserted 0 new periods
+Inserted 171 new data points
+Inserted 0 new flags
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 53/53 vintages
+All vintage hashes updated successfully
+Processing single table ID 33...
+Processing table 1/1: ID 33, keep_vintage = TRUE
+Table ID 33: Transaction committed successfully
+Table ID 33: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 53/53 vintages
+All vintage hashes updated successfully
+Processing single table ID 127...
+Processing table 1/1: ID 127, keep_vintage = TRUE
+Table ID 127: Transaction committed successfully
+Table ID 127: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 53/53 vintages
+All vintage hashes updated successfully
+Processing single table ID 444...
+Processing table 1/1: ID 444, keep_vintage = FALSE
+Table ID 444: Transaction committed successfully
+Table ID 444: Deleted 4 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 4 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 53/53 vintages
+All vintage hashes updated successfully
+Processing single table ID 445...
+Processing table 1/1: ID 445, keep_vintage = FALSE
+Table ID 445: Transaction committed successfully
+Table ID 445: Deleted 6 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 6 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 53/53 vintages
+All vintage hashes updated successfully
+Processing single table ID 446...
+Processing table 1/1: ID 446, keep_vintage = FALSE
+Table ID 446: Transaction committed successfully
+Table ID 446: Deleted 7 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 7 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 53/53 vintages
+All vintage hashes updated successfully
+Processing single table ID 447...
+Processing table 1/1: ID 447, keep_vintage = FALSE
+Table ID 447: Transaction committed successfully
+Table ID 447: Deleted 2 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 2 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 53/53 vintages
+All vintage hashes updated successfully
+Processing single table ID 451...
+Processing table 1/1: ID 451, keep_vintage = FALSE
+Table ID 451: Transaction committed successfully
+Table ID 451: Deleted 1 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 1 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 53/53 vintages
+All vintage hashes updated successfully
+Processing single table ID 453...
+Processing table 1/1: ID 453, keep_vintage = FALSE
+Table ID 453: Transaction committed successfully
+Table ID 453: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 53/53 vintages
+All vintage hashes updated successfully
+Processing single table ID 454...
+Processing table 1/1: ID 454, keep_vintage = FALSE
+Table ID 454: Transaction committed successfully
+Table ID 454: Deleted 1 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 1 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Warning messages:
+1: In prepare_vintage_table(meta, df, con, schema) :
+  These monthly vintages for table BO_SLO_starost are not new, they will not be inserted again.
+2: In ZRSZ_import_data_points(meta, con, schema = "platform") :
+  No new vintages to insert, exiting.
