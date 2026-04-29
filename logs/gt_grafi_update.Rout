@@ -25,9 +25,8 @@ Data available up to 2026-03-01
 EO_05_kratk.kazal_auto.xlsx saved successfully to original location
 
 Preparing data for the chart in EO_07_storitvena_menjava_auto.xlsx
-
-***Failed:*** eo_07_storitvena_menjava.R - In argument: `dplyr::across(...)`.***Failed!***
-
+Data available up to 2026-02-01
+EO_07_storitvena_menjava_auto.xlsx saved successfully to original location
 
 Preparing data for the chart in EO_09_financna_vzdrznost_auto.xlsx
 Data available up to 2026-03-01
@@ -143,7 +142,11 @@ Data available up to 2026-03-01
 GT_18_elektrika_auto.xlsx saved successfully to original location
 Warning messages:
 1: In Sys.setlocale("LC_CTYPE", "Slovenian_Slovenia.utf8") :
-  OS reports request to set locale to "Slovenian_Slovenia.utf8" cannot be honored
+  using locale code page other than 1250 may cause problems
 2: Missing values are always removed in SQL aggregation functions.
 Use `na.rm = TRUE` to silence this warning
 This warning is displayed once every 8 hours. 
+3: There was 1 warning in `mutate()`.
+ℹ In argument: `period_date = lubridate::yq(period_id)`.
+Caused by warning in `strsplit()`:
+! input string 1 is invalid UTF-8 
