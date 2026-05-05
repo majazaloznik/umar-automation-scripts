@@ -24,52 +24,429 @@ downloaded 764 KB
 
 New names:
 * `` -> `...1`
-* `` -> `...2`
-* `` -> `...3`
-* `` -> `...4`
-* `` -> `...5`
-* `` -> `...6`
-* `` -> `...7`
-* `` -> `...11`
-* `` -> `...14`
-* `` -> `...15`
-* `` -> `...16`
-* `` -> `...17`
 New names:
 * `` -> `...1`
-Error in `dplyr::mutate()`:
-i In argument: `period = as.Date(...)`.
-Caused by error in `charToDate()`:
-! character string is not in a standard unambiguous format
-Backtrace:
-     x
-  1. +-base::source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\umar-add_new_data_full.R")
-  2. | +-base::withVisible(eval(ei, envir))
-  3. | \-base::eval(ei, envir)
-  4. |   \-base::eval(ei, envir)
-  5. +-base::source("R/data/commodity_prices_ub.R")
-  6. | +-base::withVisible(eval(ei, envir))
-  7. | \-base::eval(ei, envir)
-  8. |   \-base::eval(ei, envir)
-  9. +-dplyr::mutate(...)
- 10. +-dplyr:::mutate.data.frame(...)
- 11. | \-dplyr:::mutate_cols(.data, dplyr_quosures(...), by)
- 12. |   +-base::withCallingHandlers(...)
- 13. |   \-dplyr:::mutate_col(dots[[i]], data, mask, new_columns)
- 14. |     \-mask$eval_all_mutate(quo)
- 15. |       \-dplyr (local) eval()
- 16. +-base::as.Date(...)
- 17. +-base::as.Date.character(...)
- 18. | \-base (local) charToDate(x)
- 19. |   \-base::stop("character string is not in a standard unambiguous format")
- 20. \-base::.handleSimpleError(...)
- 21.   \-dplyr (local) h(simpleError(msg, call))
- 22.     \-rlang::abort(message, class = error_class, parent = parent, call = error_call)
-Warning message:
-There were 71 warnings in `dplyr::mutate()`.
-The first warning was:
-i In argument: `dplyr::across(-1, as.numeric)`.
-Caused by warning:
-! NAs introduced by coercion
-i Run `dplyr::last_dplyr_warnings()` to see the 70 remaining warnings. 
-Execution halted
+
+Attaching package: 'gmailr'
+
+The following object is masked from 'package:dplyr':
+
+    id
+
+The following object is masked from 'package:utils':
+
+    history
+
+The following objects are masked from 'package:base':
+
+    body, date, labels, message
+
+
+Attaching package: 'UMARfetchR'
+
+The following objects are masked from 'package:ZRSZfetchR':
+
+    prepare_category_relationship_table, prepare_category_table,
+    prepare_category_table_table, prepare_dimension_levels_table,
+    prepare_series_levels_table, prepare_series_table,
+    prepare_source_table, prepare_table_dimensions_table,
+    prepare_table_table, prepare_vintage_table
+
+Auto-refreshing stale OAuth token.
+Calculating hashes for new vintages...
+Removed 2 empty vintages.
+Processed 100/145 vintages
+Processed 145/145 vintages
+All vintage hashes updated successfully
+Processing single table ID 57...
+Processing table 1/1: ID 57, keep_vintage = TRUE
+Table ID 57: Transaction committed successfully
+Table ID 57: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 58...
+Processing table 1/1: ID 58, keep_vintage = TRUE
+Table ID 58: Transaction committed successfully
+Table ID 58: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 59...
+Processing table 1/1: ID 59, keep_vintage = TRUE
+Table ID 59: Transaction committed successfully
+Table ID 59: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 60...
+Processing table 1/1: ID 60, keep_vintage = TRUE
+Table ID 60: Transaction committed successfully
+Table ID 60: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 61...
+Processing table 1/1: ID 61, keep_vintage = TRUE
+Table ID 61: Transaction committed successfully
+Table ID 61: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 62...
+Processing table 1/1: ID 62, keep_vintage = TRUE
+Table ID 62: Transaction committed successfully
+Table ID 62: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 63...
+Processing table 1/1: ID 63, keep_vintage = TRUE
+Table ID 63: Transaction committed successfully
+Table ID 63: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 74...
+Processing table 1/1: ID 74, keep_vintage = TRUE
+Table ID 74: Transaction committed successfully
+Table ID 74: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 80...
+Processing table 1/1: ID 80, keep_vintage = TRUE
+Table ID 80: Transaction committed successfully
+Table ID 80: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 226...
+Processing table 1/1: ID 226, keep_vintage = FALSE
+Table ID 226: Transaction committed successfully
+Table ID 226: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 227...
+Processing table 1/1: ID 227, keep_vintage = FALSE
+Table ID 227: Transaction committed successfully
+Table ID 227: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 228...
+Processing table 1/1: ID 228, keep_vintage = FALSE
+Table ID 228: Transaction committed successfully
+Table ID 228: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 232...
+Processing table 1/1: ID 232, keep_vintage = FALSE
+Table ID 232: Transaction committed successfully
+Table ID 232: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 260...
+Processing table 1/1: ID 260, keep_vintage = FALSE
+Table ID 260: Transaction committed successfully
+Table ID 260: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 261...
+Processing table 1/1: ID 261, keep_vintage = FALSE
+Table ID 261: Transaction committed successfully
+Table ID 261: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 262...
+Processing table 1/1: ID 262, keep_vintage = FALSE
+Table ID 262: Transaction committed successfully
+Table ID 262: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 263...
+Processing table 1/1: ID 263, keep_vintage = FALSE
+Table ID 263: Transaction committed successfully
+Table ID 263: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 264...
+Processing table 1/1: ID 264, keep_vintage = FALSE
+Table ID 264: Transaction committed successfully
+Table ID 264: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 265...
+Processing table 1/1: ID 265, keep_vintage = FALSE
+Table ID 265: Transaction committed successfully
+Table ID 265: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 306...
+Processing table 1/1: ID 306, keep_vintage = FALSE
+Table ID 306: Transaction committed successfully
+Table ID 306: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 308...
+Processing table 1/1: ID 308, keep_vintage = FALSE
+Table ID 308: Transaction committed successfully
+Table ID 308: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 309...
+Processing table 1/1: ID 309, keep_vintage = FALSE
+Table ID 309: Transaction committed successfully
+Table ID 309: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 313...
+Processing table 1/1: ID 313, keep_vintage = FALSE
+Table ID 313: Transaction committed successfully
+Table ID 313: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 411...
+Processing table 1/1: ID 411, keep_vintage = FALSE
+Table ID 411: Transaction committed successfully
+Table ID 411: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 412...
+Processing table 1/1: ID 412, keep_vintage = FALSE
+Table ID 412: Transaction committed successfully
+Table ID 412: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 413...
+Processing table 1/1: ID 413, keep_vintage = FALSE
+Table ID 413: Transaction committed successfully
+Table ID 413: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 414...
+Processing table 1/1: ID 414, keep_vintage = FALSE
+Table ID 414: Transaction committed successfully
+Table ID 414: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 443...
+Processing table 1/1: ID 443, keep_vintage = FALSE
+Table ID 443: Transaction committed successfully
+Table ID 443: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 448...
+Processing table 1/1: ID 448, keep_vintage = FALSE
+Table ID 448: Transaction committed successfully
+Table ID 448: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 455...
+Processing table 1/1: ID 455, keep_vintage = FALSE
+Table ID 455: Transaction committed successfully
+Table ID 455: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 456...
+Processing table 1/1: ID 456, keep_vintage = FALSE
+Table ID 456: Transaction committed successfully
+Table ID 456: Deleted 0 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 524...
+Processing table 1/1: ID 524, keep_vintage = FALSE
+Table ID 524: Transaction committed successfully
+Table ID 524: Deleted 16 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 16 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
+Calculating hashes for new vintages...
+No empty vintages found.
+Processed 61/61 vintages
+All vintage hashes updated successfully
+Processing single table ID 525...
+Processing table 1/1: ID 525, keep_vintage = FALSE
+Table ID 525: Transaction committed successfully
+Table ID 525: Deleted 68 older vintages and 0 redundant vintages
+Cleanup completed: Processed 1 tables
+Deleted 68 vintages from tables with keep_vintage = FALSE
+Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Cleanup completed successfully. Removing progress file.
