@@ -9,7 +9,7 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-Running gt & eo grafi update on 2026-05-06
+Running gt & eo grafi update on 2026-05-07
 
 
 Preparing data for the chart in EO_03_surovine_auto.xlsx
@@ -78,7 +78,10 @@ GT_01_Q-BDP_auto.xlsx saved successfully to original location
 
 Preparing data for the chart in GT_02_blag.menjava_auto.xlsx
 Data available up to 2026-02-01
-GT_02_blag.menjava_auto.xlsx saved successfully to original location
+Could not save to original file, likely opened by another user
+Error was: Failed to save workbook
+Saving to backup location: \\192.168.38.7\data$\GT\SLIKE\GT slike avtomatizirane\GT_02_blag.menjava_auto_2026-05-07_09-43-14.xlsx
+GT_02_blag.menjava_auto.xlsx File saved successfully to backup location
 
 Preparing data for the chart in GT_03_industrija_auto.xlsx
 Data available up to 2026-02-01
@@ -155,3 +158,5 @@ This warning is displayed once every 8 hours.
 ℹ In argument: `period_date = lubridate::yq(period_id)`.
 Caused by warning in `strsplit()`:
 ! input string 1 is invalid UTF-8 
+5: In file.create(to[okay]) :
+  cannot create file '\\192.168.38.7\data$\GT\SLIKE\GT slike avtomatizirane\GT_02_blag.menjava_auto.xlsx', reason 'Permission denied'
