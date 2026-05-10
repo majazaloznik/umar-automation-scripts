@@ -145,40 +145,8 @@ Skipping import for teiis080 due to vintage preparation issue: These vintages fo
 =================================================================
 Importing data points from: teiis500
 =================================================================
-
-=== PostgreSQL Column Names ===
-value, TIME_PERIOD, nace_r2, unit, geo, flag, interval_id, time, indic_bt
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id indic_bt nace_r2    unit  geo flag TIME_PERIOD value    time
-1           M      PRD       F I21_SCA EA20 <NA>  2025-04-01 105.6 2025M04
-2           M      PRD       F I21_SCA EA20 <NA>  2025-05-01 104.4 2025M05
-3           M      PRD       F I21_SCA EA20 <NA>  2025-06-01 104.6 2025M06
-4           M      PRD       F I21_SCA EA20 <NA>  2025-07-01 105.4 2025M07
-5           M      PRD       F I21_SCA EA20 <NA>  2025-08-01 104.7 2025M08
-Matching dimensions:
-  - unit (ID: 702)
-  - geo (ID: 703)
-  - Matched dimension: unit -> column: unit
-  - Matched dimension: geo -> column: geo
-Updated series_id for 66 rows
-Updated vintage_id for 66 rows
-After matching. Sample rows:
-  interval_id indic_bt nace_r2       unit  geo flag TIME_PERIOD value    time
-1           M      PRD       F PCH_M12_CA EA20 <NA>  2025-09-01   1.4 2025M09
-2           M      PRD       F PCH_M12_CA EA20 <NA>  2025-04-01   2.6 2025M04
-3           M      PRD       F PCH_M12_CA EA20 <NA>  2025-05-01   2.5 2025M05
-4           M      PRD       F PCH_M12_CA EA20 <NA>  2025-06-01   2.1 2025M06
-5           M      PRD       F PCH_M12_CA EA20 <NA>  2025-07-01   4.1 2025M07
-  series_id vintage_id
-1    117527    7422149
-2    117527    7422149
-3    117527    7422149
-4    117527    7422149
-5    117527    7422149
-Rows with both series_id and vintage_id: 66
-Inserted 0 new periods
-Inserted 66 new data points
-Inserted 6 new flags
+Note: These vintages for table teiis500 are not new, they will not be inserted again.
+Skipping import for teiis500 due to vintage preparation issue: These vintages for table teiis500 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teiis240
@@ -264,8 +232,8 @@ Importing data points from: ei_bssi_m_r2
 Note: These vintages for table ei_bssi_m_r2 are not new, they will not be inserted again.
 Skipping import for ei_bssi_m_r2 due to vintage preparation issue: These vintages for table ei_bssi_m_r2 are not new, they will not be inserted again.
 Calculating hashes for new vintages...
-Removed 1 empty vintages.
-Processed 67/67 vintages
+Removed 91 empty vintages.
+Processed 91/91 vintages
 All vintage hashes updated successfully
 Processing single table ID 343...
 Processing table 1/1: ID 343, keep_vintage = TRUE
@@ -276,8 +244,9 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 61/61 vintages
+Removed 30 empty vintages.
+Processed 100/121 vintages
+Processed 121/121 vintages
 All vintage hashes updated successfully
 Processing single table ID 344...
 Processing table 1/1: ID 344, keep_vintage = TRUE
@@ -288,8 +257,8 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 61/61 vintages
+Removed 60 empty vintages.
+Processed 91/91 vintages
 All vintage hashes updated successfully
 Processing single table ID 345...
 Processing table 1/1: ID 345, keep_vintage = TRUE
@@ -300,8 +269,8 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 61/61 vintages
+Removed 52 empty vintages.
+Processed 83/83 vintages
 All vintage hashes updated successfully
 Processing single table ID 347...
 Processing table 1/1: ID 347, keep_vintage = TRUE
@@ -312,8 +281,8 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 61/61 vintages
+Removed 44 empty vintages.
+Processed 83/83 vintages
 All vintage hashes updated successfully
 Processing single table ID 348...
 Processing table 1/1: ID 348, keep_vintage = TRUE
@@ -324,8 +293,8 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 61/61 vintages
+Removed 44 empty vintages.
+Processed 83/83 vintages
 All vintage hashes updated successfully
 Processing single table ID 349...
 Processing table 1/1: ID 349, keep_vintage = FALSE
@@ -336,7 +305,7 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
+Removed 44 empty vintages.
 Processed 61/61 vintages
 All vintage hashes updated successfully
 Processing single table ID 350...
@@ -498,9 +467,9 @@ All vintage hashes updated successfully
 Processing single table ID 368...
 Processing table 1/1: ID 368, keep_vintage = FALSE
 Table ID 368: Transaction committed successfully
-Table ID 368: Deleted 6 older vintages and 0 redundant vintages
+Table ID 368: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 6 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
