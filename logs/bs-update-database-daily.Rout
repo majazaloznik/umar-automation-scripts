@@ -946,15 +946,57 @@ Note: These vintages for table I2_4_4AS are not new, they will not be inserted a
 Skipping import for I2_4_4AS due to vintage preparation issue: These vintages for table I2_4_4AS are not new, they will not be inserted again.
 Importing data points from: i_32_6ms into schema platform
 trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
-Content type 'application/octet-stream' length 555951 bytes (542 KB)
+Content type 'application/octet-stream' length 557405 bytes (544 KB)
 ==================================================
-downloaded 542 KB
+downloaded 544 KB
 
 File has BOM, using UTF-16LE
-Note: These vintages for table i_32_6ms are not new, they will not be inserted again.
-Skipping import for i_32_6ms due to vintage preparation issue: These vintages for table i_32_6ms are not new, they will not be inserted again.
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
+Content type 'application/octet-stream' length 557405 bytes (544 KB)
+==================================================
+downloaded 544 KB
+
+File has BOM, using UTF-16LE
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
+Content type 'application/octet-stream' length 557405 bytes (544 KB)
+==================================================
+downloaded 544 KB
+
+File has BOM, using UTF-16LE
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
+Content type 'application/octet-stream' length 557405 bytes (544 KB)
+==================================================
+downloaded 544 KB
+
+File has BOM, using UTF-16LE
+
+=== PostgreSQL Column Names ===
+value, Postavke, Datum, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  Postavke   Datum      value    time flag interval_id
+1        0 1994M01  85.996111 1994M01                M
+2        1 1994M01 476.136894 1994M01                M
+3        2 1994M01 390.140782 1994M01                M
+4        3 1994M01   9.705617 1994M01                M
+5        4 1994M01 325.660811 1994M01                M
+Matching dimensions:
+  - Postavke (ID: 1057)
+  - Matched dimension: Postavke -> column: Postavke
+Updated series_id for 40248 rows
+Updated vintage_id for 40248 rows
+After matching. Sample rows:
+  Postavke   Datum value    time flag interval_id series_id vintage_id
+1       26 1994M01    NA 1994M01                M    364534    7425762
+2       64 1994M03    NA 1994M03                M    364576    7425804
+3       64 1994M09    NA 1994M09                M    364576    7425804
+4       26 1996M02    NA 1996M02                M    364534    7425762
+5      102 1997M01    NA 1997M01                M    364516    7425744
+Rows with both series_id and vintage_id: 40248
+Inserted 0 new periods
+Inserted 40248 new data points
+Inserted 0 new flags
 Calculating hashes for new vintages...
-Removed 22 empty vintages.
+No empty vintages found.
 Processed 61/61 vintages
 All vintage hashes updated successfully
 Processing single table ID 220...
