@@ -954,8 +954,8 @@ File has BOM, using UTF-16LE
 Note: These vintages for table i_32_6ms are not new, they will not be inserted again.
 Skipping import for i_32_6ms due to vintage preparation issue: These vintages for table i_32_6ms are not new, they will not be inserted again.
 Calculating hashes for new vintages...
-Removed 22 empty vintages.
-Processed 61/61 vintages
+Removed 366 empty vintages.
+Processed 87/87 vintages
 All vintage hashes updated successfully
 Processing single table ID 220...
 Processing table 1/1: ID 220, keep_vintage = FALSE
@@ -1161,6 +1161,7 @@ Calculating hashes for new vintages...
 No empty vintages found.
 Processed 61/61 vintages
 All vintage hashes updated successfully
+Starting a new run (not resuming). Existing progress file will be overwritten.
 Processing single table ID 248...
 Processing table 1/1: ID 248, keep_vintage = FALSE
 Table ID 248: Transaction committed successfully
@@ -1204,7 +1205,6 @@ Table ID 403: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
-Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
 Processed 61/61 vintages
@@ -1241,3 +1241,8 @@ Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
+Warning messages:
+1: In file.remove(progress_file) :
+  cannot remove file 'vintage_cleanup_progress.rds', reason 'No such file or directory'
+2: In file.remove(progress_file) :
+  cannot remove file 'vintage_cleanup_progress.rds', reason 'Permission denied'
