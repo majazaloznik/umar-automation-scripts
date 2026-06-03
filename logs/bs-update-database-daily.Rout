@@ -1,4 +1,4 @@
-UMAR proxy is set!Run started: 2026-06-02 11:00:16 
+UMAR proxy is set!Run started: 2026-06-03 11:00:16 
 
 Attaching package: 'dplyr'
 
@@ -238,9 +238,9 @@ File has BOM, using UTF-16LE
 Note: These vintages for table i_32_6ms are not new, they will not be inserted again.
 Skipping import for i_32_6ms due to vintage preparation issue: These vintages for table i_32_6ms are not new, they will not be inserted again.
 Calculating hashes for new vintages...
-Removed 19 empty vintages.
-Processed 100/104 vintages
-Processed 104/104 vintages
+Removed 23 empty vintages.
+Processed 100/122 vintages
+Processed 122/122 vintages
 All vintage hashes updated successfully
 Processing single table ID 220...
 Processing table 1/1: ID 220, keep_vintage = FALSE
@@ -251,8 +251,8 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-Removed 7 empty vintages.
-Processed 65/65 vintages
+Removed 25 empty vintages.
+Processed 61/61 vintages
 All vintage hashes updated successfully
 Processing single table ID 222...
 Processing table 1/1: ID 222, keep_vintage = FALSE
@@ -263,7 +263,7 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-Removed 1 empty vintages.
+No empty vintages found.
 Processed 61/61 vintages
 All vintage hashes updated successfully
 Processing single table ID 233...
@@ -465,7 +465,6 @@ Table ID 249: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
-Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
 Processed 61/61 vintages
@@ -489,7 +488,6 @@ Table ID 403: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
-Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
 Processed 61/61 vintages
@@ -526,3 +524,6 @@ Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
+Warning message:
+In file.remove(progress_file) :
+  cannot remove file 'vintage_cleanup_progress.rds', reason 'Permission denied'
