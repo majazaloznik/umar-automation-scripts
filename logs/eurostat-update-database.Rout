@@ -1,4 +1,4 @@
-UMAR proxy is set!Run started: 2026-06-24 11:00:16 
+UMAR proxy is set!Run started: 2026-06-24 23:00:17 
 
 Attaching package: 'dplyr'
 
@@ -92,40 +92,8 @@ Inserted 0 new flags
 =================================================================
 Importing data points from: teilm020
 =================================================================
-
-=== PostgreSQL Column Names ===
-value, TIME_PERIOD, age, sex, unit, geo, flag, interval_id, time, s_adj
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id s_adj   age sex   unit  geo flag TIME_PERIOD value    time
-1           M    SA TOTAL   T PC_ACT EA21 <NA>  2025-06-01   6.3 2025M06
-2           M    SA TOTAL   T PC_ACT EA21 <NA>  2025-07-01   6.3 2025M07
-3           M    SA TOTAL   T PC_ACT EA21 <NA>  2025-08-01   6.3 2025M08
-4           M    SA TOTAL   T PC_ACT EA21 <NA>  2025-09-01   6.3 2025M09
-5           M    SA TOTAL   T PC_ACT EA21 <NA>  2025-10-01   6.3 2025M10
-Matching dimensions:
-  - sex (ID: 684)
-  - geo (ID: 685)
-  - Matched dimension: sex -> column: sex
-  - Matched dimension: geo -> column: geo
-Updated series_id for 11 rows
-Updated vintage_id for 11 rows
-After matching. Sample rows:
-  interval_id s_adj   age sex   unit  geo flag TIME_PERIOD value    time
-1           M    SA TOTAL   T PC_ACT EA21 <NA>  2025-06-01   6.3 2025M06
-2           M    SA TOTAL   T PC_ACT EA21 <NA>  2025-07-01   6.3 2025M07
-3           M    SA TOTAL   T PC_ACT EA21 <NA>  2025-08-01   6.3 2025M08
-4           M    SA TOTAL   T PC_ACT EA21 <NA>  2025-09-01   6.3 2025M09
-5           M    SA TOTAL   T PC_ACT EA21 <NA>  2025-10-01   6.3 2025M10
-  series_id vintage_id
-1    349071    7447461
-2    349071    7447461
-3    349071    7447461
-4    349071    7447461
-5    349071    7447461
-Rows with both series_id and vintage_id: 11
-Inserted 0 new periods
-Inserted 11 new data points
-Inserted 0 new flags
+Note: These vintages for table teilm020 are not new, they will not be inserted again.
+Skipping import for teilm020 due to vintage preparation issue: These vintages for table teilm020 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teilm310
@@ -209,11 +177,11 @@ After matching. Sample rows:
 4           M  VOL_SLS     G47 I21_SCA EA20 <NA>  2026-01-01 103.9 2026M01
 5           M  VOL_SLS     G47 I21_SCA EA20 <NA>  2025-12-01 103.9 2025M12
   series_id vintage_id
-1    349100    7447481
-2    349100    7447481
-3    349100    7447481
-4    349100    7447481
-5    349100    7447481
+1    349100    7447488
+2    349100    7447488
+3    349100    7447488
+4    349100    7447488
+5    349100    7447488
 Rows with both series_id and vintage_id: 72
 Inserted 0 new periods
 Inserted 72 new data points
@@ -297,8 +265,8 @@ Importing data points from: ei_bssi_m_r2
 Note: These vintages for table ei_bssi_m_r2 are not new, they will not be inserted again.
 Skipping import for ei_bssi_m_r2 due to vintage preparation issue: These vintages for table ei_bssi_m_r2 are not new, they will not be inserted again.
 Calculating hashes for new vintages...
-Removed 19 empty vintages.
-Processed 61/61 vintages
+Removed 1 empty vintages.
+Processed 67/67 vintages
 All vintage hashes updated successfully
 Processing single table ID 343...
 Processing table 1/1: ID 343, keep_vintage = TRUE
@@ -423,9 +391,9 @@ All vintage hashes updated successfully
 Processing single table ID 359...
 Processing table 1/1: ID 359, keep_vintage = FALSE
 Table ID 359: Transaction committed successfully
-Table ID 359: Deleted 1 older vintages and 0 redundant vintages
+Table ID 359: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 1 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
@@ -543,9 +511,9 @@ All vintage hashes updated successfully
 Processing single table ID 369...
 Processing table 1/1: ID 369, keep_vintage = FALSE
 Table ID 369: Transaction committed successfully
-Table ID 369: Deleted 0 older vintages and 0 redundant vintages
+Table ID 369: Deleted 6 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 6 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
