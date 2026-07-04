@@ -8,10 +8,36 @@ downloaded 24 KB
 Processing table: BO_OS
 Importing data points from: BO_OS into schema platform
 trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Stopnje/Stopnja_BO_OS_2005-2026.xls'
-Content type 'application/vnd.ms-excel' length 292864 bytes (286 KB)
+Content type 'application/vnd.ms-excel' length 293376 bytes (286 KB)
 ==================================================
 downloaded 286 KB
 
+
+=== PostgreSQL Column Names ===
+value, time, Vrednost, flag
+Data loaded into tmp_prepared_data. Sample rows:
+     time     value Vrednost flag
+1 2005M01 10.384209        0     
+2 2005M02 10.342438        0     
+3 2005M03 10.239058        0     
+4 2005M04 10.136737        0     
+5 2005M05  9.930898        0     
+Matching dimensions:
+  - Vrednost (ID: 281)
+  - Matched dimension: Vrednost -> column: Vrednost
+Updated series_id for 256 rows
+Updated vintage_id for 256 rows
+After matching. Sample rows:
+     time     value Vrednost flag series_id vintage_id
+1 2005M01 10.384209        0          54956    7458761
+2 2005M02 10.342438        0          54956    7458761
+3 2005M03 10.239058        0          54956    7458761
+4 2005M04 10.136737        0          54956    7458761
+5 2005M05  9.930898        0          54956    7458761
+Rows with both series_id and vintage_id: 256
+Inserted 0 new periods
+Inserted 255 new data points
+Inserted 0 new flags
 Processing table: BO_SLO_izob
 Importing data points from: BO_SLO_izob into schema platform
 trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Registrirana_brezposelnost/BO_SLO_izob_2005-2026.xls'
@@ -58,13 +84,39 @@ Error processing TOK: Can't transform a data frame with duplicate names.
 Processing table: DD
 Importing data points from: DD into schema platform
 trying URL 'https://www.ess.gov.si/fileadmin/user_upload/Trg_dela/Dokumenti_TD/Trg_dela_v_stevilkah/Zaposlovanje_tujcev/Veljavna_DD_spol_2005-2026.xls'
-Content type 'application/vnd.ms-excel' length 272896 bytes (266 KB)
+Content type 'application/vnd.ms-excel' length 273408 bytes (267 KB)
 ==================================================
-downloaded 266 KB
+downloaded 267 KB
 
+
+=== PostgreSQL Column Names ===
+value, time, Vrednost, flag
+Data loaded into tmp_prepared_data. Sample rows:
+     time value Vrednost flag
+1 2012M01 34184        0     
+2 2012M02 34187        0     
+3 2012M03 34228        0     
+4 2012M04 34735        0     
+5 2012M05 34410        0     
+Matching dimensions:
+  - Vrednost (ID: 907)
+  - Matched dimension: Vrednost -> column: Vrednost
+Updated series_id for 173 rows
+Updated vintage_id for 173 rows
+After matching. Sample rows:
+     time value Vrednost flag series_id vintage_id
+1 2012M01 34184        0         342513    7458762
+2 2012M02 34187        0         342513    7458762
+3 2012M03 34228        0         342513    7458762
+4 2012M04 34735        0         342513    7458762
+5 2012M05 34410        0         342513    7458762
+Rows with both series_id and vintage_id: 173
+Inserted 0 new periods
+Inserted 173 new data points
+Inserted 0 new flags
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 61/61 vintages
+Processed 71/71 vintages
 All vintage hashes updated successfully
 Processing single table ID 33...
 Processing table 1/1: ID 33, keep_vintage = TRUE
@@ -76,19 +128,19 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 61/61 vintages
+Processed 69/69 vintages
 All vintage hashes updated successfully
 Processing single table ID 127...
 Processing table 1/1: ID 127, keep_vintage = TRUE
 Table ID 127: Transaction committed successfully
-Table ID 127: Deleted 0 older vintages and 0 redundant vintages
+Table ID 127: Deleted 0 older vintages and 1 redundant vintages
 Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
-Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Deleted 1 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 61/61 vintages
+Processed 69/69 vintages
 All vintage hashes updated successfully
 Processing single table ID 444...
 Processing table 1/1: ID 444, keep_vintage = FALSE
@@ -100,7 +152,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 61/61 vintages
+Processed 69/69 vintages
 All vintage hashes updated successfully
 Processing single table ID 445...
 Processing table 1/1: ID 445, keep_vintage = FALSE
@@ -112,7 +164,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 61/61 vintages
+Processed 69/69 vintages
 All vintage hashes updated successfully
 Processing single table ID 446...
 Processing table 1/1: ID 446, keep_vintage = FALSE
@@ -124,7 +176,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 61/61 vintages
+Processed 69/69 vintages
 All vintage hashes updated successfully
 Processing single table ID 447...
 Processing table 1/1: ID 447, keep_vintage = FALSE
@@ -136,7 +188,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 61/61 vintages
+Processed 69/69 vintages
 All vintage hashes updated successfully
 Processing single table ID 451...
 Processing table 1/1: ID 451, keep_vintage = FALSE
@@ -148,7 +200,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 61/61 vintages
+Processed 69/69 vintages
 All vintage hashes updated successfully
 Processing single table ID 453...
 Processing table 1/1: ID 453, keep_vintage = FALSE
@@ -160,14 +212,14 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 61/61 vintages
+Processed 69/69 vintages
 All vintage hashes updated successfully
 Processing single table ID 454...
 Processing table 1/1: ID 454, keep_vintage = FALSE
 Table ID 454: Transaction committed successfully
-Table ID 454: Deleted 0 older vintages and 0 redundant vintages
+Table ID 454: Deleted 1 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 1 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
-There were 17 warnings (use warnings() to see them)
+There were 12 warnings (use warnings() to see them)
