@@ -4,7 +4,7 @@ library(dplyr)
 library(lubridate)
 library(tidyr)
 library(openxlsx2)
-
+cat("Run started:", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "\n")
 ################################################################################
 # Data series from the platform database
 ################################################################################
