@@ -1,4 +1,4 @@
-UMAR proxy is set!Run started: 2026-07-19 23:00:17 
+UMAR proxy is set!Run started: 2026-07-20 11:00:18 
 
 Attaching package: 'dplyr'
 
@@ -46,7 +46,7 @@ Importing data points from: teina500
 =================================================================
 
 === PostgreSQL Column Names ===
-value, TIME_PERIOD, s_adj, na_item, unit, geo, flag, interval_id, time, sector
+interval_id, sector, s_adj, na_item, unit, geo, flag, TIME_PERIOD, value, time
 Data loaded into tmp_prepared_data. Sample rows:
  [1] interval_id sector      s_adj       na_item     unit        geo        
  [7] flag        TIME_PERIOD value       time       
@@ -72,7 +72,7 @@ Importing data points from: teina515
 =================================================================
 
 === PostgreSQL Column Names ===
-value, TIME_PERIOD, sector, s_adj, geo, flag, interval_id, time, unit
+interval_id, unit, sector, s_adj, geo, flag, TIME_PERIOD, value, time
 Data loaded into tmp_prepared_data. Sample rows:
 [1] interval_id unit        sector      s_adj       geo         flag       
 [7] TIME_PERIOD value       time       
@@ -110,7 +110,7 @@ Importing data points from: teiet215
 =================================================================
 
 === PostgreSQL Column Names ===
-value, TIME_PERIOD, indic_et, partner, bclas_bec, geo, flag, interval_id, time, stk_flow
+interval_id, stk_flow, indic_et, partner, bclas_bec, geo, flag, TIME_PERIOD, value, time
 Data loaded into tmp_prepared_data. Sample rows:
  [1] interval_id stk_flow    indic_et    partner     bclas_bec   geo        
  [7] flag        TIME_PERIOD value       time       
@@ -186,8 +186,40 @@ Skipping import for teiis080 due to vintage preparation issue: These vintages fo
 =================================================================
 Importing data points from: teiis500
 =================================================================
-Note: These vintages for table teiis500 are not new, they will not be inserted again.
-Skipping import for teiis500 due to vintage preparation issue: These vintages for table teiis500 are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+interval_id, indic_bt, nace_r2, unit, geo, flag, TIME_PERIOD, value, time
+Data loaded into tmp_prepared_data. Sample rows:
+  interval_id indic_bt nace_r2    unit  geo flag TIME_PERIOD value    time
+1           M      PRD       F I21_SCA EA20 <NA>  2025-06-01 104.1 2025M06
+2           M      PRD       F I21_SCA EA20 <NA>  2025-07-01 104.9 2025M07
+3           M      PRD       F I21_SCA EA20 <NA>  2025-08-01 104.3 2025M08
+4           M      PRD       F I21_SCA EA20 <NA>  2025-09-01 103.8 2025M09
+5           M      PRD       F I21_SCA EA20 <NA>  2025-10-01 104.9 2025M10
+Matching dimensions:
+  - unit (ID: 702)
+  - geo (ID: 703)
+  - Matched dimension: unit -> column: unit
+  - Matched dimension: geo -> column: geo
+Updated series_id for 72 rows
+Updated vintage_id for 72 rows
+After matching. Sample rows:
+  interval_id indic_bt nace_r2    unit  geo flag TIME_PERIOD value    time
+1           M      PRD       F I21_SCA EA20    i  2026-05-01 105.0 2026M05
+2           M      PRD       F I21_SCA EA20 <NA>  2026-04-01 104.5 2026M04
+3           M      PRD       F I21_SCA EA20 <NA>  2026-03-01 104.5 2026M03
+4           M      PRD       F I21_SCA EA20 <NA>  2026-02-01 102.5 2026M02
+5           M      PRD       F I21_SCA EA20 <NA>  2026-01-01 103.0 2026M01
+  series_id vintage_id
+1    349094    7461408
+2    349094    7461408
+3    349094    7461408
+4    349094    7461408
+5    349094    7461408
+Rows with both series_id and vintage_id: 72
+Inserted 0 new periods
+Inserted 72 new data points
+Inserted 6 new flags
 
 =================================================================
 Importing data points from: teiis240
@@ -273,8 +305,8 @@ Importing data points from: ei_bssi_m_r2
 Note: These vintages for table ei_bssi_m_r2 are not new, they will not be inserted again.
 Skipping import for ei_bssi_m_r2 due to vintage preparation issue: These vintages for table ei_bssi_m_r2 are not new, they will not be inserted again.
 Calculating hashes for new vintages...
-Removed 3 empty vintages.
-Processed 69/69 vintages
+Removed 20 empty vintages.
+Processed 75/75 vintages
 All vintage hashes updated successfully
 Processing single table ID 343...
 Processing table 1/1: ID 343, keep_vintage = TRUE
