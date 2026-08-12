@@ -2,7 +2,7 @@
 
 filename <- "EO_04_tecaji_auto.xlsx"
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c( "NEER_EA_18_Q",
             "REER_EA_18_Q",
@@ -53,7 +53,8 @@ raw <- tbl(con_tecaji, "tečaji_četrtletni") |>
   mutate(period_id = paste0(year, "Q", q)) |>
   pivot_wider(names_from = type, values_from = indeks_2007) |>
   rebase_multiple(value_cols = codes,
-                  base_year = 2015) |>
+                  base_year = 2021) |>
+  filter(period_id > "2021Q4") |>
   arrange(period_id) |>
   mutate(year = substr(period_id, 1, 4),
          crta = 100,

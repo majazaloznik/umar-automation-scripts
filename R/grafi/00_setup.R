@@ -3,7 +3,7 @@ library(dplyr)
 library(tidyr)
 library(openxlsx2)
 
-message("Running gt & eo grafi update on ", Sys.Date(), "\n")
+base::message("Running gt & eo grafi update on ", Sys.Date(), "\n")
 
 con <- DBI::dbConnect(RPostgres::Postgres(),
                       dbname = "platform",
@@ -13,6 +13,13 @@ con <- DBI::dbConnect(RPostgres::Postgres(),
                       password = Sys.getenv("PG_MZ_PSW"),
                       client_encoding = "utf8")
 
+con2 <- DBI::dbConnect(RPostgres::Postgres(),
+                      dbname = "davcne",
+                      host = "192.168.38.21",
+                      port = 5432,
+                      user = "majaz",
+                      password = Sys.getenv("PG_MZ_PSW"),
+                      client_encoding = "utf8")
 
 load_wb <- function(filename){
   path <- paste0("\\\\192.168.38.7\\data$\\",
@@ -31,13 +38,13 @@ load_wb_eo <- function(filename){
 }
 
 write_wb <- function(wb, raw){
-  message("Data available up to ", tail(raw$period_id, 1))
-wb |>
-  openxlsx2::wb_remove_tables(sheet = "podatki", table = "datatable") |>
-  openxlsx2::wb_add_data_table(x = raw, table_name = "datatable") |>
-  openxlsx2::wb_set_col_widths(sheet = "podatki", cols = 1, widths = 10) |>  # period_id
-  openxlsx2::wb_set_col_widths(sheet = "podatki", cols = 2:ncol(raw), widths = 15) |>
-  openxlsx2::wb_add_numfmt(sheet = "podatki", dims = "A2:A1000", numfmt = "MMM-YY") # Generous range
+  base::message("Data available up to ", tail(raw$period_id, 1))
+  wb |>
+    openxlsx2::wb_remove_tables(sheet = "podatki", table = "datatable") |>
+    openxlsx2::wb_add_data_table(x = raw, table_name = "datatable") |>
+    openxlsx2::wb_set_col_widths(sheet = "podatki", cols = 1, widths = 10) |>  # period_id
+    openxlsx2::wb_set_col_widths(sheet = "podatki", cols = 2:ncol(raw), widths = 15) |>
+    openxlsx2::wb_add_numfmt(sheet = "podatki", dims = "A2:A1000", numfmt = "MMM-YY") # Generous range
 }
 
 try_save <- function(filename){
@@ -51,13 +58,13 @@ try_save <- function(filename){
   # Try to save, if fails, use backup path
   tryCatch({
     wb_save(wb, original_path)
-    message(filename, " saved successfully to original location")
+    base::message(filename, " saved successfully to original location")
   }, error = function(e) {
-    message("Could not save to original file, likely opened by another user")
-    message("Error was: ", e$message)
-    message("Saving to backup location: ", backup_path)
+    base::message("Could not save to original file, likely opened by another user")
+    base::message("Error was: ", e$message)
+    base::message("Saving to backup location: ", backup_path)
     wb_save(wb, backup_path)
-    message(filename, " File saved successfully to backup location")
+    base::message(filename, " File saved successfully to backup location")
   })
 }
 
@@ -72,13 +79,13 @@ try_save_eo <- function(filename){
   # Try to save, if fails, use backup path
   tryCatch({
     wb_save(wb, original_path)
-    message(filename, " saved successfully to original location")
+    base::message(filename, " saved successfully to original location")
   }, error = function(e) {
-    message("Could not save to original file, likely opened by another user")
-    message("Error was: ", e$message)
-    message("Saving to backup location: ", backup_path)
+    base::message("Could not save to original file, likely opened by another user")
+    base::message("Error was: ", e$message)
+    base::message("Saving to backup location: ", backup_path)
     wb_save(wb, backup_path)
-    message(filename, " File saved successfully to backup location")
+    base::message(filename, " File saved successfully to backup location")
   })
 }
 
@@ -174,16 +181,16 @@ aggregate_to_quarters <- function(data, value_cols, period_col = "period_id", ag
       month = as.integer(substr(!!rlang::sym(period_col), 6, 7)),
       quarter = paste0(year, "Q", ceiling(month / 3))
     )
-
   data |>
     dplyr::group_by(quarter) |>
     dplyr::summarise(dplyr::across(
       dplyr::all_of(value_cols),
-      \(x) aggr_func(x, na.rm = TRUE)
+      \(x) if (all(is.na(x))) NA_real_ else aggr_func(x, na.rm = TRUE)
     )) |>
     dplyr::ungroup() |>
     dplyr::rename(!!period_col := quarter)
 }
+
 incomplete_quarters_note <- function(data, value_cols, period_col = "period_id", lang = "sl") {
   month_names_sl <- c("januar", "februar", "marec", "april", "maj", "junij",
                       "julij", "avgust", "september", "oktober", "november", "december")

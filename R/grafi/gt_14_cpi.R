@@ -2,7 +2,7 @@
 
 filename <- "GT_14_CPI_auto.xlsx"
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("SURS--H281S--2--M",
            "EUROSTAT--prc_hicp_minr--RCH_A--TOTAL--EA--M")

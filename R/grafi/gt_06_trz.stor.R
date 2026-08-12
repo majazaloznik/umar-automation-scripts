@@ -3,7 +3,7 @@
 filename <- "GT_06_trz.stor_auto.xlsx"
 
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("SURS--2080006S--2--H+I+J+L+M+N--M",
            "SURS--2080006S--2--H--M",

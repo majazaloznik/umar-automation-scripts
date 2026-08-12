@@ -2,7 +2,7 @@
 
 filename <- "EO_12_javne_finance_Q_P_auto.xlsx"
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("MF--KBJF--7--M",
            "MF--KBJF--914--M",

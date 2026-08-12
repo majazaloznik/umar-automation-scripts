@@ -3,7 +3,7 @@
 filename <- "GT_10_place_auto.xlsx"
 
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c( "SURS--0701015S--1--1--10--M",
             "SURS--0701015S--2--1--10--M",

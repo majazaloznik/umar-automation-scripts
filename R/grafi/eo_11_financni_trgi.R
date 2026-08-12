@@ -2,7 +2,7 @@
 
 filename <- "EO_11_financni_trgi_auto.xlsx"
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("BS--I1_5GGS--1--0--2--M",
            "BS--I1_5GGS--1--0--8--M",

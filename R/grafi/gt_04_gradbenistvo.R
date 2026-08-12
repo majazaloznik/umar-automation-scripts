@@ -2,7 +2,7 @@
 
 filename <- "GT_04_gradbenistvo_auto.xlsx"
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("SURS--1957408S--SA--CC--M")
 

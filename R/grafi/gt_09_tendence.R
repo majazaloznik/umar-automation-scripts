@@ -3,7 +3,7 @@
 filename <- "GT_09_tendence_auto.xlsx"
 
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("SURS--2855901S--1--2--M",
            "SURS--2855901S--2--2--M",

@@ -3,7 +3,7 @@
 filename <- "GT_12_brezposelni_auto.xlsx"
 
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("UMAR-ZRSZ--DR011--8--S--S--M",
            "UMAR-ZRSZ--DR011--DBP--S--S--M")

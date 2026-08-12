@@ -3,7 +3,7 @@
 filename <- "GT_08_cestni.zelez_auto.xlsx"
 
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("DESEZ--PR--CB--Y--Q",
            "DESEZ--PR--CBn--Y--Q",

@@ -1,20 +1,15 @@
 # source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\grafi\\00_setup.R")
 
-filename <- "EO_09_financna_vzdrznost_auto.xlsx"
+filename <- "EO_14_davcne_indeks.xlsx"
 ################################################################################
 base::message("\nPreparing data for the chart in ", filename)
 
-codes <- c("SURS-UMAR--HM001--DS--M",
-           "SURS-UMAR--HM001--RD--M")
-#
+codes <- c("DESEZ--DB--DBN--Y--M")
+
 # labels <- data.frame(
 #   code = names(raw)[-1],  # exclude period_id
-#   label_sl = c("Živijo od prihrankov",
-#                "Se zadolžujejo",
-#                "Gospodinjstva s finančnimi težavami - skupaj"),
-#   label_en = c("Running into debt",
-#                "Having to draw on savings",
-#                "Financial distress - total"))
+#   label_sl = c("Davčne blagajne nom. indeks 2021 = 100 3mds"),
+#   label_en = c("Davčne blagajne nom. indeks 2021 = 100 3mds"))
 # # Force UTF-8 encoding
 # labels$label_sl <- enc2utf8(labels$label_sl)
 # labels$label_en <- enc2utf8(labels$label_en)
@@ -25,17 +20,16 @@ codes <- c("SURS-UMAR--HM001--DS--M",
 #   openxlsx2::wb_add_worksheet("sifrant") |>
 #   openxlsx2::wb_add_data_table(sheet = "sifrant", x = labels, table_name = "labelstable") |>
 #   openxlsx2::wb_set_col_widths(sheet = "sifrant", cols = 1:ncol(labels), widths = "auto") |>
-#   openxlsx2::wb_save(paste0("G:\\EO\\EO slike avtomatizirane\\", filename))
+#   openxlsx2::wb_save("G:\\EO\\EO slike avtomatizirane\\EO_14_davcne_indeks.xlsx")
 
 
 ################################################################################
-# prep data
+# rebase all except exports
 raw <- process_codes_vectorized(codes, con) |>
-  rolling_mean(value_col = codes, k = 12) |>
-  mutate(Skupaj = `SURS-UMAR--HM001--DS--M` +
-           `SURS-UMAR--HM001--RD--M`) |>
-  arrange(period_id) |>
-  mutate(period_id = as.Date(paste0(substr(period_id, 1, 4), "-",
+ rebase_multiple(codes, base_year = 2021) |>
+  rolling_mean(codes) |>
+  mutate(crta = 100,
+         period_id = as.Date(paste0(substr(period_id, 1, 4), "-",
                                     substr(period_id, 6, 7), "-01")))
 
 wb <- load_wb_eo(filename)

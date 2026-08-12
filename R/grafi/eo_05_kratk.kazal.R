@@ -2,7 +2,7 @@
 
 filename <- "EO_05_kratk.kazal_auto.xlsx"
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("UMAR-SURS--MH003--OSNO--REA--EX--SKUP--SKUP--M",
            "SURS--1701111S--sa--C[skd]--M",
@@ -37,13 +37,11 @@ codes <- c("UMAR-SURS--MH003--OSNO--REA--EX--SKUP--SKUP--M",
 #
 
 ################################################################################
-# rebase all except exports
-raw <- process_codes_vectorized(codes, con)
-
+# rebase
 raw <- process_codes_vectorized(codes, con) |>
+  rebase_multiple(value_cols = codes[c(1:4,6)],
+                  base_year = 2021) |>
   rolling_mean(value_col = codes) |>
-  rebase_multiple(value_cols = codes[-1],
-                  base_year = 2010) |>
   mutate(crta = 100,
          period_id = as.Date(paste0(substr(period_id, 1, 4), "-",
                                     substr(period_id, 6, 7), "-01"))) |>

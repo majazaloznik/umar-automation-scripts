@@ -1,9 +1,14 @@
+#'
+#' arhivirano 18.3.2026 zaradi prenehanja posodabljanja SURS tabele 0700921S
+#' ki jo nadomesti 0700928S po novem skd-ju
+#'
+
 # source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\grafi\\00_setup.R")
 
 filename <- "GT_11_del.aktivni_auto.xlsx"
 
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("SURS--0700921S--A--1--M",
            "SURS--0700921S--B--1--M",

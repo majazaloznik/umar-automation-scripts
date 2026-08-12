@@ -1,7 +1,7 @@
 # source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\grafi\\00_setup.R")
 filename <- "GT_05_trgovina_auto.xlsx"
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 
 codes <- c("SURS--2001303S--2--2--G--M",

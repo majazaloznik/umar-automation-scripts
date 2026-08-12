@@ -4,7 +4,7 @@ filename <- "GT_02_blag.menjava_auto.xlsx"
 ################################################################################
 # Data series from the platform database
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 codes <- c( "UMAR-SURS--MH003--OSNO--REA--EX--SKUP--SKUP--M",
             "UMAR-SURS--MH003--OSNO--REA--IM--SKUP--SKUP--M")
 

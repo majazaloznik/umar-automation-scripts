@@ -3,7 +3,7 @@
 filename <- "GT_13_ilo_auto.xlsx"
 
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("DESEZ--ILO--ST--Y--Q",
            "DESEZ--ILO--ZP--N--Q")

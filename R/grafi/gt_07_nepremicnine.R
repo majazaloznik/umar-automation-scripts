@@ -3,10 +3,10 @@
 filename <- "GT_07_nepremicnine_auto.xlsx"
 
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
-codes <- c("SURS--0419001S--1.2--4--Q",
-           "SURS--0419001S--1.1--4--Q",
+codes <- c("SURS--0419001S--1.2--35--Q",
+           "SURS--0419001S--1.1--35--Q",
            "SURS--0419030S--1.2--1--Q",
            "SURS--0419030S--1.1--1--Q")
 

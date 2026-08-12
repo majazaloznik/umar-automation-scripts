@@ -3,7 +3,7 @@
 filename <- "GT_01_Q-BDP_auto.xlsx"
 
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("SURS--0300230S--B1GQ--GO4--N--Q",
            "SURS--0300230S--P3_S13--GO4--N--Q",

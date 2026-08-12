@@ -2,7 +2,7 @@
 
 filename <- "GT_15_PPI_auto.xlsx"
 ################################################################################
-message("\nPreparing data for the chart in ", filename)
+base::message("\nPreparing data for the chart in ", filename)
 
 codes <- c("SURS--0457201S--B_TO_E--29--M",
            "SURS--0457301S--B_TO_E--29--M",
