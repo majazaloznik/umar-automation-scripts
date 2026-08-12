@@ -1,4 +1,4 @@
-# source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\tabele\\eo_00_setup.R")
+  #   source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\tabele\\eo_00_setup.R")
 codes <- c(
   "UMAR-SURS--DR012--A--M",
   "UMAR-SURS--DR012--B--M",
@@ -65,8 +65,8 @@ codes2 <- c(
   "SURS--0701029S--T--1--1--M")
 
 raw <- process_codes_vectorized(codes, con) |>
-  rowwise() |>
-  mutate(`AOST` = sum(c(`UMAR-SURS--DR012--A--M`,
+  dplyr::rowwise() |>
+  dplyr::mutate(`AOST` = sum(c(`UMAR-SURS--DR012--A--M`,
                         `UMAR-SURS--DR012--B--M`,
                         `UMAR-SURS--DR012--C--M`,
                         `UMAR-SURS--DR012--D--M`,
@@ -136,7 +136,7 @@ raw <- process_codes_vectorized(codes, con) |>
                  `UMAR-SURS--DR013--O--M`,
                  `UMAR-SURS--DR013--S--M`,
                  `UMAR-SURS--DR013--T--M`))) |>
-  select(period_id, AOST, PQR, BE, GHI, JOST) |>
+  dplyr::select(period_id, AOST, PQR, BE, GHI, JOST) |>
   dplyr::filter(!dplyr::if_all(-period_id, is.na))
 
 raw2 <- process_codes_vectorized(codes2, con)

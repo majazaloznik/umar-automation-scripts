@@ -8,40 +8,40 @@ codes <- c("BS--i_32_6ms--0--M",
            "BS--i_32_6ms--7--M",
            "BS--i_32_6ms--13--M",
            "BS--i_32_6ms--19--M",
-           "BS--i_32_6ms--20--M", # 20+22+30 = primarni prejemki
+           "BS--i_32_6ms--20--M", # 20+22+31 = primarni prejemki
            "BS--i_32_6ms--22--M",
-           "BS--i_32_6ms--30--M",
-           "BS--i_32_6ms--21--M", # 21+26+21 = primarni izdatki
-           "BS--i_32_6ms--26--M",
            "BS--i_32_6ms--31--M",
+           "BS--i_32_6ms--21--M", # 21+27+32 = primarni izdatki
+           "BS--i_32_6ms--27--M",
            "BS--i_32_6ms--32--M",
            "BS--i_32_6ms--33--M",
-           "BS--i_32_6ms--35--M",
-           "BS--i_32_6ms--37--M",
-           "BS--i_32_6ms--46--M",
+           "BS--i_32_6ms--34--M",
+           "BS--i_32_6ms--36--M",
+           "BS--i_32_6ms--38--M",
            "BS--i_32_6ms--47--M",
            "BS--i_32_6ms--48--M",
-           "BS--i_32_6ms--52--M",
-           "BS--i_32_6ms--56--M",
-           "BS--i_32_6ms--67--M",
+           "BS--i_32_6ms--49--M",
+           "BS--i_32_6ms--53--M",
+           "BS--i_32_6ms--57--M",
            "BS--i_32_6ms--68--M",
-           "BS--i_32_6ms--69--M",
+           "BS--i_32_6ms--69--M", # ostale naložbe
            "BS--i_32_6ms--70--M",
            "BS--i_32_6ms--71--M",
-           "BS--i_32_6ms--74--M",
-           "BS--i_32_6ms--76--M",
-           "BS--i_32_6ms--77--M",
-           "BS--i_32_6ms--78--M",
-           "BS--i_32_6ms--79--M", # ?
-           "BS--i_32_6ms--80--M",
-           "BS--i_32_6ms--81--M",
-           "BS--i_32_6ms--84--M",
-           "BS--i_32_6ms--87--M",
+           "BS--i_32_6ms--72--M", # gotovina in vloge
+           "BS--i_32_6ms--75--M", # posojila
+           "BS--i_32_6ms--77--M", #
+           "BS--i_32_6ms--78--M", # komercialni krediti
+           "BS--i_32_6ms--79--M", # ostale terjatve
+           "BS--i_32_6ms--80--M", # obveznosti
+           "BS--i_32_6ms--81--M", # ostali lastni[ki kapital]
+           "BS--i_32_6ms--82--M",
+           "BS--i_32_6ms--85--M",
            "BS--i_32_6ms--88--M",
            "BS--i_32_6ms--89--M",
            "BS--i_32_6ms--90--M",
            "BS--i_32_6ms--91--M",
-           "BS--i_32_6ms--102--M")
+           "BS--i_32_6ms--92--M",
+           "BS--i_32_6ms--103--M")
 
 codes2 <- c("SURS--2490411S--2--EUR--00--41--M",
             "SURS--2490411S--2--EUR--00--521--M", # investicije
@@ -83,13 +83,14 @@ codes2 <- c("SURS--2490411S--2--EUR--00--41--M",
             "SURS--2490411S--1--EUR--00--7--M") # [iroka]
 
 raw <- process_codes_vectorized(codes, con) |>
+  dplyr::mutate(dplyr::across(dplyr::where(is.numeric), \(x) dplyr::coalesce(x, 0))) |>
   arrange(period_id) |>
   rowwise() |>
   mutate(`BS--i_32_6ms--pdp--M` = sum(`BS--i_32_6ms--20--M`,
-           `BS--i_32_6ms--22--M`, `BS--i_32_6ms--30--M`, na.rm = TRUE), .keep = "unused") |>
+           `BS--i_32_6ms--22--M`, `BS--i_32_6ms--31--M`, na.rm = TRUE), .keep = "unused") |>
   relocate(`BS--i_32_6ms--pdp--M`, .after = `BS--i_32_6ms--19--M`) |>
   mutate(`BS--i_32_6ms--pdi--M` = sum(`BS--i_32_6ms--21--M`,
-           `BS--i_32_6ms--26--M`, `BS--i_32_6ms--31--M`, na.rm = TRUE), .keep = "unused") |>
+           `BS--i_32_6ms--27--M`, `BS--i_32_6ms--32--M`, na.rm = TRUE), .keep = "unused") |>
   relocate(`BS--i_32_6ms--pdi--M`, .after = `BS--i_32_6ms--pdp--M`)
 
 out <- process_indicators(raw, n_years = 3, n_quarters = 9, n_months = 25, agg_fun = "sum")

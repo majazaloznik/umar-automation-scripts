@@ -765,15 +765,13 @@ print("Writing to file done, now emailing everyone.")
 
 setwd("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\")
 library(gmailr)
-gm_auth_configure(path ="data/credentials.json")
+gm_auth_configure(path ="data/gmailr/credentials.json")
 gm_auth(email = "umar.data.bot@gmail.com", cache = ".secret")
 
 email_list <- c("maja.zaloznik@gmail.com",
                 "maja.zaloznik@gov.si",
-                "Bibijana.Cirman-Naglic@gov.si",
                 "urska.brodar@gov.si",
                 "Tina.Nenadic-Senica@gov.si",
-                "Laura.Juznik-Rotar@gov.si",
                 "Barbara.Bratuz-Ferk@gov.si")
 
 email_body <- "To je avtomatsko generirano sporo\u010dilo o posodobitvi podatkov v tabeli GT_tabela_slovenska_auto_update.<br><br>Tvoj Umar Data Bot &#129302;"

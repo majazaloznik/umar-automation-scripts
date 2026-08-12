@@ -7,6 +7,7 @@ codes <- c("SURS--1701111S--orig--B+C+D[skd]--M",
           "SURS--1957408S--O--CC--M",
           "SURS--1957408S--O--11--M",
           "SURS--1957408S--O--2--M",
+          "SURS--1957408S--O--3--M",
           "SURS--2080006S--1--H+I+J+L+M+N--M",
           "SURS--2080006S--1--H--M",
           "SURS--2080006S--1--J--M",
@@ -19,7 +20,7 @@ codes <- c("SURS--1701111S--orig--B+C+D[skd]--M",
           "SURS--2164433S--0--9--M",
           "SURS--2164433S--0--10--M",
           "SURS--2164433S--0--11--M",
-          "SURS--2013903S--1--55+56--M")
+          "SURS--2080006S--1--I--M")
 
 codes2 <- c("SURS--1505001S--001--M")
 
@@ -49,29 +50,29 @@ out <- out3[0,] |>
   select(any_of(names(out3)))
 
 wb <- load_wb_id()
-wb$clean_sheet(sheet = "2-proizvodnja", dims = "B1:BB35", styles = FALSE)
+wb$clean_sheet(sheet = "2-proizvodnja", dims = "B1:BB37", styles = FALSE)
 wb$add_data(sheet = "2-proizvodnja",  x = t(colnames(out)[-1]),  dims = "B1", colNames = FALSE, na.strings = "")
 wb$add_data(sheet = "2-proizvodnja",  x = out[1:4,-1],  dims = "B3", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out[5:7,-1],  dims = "B8", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out[8:12,-1],  dims = "B12", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out[13:16,-1],  dims = "B18", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out[17:20,-1],  dims = "B23", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out2[1,-1],  dims = "B28", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out3[1,-1],  dims = "B30", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out3[2:6,-1],  dims = "B32", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out[5:8,-1],  dims = "B8", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out[9:13,-1],  dims = "B13", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out[14:17,-1],  dims = "B19", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out[18:21,-1],  dims = "B24", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out2[1,-1],  dims = "B29", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out3[1,-1],  dims = "B31", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out3[2:6,-1],  dims = "B33", colNames = FALSE, na.strings = "")
 try_save_id()
 
 wb <- load_wb_id_en()
-wb$clean_sheet(sheet = "2-production", dims = "B1:BB35", styles = FALSE)
+wb$clean_sheet(sheet = "2-production", dims = "B1:BB37", styles = FALSE)
 wb$add_data(sheet = "2-production",  x = t(colnames(out)[-1]),  dims = "B1", colNames = FALSE, na.strings = "")
 wb$add_data(sheet = "2-production",  x = out[1:4,-1],  dims = "B3", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out[5:7,-1],  dims = "B8", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out[8:12,-1],  dims = "B12", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out[13:16,-1],  dims = "B18", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out[17:20,-1],  dims = "B23", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out2[1,-1],  dims = "B28", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out3[1,-1],  dims = "B30", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out3[2:6,-1],  dims = "B32", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out[5:8,-1],  dims = "B8", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out[9:13,-1],  dims = "B13", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out[14:17,-1],  dims = "B19", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out[18:21,-1],  dims = "B24", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out2[1,-1],  dims = "B29", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out3[1,-1],  dims = "B31", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out3[2:6,-1],  dims = "B33", colNames = FALSE, na.strings = "")
 try_save_id_en()
 
 raw <- process_codes_vectorized(codes, con)
@@ -94,32 +95,32 @@ out <- out3[0,] |>
   select(any_of(names(out3)))
 
 wb <- load_wb_ex()
-wb$clean_sheet(sheet = "2-proizvodnja", dims = "B1:BB35", styles = FALSE)
+wb$clean_sheet(sheet = "2-proizvodnja", dims = "B1:BB37", styles = FALSE)
 wb$add_data(sheet = "2-proizvodnja",  x = t(colnames(out)[-1]),  dims = "B1", colNames = FALSE)
 wb$add_data(sheet = "2-proizvodnja",  x = out[1:4,-1],  dims = "B3", colNames = FALSE,
             na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out[5:7,-1],  dims = "B8", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out[8:12,-1],  dims = "B12", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out[13:16,-1],  dims = "B18", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out[17:20,-1],  dims = "B23", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out2[1,-1],  dims = "B28", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out3[1,-1],  dims = "B30", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-proizvodnja",  x = out3[2:6,-1],  dims = "B32", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out[5:8,-1],  dims = "B8", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out[9:13,-1],  dims = "B13", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out[14:17,-1],  dims = "B19", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out[18:21,-1],  dims = "B24", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out2[1,-1],  dims = "B29", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out3[1,-1],  dims = "B31", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-proizvodnja",  x = out3[2:6,-1],  dims = "B33", colNames = FALSE, na.strings = "")
 
 try_save_ex()
 
 
 wb <- load_wb_ex_en()
-wb$clean_sheet(sheet = "2-production", dims = "B1:BB35", styles = FALSE)
+wb$clean_sheet(sheet = "2-production", dims = "B1:BB37", styles = FALSE)
 wb$add_data(sheet = "2-production",  x = t(colnames(out)[-1]),  dims = "B1", colNames = FALSE)
 wb$add_data(sheet = "2-production",  x = out[1:4,-1],  dims = "B3", colNames = FALSE,
             na.strings = "")
-wb$add_data(sheet = "2-production",  x = out[5:7,-1],  dims = "B8", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out[8:12,-1],  dims = "B12", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out[13:16,-1],  dims = "B18", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out[17:20,-1],  dims = "B23", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out2[1,-1],  dims = "B28", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out3[1,-1],  dims = "B30", colNames = FALSE, na.strings = "")
-wb$add_data(sheet = "2-production",  x = out3[2:6,-1],  dims = "B32", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out[5:8,-1],  dims = "B8", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out[9:13,-1],  dims = "B13", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out[14:17,-1],  dims = "B19", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out[18:21,-1],  dims = "B24", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out2[1,-1],  dims = "B29", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out3[1,-1],  dims = "B31", colNames = FALSE, na.strings = "")
+wb$add_data(sheet = "2-production",  x = out3[2:6,-1],  dims = "B33", colNames = FALSE, na.strings = "")
 
 try_save_ex_en()
