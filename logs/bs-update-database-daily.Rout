@@ -1,4 +1,4 @@
-UMAR proxy is set!Run started: 2026-08-14 09:17:25 
+UMAR proxy is set!Run started: 2026-08-14 11:00:16 
 
 Attaching package: 'dplyr'
 
@@ -235,54 +235,11 @@ Content type 'application/octet-stream' length 562479 bytes (549 KB)
 downloaded 549 KB
 
 File has BOM, using UTF-16LE
-trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
-Content type 'application/octet-stream' length 562479 bytes (549 KB)
-==================================================
-downloaded 549 KB
-
-File has BOM, using UTF-16LE
-trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
-Content type 'application/octet-stream' length 562479 bytes (549 KB)
-==================================================
-downloaded 549 KB
-
-File has BOM, using UTF-16LE
-trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
-Content type 'application/octet-stream' length 562479 bytes (549 KB)
-==================================================
-downloaded 549 KB
-
-File has BOM, using UTF-16LE
-
-=== PostgreSQL Column Names ===
-Postavke, Datum, value, time, flag, interval_id
-Data loaded into tmp_prepared_data. Sample rows:
-  Postavke   Datum      value    time flag interval_id
-1        0 1994M01  85.996111 1994M01                M
-2        1 1994M01 476.136894 1994M01                M
-3        2 1994M01 390.140782 1994M01                M
-4        3 1994M01   9.705617 1994M01                M
-5        4 1994M01 325.660811 1994M01                M
-Matching dimensions:
-  - Postavke (ID: 1057)
-  - Matched dimension: Postavke -> column: Postavke
-Updated series_id for 40560 rows
-Updated vintage_id for 40560 rows
-After matching. Sample rows:
-  Postavke   Datum value    time flag interval_id series_id vintage_id
-1       26 1994M01    NA 1994M01                M    364534    7473081
-2       64 1994M03    NA 1994M03                M    364576    7473123
-3       64 1994M09    NA 1994M09                M    364576    7473123
-4       26 1996M02    NA 1996M02                M    364534    7473081
-5      102 1997M01    NA 1997M01                M    364516    7473063
-Rows with both series_id and vintage_id: 40560
-Inserted 0 new periods
-Inserted 40560 new data points
-Inserted 0 new flags
+Note: These vintages for table i_32_6ms are not new, they will not be inserted again.
+Skipping import for i_32_6ms due to vintage preparation issue: These vintages for table i_32_6ms are not new, they will not be inserted again.
 Calculating hashes for new vintages...
-Removed 17 empty vintages.
-Processed 100/173 vintages
-Processed 173/173 vintages
+Removed 23 empty vintages.
+Processed 90/90 vintages
 All vintage hashes updated successfully
 Processing single table ID 220...
 Processing table 1/1: ID 220, keep_vintage = FALSE
@@ -293,8 +250,8 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 69/69 vintages
+Removed 5 empty vintages.
+Processed 81/81 vintages
 All vintage hashes updated successfully
 Processing single table ID 222...
 Processing table 1/1: ID 222, keep_vintage = FALSE
@@ -305,8 +262,8 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 69/69 vintages
+Removed 6 empty vintages.
+Processed 75/75 vintages
 All vintage hashes updated successfully
 Processing single table ID 233...
 Processing table 1/1: ID 233, keep_vintage = FALSE
@@ -317,8 +274,8 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 69/69 vintages
+Removed 6 empty vintages.
+Processed 81/81 vintages
 All vintage hashes updated successfully
 Processing single table ID 234...
 Processing table 1/1: ID 234, keep_vintage = FALSE
@@ -329,8 +286,8 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 69/69 vintages
+Removed 6 empty vintages.
+Processed 93/93 vintages
 All vintage hashes updated successfully
 Processing single table ID 235...
 Processing table 1/1: ID 235, keep_vintage = FALSE
@@ -341,7 +298,7 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
+Removed 24 empty vintages.
 Processed 69/69 vintages
 All vintage hashes updated successfully
 Processing single table ID 236...
@@ -452,6 +409,7 @@ Calculating hashes for new vintages...
 No empty vintages found.
 Processed 69/69 vintages
 All vintage hashes updated successfully
+Starting a new run (not resuming). Existing progress file will be overwritten.
 Processing single table ID 245...
 Processing table 1/1: ID 245, keep_vintage = FALSE
 Table ID 245: Transaction committed successfully
@@ -563,8 +521,15 @@ All vintage hashes updated successfully
 Processing single table ID 536...
 Processing table 1/1: ID 536, keep_vintage = FALSE
 Table ID 536: Transaction committed successfully
-Table ID 536: Deleted 104 older vintages and 0 redundant vintages
+Table ID 536: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 104 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
+Warning messages:
+1: In file.remove(progress_file) :
+  cannot remove file 'vintage_cleanup_progress.rds', reason 'Permission denied'
+2: In file.remove(progress_file) :
+  cannot remove file 'vintage_cleanup_progress.rds', reason 'Permission denied'
+3: In file.remove(progress_file) :
+  cannot remove file 'vintage_cleanup_progress.rds', reason 'No such file or directory'
