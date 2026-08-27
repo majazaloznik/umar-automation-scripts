@@ -1,0 +1,508 @@
+
+
+  Version        | Status   | Date
+:-------------:|:--------:|:-----------:
+  0.0.1          | draft    |  2026-08-18
+  1.0.0          | final    |  `r Sys.Date()`
+  
+# Eurostat Metabase Structure Monitor
+
+Technical documentation. Covers what the system does, why it is built the way
+it is, the data model, the processing pipeline, the subscription mechanism,
+operational details, and known limitations.
+
+---
+
+## 1. Purpose and problem
+
+Eurostat datasets change structure without notice: dimensions are renamed or
+added, code lists gain or lose members, whole datasets are renamed or
+withdrawn. These changes ship silently with Eurostat's twice-daily refresh
+(11:00 and 23:00 CET). There is **no forward-looking schedule** of structural
+changes anywhere in Eurostat's dissemination system, and the database keeps
+only the latest version of each dataset — there is no versioning or history on
+their side.
+
+Downstream, this breaks things:
+
+- Colleagues' Power Query links that hard-code dimension names and level
+  codes in the API URL fail the moment a dimension is renamed or added.
+- Automated R ingestion pipelines that assume a fixed structure break or, worse,
+  silently mis-ingest.
+
+The monitor's job is to **detect structural changes as soon as they publish**,
+record them as durable history (which Eurostat itself does not keep), and
+**alert the specific people who depend on the affected datasets** — before they
+discover the breakage the hard way.
+
+The system does not prevent breakage (it cannot; a renamed dimension breaks any
+query that references it). It makes breakage **visible early and legible**, and
+routes each change to the people who care about it.
+
+---
+
+## 2. Data source
+
+The single source is the Eurostat **metabase** file:
+
+```
+https://ec.europa.eu/eurostat/api/dissemination/catalogue/metabase.txt.gz
+```
+
+It is a gzipped, tab-separated file giving the full structure of every
+disseminated dataset, one row per `(dataset, dimension, position)`:
+
+```
+aact_ali01   geo    EU
+aact_ali01   geo    EU27_2020
+aact_ali01   itm_newa   40000
+aact_ali01   time   2022
+...
+```
+
+At the time of writing it is ~1.34M rows across ~7,600 datasets. Rows are
+ordered by dataset, then dimension, then the code list's protocol order — this
+row order is itself information (it is the intended order of the code list) and
+is captured on ingest.
+
+### Source constraints that shaped the design
+
+- **No `Last-Modified` header.** The endpoint returns a chunked, generated
+  response, so there is no file modification timestamp to use for change
+  detection or as a publication time. This is confirmed behaviour, not a bug in
+  the fetch. Consequently the observation timestamp we record is *our* fetch
+  time, not Eurostat's publication time.
+- **`NA` collides with Namibia.** Namibia's ISO-2 code is the literal string
+  `NA`, which `data.table::fread` converts to a missing value by default. This
+  must be suppressed on read (`na.strings = NULL`), or Namibia silently vanishes
+  from every dataset that has it as a position, corrupting the structure record.
+- **The metabase carries codes, not labels.** It gives dimension *codes* and
+  position *codes*, never their human-readable titles. This is why some kinds of
+  rename cannot be detected (see Limitations).
+
+---
+
+## 3. Architecture overview
+
+The system separates into **reusable database components** (which belong in the
+R package suite) and an **application** (the orchestration and alerting, which
+is a standalone scheduled script). This separation is deliberate: the DB-generic
+pieces are reused and warrant roxygen documentation and tests; the orchestration
+is one specific job and is allowed to be a script.
+
+| Concern | Belongs in | Nature |
+|---|---|---|
+| Metabase SCD2 upsert (write) | UMARimportR | reusable, tested |
+| Change-detection query (read) | UMARaccessR | reusable, tested |
+| Subscription load/validate (write) | UMARimportR | reusable, tested |
+| Orchestration, filtering, email | standalone script | application glue |
+
+The application script wires these together and is what Windows Task Scheduler
+runs. It is not a package because Task Scheduler runs a script, and because its
+email/orchestration logic should not couple the general-purpose DB libraries to
+this one monitoring use case.
+
+All database objects live in a dedicated `eurostat` schema, separate from the
+`platform` schema that holds the main statistical data model.
+
+---
+
+## 4. Data model
+
+Three tables plus a temporary staging table, in the `eurostat` schema.
+
+### 4.1 `snapshot` — one row per accepted ingest
+
+```sql
+CREATE TABLE eurostat.snapshot (
+  snapshot_id bigserial PRIMARY KEY,
+  file_sha256 text NOT NULL,          -- content identity of the ingested file
+  observed_at timestamptz NOT NULL DEFAULT now(),
+  n_rows      bigint NOT NULL
+);
+```
+
+- `file_sha256` is the **content identity** of the metabase file. It is the
+  dedup key: if the newly fetched file's hash matches the latest snapshot, there
+  is nothing to do.
+- `file_sha256` is **not** unique. A rollback (Eurostat reverting to a
+  byte-identical earlier structure) is a real event we want to record as a new
+  observation, so the same hash may legitimately appear on multiple dates.
+  Uniqueness is on `snapshot_id` (the observation), not on content.
+- `observed_at` is fetch time, not publication time (no header available).
+
+### 4.2 `metabase` — the structural history (SCD2)
+
+```sql
+CREATE TABLE eurostat.metabase (
+  dataset text NOT NULL,
+  dim     text NOT NULL,
+  pos     text NOT NULL,
+  ord     int  NOT NULL,              -- protocol order within (dataset, dim)
+  valid_from timestamptz NOT NULL,
+  valid_to   timestamptz,             -- NULL = live
+  from_snapshot_id bigint NOT NULL REFERENCES eurostat.snapshot(snapshot_id),
+  to_snapshot_id   bigint          REFERENCES eurostat.snapshot(snapshot_id)
+);
+
+CREATE UNIQUE INDEX ux_mb_live ON eurostat.metabase (dataset, dim, pos)
+  WHERE valid_to IS NULL;
+CREATE INDEX ix_mb_from ON eurostat.metabase (from_snapshot_id);
+CREATE INDEX ix_mb_to   ON eurostat.metabase (to_snapshot_id);
+```
+
+This is a **Type-2 slowly-changing-dimension** table (SCD2). Each row represents one
+`(dataset, dim, pos)` combination and the span over which it was live. A live
+row has `valid_to IS NULL` / `to_snapshot_id IS NULL`. When a combination
+disappears from the file, its row is *expired* (both `valid_to` and
+`to_snapshot_id` set); when a new combination appears, a new live row is
+inserted. Persisting combinations are left untouched.
+
+Design decisions worth recording:
+
+- **Only changed rows are written.** Each ingest expires the rows that vanished
+  and inserts the rows that appeared; the vast unchanged majority are never
+  rewritten. This keeps table churn tiny (dozens of rows on a normal day) and
+  avoids the MVCC-bloat that an "expire everything, reinsert everything"
+  approach would cause twice daily.
+- **The unique partial index `ux_mb_live` enforces the core invariant:** at most
+  one live row per `(dataset, dim, pos)`. A duplicate means an ingest bug, and
+  the constraint turns that from silent corruption into an immediate,
+  transaction-rolling-back failure.
+- **`from_snapshot_id` / `to_snapshot_id` are the authoritative lineage keys.**
+  They exist so that "which ingest created/expired this row" is answered by a
+  foreign key, not by matching a timestamp. This is not cosmetic — see 4.4.
+- **`ord` captures the code list's protocol order** at the time a row was
+  inserted. It is used to build an ordered position signature for rename
+  detection. It is **run-local**: it is not renumbered when a code is inserted
+  mid-list in a later run, so ordinals can develop duplicates within a
+  long-lived dimension. This is acceptable because it only ever makes rename
+  detection *conservative* (a false negative, never a false positive), and no
+  consumer relies on cross-run ordinal continuity. Reorder-without-rename is out
+  of scope.
+- **The `time` dimension is stored but never alerted on.** Every dataset's
+  `time` dimension gains a position every period (new month/quarter/year), so it
+  would be the single largest source of false alerts. It is kept in the store
+  (it is real structure) and filtered out at detection time.
+
+### 4.3 `subscription` — who wants to hear about what
+
+```sql
+CREATE TABLE eurostat.subscription (
+  email   text NOT NULL,
+  dataset text NOT NULL,              -- lowercased code, or '*' for all
+  scope   text NOT NULL DEFAULT 'breaking' CHECK (scope IN ('breaking','all')),
+  PRIMARY KEY (email, dataset)
+);
+```
+
+- `email` is the natural key and the delivery address; there is no separate
+  person column.
+- `dataset = '*'` subscribes to all datasets.
+- `scope` filters by change type: `breaking` (default) sends only changes that
+  can break an existing query; `all` sends everything on the subscribed
+  datasets. See 6.2 for the definition of "breaking".
+- The `CHECK` constraint rejects any scope value other than the two allowed, so
+  a typo in the source spreadsheet fails at load rather than silently producing
+  a garbage filter.
+
+### 4.4 Why lineage is keyed on snapshot id, not timestamp
+
+An early version of the change-detection query joined rows to their snapshot by
+matching `valid_from = snapshot.observed_at`. This is fragile: `timestamptz`
+stores microsecond precision, and two values that *display* identically (both
+shown to the millisecond) can differ in lower digits, so the equality silently
+matches nothing. This produced a real bug where a query returned zero rows
+despite visible changes in the table.
+
+The fix, and the standing rule: **all change-detection keys off
+`from_snapshot_id` / `to_snapshot_id` (integers), never off the timestamps.**
+Integer equality has no precision to mismatch. The timestamp columns remain as
+human-readable convenience only; the snapshot ids are authoritative.
+
+---
+
+## 5. Ingest pipeline
+
+The ingest is a single function that takes an open connection and returns a
+status description. It does not know that email or alerting exist — that is the
+orchestrator's concern. It returns one of: `unchanged`, `changed` (with the new
+`snapshot_id`), or raises an error.
+
+Steps:
+
+1. **Fetch** the gzipped metabase to a temp file and compute its `sha256`.
+2. **Read** with `na.strings = NULL` (Namibia) and capture protocol order
+   (`ord`) per `(dataset, dim)`.
+3. **Dedup guard.** Compare the fetched `sha256` to the *latest* snapshot only.
+   - Matches latest → `unchanged`, exit. Nothing to do.
+   - Matches an *older* snapshot → a rollback. Warn, but proceed to ingest it as
+     a new observation.
+   - No match → a new structure, proceed.
+4. **Diff and apply, in one transaction:**
+   - Insert the new `snapshot` row first, capturing its id (needed as the FK for
+     the rows about to change).
+   - Load the fetched file into an unlogged temp staging table; `ANALYZE` it and
+     index it so the planner uses hash joins, not nested loops.
+   - **Bootstrap branch** (`n_live == 0`): the live set is empty, so every row
+     is new by definition — a plain bulk insert, no anti-join. This exists
+     because an anti-join against an empty target degenerates to a per-row scan
+     and takes minutes; the plain insert takes seconds.
+   - **Steady-state branch:** expire live rows absent from the file (anti-join
+     staging → metabase), then insert file rows absent from the live set
+     (anti-join metabase → staging). Both are sub-second at this scale with the
+     FK indexes present.
+5. **Return** `changed` with the new `snapshot_id`, `n_rows`, and a
+   `rolled_back` flag.
+
+The whole thing is wrapped so that on any exit — success, error, or early
+return — the connection is disconnected. A **session-level advisory lock** taken
+at the start makes the run a singleton: a second concurrent run exits
+immediately rather than interleaving with the first. The lock releases
+automatically on disconnect (session-scoped locks do not survive the session),
+so no explicit unlock is needed.
+
+---
+
+## 6. Change detection
+
+`compute_alerts(con, snapshot_id)` reads the metabase history and returns one
+row per affected dataset for the given snapshot. It classifies at the dataset
+level first, then breaks down dimension and level changes for datasets that were
+neither newly added nor wholly removed.
+
+### 6.1 Event types
+
+| `event` | Meaning |
+|---|---|
+| `dataset_added` | Dataset appeared for the first time (no prior rows at all) |
+| `dataset_removed` | Dataset had live rows before, none survive after |
+| `changed` | Existing dataset with dimension and/or level changes |
+
+For `changed` rows the query also returns:
+
+- `dim_changes` — a text list like `geo:dim_added, unit:dim_removed`, or NULL if
+  no dimension-level change.
+- `level_added` / `level_removed` — counts of code-list positions added/removed
+  (excluding `time`).
+
+New and removed datasets are reported as a **single** event each; their
+per-dimension changes are suppressed, because a whole-dataset event should not
+also emit a `dim_added`/`dim_removed` for every one of its dimensions.
+
+### 6.2 What counts as "breaking"
+
+This is a **subscription** concept, not a detection concept, so it is defined in
+the application (R), next to the subscription logic, not in the SQL. A change is
+breaking if it can break an existing query:
+
+- `dataset_removed`
+- any dimension change (`dim_added` or `dim_removed`)
+- `level_removed > 0`
+
+Not breaking:
+
+- `level_added` only — a new code rarely breaks anything that already runs
+- `dataset_added` — a new dataset cannot break an existing query
+
+`dim_added` is treated as breaking because an added dimension changes
+granularity, which silently breaks downstream aggregations and joins — this is
+precisely the failure that originally motivated the project.
+
+---
+
+## 7. Subscription system
+
+### 7.1 The spreadsheet
+
+Subscriptions are maintained by users themselves in a shared Excel file on the
+network share. 
+
+The location is: `"O:\Avtomatizacija\umar-automation-scripts\data\umar_data_bot_subscriptions\`
+`eurostat_email_prijave.xlsx"`
+
+Columns: `email`, `dataset`, `scope`, and an optional free-text
+`notes` column that the system ignores entirely. One row per
+`(email, dataset)`. Users add the dataset codes they depend on; `scope` defaults
+to `breaking` if left blank; `dataset = *` opts into everything.
+
+Putting the sheet where the knowledge lives (with the people who know their own
+dependencies) is deliberate — it removes the maintainer as a bottleneck. The
+spreadsheet is the human interface; the `subscription` table is the validated,
+normalised truth derived from it.
+
+### 7.2 Load and validation
+
+`load_subscriptions(con)` reads the sheet and reloads the table. It:
+
+1. **Selects columns by name**, so an extra column (like `notes`) cannot shift
+   anything; a missing required column is a hard error.
+2. **Normalises**: lowercases and trims email and dataset; defaults blank scope
+   to `breaking`.
+3. **Validates**, collecting problems without halting:
+   - unknown dataset codes (checked against `SELECT DISTINCT dataset FROM
+     metabase`, excluding `*`) — this is the critical check; a typo'd code that
+     matches nothing would otherwise silently deliver no alerts,
+   - invalid scope values,
+   - duplicate `(email, dataset)` pairs.
+   Bad rows are **skipped, not fatal** — one person's mistake must not block
+   everyone else's subscriptions. Problems are emailed to the maintainer.
+4. **Safety gate against corruption:** if the load would *remove* existing
+   subscriptions for **more than one email address**, it refuses (raises) rather
+   than applying the change. The editing convention is that no one touches
+   another person's rows, so removals spanning multiple people mean the sheet
+   was mangled (cleared, truncated, saved empty). A single person editing their
+   own rows passes fine. This protects the authoritative table from a corrupted
+   sheet without a merge engine — it is a sanity gate, not a diff.
+5. **Truncate + reload** the clean rows, in one transaction. The sheet is
+   authoritative, so idempotent full replacement is the simplest correct model;
+   the gate handles the "authoritative until someone breaks it" case.
+
+`load_subscriptions` runs on **every** run, not only on change days, so that a
+corrupted sheet surfaces (via the gate) the same night it happens rather than
+lying in wait until the next structural change.
+
+---
+
+## 8. Alerting
+
+The orchestrator (`main`) runs, in order:
+
+1. Connect, take the advisory lock, configure email auth.
+2. `load_subscriptions` — validate the human input first, fail fast if corrupt.
+3. `ingest` — wrapped so any failure emails the maintainer and still records the
+   traceback in the log.
+4. If `unchanged`, exit.
+5. If `changed`: `compute_alerts` → filter per subscriber → send one email per
+   affected subscriber. This whole stage is wrapped so a failure in the alert
+   query or send emails the maintainer rather than dying silently in the log.
+
+### 8.1 Per-person filtering
+
+`filter_alerts` joins the run's alert rows to the subscription table:
+
+- `dataset = '*'` matches all alert rows; otherwise exact dataset match.
+- `scope = 'breaking'` keeps only breaking rows (6.2); `scope = 'all'` keeps
+  everything for the matched datasets.
+
+One email is sent per affected subscriber, containing only their matched rows,
+and only if they have at least one, silence on non-events.
+
+### 8.2 Email format
+
+Alerts are HTML email with the change table wrapped in `<pre>` for a monospace
+font, so the space-padded columns actually align.
+
+A `dataset_removed` row carries an added note suggesting the dataset may have
+been renamed and to check for a replacement code. This is a cheap mitigation of
+the rename-detection gap (Section 10): the system cannot yet link a removal to
+its replacement, but it can tell the affected subscriber to go look.
+
+### 8.3 Two distinct email concerns
+
+- **Operational failure** (ingest broke, sheet corrupt, alert query failed) →
+  goes to the maintainer. Distinctive subject prefix for inbox filtering.
+- **Structural alert** (something changed) → goes to subscribers.
+
+These are separate functions with separate recipients and must not be merged.
+
+---
+
+## 9. Operations
+
+- **Schedule:** Windows Task Scheduler runs a batch script a few minutes after
+  the Eurostat evening refresh (~23:00 CET), and after the 11:00
+  refresh. The task name is `eurostat-update-metabase`. Exact timing is not critical: the `sha256` dedup makes a catch-up run
+  after downtime free (it exits immediately if nothing changed).
+- **Batch wrapper:** the batch script calls `Rscript` with
+  `source(...); tryCatch(main(), error = ...)` so that an R-level failure sets a
+  non-zero exit code (Task Scheduler otherwise reports success on any R error),
+  and `pushd` into the repo before the git steps so committing the log works.
+- **Logging:** stdout/stderr are redirected to a `.Rout` file on the share,
+  which is committed to git for an audit trail. The `.Rout` is overwritten each
+  run; git preserves the history. The log is *not* the alert channel — alerts
+  and failures are emailed from within the script via `gmailr`.
+- **Alert channel is email only.** Failure surfaces as a maintainer email plus a
+  log entry; there is no second channel.
+- **Secrets:** the DB password is read from an environment variable; the Gmail
+  OAuth credentials and token cache are at absolute paths on the share. The
+  scheduled account must be able to read the credentials and write the token
+  cache.
+
+---
+
+## 10. Known limitations and backlog
+
+Recorded honestly so a future maintainer knows the edges.
+
+- **Dataset renames are not linked.** A renamed dataset appears as an unrelated
+  `dataset_removed` (old code) and `dataset_added` (new code). The system
+  detects both but cannot connect them, because the metabase carries codes, not
+  titles. The `dataset_removed` alert includes a "check for a replacement" hint
+  as a stopgap. *Fix (backlog):* snapshot the Table of Contents (`toc.txt`/`xml`),
+  which carries dataset code **and** title, and match a removed title to an added
+  title to identify renames near-decisively. This is the one substantive
+  detection gap and is the direct analogue of the failure that motivated the
+  project, one level up (table renamed rather than dimension renamed).
+
+- **Level (code) renames are not distinguished from drop+add.** A code renamed
+  within a dimension shows as `level_removed` + `level_added`, unlinked, for the
+  same reason (no labels in the metabase).
+
+- **Dimension renames rely on a heuristic.** A dimension rename shows as
+  `dim_removed` + `dim_added` in the same dataset and run; a matching ordered
+  position signature makes it near-decisive, but it remains a candidate, not a
+  certainty. (The signature logic was prototyped but is not currently wired into
+  `compute_alerts`; fold it back in when a real dimension rename first occurs.)
+
+- **Reorder-without-rename is not detected.** If Eurostat reorders a code list
+  without changing membership, no rows change, so nothing fires; `ord` on
+  surviving rows also goes stale. Out of scope by choice — reordering does not
+  break code-based queries.
+
+- **The observation timestamp is fetch time, not publication time**, because the
+  endpoint provides no `Last-Modified`. Change *ordering* is preserved by
+  snapshot id; only the absolute "when did Eurostat publish this" is
+  approximate.
+
+- **Automated pipeline dependencies are not auto-subscribed.** A dataset that
+  the agency's own R ingestion depends on will only be alerted on if someone has
+  manually added it to the subscription sheet. *Fix (backlog):* subscribe the
+  ingestion pipelines' own dataset lists to a bot-monitored address, so a table
+  a pipeline relies on cannot vanish unnoticed. (This is exactly the case that
+  broke a package test when `agr_r_animal` was silently replaced.)
+
+- **OAuth token expiry is the most likely silent-death mode.** If the Gmail
+  refresh token expires or the token cache becomes unwritable by the scheduled
+  account, all alerting fails silently — no alerts, no failure emails. *Mitigation:*
+  periodically confirm alerts still arrive; consider a heartbeat or second
+  channel if the system becomes critical.
+  
+- **Comtex data monitoring gap**  Comtex (detailed trade, `ds-*`) is a spearate dissemenation system not covered by the metabase monitor. Structural changes in those datasets are not detected. These are also currently not ingested by EUROSTATfetchR, so it's a moot point for now anyway. 
+
+---
+
+## 11. Design principles applied throughout
+
+For future changes, the principles this system was built on:
+
+- **Detect, don't schedule.** Eurostat publishes no change schedule; monitoring
+  is necessarily proactive and after-the-fact-but-before-consumption.
+- **Fail loud.** Every stage that can fail either raises or emails the
+  maintainer; nothing swallows an error silently. The one thing a monitor must
+  never do is fail quietly.
+- **One source of truth per fact.** Redundant columns encoding the same thing
+  (a flag plus a timestamp; a stored classification plus the data it derives
+  from) were rejected in favour of deriving one from the other. Derived-and-cached
+  is acceptable; stored-as-a-second-primary drifts.
+- **Content identity over metadata.** Dedup on the file's hash, not on unreliable
+  timestamps or headers.
+- **Keys over coincidences.** Lineage joins on integer snapshot ids, never on
+  timestamp equality.
+- **Complexity must be justified by scale.** At ~1.3M rows, several performance
+  defences (fingerprint tiers, full-snapshot storage avoidance) were considered
+  and dropped as unnecessary. The design is sized to the actual data, not an
+  imagined order of magnitude larger.
+- **Reusable components are packages with tests; applications are scripts.** The
+  DB-generic pieces belong in UMARimportR/UMARaccessR with roxygen and dittodb
+  fixtures; the orchestration is glue and stays a standalone script.
