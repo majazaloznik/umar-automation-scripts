@@ -31,7 +31,8 @@ Lahko se prijaviš na avtomatične maile, ki te bodo obveščali o (relevantnih)
 Pri tem lahko izbereš ali te zanimajo:
 
 - spremembe na vseh tabelah (teh je čez 7500, tako da tega ne priporočam, ker boš skoraj vsak dan dobil/a dva maila)
-- spremembe samo na izbranih tabelah, ki te zanimajo. 
+- spremembe samo na izbranih tabelah, ki te zanimajo (recimo koda `namq_10_gdp`)
+- spremembe na celih **mapah** (kategorijah) — npr. vse tabele pod mapo "National accounts" - koda `nama`.
 
 Hkrati lahko tudi določiš ali te za dotične tabele zanimajo:
 
@@ -49,21 +50,39 @@ V njem je tabela, ki ima 4 stolpce.
 
 **email** - elektronski naslov, kamor hočeš dobivati sporočila o spremembah
 
-**dataset** - polje kamor zapišeš *posamično* kodo tabele, ki ji želiš stediti, torej za vsako tabelo moraš dodati novo vrstico. Če resno želiš slediti vsem 7500+ tabelam, pa vneseš samo en `*`. 
+**dataset** - polje kamor zapišeš *posamično* kodo tabele **ali** kodo mape (kategorije), ki ji želiš slediti. Za vsak vnos moraš dodati novo vrstico. Če resno želiš slediti vsem 7500+ tabelam, pa vneseš samo en `*`.
+
+Kodo — tabele ali mape — najdeš v oklepaju v Eurostatovem drevesu podatkov ([Detailed datasets / Podrobni podatki](https://ec.europa.eu/eurostat/data/database)). Na primer `nama_10_gdp` je koda posamične tabele, `nama_10_ma` pa koda cele mape, ki vsebuje (trenutno) šest tabel. Če vpišeš kodo mape, boš dobil/a obvestila o spremembah na vseh tabelah v tej mapi.
 
 **scope** - ima dve možni vrednosti: `all` ali `breaking`. Prva možnost pomeni, da dobiš obvestilo o vseh šestih tipih sprememb, druga pa samo o ta štirih "nevarnih". 
 
 **notes** - to je za Data Bota popolnoma nepomembno polje - tukaj je samo zato, da si lahko notri napišeš karkoli ti srce poželi. 
 
-
-```{r, echo=FALSE, out.width="100%", fig.cap="Primer izpolnjenih vrstic"}
+```{r, echo=FALSE, out.width="85%", fig.cap="Primer izpolnjenih vrstic"}
 knitr::include_graphics("images/eu_m01.png")
 ```
+
+*Še par navodil opozorili glede kod map:*
+
+- Kod za mape oz. področja NE jemlji iz veje  **"Selected datasets"**, ki imajo predpono `t_` (npr. `t_nama_10`) — za te kode Eurostat ne omogoča ustreznega dostopa do drevesne strukture. 
+
+```{r, echo=FALSE, out.width="35%", fig.cap="Veljavna področja"}
+knitr::include_graphics("images/eu_m02.png")
+```
+
+- Kode za pod-področja lahko dobiš v Eurostatovem drevesu podatkov, za glavna področja, pa jih tam žal ne objavljajo, zato najdeđš seznam na koncu tega dokumenta.
+
+```{r, echo=FALSE, out.width="70%", fig.cap="Kode za pod-področja najdeš tu"}
+knitr::include_graphics("images/eu_m03.png")
+```
+- Če se pri kodi zatipkaš in koda ne obstaja (ne kot tabela ne kot mapa), Data Bot te vrstice ne bo upošteval, Maja pa bo dobila obvestilo o napaki in ti javila, kaj moraš popraviti.
+
+
 
 Torej:
 
 - vedno moraš izpolniti prva tri polja
-- za vsako posamezno tabelo dodaš novo vrstico - spremembe seveda dobiš v enem samem mailu!
+- za vsako posamezno tabelo ali področje dodaš novo vrstico - spremembe seveda dobiš v enem samem mailu!
 - shraniš in to je to!
 
 Vedno lahko kasneje dodaš nove vrstice (vrstni red ni važen). Lahko tudi brišeš svoje vrstice, če hočeš nehati slediti določeni tabeli. Seveda ne brisati tujih vrstic, a prav?
@@ -71,4 +90,40 @@ Vedno lahko kasneje dodaš nove vrstice (vrstni red ni važen). Lahko tudi briš
 In še to: tudi, če se ne prijaviš na nobeno tabelo, lahko vedno prideš do Maje in jo vprašaš da pogleda zgodovino - s tem da ta zgodovina obstaja samo za spremembe od 11.8.2026 dalje. 
 
 
+
+## Kode za glavna področja
+ 
+
+- Detailed datasets/Database by themes -- `data`
+    + General and regional statistics -- `general`
+    + Economy and finance -- `economy`
+    + Population and social conditions `popul`
+    + Industry, trade and services `icts`
+    + Agriculture, forestry and fisheries `agric`
+    + International trade `external`
+    + Transport `transp`
+    + Environment and energy `envir`
+    + Science, technology, digital society `science`
+- EU Policies `tb_eu`
+    + Macroeconomic imbalance procedure indicators `tips`
+    + EURO indicators / PEEIs `shorties`
+    + Circular economy Indicators `cei`
+    + Sustainable development indicators `sdg`
+    + Employment and social policy indicators `es`
+    + European pillar of social rights (EPSR) `tepsr`
+- Cross cutting topics `cc`
+    + Quality of life `qol`
+    + Migrant integration and children in migration `mi`
+    + Economic globalisation indicators `egi`
+    + Equality and non-discrimination `eq`
+    + Quality of employment `qol`
+    + Agri-environmental indicators `ai`
+    + Climate change `cli`
+    + Skills-related statistics `sks`
+    + Children and youth `chldyth`
+    + Housing `hous`
+
+
+
+  
 

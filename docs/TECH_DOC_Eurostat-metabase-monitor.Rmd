@@ -1,15 +1,29 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 
 
   Version        | Status   | Date
 :-------------:|:--------:|:-----------:
   0.0.1          | draft    |  2026-08-18
-  1.0.0          | final    |  `r Sys.Date()`
+  1.0.0          | final    |  2026-08-21
+  1.1.0          | update   |  2026-08-27
+  
   
 # Eurostat Metabase Structure Monitor
 
 Technical documentation. Covers what the system does, why it is built the way
 it is, the data model, the processing pipeline, the subscription mechanism,
 operational details, and known limitations.
+
+The monitor draws on **two independent Eurostat sources**: the **metabase**
+(the full dimensional structure of every dataset — Sections 2, 4.2, 5, 6) and
+the **TOC** (the navigation-tree hierarchy of folders and datasets — Sections
+2b, 4.5, 5b). The metabase drives structural-change detection; the TOC lets
+users subscribe to whole folders rather than listing individual datasets
+(Section 7.3).
 
 ---
 
@@ -82,6 +96,49 @@ is captured on ingest.
 
 ---
 
+## 2b. Second data source: the TOC (navigation tree)
+
+The second source is the Eurostat **table of contents** (navigation tree) XML:
+
+```
+https://ec.europa.eu/eurostat/api/dissemination/catalogue/toc/xml
+```
+
+It is the folder hierarchy the online data browser shows: nested `branch`
+(folder) elements containing `leaf` (dataset or table) elements, each with a
+stable **code** and English/French/German titles. Both branches and leaves may
+contain children (a dataset leaf can nest curated `table` leaves), so it is a
+genuine tree of arbitrary depth. At the time of writing it parses to ~9,400
+distinct nodes and ~12,200 edges.
+
+The TOC exists in the system for one user-facing feature: **subscribing to a
+whole folder** instead of listing every dataset under it (Section 7.3). It is
+diffed and snapshotted on the same SCD2 principles as the metabase, but the two
+are entirely independent sources with independent snapshots and cadences.
+
+### Source characteristics that shaped the design
+
+- **Folders have codes.** Unlike the flat tsv TOC that `eurostat::get_eurostat_toc()`
+  parses, the XML carries a `<code>` on every folder node, so folder identity is
+  a stable code, not a mutable title. This is why the ingest is a fresh XML
+  parse rather than a reuse of the older tsv-based hierarchy code.
+- **The XML carries a real `creationDate`** (on the `<tree>` root, format
+  `%Y%m%dT%H%M`). Unlike the metabase (no `Last-Modified`), this gives a genuine
+  publication timestamp — so the TOC ingest can run a *monotonicity guard*
+  (refuse a fetched tree stamped older than the latest stored snapshot).
+- **Nodes are reached by multiple paths.** ~2,000 codes appear under more than
+  one parent (the same dataset filed in several folders). The parser emits one
+  node per code (deduplicated on code/type/title) but one edge per parent→child
+  pair, so multi-parenting is represented natively as multiple edges.
+- **English titles only** are stored; a node with no English title stores `NA`
+  rather than falling back to another language.
+- **The TOC XML is an incomplete listing relative to the browser.** A handful of
+  tables that exist in the metabase (and in the browser) are simply absent from
+  the XML file — confirmed by grepping the raw source, not a parser fault. See
+  Limitations.
+
+---
+
 ## 3. Architecture overview
 
 The system separates into **reusable database components** (which belong in the
@@ -92,24 +149,40 @@ is one specific job and is allowed to be a script.
 
 | Concern | Belongs in | Nature |
 |---|---|---|
-| Metabase SCD2 upsert (write) | UMARimportR | reusable, tested |
-| Change-detection query (read) | UMARaccessR | reusable, tested |
-| Subscription load/validate (write) | UMARimportR | reusable, tested |
-| Orchestration, filtering, email | standalone script | application glue |
+| TOC XML fetch + parse (`fetch_toc` / `parse_toc`) | EUROSTATfetchR | reusable, tested |
+| Change-detection reads (`sql_get_*`, `resolve_folder_datasets`) | UMARaccessR | reusable, tested |
+| Generic query executor (`sql_function_call`) | UMARimportR | reusable |
+| Metabase + TOC ingest orchestration | standalone script | application glue |
+| Subscription load/validate, filtering, email | standalone script | application glue |
+
+The DB read functions are Postgres functions (their SQL tracked in
+`EUROSTATfetchR/inst/sql/` alongside the schema DDL, with `BEGIN…ROLLBACK` SQL
+tests), wrapped by thin `sql_get_*` R functions in UMARaccessR that call
+`UMARimportR::sql_function_call`. The read wrappers are grouped by *what they do*
+(reads → UMARaccessR), not by which schema they read — consistent with the
+`platform`-schema read wrappers living there too.
 
 The application script wires these together and is what Windows Task Scheduler
 runs. It is not a package because Task Scheduler runs a script, and because its
 email/orchestration logic should not couple the general-purpose DB libraries to
-this one monitoring use case.
+this one monitoring use case. The metabase SCD2 upsert and the TOC ingest both
+live in the application as orchestration (multi-statement, branch logic, source-
+specific) rather than as reusable primitives — a deliberate application of the
+"only genuinely reusable things become package functions" rule.
 
 All database objects live in a dedicated `eurostat` schema, separate from the
-`platform` schema that holds the main statistical data model.
+`platform` schema that holds the main statistical data model. The `eurostat`
+schema DDL (metabase tables, TOC tables, and all read functions) is tracked in
+`EUROSTATfetchR/inst/sql/`.
 
 ---
 
 ## 4. Data model
 
-Three tables plus a temporary staging table, in the `eurostat` schema.
+The `eurostat` schema holds two families of tables: the **metabase** family
+(snapshot + SCD2 structure, Sections 4.1–4.4) and the **TOC** family (snapshot +
+SCD2 node/edge tree, Section 4.5), plus the `subscription` table shared by both.
+Each family has its own temporary staging table used only during ingest.
 
 ### 4.1 `snapshot` — one row per accepted ingest
 
@@ -190,8 +263,9 @@ Design decisions worth recording:
 ```sql
 CREATE TABLE eurostat.subscription (
   email   text NOT NULL,
-  dataset text NOT NULL,              -- lowercased code, or '*' for all
+  dataset text NOT NULL,              -- lowercased dataset OR folder code, or '*'
   scope   text NOT NULL DEFAULT 'breaking' CHECK (scope IN ('breaking','all')),
+  kind    text NOT NULL DEFAULT 'dataset' CHECK (kind IN ('dataset','folder')),
   PRIMARY KEY (email, dataset)
 );
 ```
@@ -202,9 +276,15 @@ CREATE TABLE eurostat.subscription (
 - `scope` filters by change type: `breaking` (default) sends only changes that
   can break an existing query; `all` sends everything on the subscribed
   datasets. See 6.2 for the definition of "breaking".
-- The `CHECK` constraint rejects any scope value other than the two allowed, so
-  a typo in the source spreadsheet fails at load rather than silently producing
-  a garbage filter.
+- `kind` is **derived at load time, not user-supplied**: the loader checks each
+  code against the live metabase datasets and the live TOC folders and stamps
+  `dataset` or `folder` accordingly (Section 7.2). The user never declares which
+  — they just enter a code and the backend resolves it. `*` rows are nominally
+  `dataset` (the `*` special-case in matching fires before `kind` is consulted).
+- The `CHECK` constraints reject any scope or kind value outside the allowed set,
+  so a corrupt load fails loudly rather than producing a garbage filter.
+- Folder and dataset codes are **disjoint namespaces** (verified: no code is both
+  a live folder and a live dataset), so the derived `kind` is unambiguous.
 
 ### 4.4 Why lineage is keyed on snapshot id, not timestamp
 
@@ -219,6 +299,64 @@ The fix, and the standing rule: **all change-detection keys off
 `from_snapshot_id` / `to_snapshot_id` (integers), never off the timestamps.**
 Integer equality has no precision to mismatch. The timestamp columns remain as
 human-readable convenience only; the snapshot ids are authoritative.
+
+### 4.5 TOC tables — the navigation tree (SCD2)
+
+The TOC is stored as a snapshot table plus two SCD2 tables — nodes and edges —
+so that the tree's history is preserved on the same "keep what Eurostat won't"
+principle as the metabase.
+
+```sql
+CREATE TABLE eurostat.toc_snapshot (
+  snapshot_id   bigserial PRIMARY KEY,
+  file_sha256   text NOT NULL,          -- content identity (dedup key)
+  creation_date timestamptz,            -- <tree creationDate>, provenance
+  observed_at   timestamptz NOT NULL DEFAULT now(),
+  n_nodes       bigint NOT NULL
+);
+
+CREATE TABLE eurostat.toc_node (        -- SCD2; one live row per code
+  code  text NOT NULL,
+  type  text NOT NULL,                  -- 'folder' | 'dataset' | 'table'
+  title text,
+  valid_from timestamptz NOT NULL,
+  valid_to   timestamptz,               -- NULL = live
+  from_snapshot_id bigint NOT NULL REFERENCES eurostat.toc_snapshot(snapshot_id),
+  to_snapshot_id   bigint          REFERENCES eurostat.toc_snapshot(snapshot_id)
+);
+CREATE UNIQUE INDEX ux_toc_node_live ON eurostat.toc_node (code) WHERE valid_to IS NULL;
+
+CREATE TABLE eurostat.toc_edge (        -- SCD2; one live row per parent→child
+  parent_code text NOT NULL,
+  child_code  text NOT NULL,
+  valid_from timestamptz NOT NULL,
+  valid_to   timestamptz,               -- NULL = live
+  from_snapshot_id bigint NOT NULL REFERENCES eurostat.toc_snapshot(snapshot_id),
+  to_snapshot_id   bigint          REFERENCES eurostat.toc_snapshot(snapshot_id)
+);
+CREATE UNIQUE INDEX ux_toc_edge_live ON eurostat.toc_edge (parent_code, child_code) 
+  WHERE valid_to IS NULL;
+```
+
+Design decisions:
+
+- **Nodes and edges are separate tables** because the hierarchy changes
+  independently of the nodes. A dataset moved from folder A to folder B is an
+  *edge* change (expire A→X, insert B→X), not a node change. Folding the parent
+  into the node row would make a re-parenting look like a node change and would
+  not represent a code with multiple parents. Separate edges = clean move
+  detection and native multi-parenting (one live edge per parent).
+- **Node identity is `code`; `title` and `type` are tracked content.** A title
+  change expires the old row and inserts a new one — the same SCD2 treatment the
+  metabase gives every column. Because the TOC (unlike the metabase) carries
+  titles, this is what makes *rename detection* possible later: a code with an
+  expired title and a new live title is a rename, decisively.
+- **`creation_date` enables a monotonicity guard** the metabase ingest cannot do:
+  a fetched tree stamped strictly older than the latest stored snapshot is
+  refused (a stale-mirror serve). Equal timestamps pass (a same-minute
+  regeneration with a real change is legitimate).
+- Lineage keys off `from_snapshot_id` / `to_snapshot_id` throughout, same rule as
+  4.4.
 
 ---
 
@@ -262,14 +400,50 @@ immediately rather than interleaving with the first. The lock releases
 automatically on disconnect (session-scoped locks do not survive the session),
 so no explicit unlock is needed.
 
+## 5b. TOC ingest pipeline
+
+`ingest_toc(con)` follows the same shape as the metabase ingest, with two
+differences. It calls `EUROSTATfetchR::fetch_toc()` (fetch + parse to flat
+`nodes` and `edges` frames), then:
+
+1. **Dedup guard** on `sha256` against the latest `toc_snapshot` (rollback to an
+   older tree is re-ingested, same as the metabase).
+2. **Monotonicity guard:** refuse if the fetched `creationDate` is strictly older
+   than the latest stored snapshot's (only possible because the TOC carries a
+   timestamp).
+3. **Diff and apply in one transaction, on two tables:**
+   - **Nodes** — a node is expired when its `code` is no longer present in
+     staging *with the same type and title*, and inserted when a staging row does
+     not match a live row on all of `(code, type, title)`. So a title change
+     expires the old row and inserts the new — richer than the metabase's
+     exact-tuple match, because the key (`code`) is narrower than the tracked
+     columns. `title` comparison uses `IS NOT DISTINCT FROM` so null-title nodes
+     round-trip correctly.
+   - **Edges** — pure presence/absence on `(parent_code, child_code)`, exactly
+     like the metabase pattern.
+   - A **bootstrap branch** (empty live set) bulk-inserts both tables with no
+     anti-join, same rationale as the metabase.
+
+The TOC ingest runs inside the main run's connection and advisory lock (it does
+not take its own). It is folded into the scheduled job rather than separately
+scheduled (Section 9), and runs *before* the metabase alert stage so folder
+resolution (Section 7.3) uses the freshest tree. Its failure is isolated: a TOC
+ingest error emails the maintainer but does **not** block metabase alerting —
+folder resolution then falls back to the last successfully ingested tree, which
+is correct degradation.
+
 ---
 
 ## 6. Change detection
 
-`compute_alerts(con, snapshot_id)` reads the metabase history and returns one
-row per affected dataset for the given snapshot. It classifies at the dataset
-level first, then breaks down dimension and level changes for datasets that were
-neither newly added nor wholly removed.
+The change-detection read — `UMARaccessR::sql_get_eurostat_metabase_changes_from_snapshot(con, snapshot_id)`,
+wrapping the `eurostat.get_metabase_changes` Postgres function — returns one row
+per affected dataset for the given snapshot. It classifies at the dataset level
+first, then breaks down dimension and level changes for datasets that were
+neither newly added nor wholly removed. (A companion read,
+`sql_get_eurostat_removed_levels_from_snapshot`, returns the specific removed
+level codes for a set of datasets, used to list — not merely count — removed
+levels in alert emails.)
 
 ### 6.1 Event types
 
@@ -340,13 +514,20 @@ normalised truth derived from it.
 2. **Normalises**: lowercases and trims email and dataset; defaults blank scope
    to `breaking`.
 3. **Validates**, collecting problems without halting:
-   - unknown dataset codes (checked against `SELECT DISTINCT dataset FROM
-     metabase`, excluding `*`) — this is the critical check; a typo'd code that
-     matches nothing would otherwise silently deliver no alerts,
+   - unknown codes — each non-`*` code is checked against *both* the live
+     metabase datasets *and* the live TOC folders; it is rejected only if it
+     matches neither. This is the critical check; a typo'd code that matches
+     nothing would otherwise silently deliver no alerts. Folder codes are
+     entered exactly as they appear in the online Detailed-datasets tree
+     (unprefixed); a `t_`-prefixed Tables-hierarchy code will not match and is
+     reported (the two hierarchies are genuinely different — the system does not
+     silently remap one to the other).
    - invalid scope values,
    - duplicate `(email, dataset)` pairs.
    Bad rows are **skipped, not fatal** — one person's mistake must not block
    everyone else's subscriptions. Problems are emailed to the maintainer.
+   Each surviving row is stamped with a derived `kind` (`dataset` or `folder`)
+   from which lookup it matched.
 4. **Safety gate against corruption:** if the load would *remove* existing
    subscriptions for **more than one email address**, it refuses (raises) rather
    than applying the change. The editing convention is that no one touches
@@ -362,6 +543,31 @@ normalised truth derived from it.
 corrupted sheet surfaces (via the gate) the same night it happens rather than
 lying in wait until the next structural change.
 
+### 7.3 Folder subscriptions
+
+A subscription code may be a **folder** rather than a dataset. A folder
+subscription matches structural changes on *any* dataset beneath that folder in
+the TOC tree, so a user can subscribe to, say, `mar` (maritime transport) and
+receive alerts for every `mar_*` dataset without listing them.
+
+Resolution happens **at alert time, not load time**: the subscription table
+stores the folder code as the user entered it, and `filter_alerts` resolves it
+to its descendant dataset/table codes each run via
+`UMARaccessR::sql_resolve_eurostat_folder_datasets` (a recursive CTE over the
+*live* TOC edges). The consequence — and the point — is that a folder
+subscription **automatically covers datasets added to that folder later**, with
+no re-subscription. Storing the folder code (not a frozen expansion) also keeps
+the subscription table honest: it records what the user asked for, and the
+current tree is consulted at use.
+
+The design keeps **dataset-code subscriptions as the reliable backbone and
+folder subscriptions as an advisory layer on top.** A direct dataset-code match
+never depends on the TOC; only folder matches do. So if the TOC is momentarily
+stale (ingest failed, or Eurostat's tree lags the metabase), a folder match may
+be slightly delayed but a direct code match is unaffected — and folder
+resolution can only ever point at monitored datasets (verified: every dataset
+any folder resolves to is present in the metabase).
+
 ---
 
 ## 8. Alerting
@@ -370,23 +576,32 @@ The orchestrator (`main`) runs, in order:
 
 1. Connect, take the advisory lock, configure email auth.
 2. `load_subscriptions` — validate the human input first, fail fast if corrupt.
-3. `ingest` — wrapped so any failure emails the maintainer and still records the
-   traceback in the log.
-4. If `unchanged`, exit.
-5. If `changed`: `compute_alerts` → filter per subscriber → send one email per
-   affected subscriber. This whole stage is wrapped so a failure in the alert
-   query or send emails the maintainer rather than dying silently in the log.
+3. `ingest_toc` — refresh the TOC tree so folder resolution is current. Wrapped
+   in its own `tryCatch` that emails the maintainer on failure but does **not**
+   re-raise: a TOC failure must not block metabase alerting.
+4. `ingest` (metabase) — wrapped so any failure emails the maintainer and still
+   records the traceback in the log.
+5. If `unchanged`, exit.
+6. If `changed`: read changes via
+   `UMARaccessR::sql_get_eurostat_metabase_changes_from_snapshot` → filter per
+   subscriber → send one email per affected subscriber. This whole stage is
+   wrapped so a failure in the alert query or send emails the maintainer rather
+   than dying silently in the log.
 
 ### 8.1 Per-person filtering
 
-`filter_alerts` joins the run's alert rows to the subscription table:
+`filter_alerts` joins the run's change rows to the subscription table, resolving
+each distinct folder once per run and reusing the result across subscribers:
 
-- `dataset = '*'` matches all alert rows; otherwise exact dataset match.
-- `scope = 'breaking'` keeps only breaking rows (6.2); `scope = 'all'` keeps
+- `dataset = '*'` matches all change rows.
+- `kind = 'folder'` matches rows whose dataset is in the folder's resolved
+  descendant set (Section 7.3).
+- `kind = 'dataset'` matches by exact dataset code.
+- `scope = 'breaking'` then keeps only breaking rows (6.2); `scope = 'all'` keeps
   everything for the matched datasets.
 
 One email is sent per affected subscriber, containing only their matched rows,
-and only if they have at least one, silence on non-events.
+and only if they have at least one; silence on non-events.
 
 ### 8.2 Email format
 
@@ -413,7 +628,12 @@ These are separate functions with separate recipients and must not be merged.
 - **Schedule:** Windows Task Scheduler runs a batch script a few minutes after
   the Eurostat evening refresh (~23:00 CET), and after the 11:00
   refresh. The task name is `eurostat-update-metabase`. Exact timing is not critical: the `sha256` dedup makes a catch-up run
-  after downtime free (it exits immediately if nothing changed).
+  after downtime free (it exits immediately if nothing changed). The **TOC
+  ingest is folded into this same job** rather than separately scheduled: the
+  TOC regenerates ~00:11 CET, but folder resolution only needs a reasonably
+  current tree, so refreshing it twice daily alongside the metabase run is
+  ample. (If TOC *change alerts* — folder renames, dataset moves — are built
+  later, revisit whether they warrant their own cadence.)
 - **Batch wrapper:** the batch script calls `Rscript` with
   `source(...); tryCatch(main(), error = ...)` so that an R-level failure sets a
   non-zero exit code (Task Scheduler otherwise reports success on any R error),
@@ -435,15 +655,16 @@ These are separate functions with separate recipients and must not be merged.
 
 Recorded honestly so a future maintainer knows the edges.
 
-- **Dataset renames are not linked.** A renamed dataset appears as an unrelated
-  `dataset_removed` (old code) and `dataset_added` (new code). The system
-  detects both but cannot connect them, because the metabase carries codes, not
-  titles. The `dataset_removed` alert includes a "check for a replacement" hint
-  as a stopgap. *Fix (backlog):* snapshot the Table of Contents (`toc.txt`/`xml`),
-  which carries dataset code **and** title, and match a removed title to an added
-  title to identify renames near-decisively. This is the one substantive
-  detection gap and is the direct analogue of the failure that motivated the
-  project, one level up (table renamed rather than dimension renamed).
+- **Dataset renames are detected but not yet linked (now enabled by the TOC).**
+  A renamed dataset appears as an unrelated `dataset_removed` (old code) and
+  `dataset_added` (new code); the metabase alone cannot connect them (codes, no
+  titles). The `dataset_removed` alert includes a "check for a replacement" hint
+  as a stopgap. The TOC is now ingested and carries titles, so the *mechanism*
+  for the fix now exists — match a removed node's title to an added node's title
+  to identify a rename near-decisively. *Backlog:* build TOC change detection
+  (node title changes = renames; edge changes = folder moves) and surface renamed
+  datasets in the `dataset_removed` alert. The infrastructure is in place; the
+  detection query and wiring are not yet built.
 
 - **Level (code) renames are not distinguished from drop+add.** A code renamed
   within a dimension shows as `level_removed` + `level_added`, unlinked, for the
@@ -478,7 +699,30 @@ Recorded honestly so a future maintainer knows the edges.
   periodically confirm alerts still arrive; consider a heartbeat or second
   channel if the system becomes critical.
   
-- **Comtex data monitoring gap**  Comtex (detailed trade, `ds-*`) is a spearate dissemenation system not covered by the metabase monitor. Structural changes in those datasets are not detected. These are also currently not ingested by EUROSTATfetchR, so it's a moot point for now anyway. 
+- **Comext data monitoring gap.** Comext (detailed trade, `ds-*`) is a separate
+  Eurostat dissemination system, present in *neither* the metabase nor the TOC.
+  Structural changes to those datasets are not detected, and they cannot be
+  folder-subscribed. They are also not currently ingested by EUROSTATfetchR, so
+  it is a moot point for now. If Comext data becomes a dependency, monitoring it
+  would mean a third parallel SCD2 source pointed at the Comext catalogue.
+
+- **The TOC XML omits some tables that exist in the metabase.** A handful of
+  tables (e.g. `tet00071`) appear in the metabase and in the online browser but
+  are simply absent from the `toc/xml` file — confirmed by grepping the raw
+  source, not a parser fault (the browser stitches in listings the machine-
+  readable file does not contain, the same way it does for Comext). Consequence:
+  these tables are **folder-unreachable but code-reachable** — a folder
+  subscription will not surface them, but a direct dataset-code subscription
+  will (they are monitored in the metabase). This is a Eurostat source-
+  completeness gap, not fixable on our side, and benign: the affected codes are
+  obscure `t*` tables, and the dataset-code backbone covers them.
+
+- **TOC change detection is not built.** The TOC is snapshotted with full SCD2
+  history, but nothing yet *diffs* consecutive TOC snapshots to alert on folder
+  renames, dataset moves between folders, or (per the item above) dataset
+  renames. Folder subscriptions use the TOC only for *resolution*, always
+  against the current tree. Building TOC change alerts is backlog; the history is
+  being accumulated so it will be available when built.
 
 ---
 
@@ -504,5 +748,12 @@ For future changes, the principles this system was built on:
   and dropped as unnecessary. The design is sized to the actual data, not an
   imagined order of magnitude larger.
 - **Reusable components are packages with tests; applications are scripts.** The
-  DB-generic pieces belong in UMARimportR/UMARaccessR with roxygen and dittodb
-  fixtures; the orchestration is glue and stays a standalone script.
+  DB read functions (UMARaccessR) and the Eurostat fetch/parse (EUROSTATfetchR)
+  carry roxygen, SQL tests, and dittodb/fixture tests; the ingest orchestration,
+  filtering, and email are application glue and stay in a standalone script. The
+  test that a thing belongs in a package is genuine reuse — the metabase and TOC
+  ingests, though substantial, are source-specific jobs and stayed in the app.
+- **Store what the user said; resolve at use.** Folder subscriptions store the
+  folder code the user entered and resolve it against the current tree at alert
+  time, rather than freezing an expansion at load time — so newly-added datasets
+  are covered automatically and the stored record stays honest.
