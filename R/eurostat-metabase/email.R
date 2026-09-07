@@ -63,7 +63,9 @@ format_alert_body <- function(con, rows, sid) {
       "\nNote: %s tabela izbrisana. Mogoče so jo preimenovali, preveri na Eurostatu.",
       paste(unique(removed), collapse = ", ")))
   # removed levels
-  removed <- removed_levels_detail(con, sid, unique(rows$dataset))
+  removed <- UMARaccessR::sql_get_eurostat_removed_levels_from_snapshot(
+    con, sid, unique(rows$dataset), "eurostat")
+
   if (nrow(removed))
     out <- c(out, "\nIzbrisani levelsi (lahko breaknejo poizvedbe, ki jih izrecno uporabljajo):",
              sprintf("  %s / %s: %s", removed$dataset, removed$dim, removed$removed))

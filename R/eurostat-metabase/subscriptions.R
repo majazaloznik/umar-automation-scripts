@@ -49,11 +49,15 @@ load_subscriptions <- function(con,
     problems <- c(problems, sprintf("bad scope '%s' (%s / %s)",
                                     bad_scope$scope, bad_scope$email, bad_scope$dataset))
 
-  known   <- DBI::dbGetQuery(con, "SELECT DISTINCT dataset FROM eurostat.metabase")$dataset
+  known_datasets <- DBI::dbGetQuery(con,
+                                    "SELECT DISTINCT dataset AS code FROM eurostat.metabase WHERE valid_to IS NULL")$code
+  known_folders  <- DBI::dbGetQuery(con,
+                                    "SELECT code FROM eurostat.toc_node WHERE type = 'folder' AND valid_to IS NULL")$code
+
   chk     <- subs[subs$dataset != "*", ]
-  unknown <- chk[!chk$dataset %in% known, ]
+  unknown <- chk[!chk$dataset %in% known_datasets & !chk$dataset %in% known_folders, ]
   if (nrow(unknown))
-    problems <- c(problems, sprintf("unknown dataset '%s' (%s)",
+    problems <- c(problems, sprintf("unknown dataset or folder '%s' (%s)",
                                     unknown$dataset, unknown$email))
 
   dup <- subs[duplicated(subs[, c("email", "dataset")]), ]
@@ -61,11 +65,18 @@ load_subscriptions <- function(con,
     problems <- c(problems, sprintf("duplicate subscription %s / %s",
                                     dup$email, dup$dataset))
 
-  # clean set = valid scope, known dataset (or '*'), de-duplicated
+  # derive kind: '*' and datasets -> 'dataset'; known folders -> 'folder'
+  subs$kind <- ifelse(subs$dataset != "*" & subs$dataset %in% known_folders,
+                      "folder", "dataset")
+
+  # clean set = valid scope, known dataset/folder (or '*'), de-duplicated
   clean <- subs[
     subs$scope %in% c("breaking", "all") &
-      (subs$dataset == "*" | subs$dataset %in% known) &
-      !duplicated(subs[, c("email", "dataset")]), ]
+      (subs$dataset == "*" |
+         subs$dataset %in% known_datasets |
+         subs$dataset %in% known_folders) &
+      !duplicated(subs[, c("email", "dataset")]),
+    c("email", "dataset", "scope", "kind")]      # explicit columns incl. kind
 
   # --- safety gate: removals must affect at most one email ---
   current <- DBI::dbGetQuery(con, "SELECT email, dataset FROM eurostat.subscription")
@@ -99,4 +110,70 @@ load_subscriptions <- function(con,
   invisible(list(loaded = nrow(clean),
                  skipped = nrow(subs) - nrow(clean),
                  problems = problems))
+}
+
+
+#' Subscribe the bot to all currently-ingested Eurostat tables
+#'
+#' Ensures the monitoring address is subscribed (breaking scope) to exactly the
+#' Eurostat datasets currently ingested into platform.table, so a structural
+#' change to any pipeline dependency is alerted on. Idempotent: replaces the
+#' bot's own subscriptions each run with the current ingested set.
+#'
+#' Runs AFTER load_subscriptions: that function truncate-reloads the table from
+#' the Excel sheet, so the bot's rows (which come from platform.table, not the
+#' sheet) must be applied afterwards or they would be wiped.
+#'
+#' Cross-checks the ingested codes against the live metabase and emails the
+#' maintainer about any ingested table that is NOT in the current metabase --
+#' that is precisely a pipeline dependency that may have been renamed or removed
+#' upstream (the agr_r_animal failure mode), and is the highest-value warning
+#' this monitor can raise for our own pipelines.
+#'
+#' @param con Database connection object
+#' @param monitor_email Character; the monitoring address for pipeline dependencies.
+#' @param eurostat_source_id Integer; source id of Eurostat in platform.source.
+#'
+#' @return Invisibly, the number of bot subscriptions written.
+subscribe_bot_to_ingested <- function(con,
+                                      monitor_email = "majazaloznik@gmail.com",
+                                      eurostat_source_id = 7) {
+  ingested <- DBI::dbGetQuery(con,
+                              "SELECT DISTINCT code FROM platform.table WHERE source_id = $1",
+                              list(eurostat_source_id))$code
+  ingested <- tolower(trimws(ingested))
+
+  if (length(ingested) == 0) {
+    message("no ingested Eurostat tables found; bot subscribes to nothing")
+    return(invisible(0))
+  }
+
+  # cross-check: which ingested dependencies are NOT in the live metabase?
+  live <- DBI::dbGetQuery(con,
+                          "SELECT DISTINCT dataset FROM eurostat.metabase WHERE valid_to IS NULL")$dataset
+  missing <- setdiff(ingested, live)
+  if (length(missing)) {
+    send_failure_email(sprintf(
+      paste0("Pipeline dependency check: %d ingested Eurostat table(s) are NOT ",
+             "in the current metabase -- possibly renamed or removed upstream:\n  %s"),
+      length(missing), paste(missing, collapse = "\n  ")))
+  }
+
+  # subscribe the bot to the ingested set (breaking scope, dataset kind)
+  df <- data.frame(email = monitor_email,
+                   dataset = ingested,
+                   scope = "breaking",
+                   kind = "dataset",
+                   stringsAsFactors = FALSE)
+
+  DBI::dbWithTransaction(con, {
+    DBI::dbExecute(con, "DELETE FROM eurostat.subscription WHERE email = $1",
+                   list(monitor_email))
+    DBI::dbWriteTable(con, DBI::Id(schema = "eurostat", table = "subscription"),
+                      df, append = TRUE)
+  })
+
+  message(sprintf("bot subscribed to %d ingested tables (%d missing from metabase)",
+                  nrow(df), length(missing)))
+  invisible(nrow(df))
 }

@@ -21,6 +21,17 @@ main <- function() {
 
   init_email()
   load_subscriptions(con)            # validate human input first; fails fast if corrupt
+  subscribe_bot_to_ingested(con)      # bot's own dependency subscriptions, after the Excel load
+
+  # --- TOC ingest: keeps the folder tree fresh for resolution. Isolated so a
+  #     TOC failure emails the maintainer but does NOT block metabase alerts. ---
+  tryCatch(
+    ingest_toc(con),
+    error = function(e) {
+      send_failure_email(sprintf("TOC ingest failed: %s", conditionMessage(e)))
+      # swallow — do not re-raise: metabase monitoring must continue
+    })
+
 
   res <- tryCatch(
     ingest(con),
