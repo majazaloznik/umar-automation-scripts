@@ -2,8 +2,10 @@
 #'                       SKRIPTA OBDELAVO MF PODATKOV
 #'
 ################################################################################
+cat("\nRun started:", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "\n")
 # devtools::install_github("majazaloznik/MFfetchR")
 library(MFfetchR)
+Sys.setenv(LANG = "en_US.UTF-8")
 # prenos MF fajlov iz sharepointa na mrežo
 ################################################################################
 get_balance_files <- function() {
@@ -28,15 +30,36 @@ files <- get_balance_files()
 
 file_destination <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\data\\mf_bilance\\new_data\\"
 
-# Copy to working directory on network drive
-file.copy(files$bjf, paste0(file_destination, basename(files$bjf)), overwrite = TRUE)
-file.copy(files$ek, paste0(file_destination, basename(files$ek)), overwrite = TRUE)
+# Check if files already exist at destination
+bjf_dest <- paste0(file_destination, basename(files$bjf))
+ek_dest <- paste0(file_destination, basename(files$ek))
+
+copy_verified <- function(src, dest) {
+  file.copy(src, dest, overwrite = TRUE)
+  if (is.na(file.size(dest)) || file.size(dest) != file.size(src)) {
+    stop("Copy failed or truncated: ", dest)
+  }
+}
+
+dest_paths <- c(bjf_dest, ek_dest)
+src_paths  <- c(files$bjf, files$ek)
+
+already_synced <- (file.exists(dest_paths) & (file.size(dest_paths) == file.size(src_paths))) |>
+  all()
+
+if (already_synced) {
+  cat("Files already at destination - no update needed\n")
+  quit(save = "no")
+}
+
+Map(copy_verified, src_paths, dest_paths)
+
 
 # zajem in obdelava podatkov
 ################################################################################
-
-
+################################################################################
 # setup
+################################################################################
 con <- DBI::dbConnect(RPostgres::Postgres(),
                       dbname = "platform",
                       host = "localhost",
@@ -45,53 +68,57 @@ con <- DBI::dbConnect(RPostgres::Postgres(),
                       password = Sys.getenv("PG_PG_PSW"),
                       client_encoding = "utf8")
 
-folder <- "O:\\Avtomatizacija\\umar-automation-scripts\\data\\mf_bilance\\new_data\\"
-file_path <- get_most_recent_file_from_pattern(folder,"^Export_4BJF.*\\.csv$")
-blagajne <- c("KBJF", "OB", "DP", "ZZZS", "ZPIZ")
-table_ids <- c(296:300)
+blagajne_ids <- c(KBJF = 296, OB = 297, DP = 298, ZZZS = 299, ZPIZ = 300)
 
-# check if structure needs to be updated
-if(check_for_extra_kontos(folder, con=con)) {
-  purrr::map(blagajne, ~MF_import_structure_new(folder, table_name = .x, con = con,
-                                                schema = "platform"))
+send_status_email <- function(subject, body, recipients) {
+  setwd("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\")
+  gmailr::gm_auth_configure(path = "data/gmailr/credentials.json")
+  gmailr::gm_auth(email = "umar.data.bot@gmail.com", cache = ".secret")
+  gmailr::gm_mime() |>
+    gmailr::gm_bcc(recipients) |>
+    gmailr::gm_subject(subject) |>
+    gmailr::gm_html_body(body) |>
+    gmailr::gm_send_message()
 }
 
-# update data points
-purrr::map(blagajne, ~MF_import_data_points_new(folder, table_name = .x, con = con,
-                                                schema = "platform"))
+email_list_success <- c("maja.zaloznik@gmail.com", "lejla.fajic@gov.si",
+                        "Barbara.Bratuz-Ferk@gov.si", "Mojca.Koprivnikar@gov.si",
+                        "janez.kusar@gov.si", "dejan.guduras@gov.si")
+email_list_failure <- "maja.zaloznik@gmail.com"
 
-# clean up vintages and add new hashes
-purrr::map(table_ids, ~UMARimportR::vintage_cleanup(con, .x,
-                                                    schema = "platform"))
+result <- tryCatch({
+  folder <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\data\\mf_bilance\\new_data\\"
 
-DBI::dbExecute(con, "set search_path to views")
-DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_latest_data_points")
-DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_annual_yoy")
-DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_quarterly_yoy")
-DBI::dbExecute(con, "REFRESH MATERIALIZED VIEW mat_kumulative")
+  # check for structural changes
+  purrr::walk(names(blagajne_ids), ~MF_import_structure_new(folder, table_name = .x, con = con,
+                                                            schema = "platform"))
+  # import new data points
+  purrr::walk(names(blagajne_ids), ~MF_import_data_points_new(folder, table_name = .x, con = con,
+                                                              schema = "platform"))
+  # clean up vintages
+  purrr::walk(blagajne_ids, ~UMARimportR::vintage_cleanup(con, .x, schema = "platform"))
 
+  # refresh views.
+  DBI::dbExecute(con, "set search_path to views")
+  purrr::walk(c("mat_latest_data_points", "mat_annual_yoy", "mat_quarterly_yoy", "mat_kumulative"),
+              ~DBI::dbExecute(con, paste("REFRESH MATERIALIZED VIEW", .x)))
 
+  "ok"
+}, error = function(e) e)
 
+DBI::dbDisconnect(con)
 
-
-################################################################################
-# email success
-################################################################################
-
-setwd("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\")
-library(gmailr)
-gm_auth_configure(path ="data/credentials.json")
-gm_auth(email = "umar.data.bot@gmail.com", cache = ".secret")
-
-email_list <- c("maja.zaloznik@gmail.com",
-"lejla.fajic@gov.si",
-"Barbara.Bratuz-Ferk@gov.si",
-"Mojca.Koprivnikar@gov.si",
-"janez.kusar@gov.si")
-
-email_body <- "To je avtomatsko generirano sporo\u010dilo o posodobitvi podatkov blagajn javnega finaciranja na bazi.<br><br>Tvoj Umar Data Bot &#129302;"
-
-text_msg <- gmailr::gm_mime() |>  gmailr::gm_bcc(email_list)  |>
-  gmailr::gm_subject("Posodobitev podatkov javnih blagajn na bazi") |>
-  gmailr::gm_html_body(email_body)
-gmailr::gm_send_message(text_msg)
+if (inherits(result, "error")) {
+  cat("Run FAILED:", conditionMessage(result), "\n")
+  send_status_email(
+    "NAPAKA: Posodobitev podatkov javnih blagajn NI uspela",
+    paste0("Avtomatska posodobitev je spodletela.<br><br>Napaka: ", conditionMessage(result),
+           "<br><br>Tvoj Umar Data Bot &#129302;"),
+    recipients = email_list_failure)
+  quit(save = "no", status = 1)
+} else {
+  send_status_email(
+    "Posodobitev podatkov javnih blagajn na bazi",
+    "To je avtomatsko generirano sporo\u010dilo o posodobitvi podatkov blagajn javnega finaciranja na bazi.<br><br>Tvoj Umar Data Bot &#129302;",
+    recipients = email_list_success)
+}
