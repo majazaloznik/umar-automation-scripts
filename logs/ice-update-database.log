@@ -3,10 +3,10 @@ table: 0 new row(s)
 category: 0 new row(s)
 category_table: 0 new row(s)
 table_dimensions: 0 new row(s)
-dimension_levels: 0 new row(s)
+dimension_levels: 1 new row(s)
 unit: 0 new row(s)
-series: 0 new row(s)
-series_levels: 0 new row(s)
+series: 1 new row(s)
+series_levels: 1 new row(s)
 
 === PostgreSQL Column Names ===
 contract, time, value, flag
@@ -20,18 +20,18 @@ Data loaded into tmp_prepared_data. Sample rows:
 Matching dimensions:
   - contract (ID: 1143)
   - Matched dimension: contract -> column: contract
-Updated series_id for 15608 rows
-Updated vintage_id for 15608 rows
+Updated series_id for 15635 rows
+Updated vintage_id for 15635 rows
 After matching. Sample rows:
   contract       time  value flag series_id vintage_id
-1   202611 2024-10-07 700.50         424375    7504982
-2   202611 2024-10-08 683.00         424375    7504982
-3   202611 2024-10-09 683.25         424375    7504982
-4   202611 2024-10-10 688.00         424375    7504982
-5   202611 2024-10-11 693.25         424375    7504982
-Rows with both series_id and vintage_id: 15608
+1   202611 2024-10-07 700.50         424375    7505174
+2   202611 2024-10-08 683.00         424375    7505174
+3   202611 2024-10-09 683.25         424375    7505174
+4   202611 2024-10-10 688.00         424375    7505174
+5   202611 2024-10-11 693.25         424375    7505174
+Rows with both series_id and vintage_id: 15635
 Inserted 1 new periods
-Inserted 15608 new data points
+Inserted 15635 new data points
 Inserted 0 new flags
 GASOIL_RAW: 30 new vintage(s)
 Calculating hashes for new vintages...
@@ -41,10 +41,10 @@ All vintage hashes updated successfully
 Processing single table ID 578...
 Processing table 1/1: ID 578, keep_vintage = TRUE
 Table ID 578: Transaction committed successfully
-Table ID 578: Deleted 0 older vintages and 27 redundant vintages
+Table ID 578: Deleted 0 older vintages and 29 redundant vintages
 Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
-Deleted 27 redundant vintages from tables with keep_vintage = TRUE
+Deleted 29 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 table: 0 new row(s)
 category_table: 0 new row(s)
@@ -65,18 +65,18 @@ Data loaded into tmp_prepared_data. Sample rows:
 Matching dimensions:
   - position (ID: 1149)
   - Matched dimension: position -> column: position
-Updated series_id for 6478 rows
-Updated vintage_id for 6478 rows
+Updated series_id for 6502 rows
+Updated vintage_id for 6502 rows
 After matching. Sample rows:
   position       time   value flag series_id vintage_id
-1      M01 2026-09-11 1479.25         424395    7505012
-2      M01 2026-09-14 1476.50         424395    7505012
-3      M01 2026-09-15 1568.25         424395    7505012
-4      M01 2026-09-16 1538.00         424395    7505012
-5      M01 2026-09-17 1490.75         424395    7505012
-Rows with both series_id and vintage_id: 6478
+1      M01 2026-09-11 1479.25         424395    7505204
+2      M01 2026-09-14 1476.50         424395    7505204
+3      M01 2026-09-15 1568.25         424395    7505204
+4      M01 2026-09-16 1538.00         424395    7505204
+5      M01 2026-09-17 1490.75         424395    7505204
+Rows with both series_id and vintage_id: 6502
 Inserted 0 new periods
-Inserted 6478 new data points
+Inserted 6502 new data points
 Inserted 0 new flags
 GASOIL_POS: 24 new vintage(s)
 Calculating hashes for new vintages...
@@ -91,4 +91,4 @@ Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 24 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
-Run OK, latest data: 2026-10-13 (new data imported) 
+Run OK, latest data: 2026-10-14 (new data imported) 
