@@ -101,11 +101,87 @@ Importing data points from: 2001303S into schema platform
 Note: These vintages for table 2001303S are not new, they will not be inserted again.
 Skipping import for 2001303S due to vintage preparation issue: These vintages for table 2001303S are not new, they will not be inserted again.
 Importing data points from: 1957407S into schema platform
-Note: These vintages for table 1957407S are not new, they will not be inserted again.
-Skipping import for 1957407S due to vintage preparation issue: These vintages for table 1957407S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+VRSTA.INDEKSA, MESEC, value, SKD.DEJAVNOST, raw_time, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.INDEKSA   MESEC    value SKD.DEJAVNOST raw_time    time flag
+1           nom 2000M01 28.59903            CC  2000M01 2000M01     
+2           nom 2000M01 60.08164             1  2000M01 2000M01     
+3           nom 2000M01 19.68979            11  2000M01 2000M01     
+4           nom 2000M01 86.61145            12  2000M01 2000M01     
+5           nom 2000M01 20.49364             2  2000M01 2000M01     
+  interval_id
+1           M
+2           M
+3           M
+4           M
+5           M
+Matching dimensions:
+  - VRSTA INDEKSA (ID: 176)
+  - SKD DEJAVNOST (ID: 177)
+  - Matched dimension: VRSTA INDEKSA -> column: VRSTA.INDEKSA
+  - Matched dimension: SKD DEJAVNOST -> column: SKD.DEJAVNOST
+Updated series_id for 3840 rows
+Updated vintage_id for 3840 rows
+After matching. Sample rows:
+  VRSTA.INDEKSA   MESEC    value SKD.DEJAVNOST raw_time    time flag
+1           nom 2000M02 33.26012            CC  2000M02 2000M02     
+2           nom 2000M03 47.91118            CC  2000M03 2000M03     
+3           nom 2000M04 48.38696            CC  2000M04 2000M04     
+4           nom 2000M05 57.97523            CC  2000M05 2000M05     
+5           nom 2000M06 53.35134            CC  2000M06 2000M06     
+  interval_id series_id vintage_id
+1           M     41371    7505232
+2           M     41371    7505232
+3           M     41371    7505232
+4           M     41371    7505232
+5           M     41371    7505232
+Rows with both series_id and vintage_id: 3840
+Inserted 0 new periods
+Inserted 3840 new data points
+Inserted 72 new flags
 Importing data points from: 1957408S into schema platform
-Note: These vintages for table 1957408S are not new, they will not be inserted again.
-Skipping import for 1957408S due to vintage preparation issue: These vintages for table 1957408S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+VRSTA.PODATKA, MESEC, value, SKD.DEJAVNOST, raw_time, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.PODATKA   MESEC     value SKD.DEJAVNOST raw_time    time flag
+1             O 2000M01  62.10000            CC  2000M01 2000M01     
+2             O 2000M01 136.27376             1  2000M01 2000M01     
+3             O 2000M01  44.61150            11  2000M01 2000M01     
+4             O 2000M01 196.58538            12  2000M01 2000M01     
+5             O 2000M01  45.27203             2  2000M01 2000M01     
+  interval_id
+1           M
+2           M
+3           M
+4           M
+5           M
+Matching dimensions:
+  - VRSTA PODATKA (ID: 179)
+  - SKD DEJAVNOST (ID: 180)
+  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
+  - Matched dimension: SKD DEJAVNOST -> column: SKD.DEJAVNOST
+Updated series_id for 5760 rows
+Updated vintage_id for 5760 rows
+After matching. Sample rows:
+  VRSTA.PODATKA   MESEC     value SKD.DEJAVNOST raw_time    time flag
+1             O 2000M02  71.51814            CC  2000M02 2000M02     
+2             O 2000M03 102.61829            CC  2000M03 2000M03     
+3             O 2000M04 102.94903            CC  2000M04 2000M04     
+4             O 2000M01  62.10000            CC  2000M01 2000M01     
+5            SA 2000M02 105.86965            CC  2000M02 2000M02     
+  interval_id series_id vintage_id
+1           M     41383    7505244
+2           M     41383    7505244
+3           M     41383    7505244
+4           M     41383    7505244
+5           M     41384    7505245
+Rows with both series_id and vintage_id: 5760
+Inserted 0 new periods
+Inserted 5760 new data points
+Inserted 108 new flags
 Importing data points from: 1701110S into schema platform
 Note: These vintages for table 1701110S are not new, they will not be inserted again.
 Skipping import for 1701110S due to vintage preparation issue: These vintages for table 1701110S are not new, they will not be inserted again.
@@ -128,8 +204,40 @@ Importing data points from: 2164436S into schema platform
 Note: These vintages for table 2164436S are not new, they will not be inserted again.
 Skipping import for 2164436S due to vintage preparation issue: These vintages for table 2164436S are not new, they will not be inserted again.
 Importing data points from: 2222100S into schema platform
-Note: These vintages for table 2222100S are not new, they will not be inserted again.
-Skipping import for 2222100S due to vintage preparation issue: These vintages for table 2222100S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+VRSTA.VOZILA, MESEC, value, MERITVE, raw_time, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.VOZILA   MESEC value MERITVE raw_time    time flag interval_id
+1          TOT 1998M01  4941       3  1998M01 1998M01                M
+2          TOT 1998M01  4585       4  1998M01 1998M01                M
+3          TOT 1998M01  3935       5  1998M01 1998M01                M
+4          TOT 1998M01  3651       6  1998M01 1998M01                M
+5            1 1998M01  4849       3  1998M01 1998M01                M
+Matching dimensions:
+  - VRSTA VOZILA (ID: 206)
+  - MERITVE (ID: 207)
+  - Matched dimension: VRSTA VOZILA -> column: VRSTA.VOZILA
+  - Matched dimension: MERITVE -> column: MERITVE
+Updated series_id for 27520 rows
+Updated vintage_id for 27520 rows
+After matching. Sample rows:
+  VRSTA.VOZILA   MESEC value MERITVE raw_time    time flag interval_id
+1          TOT 1998M01  4941       3  1998M01 1998M01                M
+2          TOT 1998M01  4585       4  1998M01 1998M01                M
+3          TOT 1998M01  3935       5  1998M01 1998M01                M
+4          TOT 1998M01  3651       6  1998M01 1998M01                M
+5            1 1998M01  4849       3  1998M01 1998M01                M
+  series_id vintage_id
+1     42055    7505262
+2     42075    7505282
+3     42095    7505302
+4     42115    7505322
+5     42056    7505263
+Rows with both series_id and vintage_id: 27520
+Inserted 0 new periods
+Inserted 27520 new data points
+Inserted 0 new flags
 Importing data points from: 0325203S into schema platform
 Note: These vintages for table 0325203S are not new, they will not be inserted again.
 Skipping import for 0325203S due to vintage preparation issue: These vintages for table 0325203S are not new, they will not be inserted again.
@@ -179,8 +287,46 @@ Importing data points from: H287S into schema platform
 Note: These vintages for table H287S are not new, they will not be inserted again.
 Skipping import for H287S due to vintage preparation issue: These vintages for table H287S are not new, they will not be inserted again.
 Importing data points from: 2207701S into schema platform
-Note: These vintages for table 2207701S are not new, they will not be inserted again.
-Skipping import for 2207701S due to vintage preparation issue: These vintages for table 2207701S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+NOTRANJI...MEDNARODNI.PREVOZ, ÈETRTLETJE, value, MERITVE, raw_time, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  NOTRANJI...MEDNARODNI.PREVOZ ÈETRTLETJE      value MERITVE raw_time   time
+1                          All     2001Q1 11402.5060       1   2001Q1 2001Q1
+2                          All     2001Q1  1932.8419       2   2001Q1 2001Q1
+3                          All     2001Q1   147.0197       4   2001Q1 2001Q1
+4                            1     2001Q1  9607.7668       1   2001Q1 2001Q1
+5                            1     2001Q1   427.2506       2   2001Q1 2001Q1
+  flag interval_id
+1                Q
+2                Q
+3                Q
+4                Q
+5                Q
+Matching dimensions:
+  - NOTRANJI / MEDNARODNI PREVOZ (ID: 379)
+  - MERITVE (ID: 380)
+  - Matched dimension: NOTRANJI / MEDNARODNI PREVOZ -> column: NOTRANJI...MEDNARODNI.PREVOZ
+  - Matched dimension: MERITVE -> column: MERITVE
+Updated series_id for 1836 rows
+Updated vintage_id for 1836 rows
+After matching. Sample rows:
+  NOTRANJI...MEDNARODNI.PREVOZ ÈETRTLETJE     value MERITVE raw_time   time
+1                            1     2001Q3 16342.135       1   2001Q3 2001Q3
+2                            1     2001Q2 13567.505       1   2001Q2 2001Q2
+3                            1     2001Q4 11182.845       1   2001Q4 2001Q4
+4                            1     2001Q1  9607.767       1   2001Q1 2001Q1
+5                            1     2002Q1 11731.880       1   2002Q1 2002Q1
+  flag interval_id series_id vintage_id
+1                Q     55652    7505342
+2                Q     55652    7505342
+3                Q     55652    7505342
+4                Q     55652    7505342
+5                Q     55652    7505342
+Rows with both series_id and vintage_id: 1836
+Inserted 0 new periods
+Inserted 1836 new data points
+Inserted 0 new flags
 Importing data points from: 0762010S into schema platform
 Note: These vintages for table 0762010S are not new, they will not be inserted again.
 Skipping import for 0762010S due to vintage preparation issue: These vintages for table 0762010S are not new, they will not be inserted again.
@@ -194,8 +340,38 @@ Importing data points from: 1701116S into schema platform
 Note: These vintages for table 1701116S are not new, they will not be inserted again.
 Skipping import for 1701116S due to vintage preparation issue: These vintages for table 1701116S are not new, they will not be inserted again.
 Importing data points from: 2222101S into schema platform
-Note: These vintages for table 2222101S are not new, they will not be inserted again.
-Skipping import for 2222101S due to vintage preparation issue: These vintages for table 2222101S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+VRSTA.PODATKA, MESEC, value, raw_time, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  VRSTA.PODATKA   MESEC    value raw_time    time flag interval_id
+1             1 1998M01 69.89410  1998M01 1998M01                M
+2             2 1998M01 78.68573  1998M01 1998M01                M
+3             3 1998M01 71.05016  1998M01 1998M01                M
+4             1 1998M02 90.04539  1998M02 1998M02                M
+5             2 1998M02 83.56489  1998M02 1998M02                M
+Matching dimensions:
+  - VRSTA PODATKA (ID: 537)
+  - Matched dimension: VRSTA PODATKA -> column: VRSTA.PODATKA
+Updated series_id for 1032 rows
+Updated vintage_id for 1032 rows
+After matching. Sample rows:
+  VRSTA.PODATKA   MESEC     value raw_time    time flag interval_id series_id
+1             1 1998M02  90.04539  1998M02 1998M02                M     57191
+2             1 1998M03 111.26943  1998M03 1998M03                M     57191
+3             1 1998M04  94.56746  1998M04 1998M04                M     57191
+4             1 1998M05  99.20506  1998M05 1998M05                M     57191
+5             1 1998M06 104.98143  1998M06 1998M06                M     57191
+  vintage_id
+1    7505360
+2    7505360
+3    7505360
+4    7505360
+5    7505360
+Rows with both series_id and vintage_id: 1032
+Inserted 0 new periods
+Inserted 1032 new data points
+Inserted 0 new flags
 Importing data points from: 0701087S into schema platform
 Note: These vintages for table 0701087S are not new, they will not be inserted again.
 Skipping import for 0701087S due to vintage preparation issue: These vintages for table 0701087S are not new, they will not be inserted again.
@@ -206,38 +382,8 @@ Importing data points from: 2164433S into schema platform
 Note: These vintages for table 2164433S are not new, they will not be inserted again.
 Skipping import for 2164433S due to vintage preparation issue: These vintages for table 2164433S are not new, they will not be inserted again.
 Importing data points from: 1505001S into schema platform
-
-=== PostgreSQL Column Names ===
-MESEC, VREDNOST.ODKUPA, value, raw_time, time, flag, interval_id
-Data loaded into tmp_prepared_data. Sample rows:
-    MESEC VREDNOST.ODKUPA value raw_time    time flag interval_id
-1 2022M01             001 46133  2022M01 2022M01                M
-2 2022M02             001 43900  2022M02 2022M02                M
-3 2022M03             001 53931  2022M03 2022M03                M
-4 2022M04             001 54799  2022M04 2022M04                M
-5 2022M05             001 61075  2022M05 2022M05                M
-Matching dimensions:
-  - VREDNOST ODKUPA (ID: 780)
-  - Matched dimension: VREDNOST ODKUPA -> column: VREDNOST.ODKUPA
-Updated series_id for 56 rows
-Updated vintage_id for 56 rows
-After matching. Sample rows:
-    MESEC VREDNOST.ODKUPA value raw_time    time flag interval_id series_id
-1 2022M01             001 46133  2022M01 2022M01                M    118140
-2 2022M02             001 43900  2022M02 2022M02                M    118140
-3 2022M03             001 53931  2022M03 2022M03                M    118140
-4 2022M04             001 54799  2022M04 2022M04                M    118140
-5 2022M05             001 61075  2022M05 2022M05                M    118140
-  vintage_id
-1    7505036
-2    7505036
-3    7505036
-4    7505036
-5    7505036
-Rows with both series_id and vintage_id: 56
-Inserted 0 new periods
-Inserted 56 new data points
-Inserted 8 new flags
+Note: These vintages for table 1505001S are not new, they will not be inserted again.
+Skipping import for 1505001S due to vintage preparation issue: These vintages for table 1505001S are not new, they will not be inserted again.
 Importing data points from: 0701007S into schema platform
 Note: These vintages for table 0701007S are not new, they will not be inserted again.
 Skipping import for 0701007S due to vintage preparation issue: These vintages for table 0701007S are not new, they will not be inserted again.
@@ -760,10 +906,10 @@ All vintage hashes updated successfully
 Processing single table ID 78...
 Processing table 1/1: ID 78, keep_vintage = TRUE
 Table ID 78: Transaction committed successfully
-Table ID 78: Deleted 0 older vintages and 0 redundant vintages
+Table ID 78: Deleted 0 older vintages and 80 redundant vintages
 Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
-Deleted 0 redundant vintages from tables with keep_vintage = TRUE
+Deleted 80 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
@@ -947,7 +1093,8 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 69/69 vintages
+Processed 100/190 vintages
+Processed 190/190 vintages
 All vintage hashes updated successfully
 Processing single table ID 148...
 Processing table 1/1: ID 148, keep_vintage = TRUE
@@ -958,19 +1105,19 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 86/86 vintages
+Removed 120 empty vintages.
+Processed 69/69 vintages
 All vintage hashes updated successfully
 Processing single table ID 209...
 Processing table 1/1: ID 209, keep_vintage = FALSE
 Table ID 209: Transaction committed successfully
-Table ID 209: Deleted 0 older vintages and 0 redundant vintages
+Table ID 209: Deleted 18 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 18 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-Removed 121 empty vintages.
+No empty vintages found.
 Processed 69/69 vintages
 All vintage hashes updated successfully
 Processing single table ID 224...
@@ -1024,9 +1171,9 @@ All vintage hashes updated successfully
 Processing single table ID 255...
 Processing table 1/1: ID 255, keep_vintage = FALSE
 Table ID 255: Transaction committed successfully
-Table ID 255: Deleted 0 older vintages and 0 redundant vintages
+Table ID 255: Deleted 3 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 3 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
@@ -1072,9 +1219,9 @@ All vintage hashes updated successfully
 Processing single table ID 399...
 Processing table 1/1: ID 399, keep_vintage = FALSE
 Table ID 399: Transaction committed successfully
-Table ID 399: Deleted 1 older vintages and 0 redundant vintages
+Table ID 399: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 1 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
@@ -1306,12 +1453,12 @@ processing file: 01-nacionalni_kvartalno.Rmd
 41/43                   
 42/43 [dohodkovna2]     
 43/43                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpA3Czqa/rmd_temp/01-nacionalni_kvartalno.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpsLZbRl/rmd_temp/01-nacionalni_kvartalno.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpA3Czqa\rmd_temp\01-nacionalni_kvartalno.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e5414aa6315.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpA3Czqa\rmarkdown-str2e54685c47dc.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpsLZbRl\rmd_temp\01-nacionalni_kvartalno.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e1c42a2730e.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpsLZbRl\rmarkdown-str2e1c54c7173.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\14.okt.2026_1110_01-nacionalni_kvartalno.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\15.okt.2026_1110_01-nacionalni_kvartalno.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1343,12 +1490,12 @@ processing file: 02-nacionalni_letno.Rmd
 25/27                      
 26/27 [unnamed-chunk-10]   
 27/27                      
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpA3Czqa/rmd_temp/02-nacionalni_letno.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpsLZbRl/rmd_temp/02-nacionalni_letno.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpA3Czqa\rmd_temp\02-nacionalni_letno.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e5473a4386d.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpA3Czqa\rmarkdown-str2e541fb7b4f.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpsLZbRl\rmd_temp\02-nacionalni_letno.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e1c1345702c.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpsLZbRl\rmarkdown-str2e1c2d896dc8.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\14.okt.2026_1110_02-nacionalni_letno.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\15.okt.2026_1110_02-nacionalni_letno.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1396,12 +1543,12 @@ processing file: 03-kazalniki_razpolozenja.Rmd
 41/43                   
 42/43 [unnamed-chunk-20]
 43/43                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpA3Czqa/rmd_temp/03-kazalniki_razpolozenja.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpsLZbRl/rmd_temp/03-kazalniki_razpolozenja.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpA3Czqa\rmd_temp\03-kazalniki_razpolozenja.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e54156ab9.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpA3Czqa\rmarkdown-str2e545f63329a.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpsLZbRl\rmd_temp\03-kazalniki_razpolozenja.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e1c715e62ec.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpsLZbRl\rmarkdown-str2e1c6a9e6f6.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\14.okt.2026_1110_03-kazalniki_razpolozenja.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\15.okt.2026_1110_03-kazalniki_razpolozenja.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1451,12 +1598,12 @@ processing file: 04-kazalniki_aktivnosti.Rmd
 43/45                     
 44/45 [unnamed-chunk-20]  
 45/45                     
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpA3Czqa/rmd_temp/04-kazalniki_aktivnosti.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpsLZbRl/rmd_temp/04-kazalniki_aktivnosti.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpA3Czqa\rmd_temp\04-kazalniki_aktivnosti.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e547ae332a4.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpA3Czqa\rmarkdown-str2e542b33524.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpsLZbRl\rmd_temp\04-kazalniki_aktivnosti.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e1c218d74c9.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpsLZbRl\rmarkdown-str2e1c545174e.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\14.okt.2026_1110_04-kazalniki_aktivnosti.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\15.okt.2026_1110_04-kazalniki_aktivnosti.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1496,12 +1643,12 @@ processing file: 05-trg_dela.Rmd
 33/35                   
 34/35 [unnamed-chunk-16]
 35/35                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpA3Czqa/rmd_temp/05-trg_dela.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpsLZbRl/rmd_temp/05-trg_dela.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpA3Czqa\rmd_temp\05-trg_dela.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e5429e4792c.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpA3Czqa\rmarkdown-str2e545daa6b97.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpsLZbRl\rmd_temp\05-trg_dela.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e1c61287481.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpsLZbRl\rmarkdown-str2e1c6141735d.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\14.okt.2026_1110_05-trg_dela.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\15.okt.2026_1110_05-trg_dela.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1531,12 +1678,12 @@ processing file: 06-cene.Rmd
 23/25                   
 24/25 [unnamed-chunk-11]
 25/25                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpA3Czqa/rmd_temp/06-cene.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpsLZbRl/rmd_temp/06-cene.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpA3Czqa\rmd_temp\06-cene.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e545ef052ca.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpA3Czqa\rmarkdown-str2e5469ca5297.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpsLZbRl\rmd_temp\06-cene.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e1c2d7aac2.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpsLZbRl\rmarkdown-str2e1c5bde6505.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\14.okt.2026_1110_06-cene.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\15.okt.2026_1110_06-cene.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1566,12 +1713,12 @@ processing file: 07-gradbenistvo.Rmd
 23/25                   
 24/25 [unnamed-chunk-11]
 25/25                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpA3Czqa/rmd_temp/07-gradbenistvo.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpsLZbRl/rmd_temp/07-gradbenistvo.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpA3Czqa\rmd_temp\07-gradbenistvo.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e54391342d7.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpA3Czqa\rmarkdown-str2e5413372fe3.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpsLZbRl\rmd_temp\07-gradbenistvo.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e1c1a392ace.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpsLZbRl\rmarkdown-str2e1c718f5395.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\14.okt.2026_1110_07-gradbenistvo.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\15.okt.2026_1110_07-gradbenistvo.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1613,12 +1760,12 @@ processing file: 08-predelovalne_dejavnosti.Rmd
 35/37                   
 36/37 [unnamed-chunk-17]
 37/37                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpA3Czqa/rmd_temp/08-predelovalne_dejavnosti.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpsLZbRl/rmd_temp/08-predelovalne_dejavnosti.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpA3Czqa\rmd_temp\08-predelovalne_dejavnosti.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e5432cc3b68.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpA3Czqa\rmarkdown-str2e5436a113eb.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpsLZbRl\rmd_temp\08-predelovalne_dejavnosti.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e1c609b25fb.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpsLZbRl\rmarkdown-str2e1caa18d0.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\14.okt.2026_1110_08-predelovalne_dejavnosti.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\15.okt.2026_1110_08-predelovalne_dejavnosti.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1636,12 +1783,12 @@ processing file: 09-mojca.Rmd
 11/13             
 12/13 [socialni]  
 13/13             
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpA3Czqa/rmd_temp/09-mojca.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpsLZbRl/rmd_temp/09-mojca.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpA3Czqa\rmd_temp\09-mojca.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e54747c5e13.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpA3Czqa\rmarkdown-str2e545ff557dd.html" --include-before-body custom.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpsLZbRl\rmd_temp\09-mojca.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e1c618e4c79.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpsLZbRl\rmarkdown-str2e1c5c055b41.html" --include-before-body custom.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\14.okt.2026_1110_09-mojca.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\15.okt.2026_1110_09-mojca.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1665,12 +1812,12 @@ processing file: 10-zasebna.Rmd
 17/19                  
 18/19 [varcevanje]     
 19/19                  
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpA3Czqa/rmd_temp/10-zasebna.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpsLZbRl/rmd_temp/10-zasebna.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpA3Czqa\rmd_temp\10-zasebna.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e546ccc7dd1.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpA3Czqa\rmarkdown-str2e5465830aa.html" --include-before-body custom.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpsLZbRl\rmd_temp\10-zasebna.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e1c43014f90.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpsLZbRl\rmarkdown-str2e1c3df17a9.html" --include-before-body custom.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\14.okt.2026_1110_10-zasebna.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\15.okt.2026_1110_10-zasebna.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1693,12 +1840,12 @@ processing file: 11-tujina.Rmd
 16/18 [uvoz_blago_po_regijah] 
 17/18                         
 18/18 [izvoz_razpolozenje]    
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpA3Czqa/rmd_temp/11-tujina.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpsLZbRl/rmd_temp/11-tujina.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpA3Czqa\rmd_temp\11-tujina.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e544578dad.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpA3Czqa\rmarkdown-str2e544c47164e.html" --include-before-body custom.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpsLZbRl\rmd_temp\11-tujina.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e1c232d7615.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpsLZbRl\rmarkdown-str2e1c5329620b.html" --include-before-body custom.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\14.okt.2026_1110_11-tujina.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\15.okt.2026_1110_11-tujina.html
 [1] "starting full report\n"
 
 
@@ -1801,205 +1948,18 @@ processing file: html_test.Rmd
 96/294 [unnamed-chunk-40]        
 97/294                           
 98/294 [unnamed-chunk-41]        
-99/294                           
-100/294 [unnamed-chunk-42]        
-101/294                           
-102/294 [unnamed-chunk-43]        
-103/294                           
-104/294 [unnamed-chunk-44]        
-105/294                           
-106/294 [unnamed-chunk-45]        
-107/294                           
-108/294 [kratkorocni_desezonirani]
-109/294                           
-110/294 [unnamed-chunk-46]        
-111/294                           
-112/294 [unnamed-chunk-47]        
-113/294                           
-114/294 [unnamed-chunk-48]        
-115/294                           
-116/294 [unnamed-chunk-49]        
-117/294                           
-118/294 [unnamed-chunk-50]        
-119/294                           
-120/294 [unnamed-chunk-51]        
-121/294                           
-122/294 [unnamed-chunk-52]        
-123/294                           
-124/294 [unnamed-chunk-53]        
-125/294                           
-126/294 [unnamed-chunk-54]        
-127/294                           
-128/294 [unnamed-chunk-55]        
-129/294                           
-130/294 [unnamed-chunk-56]        
-131/294                           
-132/294 [unnamed-chunk-57]        
-133/294                           
-134/294 [unnamed-chunk-58]        
-135/294                           
-136/294 [unnamed-chunk-59]        
-137/294                           
-138/294 [unnamed-chunk-60]        
-139/294                           
-140/294 [unnamed-chunk-61]        
-141/294                           
-142/294 [unnamed-chunk-62]        
-143/294                           
-144/294 [unnamed-chunk-63]        
-145/294                           
-146/294 [unnamed-chunk-64]        
-147/294                           
-148/294 [unnamed-chunk-65]        
-149/294                           
-150/294 [unnamed-chunk-66]        
-151/294                           
-152/294 [unnamed-chunk-67]        
-153/294                           
-154/294 [unnamed-chunk-68]        
-155/294                           
-156/294 [unnamed-chunk-69]        
-157/294                           
-158/294 [unnamed-chunk-70]        
-159/294                           
-160/294 [unnamed-chunk-71]        
-161/294                           
-162/294 [unnamed-chunk-72]        
-163/294                           
-164/294 [unnamed-chunk-73]        
-165/294                           
-166/294 [unnamed-chunk-74]        
-167/294                           
-168/294 [unnamed-chunk-75]        
-169/294                           
-170/294 [unnamed-chunk-76]        
-171/294                           
-172/294 [unnamed-chunk-77]        
-173/294                           
-174/294 [unnamed-chunk-78]        
-175/294                           
-176/294 [unnamed-chunk-79]        
-177/294                           
-178/294 [unnamed-chunk-80]        
-179/294                           
-180/294 [unnamed-chunk-81]        
-181/294                           
-182/294 [unnamed-chunk-82]        
-183/294                           
-184/294 [unnamed-chunk-83]        
-185/294                           
-186/294 [unnamed-chunk-84]        
-187/294                           
-188/294 [unnamed-chunk-85]        
-189/294                           
-190/294 [unnamed-chunk-86]        
-191/294                           
-192/294 [unnamed-chunk-87]        
-193/294                           
-194/294 [unnamed-chunk-88]        
-195/294                           
-196/294 [unnamed-chunk-89]        
-197/294                           
-198/294 [unnamed-chunk-90]        
-199/294                           
-200/294 [unnamed-chunk-91]        
-201/294                           
-202/294 [unnamed-chunk-92]        
-203/294                           
-204/294 [unnamed-chunk-93]        
-205/294                           
-206/294 [unnamed-chunk-94]        
-207/294                           
-208/294 [unnamed-chunk-95]        
-209/294                           
-210/294 [unnamed-chunk-96]        
-211/294                           
-212/294 [unnamed-chunk-97]        
-213/294                           
-214/294 [unnamed-chunk-98]        
-215/294                           
-216/294 [unnamed-chunk-99]        
-217/294                           
-218/294 [unnamed-chunk-100]       
-219/294                           
-220/294 [unnamed-chunk-101]       
-221/294                           
-222/294 [unnamed-chunk-102]       
-223/294                           
-224/294 [unnamed-chunk-103]       
-225/294                           
-226/294 [unnamed-chunk-104]       
-227/294                           
-228/294 [unnamed-chunk-105]       
-229/294                           
-230/294 [unnamed-chunk-106]       
-231/294                           
-232/294 [unnamed-chunk-107]       
-233/294                           
-234/294 [unnamed-chunk-108]       
-235/294                           
-236/294 [unnamed-chunk-109]       
-237/294                           
-238/294 [unnamed-chunk-110]       
-239/294                           
-240/294 [unnamed-chunk-111]       
-241/294                           
-242/294 [unnamed-chunk-112]       
-243/294                           
-244/294 [unnamed-chunk-113]       
-245/294                           
-246/294 [unnamed-chunk-114]       
-247/294                           
-248/294 [unnamed-chunk-115]       
-249/294                           
-250/294 [unnamed-chunk-116]       
-251/294                           
-252/294 [unnamed-chunk-117]       
-253/294                           
-254/294 [prenocitve]              
-255/294                           
-256/294 [avti]                    
-257/294                           
-258/294 [place]                   
-259/294                           
-260/294 [trgovina]                
-261/294                           
-262/294 [socialni]                
-263/294                           
-264/294 [zasbna]                  
-265/294                           
-266/294 [mnenje]                  
-267/294                           
-268/294 [zglajeno]                
-269/294                           
-270/294 [vecji]                   
-271/294                           
-272/294 [razpolozlj]              
-273/294                           
-274/294 [kazalniki]               
-275/294                           
-276/294 [kazalniki_cetrt]         
-277/294                           
-278/294 [varcevanje]              
-279/294                           
-280/294 [storitve_nom]            
-281/294                           
-282/294 [storitve_real]           
-283/294                           
-284/294 [izvoz_storitev]          
-285/294                           
-286/294 [uvoz_storitev]           
-287/294                           
-288/294 [uvoz_blaga]              
-289/294                           
-290/294 [Izvoz_blago_po_regijah]  
-291/294                           
-292/294 [uvoz_blago_po_regijah]   
-293/294                           
-294/294 [izvoz_razpolozenje]      
-output file: html_test.knit.md
+Error in `!continue`:
+! invalid argument type
+Backtrace:
+  1. rmarkdown::render(...)
+  2. knitr::knit(knit_input, knit_output, envir = envir, quiet = quiet)
+  3. knitr:::process_file(text, output)
+  6. knitr:::process_group(group)
+  7. knitr:::call_block(x)
+  8. knitr:::block_exec(params)
+  9. knitr:::eng_r(options)
+ 12. knitr (local) evaluate(...)
+ 13. evaluate::evaluate(...)
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS html_test.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc2e5436661b46.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpA3Czqa\rmarkdown-str2e545d63139.html" --include-before-body custom.js 
-[WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
-
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_porocilo14.okt.2026_1110.html
+Quitting from lines 241-241 [unnamed-chunk-41] (html_test.Rmd)
+Execution halted
