@@ -9,7 +9,7 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-Run started: 2026-11-01 11:00:18 
+Run started: 2026-11-02 11:00:19 
 Importing data points from: F2_Q1S into schema platform
 trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/40_financni_racuni/F2_Q1S.px'
 Content type 'application/octet-stream' length 732458 bytes (715 KB)
@@ -192,31 +192,181 @@ Note: These vintages for table I1_2AS are not new, they will not be inserted aga
 Skipping import for I1_2AS due to vintage preparation issue: These vintages for table I1_2AS are not new, they will not be inserted again.
 Importing data points from: I2_4_2AS into schema platform
 trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_2AS.px'
-Content type 'application/octet-stream' length 49327 bytes (48 KB)
+Content type 'application/octet-stream' length 49486 bytes (48 KB)
 ==================================================
 downloaded 48 KB
 
 File has BOM, using UTF-16LE
-Note: These vintages for table I2_4_2AS are not new, they will not be inserted again.
-Skipping import for I2_4_2AS due to vintage preparation issue: These vintages for table I2_4_2AS are not new, they will not be inserted again.
-Importing data points from: I2_4_3AS into schema platform
-trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_3AS.px'
-Content type 'application/octet-stream' length 105433 bytes (102 KB)
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_2AS.px'
+Content type 'application/octet-stream' length 49486 bytes (48 KB)
 ==================================================
-downloaded 102 KB
+downloaded 48 KB
 
 File has BOM, using UTF-16LE
-Note: These vintages for table I2_4_3AS are not new, they will not be inserted again.
-Skipping import for I2_4_3AS due to vintage preparation issue: These vintages for table I2_4_3AS are not new, they will not be inserted again.
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_2AS.px'
+Content type 'application/octet-stream' length 49486 bytes (48 KB)
+==================================================
+downloaded 48 KB
+
+File has BOM, using UTF-16LE
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_2AS.px'
+Content type 'application/octet-stream' length 49486 bytes (48 KB)
+==================================================
+downloaded 48 KB
+
+File has BOM, using UTF-16LE
+
+=== PostgreSQL Column Names ===
+Frekvenca, Postavke, Datum, value, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  Frekvenca Postavke   Datum value    time flag interval_id
+1         0        0 2003M01    NA 2003M01                M
+2         0        1 2003M01    NA 2003M01                M
+3         0        0 2003M02    NA 2003M02                M
+4         0        1 2003M02    NA 2003M02                M
+5         0        0 2003M03    NA 2003M03                M
+Matching dimensions:
+  - Frekvenca (ID: 795)
+  - Postavke (ID: 796)
+  - Matched dimension: Frekvenca -> column: Frekvenca
+  - Matched dimension: Postavke -> column: Postavke
+Updated series_id for 570 rows
+Updated vintage_id for 570 rows
+After matching. Sample rows:
+  Frekvenca Postavke   Datum value    time flag interval_id series_id
+1         0        0 2003M01    NA 2003M01                M    118262
+2         0        0 2003M02    NA 2003M02                M    118262
+3         0        0 2003M03    NA 2003M03                M    118262
+4         0        0 2003M04    NA 2003M04                M    118262
+5         0        0 2003M05    NA 2003M05                M    118262
+  vintage_id
+1    7517191
+2    7517191
+3    7517191
+4    7517191
+5    7517191
+Rows with both series_id and vintage_id: 570
+Inserted 0 new periods
+Inserted 570 new data points
+Inserted 0 new flags
+Importing data points from: I2_4_3AS into schema platform
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_3AS.px'
+Content type 'application/octet-stream' length 105787 bytes (103 KB)
+==================================================
+downloaded 103 KB
+
+File has BOM, using UTF-16LE
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_3AS.px'
+Content type 'application/octet-stream' length 105787 bytes (103 KB)
+==================================================
+downloaded 103 KB
+
+File has BOM, using UTF-16LE
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_3AS.px'
+Content type 'application/octet-stream' length 105787 bytes (103 KB)
+==================================================
+downloaded 103 KB
+
+File has BOM, using UTF-16LE
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_3AS.px'
+Content type 'application/octet-stream' length 105787 bytes (103 KB)
+==================================================
+downloaded 103 KB
+
+File has BOM, using UTF-16LE
+
+=== PostgreSQL Column Names ===
+Frekvenca, Postavke, Datum, value, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  Frekvenca Postavke   Datum value    time flag interval_id
+1         0       11 2003M01    NA 2003M01                M
+2         0       11 2003M02    NA 2003M02                M
+3         0       11 2003M03    NA 2003M03                M
+4         0       11 2003M04    NA 2003M04                M
+5         0       11 2003M05    NA 2003M05                M
+Matching dimensions:
+  - Frekvenca (ID: 798)
+  - Postavke (ID: 799)
+  - Matched dimension: Frekvenca -> column: Frekvenca
+  - Matched dimension: Postavke -> column: Postavke
+Updated series_id for 285 rows
+Updated vintage_id for 285 rows
+After matching. Sample rows:
+  Frekvenca Postavke   Datum value    time flag interval_id series_id
+1         0       11 2003M01    NA 2003M01                M    118264
+2         0       11 2003M02    NA 2003M02                M    118264
+3         0       11 2003M03    NA 2003M03                M    118264
+4         0       11 2003M04    NA 2003M04                M    118264
+5         0       11 2003M05    NA 2003M05                M    118264
+  vintage_id
+1    7517205
+2    7517205
+3    7517205
+4    7517205
+5    7517205
+Rows with both series_id and vintage_id: 285
+Inserted 0 new periods
+Inserted 285 new data points
+Inserted 0 new flags
 Importing data points from: I2_4_4AS into schema platform
 trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_4AS.px'
-Content type 'application/octet-stream' length 180350 bytes (176 KB)
+Content type 'application/octet-stream' length 180978 bytes (176 KB)
 ==================================================
 downloaded 176 KB
 
 File has BOM, using UTF-16LE
-Note: These vintages for table I2_4_4AS are not new, they will not be inserted again.
-Skipping import for I2_4_4AS due to vintage preparation issue: These vintages for table I2_4_4AS are not new, they will not be inserted again.
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_4AS.px'
+Content type 'application/octet-stream' length 180978 bytes (176 KB)
+==================================================
+downloaded 176 KB
+
+File has BOM, using UTF-16LE
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_4AS.px'
+Content type 'application/octet-stream' length 180978 bytes (176 KB)
+==================================================
+downloaded 176 KB
+
+File has BOM, using UTF-16LE
+trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/20_obrestne_mere/20_OBR_MERE_MFI/I2_4_4AS.px'
+Content type 'application/octet-stream' length 180978 bytes (176 KB)
+==================================================
+downloaded 176 KB
+
+File has BOM, using UTF-16LE
+
+=== PostgreSQL Column Names ===
+Frekvenca, Postavke, Datum, value, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+  Frekvenca Postavke   Datum  value    time flag interval_id
+1         0       48 2003M01 9.5136 2003M01                M
+2         0       49 2003M01     NA 2003M01                M
+3         0       48 2003M02     NA 2003M02                M
+4         0       49 2003M02     NA 2003M02                M
+5         0       48 2003M03     NA 2003M03                M
+Matching dimensions:
+  - Frekvenca (ID: 801)
+  - Postavke (ID: 802)
+  - Matched dimension: Frekvenca -> column: Frekvenca
+  - Matched dimension: Postavke -> column: Postavke
+Updated series_id for 570 rows
+Updated vintage_id for 570 rows
+After matching. Sample rows:
+  Frekvenca Postavke   Datum  value    time flag interval_id series_id
+1         0       49 2003M05     NA 2003M05                M    118265
+2         0       49 2004M07 5.4525 2004M07                M    118265
+3         0       49 2003M10 6.3500 2003M10                M    118265
+4         0       49 2004M08 4.8100 2004M08                M    118265
+5         0       49 2003M03     NA 2003M03                M    118265
+  vintage_id
+1    7517206
+2    7517206
+3    7517206
+4    7517206
+5    7517206
+Rows with both series_id and vintage_id: 570
+Inserted 0 new periods
+Inserted 570 new data points
+Inserted 0 new flags
 Importing data points from: i_32_6ms into schema platform
 trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/30_EOT/10_PLACILNA_BILANCA/i_32_6ms.px'
 Content type 'application/octet-stream' length 582174 bytes (568 KB)
@@ -227,8 +377,9 @@ File has BOM, using UTF-16LE
 Note: These vintages for table i_32_6ms are not new, they will not be inserted again.
 Skipping import for i_32_6ms due to vintage preparation issue: These vintages for table i_32_6ms are not new, they will not be inserted again.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 69/69 vintages
+Removed 2 empty vintages.
+Processed 100/174 vintages
+Processed 174/174 vintages
 All vintage hashes updated successfully
 Processing single table ID 220...
 Processing table 1/1: ID 220, keep_vintage = FALSE
@@ -239,7 +390,7 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
+Removed 28 empty vintages.
 Processed 69/69 vintages
 All vintage hashes updated successfully
 Processing single table ID 222...
@@ -384,7 +535,7 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 69/69 vintages
+Processed 71/71 vintages
 All vintage hashes updated successfully
 Processing single table ID 244...
 Processing table 1/1: ID 244, keep_vintage = FALSE
@@ -473,9 +624,9 @@ All vintage hashes updated successfully
 Processing single table ID 403...
 Processing table 1/1: ID 403, keep_vintage = FALSE
 Table ID 403: Transaction committed successfully
-Table ID 403: Deleted 0 older vintages and 0 redundant vintages
+Table ID 403: Deleted 2 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 2 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
@@ -485,9 +636,9 @@ All vintage hashes updated successfully
 Processing single table ID 404...
 Processing table 1/1: ID 404, keep_vintage = FALSE
 Table ID 404: Transaction committed successfully
-Table ID 404: Deleted 0 older vintages and 0 redundant vintages
+Table ID 404: Deleted 1 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 1 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
@@ -497,9 +648,9 @@ All vintage hashes updated successfully
 Processing single table ID 405...
 Processing table 1/1: ID 405, keep_vintage = FALSE
 Table ID 405: Transaction committed successfully
-Table ID 405: Deleted 0 older vintages and 0 redundant vintages
+Table ID 405: Deleted 2 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 2 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
