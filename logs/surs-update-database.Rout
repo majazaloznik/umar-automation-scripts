@@ -239,11 +239,87 @@ Importing data points from: 0700915S into schema platform
 Note: These vintages for table 0700915S are not new, they will not be inserted again.
 Skipping import for 0700915S due to vintage preparation issue: These vintages for table 0700915S are not new, they will not be inserted again.
 Importing data points from: 0400608S into schema platform
-Note: These vintages for table 0400608S are not new, they will not be inserted again.
-Skipping import for 0400608S due to vintage preparation issue: These vintages for table 0400608S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+MESEC, ŽIVLJENJSKA.POTREBŠÈINA, value, MERITVE, raw_time, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+    MESEC ŽIVLJENJSKA.POTREBŠÈINA  value MERITVE raw_time    time flag
+1 2000M01                     TOT 100.00       0  2000M01 2000M01     
+2 2000M01                     TOT 100.80       3  2000M01 2000M01     
+3 2000M01                     TOT     NA       2  2000M01 2000M01     
+4 2000M01                     TOT  46.27      33  2000M01 2000M01     
+5 2000M01                     TOT     NA      10  2000M01 2000M01     
+  interval_id
+1           M
+2           M
+3           M
+4           M
+5           M
+Matching dimensions:
+  - ŽIVLJENJSKA POTREBŠÈINA (ID: 917)
+  - MERITVE (ID: 919)
+  - Matched dimension: ŽIVLJENJSKA POTREBŠÈINA -> column: ŽIVLJENJSKA.POTREBŠÈINA
+  - Matched dimension: MERITVE -> column: MERITVE
+Updated series_id for 49910 rows
+Updated vintage_id for 49910 rows
+After matching. Sample rows:
+    MESEC ŽIVLJENJSKA.POTREBŠÈINA  value MERITVE raw_time    time flag
+1 2000M01                     TOT 100.00       0  2000M01 2000M01     
+2 2000M01                     TOT 100.80       3  2000M01 2000M01     
+3 2000M01                     TOT     NA       2  2000M01 2000M01     
+4 2000M01                     TOT  46.27      33  2000M01 2000M01     
+5 2000M01                     TOT     NA      10  2000M01 2000M01     
+  interval_id series_id vintage_id
+1           M    342796    7521379
+2           M    342672    7521345
+3           M    342582    7521313
+4           M    343045    7521410
+5           M    342553    7521284
+Rows with both series_id and vintage_id: 49910
+Inserted 0 new periods
+Inserted 49910 new data points
+Inserted 0 new flags
 Importing data points from: 0400609S into schema platform
-Note: These vintages for table 0400609S are not new, they will not be inserted again.
-Skipping import for 0400609S due to vintage preparation issue: These vintages for table 0400609S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+MESEC, ŽIVLJENJSKA.POTREBŠÈINA, value, MERITVE, raw_time, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+    MESEC ŽIVLJENJSKA.POTREBŠÈINA  value MERITVE raw_time    time flag
+1 2001M01                     TOT 108.50       2  2001M01 2001M01     
+2 2001M01                     TOT  49.27      33  2001M01 2001M01     
+3 2001M02                     TOT 108.80       2  2001M02 2001M02     
+4 2001M02                     TOT  49.88      33  2001M02 2001M02     
+5 2001M03                     TOT 109.00       2  2001M03 2001M03     
+  interval_id
+1           M
+2           M
+3           M
+4           M
+5           M
+Matching dimensions:
+  - ŽIVLJENJSKA POTREBŠÈINA (ID: 932)
+  - MERITVE (ID: 934)
+  - Matched dimension: ŽIVLJENJSKA POTREBŠÈINA -> column: ŽIVLJENJSKA.POTREBŠÈINA
+  - Matched dimension: MERITVE -> column: MERITVE
+Updated series_id for 1240 rows
+Updated vintage_id for 1240 rows
+After matching. Sample rows:
+    MESEC ŽIVLJENJSKA.POTREBŠÈINA value MERITVE raw_time    time flag
+1 2001M03                     TOT 109.0       2  2001M03 2001M03     
+2 2001M11                     TOT 107.2       2  2001M11 2001M11     
+3 2001M06                     TOT 109.8       2  2001M06 2001M06     
+4 2001M12                     TOT 107.0       2  2001M12 2001M12     
+5 2001M02                     TOT 108.8       2  2001M02 2001M02     
+  interval_id series_id vintage_id
+1           M    342890    7521411
+2           M    342890    7521411
+3           M    342890    7521411
+4           M    342890    7521411
+5           M    342890    7521411
+Rows with both series_id and vintage_id: 1240
+Inserted 0 new periods
+Inserted 1240 new data points
+Inserted 0 new flags
 Importing data points from: 0700928S into schema platform
 Note: These vintages for table 0700928S are not new, they will not be inserted again.
 Skipping import for 0700928S due to vintage preparation issue: These vintages for table 0700928S are not new, they will not be inserted again.
@@ -251,13 +327,55 @@ Importing data points from: 0701029S into schema platform
 Note: These vintages for table 0701029S are not new, they will not be inserted again.
 Skipping import for 0701029S due to vintage preparation issue: These vintages for table 0701029S are not new, they will not be inserted again.
 Importing data points from: 0400610S into schema platform
-Note: These vintages for table 0400610S are not new, they will not be inserted again.
-Skipping import for 0400610S due to vintage preparation issue: These vintages for table 0400610S are not new, they will not be inserted again.
+
+=== PostgreSQL Column Names ===
+MESEC, ŽIVLJENJSKA.POTREBŠÈINA, value, MERITVE, raw_time, time, flag, interval_id
+Data loaded into tmp_prepared_data. Sample rows:
+    MESEC ŽIVLJENJSKA.POTREBŠÈINA value MERITVE raw_time    time flag
+1 2003M01                     TOT 60.09      33  2003M01 2003M01     
+2 2003M02                     TOT 60.56      33  2003M02 2003M02     
+3 2003M03                     TOT 61.08      33  2003M03 2003M03     
+4 2003M04                     TOT 61.33      33  2003M04 2003M04     
+5 2003M05                     TOT 61.33      33  2003M05 2003M05     
+  interval_id
+1           M
+2           M
+3           M
+4           M
+5           M
+Matching dimensions:
+  - ŽIVLJENJSKA POTREBŠÈINA (ID: 1085)
+  - MERITVE (ID: 1087)
+  - Matched dimension: ŽIVLJENJSKA POTREBŠÈINA -> column: ŽIVLJENJSKA.POTREBŠÈINA
+  - Matched dimension: MERITVE -> column: MERITVE
+Updated series_id for 286 rows
+Updated vintage_id for 286 rows
+After matching. Sample rows:
+    MESEC ŽIVLJENJSKA.POTREBŠÈINA value MERITVE raw_time    time flag
+1 2003M01                     TOT 60.09      33  2003M01 2003M01     
+2 2003M02                     TOT 60.56      33  2003M02 2003M02     
+3 2003M03                     TOT 61.08      33  2003M03 2003M03     
+4 2003M04                     TOT 61.33      33  2003M04 2003M04     
+5 2003M05                     TOT 61.33      33  2003M05 2003M05     
+  interval_id series_id vintage_id
+1           M    376944    7521415
+2           M    376944    7521415
+3           M    376944    7521415
+4           M    376944    7521415
+5           M    376944    7521415
+Rows with both series_id and vintage_id: 286
+Inserted 0 new periods
+Inserted 286 new data points
+Inserted 0 new flags
 [1] "updating tables done\n"
 [1] "materialized view updated"
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/474 vintages
+Processed 200/474 vintages
+Processed 300/474 vintages
+Processed 400/474 vintages
+Processed 474/474 vintages
 All vintage hashes updated successfully
 Processing single table ID 1...
 Processing table 1/1: ID 1, keep_vintage = TRUE
@@ -269,7 +387,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 2...
 Processing table 1/1: ID 2, keep_vintage = TRUE
@@ -281,7 +402,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 13...
 Processing table 1/1: ID 13, keep_vintage = TRUE
@@ -293,7 +417,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 14...
 Processing table 1/1: ID 14, keep_vintage = TRUE
@@ -305,7 +432,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 15...
 Processing table 1/1: ID 15, keep_vintage = TRUE
@@ -317,7 +447,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 16...
 Processing table 1/1: ID 16, keep_vintage = TRUE
@@ -329,7 +462,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 17...
 Processing table 1/1: ID 17, keep_vintage = TRUE
@@ -341,7 +477,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 18...
 Processing table 1/1: ID 18, keep_vintage = TRUE
@@ -353,7 +492,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 19...
 Processing table 1/1: ID 19, keep_vintage = TRUE
@@ -365,7 +507,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 21...
 Processing table 1/1: ID 21, keep_vintage = TRUE
@@ -377,7 +522,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 22...
 Processing table 1/1: ID 22, keep_vintage = TRUE
@@ -389,7 +537,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 23...
 Processing table 1/1: ID 23, keep_vintage = TRUE
@@ -401,7 +552,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 29...
 Processing table 1/1: ID 29, keep_vintage = TRUE
@@ -413,7 +567,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 30...
 Processing table 1/1: ID 30, keep_vintage = TRUE
@@ -425,7 +582,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 34...
 Processing table 1/1: ID 34, keep_vintage = TRUE
@@ -437,7 +597,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 38...
 Processing table 1/1: ID 38, keep_vintage = TRUE
@@ -449,7 +612,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 39...
 Processing table 1/1: ID 39, keep_vintage = TRUE
@@ -461,7 +627,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 40...
 Processing table 1/1: ID 40, keep_vintage = TRUE
@@ -473,7 +642,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 41...
 Processing table 1/1: ID 41, keep_vintage = TRUE
@@ -485,7 +657,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 42...
 Processing table 1/1: ID 42, keep_vintage = TRUE
@@ -497,7 +672,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 44...
 Processing table 1/1: ID 44, keep_vintage = TRUE
@@ -509,7 +687,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 45...
 Processing table 1/1: ID 45, keep_vintage = TRUE
@@ -521,7 +702,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 46...
 Processing table 1/1: ID 46, keep_vintage = TRUE
@@ -533,7 +717,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 47...
 Processing table 1/1: ID 47, keep_vintage = TRUE
@@ -545,7 +732,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 48...
 Processing table 1/1: ID 48, keep_vintage = TRUE
@@ -557,7 +747,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 49...
 Processing table 1/1: ID 49, keep_vintage = TRUE
@@ -569,7 +762,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 50...
 Processing table 1/1: ID 50, keep_vintage = TRUE
@@ -581,7 +777,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 51...
 Processing table 1/1: ID 51, keep_vintage = TRUE
@@ -593,7 +792,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 64...
 Processing table 1/1: ID 64, keep_vintage = TRUE
@@ -605,7 +807,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 65...
 Processing table 1/1: ID 65, keep_vintage = TRUE
@@ -617,7 +822,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 66...
 Processing table 1/1: ID 66, keep_vintage = TRUE
@@ -629,7 +837,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 67...
 Processing table 1/1: ID 67, keep_vintage = TRUE
@@ -641,7 +852,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 68...
 Processing table 1/1: ID 68, keep_vintage = TRUE
@@ -653,7 +867,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 69...
 Processing table 1/1: ID 69, keep_vintage = TRUE
@@ -665,7 +882,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 70...
 Processing table 1/1: ID 70, keep_vintage = TRUE
@@ -677,7 +897,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 71...
 Processing table 1/1: ID 71, keep_vintage = TRUE
@@ -689,7 +912,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 72...
 Processing table 1/1: ID 72, keep_vintage = TRUE
@@ -701,7 +927,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 73...
 Processing table 1/1: ID 73, keep_vintage = TRUE
@@ -713,7 +942,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 77...
 Processing table 1/1: ID 77, keep_vintage = TRUE
@@ -725,7 +957,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 78...
 Processing table 1/1: ID 78, keep_vintage = TRUE
@@ -737,7 +972,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 79...
 Processing table 1/1: ID 79, keep_vintage = TRUE
@@ -749,7 +987,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 82...
 Processing table 1/1: ID 82, keep_vintage = TRUE
@@ -761,7 +1002,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 83...
 Processing table 1/1: ID 83, keep_vintage = TRUE
@@ -773,7 +1017,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 84...
 Processing table 1/1: ID 84, keep_vintage = TRUE
@@ -785,7 +1032,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 115...
 Processing table 1/1: ID 115, keep_vintage = TRUE
@@ -797,7 +1047,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 116...
 Processing table 1/1: ID 116, keep_vintage = TRUE
@@ -809,7 +1062,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 118...
 Processing table 1/1: ID 118, keep_vintage = TRUE
@@ -821,7 +1077,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 119...
 Processing table 1/1: ID 119, keep_vintage = TRUE
@@ -833,7 +1092,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 120...
 Processing table 1/1: ID 120, keep_vintage = TRUE
@@ -845,7 +1107,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 123...
 Processing table 1/1: ID 123, keep_vintage = TRUE
@@ -857,7 +1122,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 124...
 Processing table 1/1: ID 124, keep_vintage = TRUE
@@ -869,7 +1137,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 125...
 Processing table 1/1: ID 125, keep_vintage = TRUE
@@ -881,7 +1152,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 126...
 Processing table 1/1: ID 126, keep_vintage = TRUE
@@ -893,7 +1167,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 137...
 Processing table 1/1: ID 137, keep_vintage = TRUE
@@ -905,7 +1182,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 143...
 Processing table 1/1: ID 143, keep_vintage = TRUE
@@ -917,7 +1197,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 148...
 Processing table 1/1: ID 148, keep_vintage = TRUE
@@ -929,7 +1212,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 209...
 Processing table 1/1: ID 209, keep_vintage = FALSE
@@ -941,7 +1227,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 224...
 Processing table 1/1: ID 224, keep_vintage = FALSE
@@ -953,7 +1242,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 251...
 Processing table 1/1: ID 251, keep_vintage = FALSE
@@ -965,7 +1257,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 253...
 Processing table 1/1: ID 253, keep_vintage = FALSE
@@ -977,7 +1272,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 254...
 Processing table 1/1: ID 254, keep_vintage = FALSE
@@ -989,7 +1287,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 255...
 Processing table 1/1: ID 255, keep_vintage = FALSE
@@ -1001,7 +1302,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 303...
 Processing table 1/1: ID 303, keep_vintage = FALSE
@@ -1013,7 +1317,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 383...
 Processing table 1/1: ID 383, keep_vintage = FALSE
@@ -1025,7 +1332,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 398...
 Processing table 1/1: ID 398, keep_vintage = FALSE
@@ -1037,7 +1347,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 399...
 Processing table 1/1: ID 399, keep_vintage = FALSE
@@ -1049,7 +1362,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 400...
 Processing table 1/1: ID 400, keep_vintage = FALSE
@@ -1061,7 +1377,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 407...
 Processing table 1/1: ID 407, keep_vintage = FALSE
@@ -1073,7 +1392,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 408...
 Processing table 1/1: ID 408, keep_vintage = FALSE
@@ -1085,7 +1407,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 424...
 Processing table 1/1: ID 424, keep_vintage = FALSE
@@ -1097,7 +1422,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 426...
 Processing table 1/1: ID 426, keep_vintage = FALSE
@@ -1109,7 +1437,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 427...
 Processing table 1/1: ID 427, keep_vintage = FALSE
@@ -1121,7 +1452,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 428...
 Processing table 1/1: ID 428, keep_vintage = FALSE
@@ -1133,7 +1467,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 440...
 Processing table 1/1: ID 440, keep_vintage = FALSE
@@ -1145,7 +1482,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 441...
 Processing table 1/1: ID 441, keep_vintage = FALSE
@@ -1157,7 +1497,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 449...
 Processing table 1/1: ID 449, keep_vintage = FALSE
@@ -1169,31 +1512,40 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 458...
 Processing table 1/1: ID 458, keep_vintage = FALSE
 Table ID 458: Transaction committed successfully
-Table ID 458: Deleted 0 older vintages and 0 redundant vintages
+Table ID 458: Deleted 155 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 155 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 467...
 Processing table 1/1: ID 467, keep_vintage = FALSE
 Table ID 467: Transaction committed successfully
-Table ID 467: Deleted 0 older vintages and 0 redundant vintages
+Table ID 467: Deleted 4 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 4 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 508...
 Processing table 1/1: ID 508, keep_vintage = FALSE
@@ -1205,7 +1557,10 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 530...
 Processing table 1/1: ID 530, keep_vintage = FALSE
@@ -1217,14 +1572,17 @@ Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 71/71 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 549...
 Processing table 1/1: ID 549, keep_vintage = FALSE
 Table ID 549: Transaction committed successfully
-Table ID 549: Deleted 0 older vintages and 0 redundant vintages
+Table ID 549: Deleted 1 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 0 vintages from tables with keep_vintage = FALSE
+Deleted 1 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 [1] "vintages cleaned up"
@@ -1276,12 +1634,12 @@ processing file: 01-nacionalni_kvartalno.Rmd
 41/43                   
 42/43 [dohodkovna2]     
 43/43                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpIfOBt4/rmd_temp/01-nacionalni_kvartalno.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpekBp65/rmd_temp/01-nacionalni_kvartalno.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpIfOBt4\rmd_temp\01-nacionalni_kvartalno.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc4390743c7a3f.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpIfOBt4\rmarkdown-str43905dd47b47.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpekBp65\rmd_temp\01-nacionalni_kvartalno.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc462414686e57.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpekBp65\rmarkdown-str4624f38d0.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\05.nov.2026_1011_01-nacionalni_kvartalno.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\06.nov.2026_1011_01-nacionalni_kvartalno.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1313,12 +1671,12 @@ processing file: 02-nacionalni_letno.Rmd
 25/27                      
 26/27 [unnamed-chunk-10]   
 27/27                      
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpIfOBt4/rmd_temp/02-nacionalni_letno.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpekBp65/rmd_temp/02-nacionalni_letno.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpIfOBt4\rmd_temp\02-nacionalni_letno.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc43905a6d5066.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpIfOBt4\rmarkdown-str439017a94b9c.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpekBp65\rmd_temp\02-nacionalni_letno.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc46244e672e30.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpekBp65\rmarkdown-str4624434777b1.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\05.nov.2026_1011_02-nacionalni_letno.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\06.nov.2026_1011_02-nacionalni_letno.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1366,12 +1724,12 @@ processing file: 03-kazalniki_razpolozenja.Rmd
 41/43                   
 42/43 [unnamed-chunk-20]
 43/43                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpIfOBt4/rmd_temp/03-kazalniki_razpolozenja.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpekBp65/rmd_temp/03-kazalniki_razpolozenja.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpIfOBt4\rmd_temp\03-kazalniki_razpolozenja.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc439018333a8f.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpIfOBt4\rmarkdown-str439039ae1b9f.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpekBp65\rmd_temp\03-kazalniki_razpolozenja.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc4624134c4640.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpekBp65\rmarkdown-str46247cca7ab8.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\05.nov.2026_1011_03-kazalniki_razpolozenja.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\06.nov.2026_1011_03-kazalniki_razpolozenja.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1421,12 +1779,12 @@ processing file: 04-kazalniki_aktivnosti.Rmd
 43/45                     
 44/45 [unnamed-chunk-20]  
 45/45                     
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpIfOBt4/rmd_temp/04-kazalniki_aktivnosti.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpekBp65/rmd_temp/04-kazalniki_aktivnosti.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpIfOBt4\rmd_temp\04-kazalniki_aktivnosti.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc439076cd5564.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpIfOBt4\rmarkdown-str439010a067a2.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpekBp65\rmd_temp\04-kazalniki_aktivnosti.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc4624518a722b.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpekBp65\rmarkdown-str4624450e511.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\05.nov.2026_1011_04-kazalniki_aktivnosti.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\06.nov.2026_1011_04-kazalniki_aktivnosti.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1466,12 +1824,12 @@ processing file: 05-trg_dela.Rmd
 33/35                   
 34/35 [unnamed-chunk-16]
 35/35                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpIfOBt4/rmd_temp/05-trg_dela.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpekBp65/rmd_temp/05-trg_dela.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpIfOBt4\rmd_temp\05-trg_dela.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc43904c3d2c22.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpIfOBt4\rmarkdown-str4390412e3372.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpekBp65\rmd_temp\05-trg_dela.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc4624f9d1e0d.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpekBp65\rmarkdown-str4624f3941ad.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\05.nov.2026_1111_05-trg_dela.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\06.nov.2026_1111_05-trg_dela.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1501,12 +1859,12 @@ processing file: 06-cene.Rmd
 23/25                   
 24/25 [unnamed-chunk-11]
 25/25                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpIfOBt4/rmd_temp/06-cene.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpekBp65/rmd_temp/06-cene.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpIfOBt4\rmd_temp\06-cene.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc439041f57ba8.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpIfOBt4\rmarkdown-str43905df55b5b.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpekBp65\rmd_temp\06-cene.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc46241d107d23.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpekBp65\rmarkdown-str462457a8d32.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\05.nov.2026_1111_06-cene.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\06.nov.2026_1111_06-cene.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1536,12 +1894,12 @@ processing file: 07-gradbenistvo.Rmd
 23/25                   
 24/25 [unnamed-chunk-11]
 25/25                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpIfOBt4/rmd_temp/07-gradbenistvo.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpekBp65/rmd_temp/07-gradbenistvo.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpIfOBt4\rmd_temp\07-gradbenistvo.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc439078de7fdc.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpIfOBt4\rmarkdown-str4390f32c2.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpekBp65\rmd_temp\07-gradbenistvo.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc4624332969a4.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpekBp65\rmarkdown-str462453e4201f.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\05.nov.2026_1111_07-gradbenistvo.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\06.nov.2026_1111_07-gradbenistvo.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1583,12 +1941,12 @@ processing file: 08-predelovalne_dejavnosti.Rmd
 35/37                   
 36/37 [unnamed-chunk-17]
 37/37                   
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpIfOBt4/rmd_temp/08-predelovalne_dejavnosti.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpekBp65/rmd_temp/08-predelovalne_dejavnosti.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpIfOBt4\rmd_temp\08-predelovalne_dejavnosti.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc439010f16e05.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpIfOBt4\rmarkdown-str439071f4230d.html" --include-before-body custom2.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpekBp65\rmd_temp\08-predelovalne_dejavnosti.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc4624553f56b0.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles2.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpekBp65\rmarkdown-str46246ef37be6.html" --include-before-body custom2.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\05.nov.2026_1111_08-predelovalne_dejavnosti.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\06.nov.2026_1111_08-predelovalne_dejavnosti.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1606,12 +1964,12 @@ processing file: 09-mojca.Rmd
 11/13             
 12/13 [socialni]  
 13/13             
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpIfOBt4/rmd_temp/09-mojca.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpekBp65/rmd_temp/09-mojca.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpIfOBt4\rmd_temp\09-mojca.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc43902ae11c28.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpIfOBt4\rmarkdown-str4390399c3cd6.html" --include-before-body custom.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpekBp65\rmd_temp\09-mojca.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc46243cc91eeb.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpekBp65\rmarkdown-str46242db1639d.html" --include-before-body custom.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\05.nov.2026_1111_09-mojca.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\06.nov.2026_1111_09-mojca.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1635,12 +1993,12 @@ processing file: 10-zasebna.Rmd
 17/19                  
 18/19 [varcevanje]     
 19/19                  
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpIfOBt4/rmd_temp/10-zasebna.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpekBp65/rmd_temp/10-zasebna.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpIfOBt4\rmd_temp\10-zasebna.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc439024d8560.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpIfOBt4\rmarkdown-str43907e617fe2.html" --include-before-body custom.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpekBp65\rmd_temp\10-zasebna.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc46247765187.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpekBp65\rmarkdown-str462453b128cc.html" --include-before-body custom.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\05.nov.2026_1111_10-zasebna.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\06.nov.2026_1111_10-zasebna.html
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
 
@@ -1663,12 +2021,12 @@ processing file: 11-tujina.Rmd
 16/18 [uvoz_blago_po_regijah] 
 17/18                         
 18/18 [izvoz_razpolozenje]    
-output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpIfOBt4/rmd_temp/11-tujina.knit.md
+output file: C:/Users/mzaloznik/AppData/Local/Temp/RtmpekBp65/rmd_temp/11-tujina.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpIfOBt4\rmd_temp\11-tujina.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc43904955923.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpIfOBt4\rmarkdown-str439058d91e12.html" --include-before-body custom.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS "C:\Users\mzaloznik\AppData\Local\Temp\RtmpekBp65\rmd_temp\11-tujina.knit.md" --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc46245aa617ed.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpekBp65\rmarkdown-str462415df6037.html" --include-before-body custom.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\05.nov.2026_1111_11-tujina.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_po_poglavjih\06.nov.2026_1111_11-tujina.html
 [1] "starting full report\n"
 
 
@@ -1969,7 +2327,7 @@ processing file: html_test.Rmd
 294/294 [izvoz_razpolozenje]      
 output file: html_test.knit.md
 
-"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS html_test.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc43907e9f5887.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpIfOBt4\rmarkdown-str43905cb9280.html" --include-before-body custom.js 
+"C:/PROGRA~1/RStudio/RESOUR~1/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS html_test.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc462447dbbb.html --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 2 --template "C:\Users\mzaloznik\Documents\R\win-library\4.1\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css styles.css --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\MZALOZ~1\AppData\Local\Temp\RtmpekBp65\rmarkdown-str46246e4c13ca.html" --include-before-body custom.js 
 [WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
 
-Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_porocilo05.nov.2026_1111.html
+Output created: \\192.168.38.7\public$\Avtomatizacija\indikatorji_porocilo\indikatorji_porocilo06.nov.2026_1111.html
