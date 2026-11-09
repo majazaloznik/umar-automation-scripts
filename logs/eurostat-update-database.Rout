@@ -1,4 +1,4 @@
-UMAR proxy is set!Run started: 2026-11-09 13:02:44 
+UMAR proxy is set!Run started: 2026-11-09 23:00:16 
 
 Attaching package: 'dplyr'
 
@@ -174,46 +174,8 @@ Skipping import for teiis010 due to vintage preparation issue: These vintages fo
 =================================================================
 Importing data points from: teiis011
 =================================================================
-
-=== PostgreSQL Column Names ===
-interval_id, indic_bt, nace_r2, s_adj, unit, geo, flag, TIME_PERIOD, value, time
-Data loaded into tmp_prepared_data. Sample rows:
-  interval_id indic_bt nace_r2 s_adj    unit  geo flag TIME_PERIOD value
-1           M  PRC_IMP     B-D   NSA I21_NSA EA20 <NA>  2025-10-01 109.9
-2           M  PRC_IMP     B-D   NSA I21_NSA EA20 <NA>  2025-11-01 110.2
-3           M  PRC_IMP     B-D   NSA I21_NSA EA20 <NA>  2025-12-01 109.7
-4           M  PRC_IMP     B-D   NSA I21_NSA EA20 <NA>  2026-01-01 110.7
-5           M  PRC_IMP     B-D   NSA I21_NSA EA20 <NA>  2026-02-01 111.4
-     time
-1 2025M10
-2 2025M11
-3 2025M12
-4 2026M01
-5 2026M02
-Matching dimensions:
-  - unit (ID: 698)
-  - geo (ID: 699)
-  - Matched dimension: unit -> column: unit
-  - Matched dimension: geo -> column: geo
-Updated series_id for 72 rows
-Updated vintage_id for 72 rows
-After matching. Sample rows:
-  interval_id indic_bt nace_r2 s_adj    unit  geo flag TIME_PERIOD value
-1           M  PRC_IMP     B-D   NSA I21_NSA EA20    i  2026-09-01 121.9
-2           M  PRC_IMP     B-D   NSA I21_NSA EA20 <NA>  2026-08-01 119.4
-3           M  PRC_IMP     B-D   NSA I21_NSA EA20 <NA>  2026-07-01 118.0
-4           M  PRC_IMP     B-D   NSA I21_NSA EA20 <NA>  2026-06-01 117.7
-5           M  PRC_IMP     B-D   NSA I21_NSA EA20 <NA>  2026-05-01 119.0
-     time series_id vintage_id
-1 2026M09    349082    7521548
-2 2026M08    349082    7521548
-3 2026M07    349082    7521548
-4 2026M06    349082    7521548
-5 2026M05    349082    7521548
-Rows with both series_id and vintage_id: 72
-Inserted 0 new periods
-Inserted 72 new data points
-Inserted 6 new flags
+Note: These vintages for table teiis011 are not new, they will not be inserted again.
+Skipping import for teiis011 due to vintage preparation issue: These vintages for table teiis011 are not new, they will not be inserted again.
 
 =================================================================
 Importing data points from: teiis080
@@ -342,10 +304,10 @@ Note: These vintages for table irt_lt_mcby_m are not new, they will not be inser
 Skipping import for irt_lt_mcby_m due to vintage preparation issue: These vintages for table irt_lt_mcby_m are not new, they will not be inserted again.
 Calculating hashes for new vintages...
 Removed 3 empty vintages.
-Processed 100/320 vintages
-Processed 200/320 vintages
-Processed 300/320 vintages
-Processed 320/320 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 343...
 Processing table 1/1: ID 343, keep_vintage = TRUE
@@ -605,9 +567,9 @@ All vintage hashes updated successfully
 Processing single table ID 366...
 Processing table 1/1: ID 366, keep_vintage = FALSE
 Table ID 366: Transaction committed successfully
-Table ID 366: Deleted 6 older vintages and 0 redundant vintages
+Table ID 366: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 6 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
