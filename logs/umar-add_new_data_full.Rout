@@ -1,4 +1,4 @@
-UMAR proxy is set!Run started: 2026-11-09 14:28:53 
+UMAR proxy is set!Run started: 2026-11-10 10:20:17 
 User: mzaloznik
 HTTPS_PROXY: http://proxy.gov.si:80
 https_proxy: http://proxy.gov.si:80
@@ -116,13 +116,12 @@ Running commodity prices update.
 trying URL 'https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx'
 downloaded 573 KB
 
-[trosarine] 2026-11-09 14:29:04.914124 | start
+[trosarine] 2026-11-10 10:20:26.919797 | start
 [trosarine] latest: UMAR FS sep26 trošarine.xlsx  (mtime 2026-11-05 09:53:42)
 [trosarine] new rows: 40
-[trosarine] master rows: 260
-[trosarine] combined rows: 261 (+1)
-[trosarine] master written: \\192.168.38.7\public$\Avtomatizacija\umar-data\LF\umar_serije_podatki_LF.xlsx
-[trosarine] 2026-11-09 14:29:06.936473 | OK
+[trosarine] master rows: 261
+[trosarine] FAIL | period(s) already in master: 2026-09-01
+[trosarine] 2026-11-10 10:20:28.081179 | FAIL
 
 Attaching package: 'UMARfetchR'
 
@@ -134,13 +133,12 @@ The following objects are masked from 'package:ZRSZfetchR':
     prepare_source_table, prepare_table_dimensions_table,
     prepare_table_table, prepare_vintage_table
 
-Auto-refreshing stale OAuth token.
 Calculating hashes for new vintages...
 No empty vintages found.
-Processed 100/394 vintages
-Processed 200/394 vintages
-Processed 300/394 vintages
-Processed 394/394 vintages
+Processed 100/314 vintages
+Processed 200/314 vintages
+Processed 300/314 vintages
+Processed 314/314 vintages
 All vintage hashes updated successfully
 Processing single table ID 57...
 Processing table 1/1: ID 57, keep_vintage = TRUE
@@ -670,9 +668,9 @@ All vintage hashes updated successfully
 Processing single table ID 553...
 Processing table 1/1: ID 553, keep_vintage = FALSE
 Table ID 553: Transaction committed successfully
-Table ID 553: Deleted 80 older vintages and 0 redundant vintages
+Table ID 553: Deleted 0 older vintages and 0 redundant vintages
 Cleanup completed: Processed 1 tables
-Deleted 80 vintages from tables with keep_vintage = FALSE
+Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 There were 50 or more warnings (use warnings() to see the first 50)
