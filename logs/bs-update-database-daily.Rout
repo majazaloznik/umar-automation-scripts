@@ -9,7 +9,7 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-Run started: 2026-11-09 11:00:19 
+Run started: 2026-11-10 11:00:19 
 Importing data points from: F2_Q1S into schema platform
 trying URL 'https://px.bsi.si/Resources/PX/Databases/serije_slo/40_financni_racuni/F2_Q1S.px'
 Content type 'application/octet-stream' length 732458 bytes (715 KB)
@@ -228,10 +228,10 @@ Note: These vintages for table i_32_6ms are not new, they will not be inserted a
 Skipping import for i_32_6ms due to vintage preparation issue: These vintages for table i_32_6ms are not new, they will not be inserted again.
 Calculating hashes for new vintages...
 Removed 9 empty vintages.
-Processed 100/349 vintages
-Processed 200/349 vintages
-Processed 300/349 vintages
-Processed 349/349 vintages
+Processed 100/332 vintages
+Processed 200/332 vintages
+Processed 300/332 vintages
+Processed 332/332 vintages
 All vintage hashes updated successfully
 Processing single table ID 220...
 Processing table 1/1: ID 220, keep_vintage = FALSE
@@ -242,11 +242,11 @@ Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
 Calculating hashes for new vintages...
-No empty vintages found.
-Processed 100/314 vintages
-Processed 200/314 vintages
-Processed 300/314 vintages
-Processed 314/314 vintages
+Removed 24 empty vintages.
+Processed 100/326 vintages
+Processed 200/326 vintages
+Processed 300/326 vintages
+Processed 326/326 vintages
 All vintage hashes updated successfully
 Processing single table ID 222...
 Processing table 1/1: ID 222, keep_vintage = FALSE
@@ -353,7 +353,6 @@ Processed 200/314 vintages
 Processed 300/314 vintages
 Processed 314/314 vintages
 All vintage hashes updated successfully
-Starting a new run (not resuming). Existing progress file will be overwritten.
 Processing single table ID 239...
 Processing table 1/1: ID 239, keep_vintage = FALSE
 Table ID 239: Transaction committed successfully
@@ -444,7 +443,6 @@ Processed 200/314 vintages
 Processed 300/314 vintages
 Processed 314/314 vintages
 All vintage hashes updated successfully
-Starting a new run (not resuming). Existing progress file will be overwritten.
 Processing single table ID 245...
 Processing table 1/1: ID 245, keep_vintage = FALSE
 Table ID 245: Transaction committed successfully
@@ -460,6 +458,7 @@ Processed 200/314 vintages
 Processed 300/314 vintages
 Processed 314/314 vintages
 All vintage hashes updated successfully
+Starting a new run (not resuming). Existing progress file will be overwritten.
 Processing single table ID 246...
 Processing table 1/1: ID 246, keep_vintage = FALSE
 Table ID 246: Transaction committed successfully
@@ -592,4 +591,4 @@ Warning messages:
 1: In file.remove(progress_file) :
   cannot remove file 'vintage_cleanup_progress.rds', reason 'Permission denied'
 2: In file.remove(progress_file) :
-  cannot remove file 'vintage_cleanup_progress.rds', reason 'Permission denied'
+  cannot remove file 'vintage_cleanup_progress.rds', reason 'No such file or directory'
