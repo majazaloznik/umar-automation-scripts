@@ -33,8 +33,12 @@ UmarDataBotR::with_run(run, {
   }
 
   results <- purrr::map(update_tables$code, \(code)
-                        UmarDataBotR::run_step(run, paste("BS import", code),
-                                               import_table(code), critical = FALSE))
+                        UmarDataBotR::run_step(run, paste("BS import", code), {
+                          r <- BSfetchR::BS_import_data_points(code, con, schema = "platform")
+                          UmarDataBotR::log_msg("%s: %d new vintage(s), %d new data point(s)",
+                                                code, r$new_vintages, r$new_datapoints)
+                          r
+                        }, critical = FALSE))
   names(results) <- update_tables$code
 
   n_failed <- sum(purrr::map_lgl(results, is.null))
