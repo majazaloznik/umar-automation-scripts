@@ -116,6 +116,26 @@ delete_table <- function(table_id) {
 #'
 #' @return a `DBIConnection`
 #' @keywords internal
-platform_con <- function() DBI::dbConnect(
-  RPostgres::Postgres(), dbname = "platform", host = "localhost", port = 5432,
-  user = "postgres", password = Sys.getenv("PG_PG_PSW"), client_encoding = "utf8")
+platform_con <- function() DBI::dbConnect(RPostgres::Postgres(),
+                                          dbname = "platform",
+                                          host = "localhost",
+                                          port = 5432,
+                                          user = "postgres",
+                                          password = Sys.getenv("PG_PG_PSW"),
+                                          client_encoding = "utf8")
+
+#' Connect to the platform database
+#'
+#' Opens a new connection to the local `davcne` database. The password is
+#' read from the `PG_PG_PSW` environment variable. The caller is responsible
+#' for disconnecting, usually with `on.exit(DBI::dbDisconnect(con))`.
+#'
+#' @return a `DBIConnection`
+#' @keywords internal
+davcne_con <- function() DBI::dbConnect(RPostgres::Postgres(),
+                                          dbname = "davcne",
+                                          host = "localhost",
+                                          port = 5432,
+                                          user = "postgres",
+                                          password = Sys.getenv("PG_PG_PSW"),
+                                          client_encoding = "utf8")
