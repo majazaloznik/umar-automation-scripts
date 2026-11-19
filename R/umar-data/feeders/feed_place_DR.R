@@ -9,9 +9,9 @@
 # masa plač nova read
 ################################################################################
 path <- "\\\\192.168.38.7\\public$\\Users\\DRogan\\EO\\Pla\u010de (nove SKD skupine).xlsx"
-
-df <- readxl::read_excel(path,
-                         col_names = FALSE)
+UmarDataBotR::log_msg("plače | start")
+df <- suppressWarnings(   # row 1 holds dates, parsed as numbers below on purpose
+  readxl::read_excel(path, col_names = FALSE, .name_repair = "unique_quiet"))
 
 df <- df[-2, ]  # remove row 2
 df <- df[1:22,]
@@ -71,8 +71,8 @@ openxlsx::write.xlsx(updated,
 ################################################################################
 path <- "\\\\192.168.38.7\\public$\\Users\\DRogan\\EO\\Pla\u010de (nove SKD skupine).xlsx"
 
- df <- readxl::read_excel(path,
-                         col_names = FALSE)
+df <- suppressWarnings(   # row 1 holds dates, parsed as numbers below on purpose
+  readxl::read_excel(path, col_names = FALSE, .name_repair = "unique_quiet"))
 
 df <- df[-(2:25), ]  # remove row 2
 df <- df[1:22,]

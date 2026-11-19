@@ -10,14 +10,13 @@
 #' trosarine new read - monthly update
 #' the data needs to be (manually) placed in the required folder!
 ################################################################################
-tag <- "[trosarine]"
 input_dir   <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\data\\trosarine"
 master_path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-data\\LF\\umar_serije_podatki_LF.xlsx"
 lookup_path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\data\\trosarine\\sifranti\\trosarine_lookup.xlsx"
 
-message(sprintf("%s %s | start", tag, Sys.time()))
+UmarDataBotR::log_msg("trošarine | start")
 
-ok <- tryCatch({
+
 
   files <- list.files(input_dir, pattern = "\\.xlsx$",
                       full.names = TRUE, ignore.case = TRUE)
@@ -25,13 +24,13 @@ ok <- tryCatch({
 
   info   <- file.info(files)
   latest <- rownames(info)[which.max(info$mtime)]
-  message(sprintf("%s latest: %s  (mtime %s)",
-                  tag, basename(latest), format(info[latest, "mtime"])))
+  UmarDataBotR::log_msg("trošarine: latest: %s  (mtime %s)",
+                   basename(latest), format(info[latest, "mtime"]))
 
   new <- openxlsx2::read_xlsx(latest, sheet = 1L)
   new <- new[rowSums(is.na(new)) < ncol(new), ] # remove empty rows
   new <- new[, colSums(is.na(new)) < nrow(new), drop = FALSE] # remove empty columns
-  message(sprintf("%s new rows: %d", tag, nrow(new)))
+  UmarDataBotR::log_msg("trošarine: new rows: %d", nrow(new))
 
   ## clean up
   colnames(new)[c(2, 6,7)] <- c("Izdelek", "kolicina", "znesek")
@@ -63,7 +62,7 @@ ok <- tryCatch({
   cleaned[num][is.na(cleaned[num])] <- 0
   if (!file.exists(master_path)) stop("master not found: ", master_path)
   master <- openxlsx2::read_xlsx(master_path, sheet = 1L)
-  message(sprintf("%s master rows: %d", tag, nrow(master)))
+  UmarDataBotR::log_msg("trošarine: master rows: %d", nrow(master))
 
   extra <- setdiff(names(cleaned), names(master))
   if (length(extra))
@@ -72,33 +71,18 @@ ok <- tryCatch({
   cleaned$period <- as.Date(cleaned$period)
   master$period  <- as.Date(master$period)
 
-  if (any(cleaned$period %in% master$period))
-    stop("period(s) already in master: ",
-         toString(intersect(cleaned$period, master$period)))
+  already <- cleaned$period %in% master$period
+  if (all(already)) {
+    UmarDataBotR::log_msg("trošarine: no new data: %s already in master",
+                    toString(unique(cleaned$period)))
+  } else if (any(already)) {
+    stop("partial overlap with master: ", toString(unique(cleaned$period[already])))
+  } else {
+    combined <- master |> dplyr::rows_upsert(cleaned, by = "period")
+    openxlsx2::write_xlsx(combined, master_path, sheet = "M", overwrite = TRUE)
+    UmarDataBotR::log_msg("trošarine: master written: +%d rows", nrow(cleaned))
+  }
 
-  combined <- master |> dplyr::rows_upsert(cleaned, by = "period")
-
-  combined <- master |>
-    dplyr::rows_upsert(cleaned, by = "period")
-
-  message(sprintf("%s combined rows: %d (+%d)",
-                  tag, nrow(combined), nrow(cleaned)))
-
-  openxlsx2::write_xlsx(combined, master_path, sheet = "M", overwrite = TRUE)
-  message(sprintf("%s master written: %s", tag, master_path))
-
-  TRUE
-},
-error = function(e) {
-  message(sprintf("%s FAIL | %s", tag, conditionMessage(e)))
-  FALSE
-})
-
-message(sprintf("%s %s | %s", tag, Sys.time(), if (isTRUE(ok)) "OK" else "FAIL"))
-
-
-
-ds
 
 
 

@@ -2,24 +2,24 @@
 #' Script for reading the financial distres data from the data/ folder in
 #' umar-automation-scripts and writing it to the umar data file for automated ingestion
 
-
 # get the data from the most recent excel file in the folder.
 ################################################################################
 path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\data\\fin.vzdrznost"
-library(dplyr)
+UmarDataBotR::log_msg("financna vzdržnost | start")
 files <- list.files(path, pattern = paste0("^FinancialDistress", ".*\\.xlsx$"), full.names = TRUE)
 
 # Select most recent file by modification time
 if (length(files) > 1) {
   file_times <- file.info(files)$mtime
   file_path <- files[which.max(file_times)]
-  message("Multiple files found, selected most recent: ", basename(file_path))
+  UmarDataBotR::log_msg("Multiple files found, using %s ", basename(file_path))
 } else {
   file_path <- files[1]
 }
 
 df <- readxl::read_excel(file_path,
-                         sheet = "FinancialDistress")
+                         sheet = "FinancialDistress",
+                         .name_repair = "unique_quiet")
 colnames(df)[1:2] <- c("month", "year")
 
 # insane fill to fix malformed original data...
@@ -56,8 +56,8 @@ df$year <- year_filled
 df$date <- as.Date(paste(year_filled, df$month, "1", sep = "-"))
 
 df <- df |>
-  select(-month, -year) |>
-  relocate(date)
+  dplyr::select(-month, -year) |>
+  dplyr::relocate(date)
 
 colnames(df) <- c("period", "SURS-UMAR--HM001--FDT--M",
                   "SURS-UMAR--HM001--RD--M",
@@ -69,7 +69,7 @@ colnames(df) <- c("period", "SURS-UMAR--HM001--FDT--M",
 
 path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-data\\HM\\umar_serije_podatki_HM.xlsx"
 # Read existing file
-existing <- readxl::read_excel(path)
+existing <- readxl::read_excel(path, .name_repair = "unique_quiet")
 
 # Update/merge with new data
 updated <- existing |>

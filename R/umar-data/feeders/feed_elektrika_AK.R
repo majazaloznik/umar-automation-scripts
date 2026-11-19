@@ -2,13 +2,11 @@
 #' Script for reading the poraba elektrike data from the data/ folder in
 #' umar-automation-scripts and writing it to the umar data file for automated ingestion
 #' the file is maintained by Andrej kustrin
-
 # get the data from the most recent excel file in the folder.
 ################################################################################
 path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\data\\elektrika"
-library(dplyr)
 files <- list.files(path, pattern = paste0("^Poraba el. po odjemnih skupinah", ".*\\.xlsx$"), full.names = TRUE)
-
+UmarDataBotR::log_msg("elektrika | start")
 # Select most recent file by modification time
 if (length(files) > 1) {
   file_times <- file.info(files)$mtime
