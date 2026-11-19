@@ -1,174 +1,38 @@
-[2026-11-19 12:36:28] UMAR proxy is set!
+[2026-11-19 13:10:25] UMAR proxy is set!
 
-[2026-11-19 12:36:28] Run started: umar_data_update
-[2026-11-19 12:36:28] start processing feeder files
-[2026-11-19 12:36:28] commodity prices | start
-[2026-11-19 12:36:31] OK: feed_commodity_prices_UB
-[2026-11-19 12:36:31] elektrika | start
-[2026-11-19 12:36:31] OK: feed_elektrika_AK
-[2026-11-19 12:36:31] financna vzdržnost | start
-[2026-11-19 12:36:32] Multiple files found, using FinancialDistress_0926.xlsx 
-[2026-11-19 12:36:32] OK: feed_fin_vzdrznost_HM
-[2026-11-19 12:36:32] plaèe | start
-[2026-11-19 12:36:34] OK: feed_place_DR
-[2026-11-19 12:36:34] trošarine | start
-[2026-11-19 12:36:34] trošarine: latest: UMAR FS sep26 trošarine.xlsx  (mtime 2026-11-05 09:53:42)
-[2026-11-19 12:36:34] trošarine: new rows: 40
-[2026-11-19 12:36:35] trošarine: master rows: 261
-[2026-11-19 12:36:35] trošarine: no new data: 2026-09-01 already in master
-[2026-11-19 12:36:35] OK: feed_trosarine_LF
-[2026-11-19 12:36:35] start database ingest
-[2026-11-19 12:36:36] OK: connect platform
-[2026-11-19 12:36:53] WARNING: The `GMAILR_APP` environment variable was deprecated in gmailr 2.0.0.
-i Please use `GMAILR_OAUTH_CLIENT` or the default storage location instead.
-i Learn more at `?gm_default_oauth_client`.
-i The deprecated feature was likely used in the gmailr package.
-  Please report the issue at <https://github.com/r-lib/gmailr/issues>.
-[2026-11-19 12:36:53] FAILED: ingest AJPES -- Can't get Google credentials.
-x No OAuth client has been configured.
-i To auth with the user flow, you must register an OAuth client with
-  `gm_auth_configure()`.
-i See the article "Set up an OAuth client" for how to get a client:
-  <https://gmailr.r-lib.org/dev/articles/oauth-client.html>
-! gmailr appears to be running in a non-interactive session and it can't
-  auto-discover credentials.
-  You may need to call `gm_auth()` directly with all necessary specifics.
-i See gargle's "Non-interactive auth" vignette for more details:
-i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
-i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
-  to see more detailed debugging information.
-[2026-11-19 12:36:55] FAILED: ingest AK -- Can't get Google credentials.
-x No OAuth client has been configured.
-i To auth with the user flow, you must register an OAuth client with
-  `gm_auth_configure()`.
-i See the article "Set up an OAuth client" for how to get a client:
-  <https://gmailr.r-lib.org/dev/articles/oauth-client.html>
-! gmailr appears to be running in a non-interactive session and it can't
-  auto-discover credentials.
-  You may need to call `gm_auth()` directly with all necessary specifics.
-i See gargle's "Non-interactive auth" vignette for more details:
-i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
-i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
-  to see more detailed debugging information.
-[2026-11-19 12:36:57] FAILED: ingest CE -- Can't get Google credentials.
-x No OAuth client has been configured.
-i To auth with the user flow, you must register an OAuth client with
-  `gm_auth_configure()`.
-i See the article "Set up an OAuth client" for how to get a client:
-  <https://gmailr.r-lib.org/dev/articles/oauth-client.html>
-! gmailr appears to be running in a non-interactive session and it can't
-  auto-discover credentials.
-  You may need to call `gm_auth()` directly with all necessary specifics.
-i See gargle's "Non-interactive auth" vignette for more details:
-i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
-i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
-  to see more detailed debugging information.
-[2026-11-19 12:37:04] FAILED: ingest DR -- Can't get Google credentials.
-x No OAuth client has been configured.
-i To auth with the user flow, you must register an OAuth client with
-  `gm_auth_configure()`.
-i See the article "Set up an OAuth client" for how to get a client:
-  <https://gmailr.r-lib.org/dev/articles/oauth-client.html>
-! gmailr appears to be running in a non-interactive session and it can't
-  auto-discover credentials.
-  You may need to call `gm_auth()` directly with all necessary specifics.
-i See gargle's "Non-interactive auth" vignette for more details:
-i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
-i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
-  to see more detailed debugging information.
-[2026-11-19 12:37:06] FAILED: ingest HM -- Can't get Google credentials.
-x No OAuth client has been configured.
-i To auth with the user flow, you must register an OAuth client with
-  `gm_auth_configure()`.
-i See the article "Set up an OAuth client" for how to get a client:
-  <https://gmailr.r-lib.org/dev/articles/oauth-client.html>
-! gmailr appears to be running in a non-interactive session and it can't
-  auto-discover credentials.
-  You may need to call `gm_auth()` directly with all necessary specifics.
-i See gargle's "Non-interactive auth" vignette for more details:
-i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
-i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
-  to see more detailed debugging information.
-[2026-11-19 12:37:07] FAILED: ingest JK -- Can't get Google credentials.
-x No OAuth client has been configured.
-i To auth with the user flow, you must register an OAuth client with
-  `gm_auth_configure()`.
-i See the article "Set up an OAuth client" for how to get a client:
-  <https://gmailr.r-lib.org/dev/articles/oauth-client.html>
-! gmailr appears to be running in a non-interactive session and it can't
-  auto-discover credentials.
-  You may need to call `gm_auth()` directly with all necessary specifics.
-i See gargle's "Non-interactive auth" vignette for more details:
-i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
-i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
-  to see more detailed debugging information.
-[2026-11-19 12:37:13] FAILED: ingest LF -- Can't get Google credentials.
-x No OAuth client has been configured.
-i To auth with the user flow, you must register an OAuth client with
-  `gm_auth_configure()`.
-i See the article "Set up an OAuth client" for how to get a client:
-  <https://gmailr.r-lib.org/dev/articles/oauth-client.html>
-! gmailr appears to be running in a non-interactive session and it can't
-  auto-discover credentials.
-  You may need to call `gm_auth()` directly with all necessary specifics.
-i See gargle's "Non-interactive auth" vignette for more details:
-i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
-i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
-  to see more detailed debugging information.
-[2026-11-19 12:37:15] FAILED: ingest MH -- Can't get Google credentials.
-x No OAuth client has been configured.
-i To auth with the user flow, you must register an OAuth client with
-  `gm_auth_configure()`.
-i See the article "Set up an OAuth client" for how to get a client:
-  <https://gmailr.r-lib.org/dev/articles/oauth-client.html>
-! gmailr appears to be running in a non-interactive session and it can't
-  auto-discover credentials.
-  You may need to call `gm_auth()` directly with all necessary specifics.
-i See gargle's "Non-interactive auth" vignette for more details:
-i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
-i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
-  to see more detailed debugging information.
-[2026-11-19 12:37:17] FAILED: ingest MK -- Can't get Google credentials.
-x No OAuth client has been configured.
-i To auth with the user flow, you must register an OAuth client with
-  `gm_auth_configure()`.
-i See the article "Set up an OAuth client" for how to get a client:
-  <https://gmailr.r-lib.org/dev/articles/oauth-client.html>
-! gmailr appears to be running in a non-interactive session and it can't
-  auto-discover credentials.
-  You may need to call `gm_auth()` directly with all necessary specifics.
-i See gargle's "Non-interactive auth" vignette for more details:
-i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
-i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
-  to see more detailed debugging information.
-[2026-11-19 12:37:22] FAILED: ingest UB -- Can't get Google credentials.
-x No OAuth client has been configured.
-i To auth with the user flow, you must register an OAuth client with
-  `gm_auth_configure()`.
-i See the article "Set up an OAuth client" for how to get a client:
-  <https://gmailr.r-lib.org/dev/articles/oauth-client.html>
-! gmailr appears to be running in a non-interactive session and it can't
-  auto-discover credentials.
-  You may need to call `gm_auth()` directly with all necessary specifics.
-i See gargle's "Non-interactive auth" vignette for more details:
-i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
-i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
-  to see more detailed debugging information.
-[2026-11-19 12:37:24] FAILED: ingest UDB -- Can't get Google credentials.
-x No OAuth client has been configured.
-i To auth with the user flow, you must register an OAuth client with
-  `gm_auth_configure()`.
-i See the article "Set up an OAuth client" for how to get a client:
-  <https://gmailr.r-lib.org/dev/articles/oauth-client.html>
-! gmailr appears to be running in a non-interactive session and it can't
-  auto-discover credentials.
-  You may need to call `gm_auth()` directly with all necessary specifics.
-i See gargle's "Non-interactive auth" vignette for more details:
-i <https://gargle.r-lib.org/articles/non-interactive-auth.html>
-i For general auth troubleshooting, set `options(gargle_verbosity = "debug")`
-  to see more detailed debugging information.
-[2026-11-19 12:37:24] Uvoženi podatki: nobenih
-[2026-11-19 12:37:24] start derived calculations
-[2026-11-19 12:37:27] OK: trosarine_monthly_calculations
-[2026-11-19 12:37:27] Run finished: issues (11 issue(s), 1 warning(s))
-[2026-11-19 12:37:28] Sent 1 email(s).
+[2026-11-19 13:10:25] Run started: umar_data_update
+[2026-11-19 13:10:25] start processing feeder files
+[2026-11-19 13:10:26] commodity prices | start
+[2026-11-19 13:10:28] OK: feed_commodity_prices_UB
+[2026-11-19 13:10:28] elektrika | start
+[2026-11-19 13:10:29] OK: feed_elektrika_AK
+[2026-11-19 13:10:29] financna vzdržnost | start
+[2026-11-19 13:10:29] Multiple files found, using FinancialDistress_0926.xlsx 
+[2026-11-19 13:10:29] OK: feed_fin_vzdrznost_HM
+[2026-11-19 13:10:30] plaèe | start
+[2026-11-19 13:10:31] OK: feed_place_DR
+[2026-11-19 13:10:31] trošarine | start
+[2026-11-19 13:10:32] trošarine: latest: UMAR FS sep26 trošarine.xlsx  (mtime 2026-11-05 09:53:42)
+[2026-11-19 13:10:32] trošarine: new rows: 40
+[2026-11-19 13:10:32] trošarine: master rows: 261
+[2026-11-19 13:10:32] trošarine: no new data: 2026-09-01 already in master
+[2026-11-19 13:10:32] OK: feed_trosarine_LF
+[2026-11-19 13:10:32] start database ingest
+[2026-11-19 13:10:33] OK: connect platform
+[2026-11-19 13:10:50] OK: ingest AJPES
+[2026-11-19 13:10:51] OK: ingest AK
+[2026-11-19 13:10:53] OK: ingest CE
+[2026-11-19 13:11:00] OK: ingest DR
+[2026-11-19 13:11:01] OK: ingest HM
+[2026-11-19 13:11:02] OK: ingest JK
+[2026-11-19 13:11:08] OK: ingest LF
+[2026-11-19 13:11:09] OK: ingest MH
+[2026-11-19 13:11:12] OK: ingest MK
+[2026-11-19 13:11:16] OK: ingest UB
+[2026-11-19 13:11:18] OK: ingest UDB
+[2026-11-19 13:11:18] Uvoženi podatki: nobenih
+[2026-11-19 13:11:18] start derived calculations
+[2026-11-19 13:11:21] OK: trosarine_monthly_calculations
+[2026-11-19 13:11:21] Run finished: ok (0 issue(s), 0 warning(s))
+Auto-refreshing stale OAuth token.
+[2026-11-19 13:11:23] Sent 1 email(s).
