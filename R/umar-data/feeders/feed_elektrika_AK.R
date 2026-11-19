@@ -1,41 +1,23 @@
-##
-#' Script for reading the poraba elektrike data from the data/ folder in
-#' umar-automation-scripts and writing it to the umar data file for automated ingestion
-#' the file is maintained by Andrej kustrin
-# get the data from the most recent excel file in the folder.
 ################################################################################
-path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\data\\elektrika"
-files <- list.files(path, pattern = paste0("^Poraba el. po odjemnih skupinah", ".*\\.xlsx$"), full.names = TRUE)
+# FEEDER: poraba elektrike po odjemnih skupinah
+#   reads:  data/elektrika/Poraba el. po odjemnih skupinah*.xlsx (newest)
+#   writes: umar-data/AK/umar_serije_podatki_AK.xlsx, sheet M
+#   source: Anrej Kuštrin updates the input file
+################################################################################
 UmarDataBotR::log_msg("elektrika | start")
-# Select most recent file by modification time
-if (length(files) > 1) {
-  file_times <- file.info(files)$mtime
-  file_path <- files[which.max(file_times)]
-  message("Multiple files found, selected most recent: ", basename(file_path))
-} else {
-  file_path <- files[1]
-}
 
-df <- readxl::read_excel(file_path,
-                         sheet =  1)
+src <- newest_file("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\data\\elektrika",
+                   "^Poraba el\\. po odjemnih skupinah.*\\.xlsx$")
+
+UmarDataBotR::log_msg("elektrika: using %s", basename(src))
+
+df <- readxl::read_excel(src, sheet = 1, .name_repair = "unique_quiet")
+
+if (ncol(df) != 5) stop("expected 5 columns in ", basename(src), ", got ", ncol(df))
 
 colnames(df) <- c("period", "UMAR-SODO--AK001--IND--M",
                   "UMAR-SODO--AK001--GOSP--M",
                   "UMAR-SODO--AK001--MPO--M",
                   "UMAR-SODO--AK001--SKUP--M")
 
-
-path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-data\\AK\\umar_serije_podatki_AK.xlsx"
-# Read existing file
-existing <- readxl::read_excel(path)
-
-# Update/merge with new data
-updated <- existing |>
-  dplyr::rows_upsert(df, by = "period")
-
-# Write back
-openxlsx::write.xlsx(updated,
-                     file = path,
-                     sheetName = "M",
-                     overwrite = TRUE)
-
+upsert_umar_data(df, "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-data\\AK\\umar_serije_podatki_AK.xlsx")

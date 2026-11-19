@@ -5,28 +5,29 @@ newest_file <- function(dir, pattern) {
   f[which.max(file.mtime(f))]
 }
 
-#' Upsert new rows into a umar-data Excel file by period
-#' @return number of new periods (0 if all already present and unchanged)
+#' Upsert rows into a umar-data Excel file by period
+#'
+#' Writes the file only if something changed, and logs the outcome.
+#' @return number of new periods (0 also when only existing values were revised)
 upsert_umar_data <- function(df, path, sheet = "M") {
-  existing <- readxl::read_excel(path, sheet = sheet) |>
-    dplyr::mutate(period = as.Date(period), dplyr::across(-period, as.numeric))
   df$period <- as.Date(df$period)
-  extra <- setdiff(names(df), names(existing))
-  if (length(extra)) stop("columns not in ", basename(path), ": ", toString(extra), call. = FALSE)
-  n_new <- sum(!df$period %in% existing$period)
-  updated <- dplyr::rows_upsert(existing, df, by = "period")
-  if (!identical(updated, existing))
-    openxlsx::write.xlsx(updated, path, sheetName = sheet, overwrite = TRUE)
+  existing <- readxl::read_excel(path, sheet = sheet, .name_repair = "unique_quiet")
+  if (nrow(existing) == 0) {
+    updated <- df
+    n_new <- nrow(df)
+  } else {
+    existing <- existing |>
+      dplyr::mutate(period = as.Date(period), dplyr::across(-period, as.numeric))
+    extra <- setdiff(names(df), names(existing))
+    if (length(extra)) stop("columns not in ", basename(path), ": ", toString(extra), call. = FALSE)
+    n_new <- sum(!df$period %in% existing$period)
+    updated <- dplyr::rows_upsert(existing, df, by = "period")
+    if (isTRUE(all.equal(updated, existing, check.attributes = FALSE))) {
+      UmarDataBotR::log_msg("%s: no changes", basename(path))
+      return(0L)
+    }
+  }
+  openxlsx::write.xlsx(updated, path, sheetName = sheet, overwrite = TRUE)
+  UmarDataBotR::log_msg("%s written: %d new period(s)", basename(path), n_new)
   n_new
-}
-
-#' Pair metadata and data files by initials
-umar_data_files <- function(dir) {
-  f <- list.files(dir, "^umar_serije_(metadata|podatki)_.+\\.xlsx$",
-                  recursive = TRUE, full.names = TRUE)
-  b <- basename(f)
-  data.frame(path = f,
-             type = sub("^umar_serije_(metadata|podatki)_.*", "\\1", b),
-             initials = sub("^umar_serije_(metadata|podatki)_(.+)\\.xlsx$", "\\2", b)) |>
-    tidyr::pivot_wider(names_from = type, values_from = path)
 }

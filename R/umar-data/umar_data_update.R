@@ -6,8 +6,10 @@
 #   4. derived:  outputs computed from the database          (umar-data/derived/)
 ################################################################################
 # pak::pkg_install("majazaloznik/UMARfetchR")
+# pak::pkg_install("majazaloznik/UmarDataBotR")
 setwd("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\")
 source("R/common/admin-common.R")   # platform_con()
+source("R/umar-data/feeders/_helpers.R")    # newest_file(), upsert_umar_data()
 
 umar_data_dir <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-data"
 log_path      <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\logs\\UMARfetchR"
@@ -16,12 +18,9 @@ derived_dir   <- "R/umar-data/derived"
 
 #' Run a feeder or derived script in its own environment
 #'
-#' Temporary, until each script is a function returning a count. Isolated so
-#' the scripts' variables (con, df, path, ...) don't leak into the runner.
-#' @return NA, i.e. "ran, count unknown"
+#' @return the value of the script's last expression (feeders: new periods)
 run_script <- function(file) {
-  source(file, local = new.env(), encoding = "UTF-8")
-  NA_integer_
+  source(file, local = new.env(), encoding = "UTF-8")$value
 }
 
 #' Pair metadata and data files by initials
@@ -44,8 +43,12 @@ UmarDataBotR::with_run(run, {
   # 1. feeders: every script in feeders/ -------------------------------------
   UmarDataBotR::log_msg("start processing feeder files")
   feeders <- list.files(feeder_dir, "^feed_.*\\.R$", full.names = TRUE)
-  purrr::walk(feeders, \(f) UmarDataBotR::run_step(
-    run, sub("\\.R$", "", basename(f)), run_script(f), critical = FALSE))
+  fed <- purrr::map_int(feeders, \(f) UmarDataBotR::run_step(
+    run, sub("\\.R$", "", basename(f)), run_script(f),
+    critical = FALSE, fallback = NA_integer_))
+  names(fed) <- sub("^feed_(.*)\\.R$", "\\1", basename(feeders))
+  UmarDataBotR::run_summary(run, "Nova obdobja v umar-data: %s",
+                            paste(names(fed), fed, sep = "=", collapse = ", "))
 
   # 2. ingest -----------------------------------------------------------------
   UmarDataBotR::log_msg("start database ingest")

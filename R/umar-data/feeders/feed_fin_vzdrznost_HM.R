@@ -1,25 +1,16 @@
-##
-#' Script for reading the financial distres data from the data/ folder in
-#' umar-automation-scripts and writing it to the umar data file for automated ingestion
-
-# get the data from the most recent excel file in the folder.
 ################################################################################
-path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\data\\fin.vzdrznost"
-UmarDataBotR::log_msg("financna vzdržnost | start")
-files <- list.files(path, pattern = paste0("^FinancialDistress", ".*\\.xlsx$"), full.names = TRUE)
+# FEEDER: finančna vzdržnost gospodinjstev
+#   reads:  data/fin.vzdrznost/FinancialDistress*.xlsx (newest), sheet FinancialDistress
+#   writes: umar-data/HM/umar_serije_podatki_HM.xlsx, sheet M
+#   source: Helena Mervic updates the input file
+################################################################################
+UmarDataBotR::log_msg("finan\u010dna vzdr\u017enost | start")
+src <- newest_file("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\data\\fin.vzdrznost",
+                   "^FinancialDistress.*\\.xlsx$")
+UmarDataBotR::log_msg("finan\u010dna vzdr\u017enost: using %s", basename(src))
 
-# Select most recent file by modification time
-if (length(files) > 1) {
-  file_times <- file.info(files)$mtime
-  file_path <- files[which.max(file_times)]
-  UmarDataBotR::log_msg("Multiple files found, using %s ", basename(file_path))
-} else {
-  file_path <- files[1]
-}
-
-df <- readxl::read_excel(file_path,
-                         sheet = "FinancialDistress",
-                         .name_repair = "unique_quiet")
+df <- readxl::read_excel(src, sheet = "FinancialDistress", .name_repair = "unique_quiet")
+if (ncol(df) != 9) stop("expected 9 columns in ", basename(src), ", got ", ncol(df))
 colnames(df)[1:2] <- c("month", "year")
 
 # insane fill to fix malformed original data...
@@ -55,29 +46,8 @@ for(i in which(!is.na(year_filled))) {
 df$year <- year_filled
 df$date <- as.Date(paste(year_filled, df$month, "1", sep = "-"))
 
-df <- df |>
-  dplyr::select(-month, -year) |>
-  dplyr::relocate(date)
+df <- df |> dplyr::select(-month, -year) |> dplyr::relocate(date)
+colnames(df) <- c("period", paste0("SURS-UMAR--HM001--",
+                                   c("FDT", "RD", "DS", "1Q", "2Q", "3Q", "4Q"), "--M"))
 
-colnames(df) <- c("period", "SURS-UMAR--HM001--FDT--M",
-                  "SURS-UMAR--HM001--RD--M",
-                  "SURS-UMAR--HM001--DS--M",
-                  "SURS-UMAR--HM001--1Q--M",
-                  "SURS-UMAR--HM001--2Q--M",
-                  "SURS-UMAR--HM001--3Q--M",
-                  "SURS-UMAR--HM001--4Q--M")
-
-path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-data\\HM\\umar_serije_podatki_HM.xlsx"
-# Read existing file
-existing <- readxl::read_excel(path, .name_repair = "unique_quiet")
-
-# Update/merge with new data
-updated <- existing |>
-  dplyr::rows_upsert(df, by = "period")
-
-# Write back
-openxlsx::write.xlsx(updated,
-                     file = path,
-                     sheetName = "M",
-                     overwrite = TRUE)
-
+upsert_umar_data(df, "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-data\\HM\\umar_serije_podatki_HM.xlsx")

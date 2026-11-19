@@ -1,3 +1,9 @@
+################################################################################
+# FEEDER: Commodity prices from the world bank
+#   reads:  https://www.worldbank.org/en/research/commodity-markets
+#   writes: umar-data/DR/umar_serije_podatki_UB.xlsx, sheet M (UB001 indices, UB002 prices)
+################################################################################
+
 UmarDataBotR::log_msg("commodity prices | start")
 # scrape dynamic url to excel file
 get_wb_commodity_url <- function(link_text = "Monthly prices") {
@@ -122,19 +128,4 @@ raw1 <- read_wb_sheet(tmp, "Monthly Indices", ids_indices)  # ids_indices = your
 raw2 <- read_wb_sheet(tmp, "Monthly Prices",  ids_prices)   # ids_prices  = your 71 codes
 final <- dplyr::full_join(raw1, raw2, by = "period")
 
-path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-data\\UB\\umar_serije_podatki_UB.xlsx"
-# Read existing file
-existing <- readxl::read_excel(path)
-
-# Update/merge with new data
-if (nrow(existing) == 0) {
-  updated <- final
-} else {
-  updated <- existing |> dplyr::rows_upsert(final, by = "period")
-}
-
-# Write back
-openxlsx::write.xlsx(updated,
-                     file = path,
-                     sheetName = "M",
-                     overwrite = TRUE)
+upsert_umar_data(final, "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-data\\UB\\umar_serije_podatki_UB.xlsx")
