@@ -1,5 +1,5 @@
-[2026-11-22 23:00:16] UMAR proxy is set!
-Run started: 2026-11-22 23:00:16 
+[2026-11-23 11:00:16] UMAR proxy is set!
+Run started: 2026-11-23 11:00:17 
 
 Attaching package: 'dplyr'
 
@@ -610,6 +610,7 @@ Processed 200/314 vintages
 Processed 300/314 vintages
 Processed 314/314 vintages
 All vintage hashes updated successfully
+Starting a new run (not resuming). Existing progress file will be overwritten.
 Processing single table ID 369...
 Processing table 1/1: ID 369, keep_vintage = FALSE
 Table ID 369: Transaction committed successfully
@@ -888,3 +889,8 @@ Cleanup completed: Processed 1 tables
 Deleted 0 vintages from tables with keep_vintage = FALSE
 Deleted 0 redundant vintages from tables with keep_vintage = TRUE
 Cleanup completed successfully. Removing progress file.
+Warning messages:
+1: In file.remove(progress_file) :
+  cannot remove file 'vintage_cleanup_progress.rds', reason 'Permission denied'
+2: In file.remove(progress_file) :
+  cannot remove file 'vintage_cleanup_progress.rds', reason 'Permission denied'
