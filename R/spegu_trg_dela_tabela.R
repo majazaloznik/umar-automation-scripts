@@ -321,7 +321,7 @@ build_count_table_rb <- function(config, all_data, con, schema = "platform") {
     config$label,
     ifelse(current_month == 12, calc_annual_growth(orig_data, current_year),
            calc_annual_growth(orig_data, prev_year)),
-    calc_monthly_growth(orig_data, last_period),
+    calc_monthly_growth(seas_data, last_period),
     calc_yoy_growth(orig_data, last_period),
     calc_cumulative_yoy_growth(orig_data, last_period)
   )
@@ -429,4 +429,3 @@ text_msg <- gmailr::gm_mime() %>% gmailr::gm_bcc(email_list) %>%
   gmailr::gm_subject("Posodobitev EO tabele za trg dela") %>%
   gmailr::gm_html_body(email_body)
 gmailr::gm_send_message(text_msg)
-
