@@ -191,7 +191,7 @@ tasks:
 
   ecb_tecaji-update_monthly_quarterly:
     scheduler: '\ecb_tečaji-update_monthly_quarterly'
-    schedule: enkratni sprožilci, zadnji 7. 12. 2026
+    schedule: enkratni sprožilci, ob 10:00 po ECB koledarju za Harmonized Competitiveness Indicators EXR, vneseni enkrat na leto za 12 mesecev naprej.
     bat: batch-scripts/ecb_tečaji-monthly_quarterly_update.bat
     log: logs/tecaji-update_monthly_quarterly.Rout
     r: 4.1.3
@@ -271,7 +271,7 @@ tasks:
 
   produktivnost-eurostat_update:
     scheduler: '\produktivnost-eurostat_update'
-    schedule: enkratni sprožilci, zadnji 7. 12. 2026
+    schedule: enkratni sprožilci, zadnji 7. 12. 2026, Get dates from Eurostat release calendar for GDP main aggregates and employment and flash estimates
     bat: batch-scripts/produktivnost-eurostat_update.bat
     log: logs/produktivnost-eurostat_update.Rout
     r: 4.1.3
