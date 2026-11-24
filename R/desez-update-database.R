@@ -1,10 +1,10 @@
 # devtools::install_github("majazaloznik/DESEZONIRANJEfetchR")
 library(DESEZONIRANJEfetchR)
 library(gmailr)
-
+cat("Run started:", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "\n")
 # Gmail authentication
 setwd("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\")
-gm_auth_configure(path = "data/credentials.json")
+gm_auth_configure(path = "data/gmailr/credentials.json")
 gm_auth(email = "umar.data.bot@gmail.com", cache = ".secret")
 email_list <- c("maja.zaloznik@gmail.com",
                 "denis.rogan@gov.si",
@@ -14,13 +14,12 @@ email_list <- c("maja.zaloznik@gmail.com",
 # Setup logging
 log_dir <- "logs"
 if (!dir.exists(log_dir)) dir.create(log_dir)
-log_file <- file.path(log_dir, paste0("DESEZ_import_log", Sys.Date(), ".txt"))
+log_file <- file.path(log_dir, paste0("DESEZ_import_log.txt"))
 
 # Open connection and capture both stdout and stderr
 log_con <- file(log_file, open = "wt")
 sink(log_con, split = TRUE)
 sink(log_con, type = "message")
-
 tryCatch({
   con <- DBI::dbConnect(RPostgres::Postgres(),
                         dbname = "platform",
@@ -39,7 +38,7 @@ tryCatch({
       purrr::map_chr("table_name") |>
       unique()
 
-    table_ids <- 319:322
+    table_ids <- c(319:322, 324,333,337,339,342, 389, 439)
 
     # Clean up vintages and add new hashes
     purrr::walk(table_ids, ~UMARimportR::vintage_cleanup(con, .x, schema = "platform"))
@@ -64,12 +63,16 @@ tryCatch({
         "<br><br>"
       )
 
+      # run gt and eo charts
+      base::message("Running GT and EO charts.")
+      source("R/gt_eo_grafi_update.R", encoding = "UTF-8")
+
       # check if trg dela table needs to be updated
       trg_dela_tables_updated <- c("BP_Orig", "DA_Orig", "ILO_Orig", "RB_Orig")
 
       if (any(trg_dela_tables_updated %in% names(tables_with_inserts))) {
         base::message("Trg dela series updated, running trg dela za špegu script...")
-        source("R/spegu_trg_dela_tabela.R")
+        source("R/spegu_trg_dela_tabela.R", encoding = "UTF-8")
       }
 
     } else {
@@ -148,7 +151,8 @@ tryCatch({
 # UMARimportR::insert_new_source(con, source_table)
 # then insert all the structures
 # result <- DESEZ_import_structure(con)
-#
+# # then update the table_ids in row 42
+# #
 # series <- dplyr::bind_rows(UMARaccessR::sql_get_series_from_table_id(319, con),
 #                            UMARaccessR::sql_get_series_from_table_id(320, con),
 #                            UMARaccessR::sql_get_series_from_table_id(321, con),
@@ -157,5 +161,9 @@ tryCatch({
 #                            UMARaccessR::sql_get_series_from_table_id(333, con),
 #                            UMARaccessR::sql_get_series_from_table_id(337, con),
 #                            UMARaccessR::sql_get_series_from_table_id(339, con),
-#                            UMARaccessR::sql_get_series_from_table_id(342, con))
+#                            UMARaccessR::sql_get_series_from_table_id(342, con),
+#                            UMARaccessR::sql_get_series_from_table_id(389, con),
+#                            UMARaccessR::sql_get_series_from_table_id(439, con))
 # openxlsx::write.xlsx(series, "desez_serije.xlsx")
+
+

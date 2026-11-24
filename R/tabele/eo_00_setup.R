@@ -37,7 +37,9 @@ process_indicators <- function(raw, n_years = 3, n_quarters = 8, n_months = 24, 
   }
 
   # Calculate GLOBAL max period (for determining which columns to show)
-  global_max_period <- max(raw$period_id)
+  last_obs <- raw |> dplyr::filter(dplyr::if_any(-period_id, \(x) !is.na(x)))
+  if (nrow(last_obs) == 0) cli::cli_abort("`raw` has no non-NA values.")
+  global_max_period <- max(last_obs$period_id)
   global_max_year <- as.integer(substr(global_max_period, 1, 4))
   global_max_month <- as.integer(substr(global_max_period, 6, 7))
   global_last_complete_year <- if(global_max_month == 12) global_max_year else global_max_year - 1L
@@ -48,6 +50,8 @@ process_indicators <- function(raw, n_years = 3, n_quarters = 8, n_months = 24, 
   } else {
     paste0(global_max_year, "Q", floor((global_max_month - 1) / 3))
   }
+  message("process_indicators: last observed ", global_max_period,
+          " -> last complete quarter ", global_last_complete_q)
 
   # Transpose and calculate per-indicator max periods (for determining completeness)
   df_long <- raw |>
@@ -184,16 +188,16 @@ process_indicators <- function(raw, n_years = 3, n_quarters = 8, n_months = 24, 
     # Define target periods based on GLOBAL max and n_* parameters
     target_years <- (global_last_complete_year - n_years + 1):global_last_complete_year
 
-    all_quarters_sorted <- df_long |>
-      dplyr::pull(quarter) |>
-      unique() |>
-      sort()
-    global_q_idx <- which(all_quarters_sorted == global_last_complete_q)
-    target_quarters <- all_quarters_sorted[max(1, global_q_idx - n_quarters + 1):global_q_idx]
+    q2i <- \(q) as.integer(substr(q, 1, 4)) * 4L + as.integer(substr(q, 6, 6)) - 1L
+    i2q <- \(i) paste0(i %/% 4L, "Q", i %% 4L + 1L)
+    if (q2i(min(df_long$quarter)) > q2i(global_last_complete_q))
+      cli::cli_abort("No complete quarter in data (last complete: {global_last_complete_q}).")
 
-    all_months_sorted <- raw$period_id |> unique() |> sort()
-    global_m_idx <- which(all_months_sorted == global_max_period)
-    target_months <- all_months_sorted[max(1, global_m_idx - n_months + 1):global_m_idx]
+    all_quarters_sorted <- i2q(q2i(min(df_long$quarter)):q2i(global_last_complete_q))
+    target_quarters     <- utils::tail(all_quarters_sorted, n_quarters)
+
+    all_months_sorted <- raw$period_id[raw$period_id <= global_max_period] |> unique() |> sort()
+    target_months     <- utils::tail(all_months_sorted, n_months)
 
     # Annual
     if (n_years > 0) {
@@ -230,12 +234,7 @@ process_indicators <- function(raw, n_years = 3, n_quarters = 8, n_months = 24, 
 
     # Quarterly
     if (n_quarters > 0) {
-      quarters_for_calc <- if(yoy) {
-        q_idx <- which(all_quarters_sorted == min(target_quarters))
-        all_quarters_sorted[max(1, q_idx - 4):global_q_idx]
-      } else {
-        target_quarters
-      }
+      quarters_for_calc <- if (yoy) utils::tail(all_quarters_sorted, n_quarters + 4L) else target_quarters
 
       quarterly <- df_long |>
         dplyr::filter(quarter %in% quarters_for_calc) |>
@@ -270,12 +269,7 @@ process_indicators <- function(raw, n_years = 3, n_quarters = 8, n_months = 24, 
 
     # Monthly
     if (n_months > 0) {
-      months_for_calc <- if(yoy) {
-        m_idx <- which(all_months_sorted == min(target_months))
-        all_months_sorted[max(1, m_idx - 12):global_m_idx]
-      } else {
-        target_months
-      }
+      months_for_calc   <- if (yoy) utils::tail(all_months_sorted, n_months + 12L) else target_months
 
       monthly <- df_long |>
         dplyr::filter(period_id %in% months_for_calc) |>

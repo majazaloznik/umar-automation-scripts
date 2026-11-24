@@ -46,7 +46,7 @@ raw <- tbl(con, dbplyr::in_schema("views", "jf_cetrtletni")) |>
   arrange(period_id) |>
   collect()|>
   dplyr::select(period_id, dplyr::all_of(codes)) |>
-  filter(substr(period_id, 1, 4) > 2019) |>
+  filter(substr(period_id, 1, 4) > 2021) |>
   mutate(q_id = paste(substr(period_id, 5, 6),
                       substr(period_id, 3, 4)))
 

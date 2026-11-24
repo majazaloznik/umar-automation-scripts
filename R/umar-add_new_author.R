@@ -15,9 +15,9 @@ DBI::dbExecute(con, "set search_path to platform")
 data_location <- "O:/Avtomatizacija/umar-data"
 
 # new author info
-name = "DR"
-initials = "DR"
-email = "denis.rogan@gov.si"
+name = "Umar Data Bot"
+initials = "UDB"
+email = "maja.zaloznik@gmail.com"
 schema = "platform"
 
 # add new author

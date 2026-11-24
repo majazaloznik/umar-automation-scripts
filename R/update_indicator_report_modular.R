@@ -1,3 +1,5 @@
+# devtools::install_github("majazaloznik/UMARRvisualisR")
+
 # script to render all the modular indicator report files and update the index files.
 rmd_files <- c(
   "\\\\192.168.38.7\\user_home\\mzaloznik\\analysis\\umar_master_report\\docs\\01-nacionalni_kvartalno.Rmd",

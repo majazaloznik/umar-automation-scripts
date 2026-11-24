@@ -37,7 +37,7 @@
 # ###############################################################################
 # #
 # # check for new data
-# gm_auth_configure(path ="data/credentials.json")
+# gm_auth_configure(path ="data/gmailr/credentials.json")
 # gm_auth(email = "umar.data.bot@gmail.com", cache = ".secret")
 #
 # data_path <- "data/mf_bilance/raw_data"

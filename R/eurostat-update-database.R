@@ -1,7 +1,7 @@
 # devtools::install_github("majazaloznik/EUROSTATfetchR")
 # devtools::install_github("majazaloznik/UMARimportR")
 # devtools::install_github("majazaloznik/UMARaccessR")
-
+cat("Run started:", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "\n")
 library(dplyr)
 library(EUROSTATfetchR)
 # logging in as  maintainer
@@ -22,20 +22,26 @@ purrr::walk(update_tables$code, ~EUROSTAT_import_data_points(.x, con, schema = "
 purrr::walk(update_tables$id, ~UMARimportR::vintage_cleanup(con, .x, schema = "platform"))
 
 
-# # # # import single table
-# EUROSTAT_import_structure( con, "sts_sepr_m", source_id = 7,
+# # # # # # # # # import single table
+# EUROSTAT_import_structure( con, "irt_lt_mcby_m", source_id = 7,
 #                            schema = "platform", all_levels = FALSE,
 #                            keep_vintage = FALSE)
 
 
-# # update single table
-# EUROSTAT_import_data_points("teina010", con, "platform")
+#  # # delete a table!!
+# UMARaccessR::sql_get_table_id_from_table_code(con, "ei_bssi_m_r2", "platform")
+  # UMARimportR::delete_table(con, 558, "platform")
+# #
+# idz <-  UMARaccessR::sql_get_latest_vintages_for_table_id(546,con, "platform")
+# UMARimportR::delete_vintage(con, idz$vintage_id , "platform")
+#
+#
+# # # update single table
+# EUROSTAT_import_data_points("irt_lt_mcby_m", con, "platform")
+# UMARimportR::vintage_cleanup(con,  schema = "platform", 546)
 # if data point import failed but vintages were created, run
 # UMARimportR::remove_empty_vintages(con, "platform")
 
-# # delete a table!!
-# UMARaccessR::sql_get_table_id_from_table_code(con, "1701116S", "platform")
-# UMARimportR::delete_table(con, 252, "platform")
 
 # # update series selection list
 # df <- UMARaccessR::sql_get_all_series_wtable_names(con)

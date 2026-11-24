@@ -469,9 +469,8 @@ donosnosti <- klima[0, ] |> dplyr::bind_rows(donosnosti) |> dplyr::select(dplyr:
 # https://www.ess.gov.si/partnerji/trg-dela/koledar-objav/)
 ################################################################################
 
-zrsz_days <- c(8, 5, 5, 3, 7, 4, 3, 5, 3, 3, 5, 3)
-reg_bp_datumi <- data.frame(datum = as.Date(paste0("2025-", 1:12, "-", zrsz_days))) |>
-  dplyr::bind_rows(data.frame(datum = as.Date("2024-12-04"))) |>
+zrsz_days <- c(9, 5, 5, 7, 7, 4, 6, 6, 4, 6, 5, 4)
+reg_bp_datumi <- data.frame(datum = as.Date(paste0("2026-", 1:12, "-", zrsz_days))) |>
   dplyr::filter(datum <= Sys.Date() | datum == min(datum[datum > Sys.Date()])) |>
   dplyr::filter(datum >= max(datum[datum <= Sys.Date()]) | datum > Sys.Date()) |>
   dplyr::arrange(datum) |>

@@ -72,21 +72,26 @@ neer_m <- tbl(con_prod, "te\u010Daji_mese\u010Dni") |>
          type == "NEER_EA_18_M",
          year > 2020) |>
   select(year, month, yoy) |>
-  collect()
+  collect() |>
+  dplyr::select(year, month, neer = yoy)
+
 
 reer_hicp_m <- tbl(con_prod, "te\u010Daji_mese\u010Dni") |>
   filter(currency == "SIT",
          type == "REER_EA_18_M",
          year > 2020) |>
   select(year, month, yoy) |>
-  collect()
+  collect() |>
+  dplyr::select(year, month, reer_hicp  = yoy)
 
 reer_ulc <- tbl(con_prod, "te\u010Daji_\u010Detrtletni") |>
   filter(currency == "SIT",
          type == "REER_ULC_Q",
          year > 2020) |>
   select(year, month, yoy) |>
-  collect()
+  collect() |>
+  dplyr::select(year, month, reer_ulc = yoy)
+
 
 usd_eur <- tbl(con_prod, "nonEA_te\u010Daji_mese\u010Dni") |>
   filter(currency == "USD",
@@ -94,20 +99,20 @@ usd_eur <- tbl(con_prod, "nonEA_te\u010Daji_mese\u010Dni") |>
   select(year, month, obsvalue) |>
   collect()
 
-reer_ulc_m <- tidyr::expand_grid(year = unique(reer_ulc$year), month = 1:12) |>
-  dplyr::mutate(quarter_month = findInterval(month, c(1, 4, 7, 10))) |>
-  dplyr::mutate(quarter_month = c(1, 4, 7, 10)[quarter_month]) |>
-  dplyr::left_join(reer_ulc, by = c("year", "quarter_month" = "month")) |>
-  select(-quarter_month)
+stopifnot(all(reer_ulc$month %in% c(1, 4, 7, 10)))
+reer_ulc_m <- reer_ulc |>
+  dplyr::mutate(month = purrr::map(month, \(m) m + 0:2)) |>
+  tidyr::unnest(month)
 
-monthly <- full_join(neer_m, reer_hicp_m, by = c("year", "month")) |>
-  full_join(reer_ulc_m, by = c("year", "month")) |>
-  full_join(usd_eur, by = c("year", "month")) |>
-  mutate(period_id = paste0(year, "M", sprintf("%02d", month)), .keep = "unused")
+
+
+monthly <- list(neer_m, reer_hicp_m, reer_ulc_m, usd_eur) |>
+  purrr::reduce(dplyr::full_join, by = c("year", "month")) |>
+  dplyr::mutate(period_id = paste0(year, "M", sprintf("%02d", month)), .keep = "unused")
 
 out_3 <- process_indicators(monthly, n_years = 3, n_quarters = 9, n_months = 25, agg_fun = "mean")
 month_cols <- grep("^\\d{2}-\\d{2}$", names(out_3))
-out_3[out_3$indicator == "yoy", month_cols] <- NA
+out_3[out_3$indicator == "reer_ulc", month_cols] <- NA
 
 
 wb <- load_wb_id()  |> fix_wb_encoding()
@@ -145,7 +150,7 @@ out2 <- process_indicators(raw2, n_years = 5, n_quarters = 0, n_months = 0, agg_
 
 out_3 <- process_indicators(monthly, n_years = 5, n_quarters = 15, n_months = 35, agg_fun = "mean")
 month_cols <- grep("^\\d{2}-\\d{2}$", names(out_3))
-out_3[out_3$indicator == "yoy", month_cols] <- NA
+out_3[out_3$indicator == "reer_ulc", month_cols] <- NA
 
 
 wb <- load_wb_ex()  |> fix_wb_encoding()

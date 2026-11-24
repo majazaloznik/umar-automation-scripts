@@ -1,10 +1,11 @@
 ################################################################################
+setwd("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\")
 # setup packages and connections
 Sys.setenv(http_proxy="http://proxy.gov.si:80")
 Sys.setenv(https_proxy="http://proxy.gov.si:80")
 
 library(gmailr)
-gm_auth_configure(path ="data/credentials.json")
+gm_auth_configure(path ="data/gmailr/credentials.json")
 gm_auth(email = "umar.data.bot@gmail.com", cache = ".secret")
 
 # package
@@ -41,9 +42,11 @@ log_path <- "\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\
 #   stop("No initials provided.")
 # }
 #
+#
 # initials <- args[1]
-initials <- "CE"
+initials <- "LF"
 
 meta_filename <- paste0(dir_path, "\\", initials, "\\umar_serije_metadata_", initials, ".xlsx")
+
 update_metadata(meta_filename, con, schema = "platform",
                 path = log_path)

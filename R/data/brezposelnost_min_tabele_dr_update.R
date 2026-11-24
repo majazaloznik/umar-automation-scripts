@@ -9,7 +9,7 @@
 #'
 ################################################################################
 
-
+message("Running brezposelnost MIN tabele update.")
 #' the following code was used as a one off to import the archival series into
 #' the database. here for posterity and if i ever need to add any similar
 #' series.

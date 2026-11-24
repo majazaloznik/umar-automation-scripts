@@ -4,26 +4,15 @@ filename <- "EO_14_davcne_medletne.xlsx"
 ################################################################################
 base::message("\nPreparing data for the chart in ", filename)
 
-tmp <- tbl(con2, "davcni_racuni") |>
-  group_by(datum) |>
-  filter(filter == "1") |>
-  summarise(znesek = sum(znesek),
-            .groups = 'drop') |>
-  collect()
-
-final <- tmp |>
-  arrange(datum)|>
-  mutate(year = lubridate::year(datum),
-         month = lubridate::month(datum)) |>
-  group_by(year, month) |>
-  filter(n() == lubridate::days_in_month(dplyr::first(datum))) |>
-  summarise(znesek = sum(znesek), .groups = "drop") |>
-  mutate(filtrirane_davcne_medletna =  (znesek / lag(znesek, n = 12) - 1) * 100) |>
+# new way, from platform
+codes <- c("FURS-UMAR--UDB008--FILT--M")
+final <- process_codes_vectorized(codes, con) |>
+  yoy_growth(codes) |>
   mutate(crta = 0,
-         period_id = as.Date(paste0(year, "-", month, "-01"))) |>
-  select(period_id, crta, filtrirane_davcne_medletna) |>
-  filter(!is.na(filtrirane_davcne_medletna))
-
+         period_id = as.Date(paste0(substr(period_id, 1, 4), "-",
+                                    substr(period_id, 6, 7), "-01"))) |>
+  select(period_id, crta, `FURS-UMAR--UDB008--FILT--M`) |>
+  filter(substr(period_id, 1, 4) > 2019)
 
 # labels <- data.frame(
 #   code = names(final)[3],  # exclude period_id

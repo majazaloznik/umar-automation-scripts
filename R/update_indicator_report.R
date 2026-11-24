@@ -1,4 +1,5 @@
 # source scipt for modular report
+print("starting modular report\n")
 source("\\\\192.168.38.7\\public$\\Avtomatizacija\\umar-automation-scripts\\R\\update_indicator_report_modular.R")
 
 
@@ -9,7 +10,7 @@ time <- format(Sys.time(), "%d.%b%Y_%H%m")
 outfile <- paste0("\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_porocilo",
                   time, ".html")
 origfile <- paste0("\\\\192.168.38.7\\public$\\Avtomatizacija\\indikatorji_porocilo\\indikatorji_porocilo.html")
-
+print("starting full report\n")
 # # update html report
 rmarkdown::render("\\\\192.168.38.7\\user_home\\mzaloznik\\analysis\\umar_master_report\\docs\\html_test.Rmd",
                   output_file = outfile)
