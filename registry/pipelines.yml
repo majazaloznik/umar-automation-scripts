@@ -1,0 +1,457 @@
+# ==============================================================================
+# UMAR pipeline registry
+#
+# Four kinds of nodes plus arrows. See registry/README.md.
+#   tasks   - one Task Scheduler task = one .bat file; made of steps (scripts)
+#   sources - where data comes from (usually a person or an agency)
+#   stores  - where data rests between steps (database tables, umar-data folders)
+#   outputs - what somebody looks at (tables, charts, workbooks, views for Power Query)
+#
+# Arrows live on steps: `reads` and `writes`. An entry is either an id, or
+# `id: detail` when it helps to say which tables / sheets.
+#
+# Keys in English, content in Slovenian. Paths are relative to the
+# umar-automation-scripts repo unless they start with a share (data$, Users/ ...).
+# TODO marks entries copied from Task Scheduler whose arrows are not filled in yet.
+# ==============================================================================
+
+tasks:
+
+  # ---- migrated to UmarDataBotR ---------------------------------------------
+
+  bs-update-database-daily:
+    scheduler: '\bs-update-database-daily'
+    schedule: dnevno 11:00
+    bat: batch-scripts/bs-update-database-daily.bat
+    log: logs/bs-update-database-daily.Rout
+    email: [BS-platform]
+    r: 4.1.3
+    steps:
+      bs_import:
+        script: R/bs/bs-update-database-daily.R
+        reads: [src_bs]
+        writes: [platform_BS]
+
+  furs-weekly:
+    scheduler: '\furs-weekly'
+    schedule: sreda 08:15
+    bat: batch-scripts/davcne-weekly-update.bat
+    log: [logs/furs_weekly_update.txt, logs/davcne_update_platform.txt]
+    email: [furs_weekly_update, davcne_update_platform]
+    r: 4.5.2
+    rerun_note: ponovni zagon pošlje heartbeat uporabnikom (Kušar, Koprivnikar, Kuštrin, Hazler)
+    steps:
+      furs_weekly_update:
+        script: ../furs-surs-soap/R/furs_weekly_update.R
+        reads: [src_furs_racuni]
+        writes: [davcne_db]
+      davcne_update_platform:
+        script: R/davcne/davcne_update_platform.R
+        reads: [davcne_db, src_udb_metadata]
+        writes: [platform_DAVCNE]
+
+  umar-add_data:
+    scheduler: '\umar-add_data'
+    schedule: dnevno 10:20, petek še 12:00, 13:00, 14:00
+    bat: batch-scripts/umar-add_new_data.bat
+    log: logs/umar-data_update.log
+    email: [umar_data_update]
+    r: 4.5.2
+    notes: >
+      Feederji in uvoz posameznih map so neodvisni: napaka v enem pošlje ISSUES,
+      ostali tečejo naprej. Logi uvoza po avtorjih: logs/UMARfetchR/.
+    steps:
+      feed_commodity_prices_UB:
+        script: R/umar-data/feeders/feed_commodity_prices_UB.R
+        reads: [src_wb_cmo]
+        writes: [umardata_UB]
+      feed_elektrika_AK:
+        script: R/umar-data/feeders/feed_elektrika_AK.R
+        reads: [src_elektrika]
+        writes: [umardata_AK]
+      feed_fin_vzdrznost_HM:
+        script: R/umar-data/feeders/feed_fin_vzdrznost_HM.R
+        reads: [src_fin_distress]
+        writes: [umardata_HM]
+      feed_place_DR:
+        script: R/umar-data/feeders/feed_place_DR.R
+        reads: [src_denis_place]
+        writes: [umardata_DR]
+      feed_trosarine_LF:
+        script: R/umar-data/feeders/feed_trosarine_LF.R
+        reads: [src_mf_trosarine]
+        writes: [umardata_LF]
+      # one ingest step per umar-data folder, as in the log ("OK: ingest DR")
+      ingest_AK:    {script: R/umar-data/umar_data_update.R, reads: [umardata_AK], writes: [platform_UMAR_AK]}
+      ingest_DR:    {script: R/umar-data/umar_data_update.R, reads: [umardata_DR], writes: [platform_UMAR_DR]}
+      ingest_HM:    {script: R/umar-data/umar_data_update.R, reads: [umardata_HM], writes: [platform_UMAR_HM]}
+      ingest_LF:    {script: R/umar-data/umar_data_update.R, reads: [umardata_LF], writes: [platform_UMAR_LF]}
+      ingest_UB:    {script: R/umar-data/umar_data_update.R, reads: [umardata_UB], writes: [platform_UMAR_UB]}
+      ingest_other: {script: R/umar-data/umar_data_update.R, reads: [umardata_other], writes: [platform_UMAR_other]}
+      trosarine_preracuni:
+        script: R/umar-data/derived/trosarine_monthly_calculations.R
+        reads: [platform_UMAR_LF: LF001 LF002]
+        writes: [out_trosarine_preracuni]
+
+  # ---- not migrated yet, arrows known ----------------------------------------
+
+  surs-update-database:
+    scheduler: '\surs-update-database'
+    schedule: dnevno 10:32
+    bat: batch-scripts/surs-update-database.bat
+    log: logs/surs-update-database.Rout
+    r: 4.1.3
+    steps:
+      surs_import:
+        script: R/surs-update-database.R
+        reads: [src_surs]
+        writes: [platform_SURS]
+      indicator_report:
+        script: R/update_indicator_report.R
+        reads: [platform_SURS]   # TODO: preveri, katere UMAR tabele
+        writes: [out_indicator_report]
+
+  eo_tabele_update:
+    scheduler: '\eo_tabele_update'
+    schedule: petek 11:00
+    bat: batch-scripts/eo_tabele_update.bat
+    log: logs/eo_tabele_update.Rout
+    r: 4.1.3
+    after: [surs-update-database, umar-add_data]
+    notes: Teče vse skripte v R/tabele/ po abecedi; eo_00_setup.R je skupna.
+    steps:
+      eo_02_ind:       {script: R/tabele/eo_02_ind.R}        # TODO
+      eo_03_trg_dela:  {script: R/tabele/eo_03_trg_dela.R}   # TODO
+      eo_04_place:
+        script: R/tabele/eo_04_place.R
+        reads:
+          - platform_SURS: 0701029S
+          - platform_UMAR_DR: DR012 DR013
+        writes:
+          - out_eo_tabele: 4-place, 4-wages
+      eo_05_cene:      {script: R/tabele/eo_05_cene.R}       # TODO
+      eo_06_pb:        {script: R/tabele/eo_06_pb.R}         # TODO
+      eo_07_fin_trgi:  {script: R/tabele/eo_07_fin_trgi.R}   # TODO
+      eo_08_jf:        {script: R/tabele/eo_08_jf.R}         # TODO
+
+  gt-tabela-si-update:
+    scheduler: '\gt-tabela-si-update'
+    schedule: petek 13:00
+    bat: batch-scripts/gt-tabela-si-update.bat
+    log: logs/gt-tabela-si-update.Rout
+    r: 4.5.2
+    rerun_note: ponovni zagon pošlje mail uporabnikom GT tabele in prepiše datum "Zadnja posodobitev"
+    steps:
+      gt_tabela_si:
+        script: R/gt-tabela-si-update.R
+        reads: [platform_SURS, platform_BS, platform_EUROSTAT, platform_ECB,
+                src_desez_trg_dela, src_desez_zunanja, src_denis_gt_place,
+                src_donosnosti, src_surs_koledar, src_zrsz_days]
+        writes: [out_gt_si]
+
+  # ---- not migrated yet, arrows TODO -----------------------------------------
+
+  desez-update-database-daily:
+    scheduler: '\desez-update-database-daily'
+    schedule: dnevno 14:00
+    bat: batch-scripts/desez_update_database.bat
+    log: logs/desez_update.Rout
+    r: 4.5.2
+    steps:
+      desez_import: {script: R/desez-update-database.R}
+
+  donosnosti-update-database:
+    scheduler: '\donosnosti-update-database'
+    schedule: dnevno 12:00
+    bat: batch-scripts/donosnosti-update-database.bat
+    log: logs/donosnosti-update-database.log
+    steps:
+      donosnosti_import: {script: R/donosnosti-update-database.R}
+
+  ecb-update-database:
+    scheduler: '\ecb-update-database'
+    schedule: dnevno 10:00
+    bat: batch-scripts/ecb-update-database.bat
+    log: logs/ecb-update-database.Rout
+    r: 4.5.2
+    steps:
+      ecb_import:
+        script: R/ecb-update-database.R
+        reads: [src_ecb]
+        writes: [platform_ECB]
+
+  ecb_tecaji-update_daily:
+    scheduler: '\ecb_tečaji-update_daily'
+    schedule: dnevno 16:00
+    bat: batch-scripts/ecb_tečaji-daily_update.bat
+    log: logs/tecaji-update_daily.Rout
+    r: 4.1.3
+    steps:
+      tecaji_daily: {script: ../umar_tecaji/R/update_daily.R}
+
+  ecb_tecaji-update_monthly_quarterly:
+    scheduler: '\ecb_tečaji-update_monthly_quarterly'
+    schedule: enkratni sprožilci, zadnji 7. 12. 2026
+    bat: batch-scripts/ecb_tečaji-monthly_quarterly_update.bat
+    log: logs/tecaji-update_monthly_quarterly.Rout
+    r: 4.1.3
+    steps:
+      tecaji_monthly: {script: ../umar_tecaji/R/update_monthly_quarterly.R}
+
+  eurostat-update-database:
+    scheduler: '\eurostat-update-database'
+    schedule: dnevno 11:00 in 23:00
+    bat: batch-scripts/eurostat-update-database.bat
+    log: logs/eurostat-update-database.Rout
+    r: 4.5.2
+    steps:
+      eurostat_import:
+        script: R/eurostat-update-database.R
+        reads: [src_eurostat]
+        writes: [platform_EUROSTAT]
+
+  eurostat-update-metabase:
+    scheduler: '\eurostat-update-metabase'
+    schedule: dnevno 11:03 in 23:03
+    bat: batch-scripts/eurostat-update-metabase.bat
+    log: logs/eurostat_metabase.Rout
+    r: 4.5.2
+    steps:
+      metabase:
+        script: R/eurostat-update-metabase.R
+        reads: [src_eurostat]
+        writes: [eurostat_metabase]
+
+  gt-tabela-ea-update:
+    scheduler: '\gt-tabela-ea-update'
+    schedule: petek 13:00
+    bat: batch-scripts/gt-tabela-ea-update.bat
+    log: logs/gt-tabela-ea-update.Rout
+    r: 4.5.2
+    steps:
+      gt_tabela_ea: {script: R/gt-tabela-ea-update.R}
+
+  gt_grafi_update:
+    scheduler: '\gt_grafi_update'
+    schedule: dnevno 11:03, petek še 12:03, 13:03, 14:03
+    bat: batch-scripts/gt_eo_grafi_update.bat
+    log: logs/gt_grafi_update.Rout
+    r: 4.5.2
+    steps:
+      gt_eo_grafi: {script: R/gt_eo_grafi_update.R}
+
+  ice-update-database:
+    scheduler: '\ice-update-database'
+    schedule: dnevno 07:00
+    bat: batch-scripts/ice-update-database.bat
+    log: logs/ice-update-database.log
+    steps:
+      ice_import:
+        script: R/ice-update-database.R
+        reads: [src_ice]
+        writes: [platform_ICE]
+
+  jk-update_smtk_data:
+    scheduler: '\jk-update_smtk_data'
+    schedule: dnevno 10:15 (samo ko je mzaloznik prijavljena!)
+    bat: batch-scripts/jk-update_smtk_data.bat
+    log: logs/jk_update_smtk_data.Rout
+    r: 4.1.3
+    steps:
+      jk_smtk: {script: R/jk-update_smtk_data.R}
+
+  mf_update_database:
+    scheduler: '\mf_update_database'
+    schedule: mesečno, prvi in zadnji delovni dan 10:15
+    bat: batch-scripts/mf_update_database.bat
+    log: logs/mf_update.Rout
+    r: 4.5.2
+    steps:
+      mf_import: {script: R/mf-database_update_new.R}
+
+  produktivnost-eurostat_update:
+    scheduler: '\produktivnost-eurostat_update'
+    schedule: enkratni sprožilci, zadnji 7. 12. 2026
+    bat: batch-scripts/produktivnost-eurostat_update.bat
+    log: logs/produktivnost-eurostat_update.Rout
+    r: 4.1.3
+    steps:
+      produktivnost_eurostat: {script: ../umar_produktivnost/R/update_eurostat.R}
+
+  produktivnost-surs_update:
+    scheduler: '\produktivnost-surs_update'
+    schedule: dnevno 10:30
+    bat: batch-scripts/produktivnost-surs_update.bat
+    log: logs/produktivnost-surs_update.Rout
+    r: 4.1.3
+    steps:
+      produktivnost_surs: {script: ../umar_produktivnost/R/update_surs.R}
+
+  surs-changes-api-update:
+    scheduler: '\surs-changes-api-update'
+    schedule: dnevno 17:25
+    bat: batch-scripts/surs-changes-api-update.bat
+    log: logs/surs-changes-api-update.Rout
+    r: 4.1.3
+    rerun_note: ponovni zagon pošlje maile uporabnikom
+    steps:
+      surs_changes: {script: R/surs-changes-api-update.R}
+
+  zrsz-update-database:
+    scheduler: '\zrsz-update-database'
+    schedule: mesečno 4. in 5. ob 09:00
+    bat: batch-scripts/zrsz-update-database.bat
+    log: logs/zrsz-update-database.Rout
+    r: 4.1.3
+    steps:
+      zrsz_import: {script: R/zrsz-update-database.R}
+
+  tgg-si-update:
+    scheduler: '\tgg-si-update'
+    schedule: onemogočen (bil petek 10:45)
+    bat: batch-scripts/tgg-si-update.bat
+    log: logs/tgg-tabela-update.Rout
+    r: 4.1.3
+    steps:
+      tgg_tabela_si: {script: R/tgg-tabela-si-update.R}
+
+  # ---- on demand / manual ------------------------------------------------------
+
+  umar-add_series_metadata:
+    scheduler: '\umar-add_series_metadata'
+    schedule: ročno (inicialke avtorja v Actions / Add arguments)
+    bat: batch-scripts/umar-add_new_series_metadata.bat
+    log: logs/umar-add_new_series_metadata.Rout
+    r: 4.1.3
+    steps:
+      add_metadata: {script: R/umar-add_new_series_metadata.R}
+
+  umar-update_indicator_report:
+    scheduler: '\umar-update_indicator_report'
+    schedule: ročno
+    bat: batch-scripts/update_report.bat
+    log: logs/update_indicator_report.Rout
+    r: 4.1.3
+    steps:
+      indicator_report_manual: {script: R/update_indicator_report.R}
+
+  spicka-posodobitev_tabele_zaposlenih:
+    scheduler: '\spicka-posodobitev_tabele_zaposlenih'
+    schedule: ročno
+    bat: batch-scripts/spicka_update.bat
+    log: D:/umar_dd/logs/batch.Rout
+    r: 4.1.3
+    steps:
+      spicka: {script: D:/umar_dd/R/employee_table_maintenance_script.R}
+
+# ==============================================================================
+sources:
+
+  src_surs:          {what: SiStat PX tabele, where: pxweb.stat.si, arrives: "samodejno, po koledarju objav SURS"}
+  src_bs:            {what: BS PX tabele, where: px.bsi.si, arrives: "samodejno; BS objavlja nepravilno, zato tečemo dnevno"}
+  src_eurostat:      {what: Eurostat API, where: ec.europa.eu/eurostat, arrives: samodejno}
+  src_ecb:           {what: ECB Data Portal, where: data.ecb.europa.eu, arrives: samodejno}
+  src_ice:           {what: ICE gasoil futures, where: ICE, arrives: "samodejno, delovni dnevi"}
+  src_furs_racuni:
+    what: tedenski izvoz davčnih računov FURS
+    where: furs-surs-soap/data/RacuniDavki*.zip
+    arrives: FURS tedensko odloži zip; če je najnovejši starejši od 10 dni, runner javi ISSUES
+  src_udb_metadata:
+    what: metapodatki davčnih serij
+    where: umar-data/UDB/umar_serije_metadata_UDB.xlsx
+    owner: UDB
+    arrives: ročno, ob novih serijah
+  src_wb_cmo:        {what: World Bank commodity prices (CMO), where: worldbank.org/en/research/commodity-markets, arrives: "samodejno, mesečno v začetku meseca"}
+  src_elektrika:
+    what: poraba elektrike po odjemnih skupinah
+    owner: AK
+    where: data/elektrika/Poraba el. po odjemnih skupinah*.xlsx
+    arrives: Andrej odloži novo datoteko v mapo
+  src_fin_distress:
+    what: finančna vzdržnost gospodinjstev
+    owner: HM
+    where: data/fin.vzdrznost/FinancialDistress*.xlsx
+    arrives: ročno odložena datoteka   # TODO kdo in kdaj
+  src_denis_place:
+    what: masa plač in prejemniki plač po SKD
+    owner: DR
+    where: Users/DRogan/EO/Plače (nove SKD skupine).xlsx
+    arrives: Denis posodobi datoteko po objavi SURS (~45 dni po koncu meseca)
+  src_mf_trosarine:
+    what: mesečni podatki o trošarinah
+    owner: LF
+    where: data/trosarine/ (ročno odloženo)
+    arrives: MF pošlje datoteko, ki jo je treba ročno odložiti v mapo
+  src_desez_trg_dela:
+    what: desezonirani delovno aktivni, registrirani brezposelni, ILO
+    owner: DR
+    where: DESEZONIRANJE/Trg dela/<serija>/Leto YYYY/MM/
+    arrives: Denis desezonira podatke in jih odloži v mapo tekočega meseca
+  src_desez_zunanja:
+    what: desezonirani realni izvoz in uvoz blaga
+    owner: DR
+    where: DESEZONIRANJE/Zunanja trgovina/<serija>/Leto YYYY/MM/
+    arrives: Denis desezonira podatke in jih odloži v mapo tekočega meseca
+  src_denis_gt_place:
+    what: plače za GT tabelo
+    owner: DR
+    where: Users/DRogan/GT/GT-place (REK).xlsx, list "tgg - tabela"
+    arrives: Denis posodobi datoteko
+  src_donosnosti:
+    what: donosnosti 10-letnih obveznic
+    owner: MP   # TODO preveri inicialke
+    where: data/donosnosti/Donosnosti_10Ya.xlsx, list Mesecno
+    arrives: Marjan ročno dopiše mesec
+  src_surs_koledar:  {what: SURS koledar objav, where: stat.si ReleaseCalendarCsv, arrives: samodejno}
+  src_zrsz_days:
+    what: datumi objav ZRSZ
+    where: R/gt-tabela-si-update.R, vektor zrsz_days (v kodi!)
+    arrives: ročno, enkrat letno s https://www.ess.gov.si/partnerji/trg-dela/koledar-objav/
+
+# ==============================================================================
+stores:
+
+  platform_SURS:     {what: SURS tabele na platformi}
+  platform_BS:       {what: BS tabele na platformi}
+  platform_EUROSTAT: {what: Eurostat tabele na platformi}
+  platform_ECB:      {what: ECB tabele na platformi}
+  platform_ICE:      {what: "ICE tabele na platformi (GASOIL_RAW, GASOIL_POS)"}
+  platform_DAVCNE:   {what: davčne serije (UDB) na platformi}
+  platform_UMAR_AK:    {what: tabele AK0xx na platformi}
+  platform_UMAR_DR:    {what: tabele DR0xx na platformi}
+  platform_UMAR_HM:    {what: tabele HM0xx na platformi}
+  platform_UMAR_LF:    {what: tabele LF0xx na platformi}
+  platform_UMAR_UB:    {what: tabele UB0xx na platformi}
+  platform_UMAR_other: {what: "ostale UMAR tabele na platformi (AJPES, CE, JK, MH, MK, UDB)"}
+  davcne_db:         {what: "baza davcne, tabela davcni_racuni"}
+  eurostat_metabase: {what: "shema eurostat (metabaza, SCD2)"}
+  umardata_AK:       {what: umar-data/AK/umar_serije_podatki_AK.xlsx}
+  umardata_DR:       {what: umar-data/DR/umar_serije_podatki_DR.xlsx}
+  umardata_HM:       {what: umar-data/HM/umar_serije_podatki_HM.xlsx}
+  umardata_LF:       {what: umar-data/LF/umar_serije_podatki_LF.xlsx}
+  umardata_UB:       {what: umar-data/UB/umar_serije_podatki_UB.xlsx}
+  umardata_other:    {what: "ostale mape v umar-data (AJPES, CE, JK, MH, MK, UDB), ki jih avtorji polnijo ročno"}
+
+# ==============================================================================
+outputs:
+
+  out_eo_tabele:
+    what: "EO tabele (ID, EX; SLO in ENG)"
+    type: workbook
+    where: TODO   # poti iz R/tabele/eo_00_setup.R
+    users: [TODO]
+  out_gt_si:
+    what: GT tabela SI (SLO in ENG)
+    type: workbook
+    where: data$/GT/GT_tabele_ZA WORD_ne spreminjaj/GT_tabela_SI_slo.xlsx, GT_tabela_SI_angl.xlsx
+    users: [UB, TNS, BBF]
+  out_trosarine_preracuni:
+    what: četrtletni koeficienti rasti trošarin
+    type: workbook
+    where: Users/LFajic/trošarine/trošarine_preračuni.xlsx
+    users: [LF]
+  out_indicator_report:
+    what: poročilo o indikatorjih
+    type: report
+    where: TODO
+    users: [TODO]
