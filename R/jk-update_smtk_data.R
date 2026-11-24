@@ -1,6 +1,6 @@
 # Process UMAR quarterly and monthly data
 library(openxlsx2)
-
+cat("Run started:", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "\n")
 # Find most recent smtk file
 
 input_dir <- "\\\\192.168.38.7\\public$\\Users\\AKu\u0161trin\\Dinami\u010dni_faktorski_model\\"
