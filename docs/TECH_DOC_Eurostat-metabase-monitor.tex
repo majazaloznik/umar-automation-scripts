@@ -1,0 +1,1322 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ccc@{}}
+\toprule\noalign{}
+Version & Status & Date \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0.0.1 & draft & 2026-08-18 \\
+1.0.0 & final & 2026-08-21 \\
+1.1.0 & update & 2026-08-27 \\
+1.2.0 & update & 2026-08-31 \\
+\end{longtable}
+}
+
+\section{Eurostat Metabase Structure
+Monitor}\label{eurostat-metabase-structure-monitor}
+
+Technical documentation. Covers what the system does, why it is built
+the way it is, the data model, the processing pipeline, the subscription
+mechanism, operational details, and known limitations.
+
+The monitor draws on \textbf{two independent Eurostat sources}: the
+\textbf{metabase} (the full dimensional structure of every dataset ---
+Sections 2, 4.2, 5, 6) and the \textbf{TOC} (the navigation-tree
+hierarchy of folders and datasets --- Sections 2b, 4.5, 5b). The
+metabase drives structural-change detection; the TOC lets users
+subscribe to whole folders rather than listing individual datasets
+(Section 7.3).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Purpose and problem}\label{purpose-and-problem}
+
+Eurostat datasets change structure without notice: dimensions are
+renamed or added, code lists gain or lose members, whole datasets are
+renamed or withdrawn. These changes ship silently with Eurostat's
+twice-daily refresh (11:00 and 23:00 CET). There is \textbf{no
+forward-looking schedule} of structural changes anywhere in Eurostat's
+dissemination system, and the database keeps only the latest version of
+each dataset --- there is no versioning or history on their side.
+
+Downstream, this breaks things:
+
+\begin{itemize}
+\tightlist
+\item
+  Colleagues' Power Query links that hard-code dimension names and level
+  codes in the API URL fail the moment a dimension is renamed or added.
+\item
+  Automated R ingestion pipelines that assume a fixed structure break
+  or, worse, silently mis-ingest.
+\end{itemize}
+
+The monitor's job is to \textbf{detect structural changes as soon as
+they publish}, record them as durable history (which Eurostat itself
+does not keep), and \textbf{alert the specific people who depend on the
+affected datasets} --- before they discover the breakage the hard way.
+
+The system does not prevent breakage (it cannot; a renamed dimension
+breaks any query that references it). It makes breakage \textbf{visible
+early and legible}, and routes each change to the people who care about
+it.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Data source}\label{data-source}
+
+The single source is the Eurostat \textbf{metabase} file:
+
+\begin{verbatim}
+https://ec.europa.eu/eurostat/api/dissemination/catalogue/metabase.txt.gz
+\end{verbatim}
+
+It is a gzipped, tab-separated file giving the full structure of every
+disseminated dataset, one row per
+\texttt{(dataset,\ dimension,\ position)}:
+
+\begin{verbatim}
+aact_ali01   geo    EU
+aact_ali01   geo    EU27_2020
+aact_ali01   itm_newa   40000
+aact_ali01   time   2022
+...
+\end{verbatim}
+
+At the time of writing it is \textasciitilde1.34M rows across
+\textasciitilde7,600 datasets. Rows are ordered by dataset, then
+dimension, then the code list's protocol order --- this row order is
+itself information (it is the intended order of the code list) and is
+captured on ingest.
+
+\subsubsection{Source constraints that shaped the
+design}\label{source-constraints-that-shaped-the-design}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{No \texttt{Last-Modified} header.} The endpoint returns a
+  chunked, generated response, so there is no file modification
+  timestamp to use for change detection or as a publication time. This
+  is confirmed behaviour, not a bug in the fetch. Consequently the
+  observation timestamp we record is \emph{our} fetch time, not
+  Eurostat's publication time.
+\item
+  \textbf{\texttt{NA} collides with Namibia.} Namibia's ISO-2 code is
+  the literal string \texttt{NA}, which \texttt{data.table::fread}
+  converts to a missing value by default. This must be suppressed on
+  read (\texttt{na.strings\ =\ NULL}), or Namibia silently vanishes from
+  every dataset that has it as a position, corrupting the structure
+  record.
+\item
+  \textbf{The metabase carries codes, not labels.} It gives dimension
+  \emph{codes} and position \emph{codes}, never their human-readable
+  titles. This is why some kinds of rename cannot be detected (see
+  Limitations).
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2b. Second data source: the TOC (navigation
+tree)}\label{b.-second-data-source-the-toc-navigation-tree}
+
+The second source is the Eurostat \textbf{table of contents} (navigation
+tree) XML:
+
+\begin{verbatim}
+https://ec.europa.eu/eurostat/api/dissemination/catalogue/toc/xml
+\end{verbatim}
+
+It is the folder hierarchy the online data browser shows: nested
+\texttt{branch} (folder) elements containing \texttt{leaf} (dataset or
+table) elements, each with a stable \textbf{code} and
+English/French/German titles. Both branches and leaves may contain
+children (a dataset leaf can nest curated \texttt{table} leaves), so it
+is a genuine tree of arbitrary depth. At the time of writing it parses
+to \textasciitilde9,400 distinct nodes and \textasciitilde12,200 edges.
+
+The TOC exists in the system for one user-facing feature:
+\textbf{subscribing to a whole folder} instead of listing every dataset
+under it (Section 7.3). It is diffed and snapshotted on the same SCD2
+principles as the metabase, but the two are entirely independent sources
+with independent snapshots and cadences.
+
+\subsubsection{Source characteristics that shaped the
+design}\label{source-characteristics-that-shaped-the-design}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Folders have codes.} Unlike the flat tsv TOC that
+  \texttt{eurostat::get\_eurostat\_toc()} parses, the XML carries a
+  \texttt{\textless{}code\textgreater{}} on every folder node, so folder
+  identity is a stable code, not a mutable title. This is why the ingest
+  is a fresh XML parse rather than a reuse of the older tsv-based
+  hierarchy code.
+\item
+  \textbf{The XML carries a real \texttt{creationDate}} (on the
+  \texttt{\textless{}tree\textgreater{}} root, format
+  \texttt{\%Y\%m\%dT\%H\%M}). Unlike the metabase (no
+  \texttt{Last-Modified}), this gives a genuine publication timestamp
+  --- so the TOC ingest can run a \emph{monotonicity guard} (refuse a
+  fetched tree stamped older than the latest stored snapshot).
+\item
+  \textbf{Nodes are reached by multiple paths.} \textasciitilde2,000
+  codes appear under more than one parent (the same dataset filed in
+  several folders). The parser emits one node per code (deduplicated on
+  code/type/title) but one edge per parent→child pair, so
+  multi-parenting is represented natively as multiple edges.
+\item
+  \textbf{English titles only} are stored; a node with no English title
+  stores \texttt{NA} rather than falling back to another language.
+\item
+  \textbf{The TOC XML is an incomplete listing relative to the browser.}
+  A handful of tables that exist in the metabase (and in the browser)
+  are simply absent from the XML file --- confirmed by grepping the raw
+  source, not a parser fault. See Limitations.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Architecture overview}\label{architecture-overview}
+
+The system separates into \textbf{reusable database components} (which
+belong in the R package suite) and an \textbf{application} (the
+orchestration and alerting, which is a standalone scheduled script).
+This separation is deliberate: the DB-generic pieces are reused and
+warrant roxygen documentation and tests; the orchestration is one
+specific job and is allowed to be a script.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Concern
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Belongs in
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Nature
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+TOC XML fetch + parse (\texttt{fetch\_toc} / \texttt{parse\_toc}) &
+EUROSTATfetchR & reusable, tested \\
+Change-detection reads (\texttt{sql\_get\_*},
+\texttt{resolve\_folder\_datasets}) & UMARaccessR & reusable, tested \\
+Generic query executor (\texttt{sql\_function\_call}) & UMARimportR &
+reusable \\
+Metabase + TOC ingest orchestration & standalone script & application
+glue \\
+Subscription load/validate, filtering, email & standalone script &
+application glue \\
+\end{longtable}
+}
+
+The DB read functions are Postgres functions (their SQL tracked in
+\texttt{EUROSTATfetchR/inst/sql/} alongside the schema DDL, with
+\texttt{BEGIN…ROLLBACK} SQL tests), wrapped by thin \texttt{sql\_get\_*}
+R functions in UMARaccessR that call
+\texttt{UMARimportR::sql\_function\_call}. The read wrappers are grouped
+by \emph{what they do} (reads → UMARaccessR), not by which schema they
+read --- consistent with the \texttt{platform}-schema read wrappers
+living there too.
+
+The application script wires these together and is what Windows Task
+Scheduler runs. It is not a package because Task Scheduler runs a
+script, and because its email/orchestration logic should not couple the
+general-purpose DB libraries to this one monitoring use case. The
+metabase SCD2 upsert and the TOC ingest both live in the application as
+orchestration (multi-statement, branch logic, source- specific) rather
+than as reusable primitives --- a deliberate application of the ``only
+genuinely reusable things become package functions'' rule.
+
+All database objects live in a dedicated \texttt{eurostat} schema,
+separate from the \texttt{platform} schema that holds the main
+statistical data model. The \texttt{eurostat} schema DDL (metabase
+tables, TOC tables, and all read functions) is tracked in
+\texttt{EUROSTATfetchR/inst/sql/}.
+
+\subsubsection{3.1 File and code layout}\label{file-and-code-layout}
+
+The application is a set of standalone R files sourced by a runner, plus
+a batch wrapper for Task Scheduler. Nothing in the application is a
+package; the package code lives in the three R packages (EUROSTATfetchR,
+UMARaccessR, UMARimportR).
+
+\begin{verbatim}
+O:\Avtomatizacija\umar-automation-scripts\
+  R\
+    eurostat-update-metabase.R          <- runner: sources the function files, calls main()
+    eurostat-metabase\                  <- the application function files
+      ingest.R          -- ingest() (metabase) and ingest_toc()
+      subscriptions.R   -- load_subscriptions(), subscribe_bot_to_ingested()
+      alerts.R          -- is_breaking(), filter_alerts()
+      email.R           -- init_email(), send_failure_email(),
+                           format_alert_body(), send_alerts_perperson()
+      main.R            -- main() (defines only; does not call itself)
+  batch-scripts\
+    eurostat-update-metabase.bat        <- Task Scheduler entry point
+  data\umar_data_bot_subscriptions\
+    eurostat_email_prijave.xlsx         <- the subscription spreadsheet
+  logs\
+    eurostat_metabase.Rout              <- redirected run log, committed to git
+\end{verbatim}
+
+The runner (\texttt{eurostat-update-metabase.R}, outside the function
+folder) sources all files in \texttt{eurostat-metabase\textbackslash{}}
+and then calls \texttt{main()}. The function files are pure definitions
+--- no \texttt{library()}, no \texttt{source()}, no top-level execution
+--- so sourcing them has no side effects and their order does not matter
+(\texttt{main()} is only evaluated once called). Package functions are
+referenced with \texttt{::}, so only the packages need to be installed
+in the scheduled account's library, not attached. The batch file runs
+the runner via \texttt{Rscript}, redirects output to the log, and
+commits the log to git.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Data model}\label{data-model}
+
+The \texttt{eurostat} schema holds two families of tables: the
+\textbf{metabase} family (snapshot + SCD2 structure, Sections 4.1--4.4)
+and the \textbf{TOC} family (snapshot + SCD2 node/edge tree, Section
+4.5), plus the \texttt{subscription} table shared by both. Each family
+has its own temporary staging table used only during ingest.
+
+\subsubsection{\texorpdfstring{4.1 \texttt{snapshot} --- one row per
+accepted
+ingest}{4.1 snapshot --- one row per accepted ingest}}\label{snapshot-one-row-per-accepted-ingest}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ eurostat.}\KeywordTok{snapshot}\NormalTok{ (}
+\NormalTok{  snapshot\_id bigserial }\KeywordTok{PRIMARY} \KeywordTok{KEY}\NormalTok{,}
+\NormalTok{  file\_sha256 text }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,          }\CommentTok{{-}{-} content identity of the ingested file}
+\NormalTok{  observed\_at timestamptz }\KeywordTok{NOT} \KeywordTok{NULL} \KeywordTok{DEFAULT}\NormalTok{ now(),}
+\NormalTok{  n\_rows      bigint }\KeywordTok{NOT} \KeywordTok{NULL}
+\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{file\_sha256} is the \textbf{content identity} of the metabase
+  file. It is the dedup key: if the newly fetched file's hash matches
+  the latest snapshot, there is nothing to do.
+\item
+  \texttt{file\_sha256} is \textbf{not} unique. A rollback (Eurostat
+  reverting to a byte-identical earlier structure) is a real event we
+  want to record as a new observation, so the same hash may legitimately
+  appear on multiple dates. Uniqueness is on \texttt{snapshot\_id} (the
+  observation), not on content.
+\item
+  \texttt{observed\_at} is fetch time, not publication time (no header
+  available).
+\end{itemize}
+
+\subsubsection{\texorpdfstring{4.2 \texttt{metabase} --- the structural
+history
+(SCD2)}{4.2 metabase --- the structural history (SCD2)}}\label{metabase-the-structural-history-scd2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ eurostat.metabase (}
+\NormalTok{  dataset text }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
+\NormalTok{  dim     text }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
+\NormalTok{  pos     text }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
+\NormalTok{  ord     }\DataTypeTok{int}  \KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,              }\CommentTok{{-}{-} protocol order within (dataset, dim)}
+\NormalTok{  valid\_from timestamptz }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
+\NormalTok{  valid\_to   timestamptz,             }\CommentTok{{-}{-} NULL = live}
+\NormalTok{  from\_snapshot\_id bigint }\KeywordTok{NOT} \KeywordTok{NULL} \KeywordTok{REFERENCES}\NormalTok{ eurostat.}\KeywordTok{snapshot}\NormalTok{(snapshot\_id),}
+\NormalTok{  to\_snapshot\_id   bigint          }\KeywordTok{REFERENCES}\NormalTok{ eurostat.}\KeywordTok{snapshot}\NormalTok{(snapshot\_id)}
+\NormalTok{);}
+
+\KeywordTok{CREATE} \KeywordTok{UNIQUE} \KeywordTok{INDEX}\NormalTok{ ux\_mb\_live }\KeywordTok{ON}\NormalTok{ eurostat.metabase (dataset, dim, pos)}
+  \KeywordTok{WHERE}\NormalTok{ valid\_to }\KeywordTok{IS} \KeywordTok{NULL}\NormalTok{;}
+\KeywordTok{CREATE} \KeywordTok{INDEX}\NormalTok{ ix\_mb\_from }\KeywordTok{ON}\NormalTok{ eurostat.metabase (from\_snapshot\_id);}
+\KeywordTok{CREATE} \KeywordTok{INDEX}\NormalTok{ ix\_mb\_to   }\KeywordTok{ON}\NormalTok{ eurostat.metabase (to\_snapshot\_id);}
+\end{Highlighting}
+\end{Shaded}
+
+This is a \textbf{Type-2 slowly-changing-dimension} table (SCD2). Each
+row represents one \texttt{(dataset,\ dim,\ pos)} combination and the
+span over which it was live. A live row has \texttt{valid\_to\ IS\ NULL}
+/ \texttt{to\_snapshot\_id\ IS\ NULL}. When a combination disappears
+from the file, its row is \emph{expired} (both \texttt{valid\_to} and
+\texttt{to\_snapshot\_id} set); when a new combination appears, a new
+live row is inserted. Persisting combinations are left untouched.
+
+Design decisions worth recording:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Only changed rows are written.} Each ingest expires the rows
+  that vanished and inserts the rows that appeared; the vast unchanged
+  majority are never rewritten. This keeps table churn tiny (dozens of
+  rows on a normal day) and avoids the MVCC-bloat that an ``expire
+  everything, reinsert everything'' approach would cause twice daily.
+\item
+  \textbf{The unique partial index \texttt{ux\_mb\_live} enforces the
+  core invariant:} at most one live row per
+  \texttt{(dataset,\ dim,\ pos)}. A duplicate means an ingest bug, and
+  the constraint turns that from silent corruption into an immediate,
+  transaction-rolling-back failure.
+\item
+  \textbf{\texttt{from\_snapshot\_id} / \texttt{to\_snapshot\_id} are
+  the authoritative lineage keys.} They exist so that ``which ingest
+  created/expired this row'' is answered by a foreign key, not by
+  matching a timestamp. This is not cosmetic --- see 4.4.
+\item
+  \textbf{\texttt{ord} captures the code list's protocol order} at the
+  time a row was inserted. It is used to build an ordered position
+  signature for rename detection. It is \textbf{run-local}: it is not
+  renumbered when a code is inserted mid-list in a later run, so
+  ordinals can develop duplicates within a long-lived dimension. This is
+  acceptable because it only ever makes rename detection
+  \emph{conservative} (a false negative, never a false positive), and no
+  consumer relies on cross-run ordinal continuity.
+  Reorder-without-rename is out of scope.
+\item
+  \textbf{The \texttt{time} dimension is stored but never alerted on.}
+  Every dataset's \texttt{time} dimension gains a position every period
+  (new month/quarter/year), so it would be the single largest source of
+  false alerts. It is kept in the store (it is real structure) and
+  filtered out at detection time.
+\end{itemize}
+
+\subsubsection{\texorpdfstring{4.3 \texttt{subscription} --- who wants
+to hear about
+what}{4.3 subscription --- who wants to hear about what}}\label{subscription-who-wants-to-hear-about-what}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ eurostat.subscription (}
+\NormalTok{  email   text }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
+\NormalTok{  dataset text }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,              }\CommentTok{{-}{-} lowercased dataset OR folder code, or \textquotesingle{}*\textquotesingle{}}
+  \KeywordTok{scope}\NormalTok{   text }\KeywordTok{NOT} \KeywordTok{NULL} \KeywordTok{DEFAULT} \StringTok{\textquotesingle{}breaking\textquotesingle{}} \KeywordTok{CHECK}\NormalTok{ (}\KeywordTok{scope} \KeywordTok{IN}\NormalTok{ (}\StringTok{\textquotesingle{}breaking\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}all\textquotesingle{}}\NormalTok{)),}
+\NormalTok{  kind    text }\KeywordTok{NOT} \KeywordTok{NULL} \KeywordTok{DEFAULT} \StringTok{\textquotesingle{}dataset\textquotesingle{}} \KeywordTok{CHECK}\NormalTok{ (kind }\KeywordTok{IN}\NormalTok{ (}\StringTok{\textquotesingle{}dataset\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}folder\textquotesingle{}}\NormalTok{)),}
+  \KeywordTok{PRIMARY} \KeywordTok{KEY}\NormalTok{ (email, dataset)}
+\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{email} is the natural key and the delivery address; there is
+  no separate person column.
+\item
+  \texttt{dataset\ =\ \textquotesingle{}*\textquotesingle{}} subscribes
+  to all datasets.
+\item
+  \texttt{scope} filters by change type: \texttt{breaking} (default)
+  sends only changes that can break an existing query; \texttt{all}
+  sends everything on the subscribed datasets. See 6.2 for the
+  definition of ``breaking''.
+\item
+  \texttt{kind} is \textbf{derived at load time, not user-supplied}: the
+  loader checks each code against the live metabase datasets and the
+  live TOC folders and stamps \texttt{dataset} or \texttt{folder}
+  accordingly (Section 7.2). The user never declares which --- they just
+  enter a code and the backend resolves it. \texttt{*} rows are
+  nominally \texttt{dataset} (the \texttt{*} special-case in matching
+  fires before \texttt{kind} is consulted).
+\item
+  The \texttt{CHECK} constraints reject any scope or kind value outside
+  the allowed set, so a corrupt load fails loudly rather than producing
+  a garbage filter.
+\item
+  Folder and dataset codes are \textbf{disjoint namespaces} (verified:
+  no code is both a live folder and a live dataset), so the derived
+  \texttt{kind} is unambiguous.
+\item
+  Rows are populated from \textbf{two sources}: human subscriptions from
+  the Excel sheet (Section 7.1) and machine subscriptions for ingested
+  pipeline dependencies (Section 7.4). The two are distinguished only by
+  email address --- the bot uses a dedicated address, so its
+  \texttt{delete-and-replace} never touches a human's rows.
+\end{itemize}
+
+\subsubsection{4.4 Why lineage is keyed on snapshot id, not
+timestamp}\label{why-lineage-is-keyed-on-snapshot-id-not-timestamp}
+
+An early version of the change-detection query joined rows to their
+snapshot by matching \texttt{valid\_from\ =\ snapshot.observed\_at}.
+This is fragile: \texttt{timestamptz} stores microsecond precision, and
+two values that \emph{display} identically (both shown to the
+millisecond) can differ in lower digits, so the equality silently
+matches nothing. This produced a real bug where a query returned zero
+rows despite visible changes in the table.
+
+The fix, and the standing rule: \textbf{all change-detection keys off
+\texttt{from\_snapshot\_id} / \texttt{to\_snapshot\_id} (integers),
+never off the timestamps.} Integer equality has no precision to
+mismatch. The timestamp columns remain as human-readable convenience
+only; the snapshot ids are authoritative.
+
+\subsubsection{4.5 TOC tables --- the navigation tree
+(SCD2)}\label{toc-tables-the-navigation-tree-scd2}
+
+The TOC is stored as a snapshot table plus two SCD2 tables --- nodes and
+edges --- so that the tree's history is preserved on the same ``keep
+what Eurostat won't'' principle as the metabase.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ eurostat.toc\_snapshot (}
+\NormalTok{  snapshot\_id   bigserial }\KeywordTok{PRIMARY} \KeywordTok{KEY}\NormalTok{,}
+\NormalTok{  file\_sha256   text }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,          }\CommentTok{{-}{-} content identity (dedup key)}
+\NormalTok{  creation\_date timestamptz,            }\CommentTok{{-}{-} \textless{}tree creationDate\textgreater{}, provenance}
+\NormalTok{  observed\_at   timestamptz }\KeywordTok{NOT} \KeywordTok{NULL} \KeywordTok{DEFAULT}\NormalTok{ now(),}
+\NormalTok{  n\_nodes       bigint }\KeywordTok{NOT} \KeywordTok{NULL}
+\NormalTok{);}
+
+\KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ eurostat.toc\_node (        }\CommentTok{{-}{-} SCD2; one live row per code}
+\NormalTok{  code  text }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
+  \KeywordTok{type}\NormalTok{  text }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,                  }\CommentTok{{-}{-} \textquotesingle{}folder\textquotesingle{} | \textquotesingle{}dataset\textquotesingle{} | \textquotesingle{}table\textquotesingle{}}
+\NormalTok{  title text,}
+\NormalTok{  valid\_from timestamptz }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
+\NormalTok{  valid\_to   timestamptz,               }\CommentTok{{-}{-} NULL = live}
+\NormalTok{  from\_snapshot\_id bigint }\KeywordTok{NOT} \KeywordTok{NULL} \KeywordTok{REFERENCES}\NormalTok{ eurostat.toc\_snapshot(snapshot\_id),}
+\NormalTok{  to\_snapshot\_id   bigint          }\KeywordTok{REFERENCES}\NormalTok{ eurostat.toc\_snapshot(snapshot\_id)}
+\NormalTok{);}
+\KeywordTok{CREATE} \KeywordTok{UNIQUE} \KeywordTok{INDEX}\NormalTok{ ux\_toc\_node\_live }\KeywordTok{ON}\NormalTok{ eurostat.toc\_node (code) }\KeywordTok{WHERE}\NormalTok{ valid\_to }\KeywordTok{IS} \KeywordTok{NULL}\NormalTok{;}
+
+\KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ eurostat.toc\_edge (        }\CommentTok{{-}{-} SCD2; one live row per parent→child}
+\NormalTok{  parent\_code text }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
+\NormalTok{  child\_code  text }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
+\NormalTok{  valid\_from timestamptz }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
+\NormalTok{  valid\_to   timestamptz,               }\CommentTok{{-}{-} NULL = live}
+\NormalTok{  from\_snapshot\_id bigint }\KeywordTok{NOT} \KeywordTok{NULL} \KeywordTok{REFERENCES}\NormalTok{ eurostat.toc\_snapshot(snapshot\_id),}
+\NormalTok{  to\_snapshot\_id   bigint          }\KeywordTok{REFERENCES}\NormalTok{ eurostat.toc\_snapshot(snapshot\_id)}
+\NormalTok{);}
+\KeywordTok{CREATE} \KeywordTok{UNIQUE} \KeywordTok{INDEX}\NormalTok{ ux\_toc\_edge\_live }\KeywordTok{ON}\NormalTok{ eurostat.toc\_edge (parent\_code, child\_code) }
+  \KeywordTok{WHERE}\NormalTok{ valid\_to }\KeywordTok{IS} \KeywordTok{NULL}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+Design decisions:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Nodes and edges are separate tables} because the hierarchy
+  changes independently of the nodes. A dataset moved from folder A to
+  folder B is an \emph{edge} change (expire A→X, insert B→X), not a node
+  change. Folding the parent into the node row would make a re-parenting
+  look like a node change and would not represent a code with multiple
+  parents. Separate edges = clean move detection and native
+  multi-parenting (one live edge per parent).
+\item
+  \textbf{Node identity is \texttt{code}; \texttt{title} and
+  \texttt{type} are tracked content.} A title change expires the old row
+  and inserts a new one --- the same SCD2 treatment the metabase gives
+  every column. Because the TOC (unlike the metabase) carries titles,
+  this is what makes \emph{rename detection} possible later: a code with
+  an expired title and a new live title is a rename, decisively.
+\item
+  \textbf{\texttt{creation\_date} enables a monotonicity guard} the
+  metabase ingest cannot do: a fetched tree stamped strictly older than
+  the latest stored snapshot is refused (a stale-mirror serve). Equal
+  timestamps pass (a same-minute regeneration with a real change is
+  legitimate).
+\item
+  Lineage keys off \texttt{from\_snapshot\_id} /
+  \texttt{to\_snapshot\_id} throughout, same rule as 4.4.
+\end{itemize}
+
+Note on snapshot volume: the TOC XML is regenerated by Eurostat on every
+fetch with a fresh \texttt{creationDate}, so its \texttt{sha256} differs
+each run even when the tree content is identical. The dedup guard
+therefore records a new \texttt{toc\_snapshot} most runs, but a run
+whose tree is unchanged expires and inserts \textbf{zero} node and edge
+rows --- a true no-op snapshot. These accumulate harmlessly
+(\textasciitilde2/day); a run's real changes are exactly those where any
+of the node/edge added/expired counts is non-zero. This is accepted
+rather than fixed (content-hashing the parsed frames would suppress the
+no-op snapshots, but the history is only being accumulated, not yet
+diffed, so it is not worth it).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Ingest pipeline}\label{ingest-pipeline}
+
+The ingest is a single function that takes an open connection and
+returns a status description. It does not know that email or alerting
+exist --- that is the orchestrator's concern. It returns one of:
+\texttt{unchanged}, \texttt{changed} (with the new
+\texttt{snapshot\_id}), or raises an error.
+
+Steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Fetch} the gzipped metabase to a temp file and compute its
+  \texttt{sha256}.
+\item
+  \textbf{Read} with \texttt{na.strings\ =\ NULL} (Namibia) and capture
+  protocol order (\texttt{ord}) per \texttt{(dataset,\ dim)}.
+\item
+  \textbf{Dedup guard.} Compare the fetched \texttt{sha256} to the
+  \emph{latest} snapshot only.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Matches latest → \texttt{unchanged}, exit. Nothing to do.
+  \item
+    Matches an \emph{older} snapshot → a rollback. Warn, but proceed to
+    ingest it as a new observation.
+  \item
+    No match → a new structure, proceed.
+  \end{itemize}
+\item
+  \textbf{Diff and apply, in one transaction:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Insert the new \texttt{snapshot} row first, capturing its id (needed
+    as the FK for the rows about to change).
+  \item
+    Load the fetched file into an unlogged temp staging table;
+    \texttt{ANALYZE} it and index it so the planner uses hash joins, not
+    nested loops.
+  \item
+    \textbf{Bootstrap branch} (\texttt{n\_live\ ==\ 0}): the live set is
+    empty, so every row is new by definition --- a plain bulk insert, no
+    anti-join. This exists because an anti-join against an empty target
+    degenerates to a per-row scan and takes minutes; the plain insert
+    takes seconds.
+  \item
+    \textbf{Steady-state branch:} expire live rows absent from the file
+    (anti-join staging → metabase), then insert file rows absent from
+    the live set (anti-join metabase → staging). Both are sub-second at
+    this scale with the FK indexes present.
+  \end{itemize}
+\item
+  \textbf{Return} \texttt{changed} with the new \texttt{snapshot\_id},
+  \texttt{n\_rows}, and a \texttt{rolled\_back} flag.
+\end{enumerate}
+
+The whole thing is wrapped so that on any exit --- success, error, or
+early return --- the connection is disconnected. A \textbf{session-level
+advisory lock} taken at the start makes the run a singleton: a second
+concurrent run exits immediately rather than interleaving with the
+first. The lock releases automatically on disconnect (session-scoped
+locks do not survive the session), so no explicit unlock is needed.
+
+\subsection{5b. TOC ingest pipeline}\label{b.-toc-ingest-pipeline}
+
+\texttt{ingest\_toc(con)} follows the same shape as the metabase ingest,
+with two differences. It calls \texttt{EUROSTATfetchR::fetch\_toc()}
+(fetch + parse to flat \texttt{nodes} and \texttt{edges} frames), then:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Dedup guard} on \texttt{sha256} against the latest
+  \texttt{toc\_snapshot} (rollback to an older tree is re-ingested, same
+  as the metabase).
+\item
+  \textbf{Monotonicity guard:} refuse if the fetched
+  \texttt{creationDate} is strictly older than the latest stored
+  snapshot's (only possible because the TOC carries a timestamp).
+\item
+  \textbf{Diff and apply in one transaction, on two tables:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Nodes} --- a node is expired when its \texttt{code} is no
+    longer present in staging \emph{with the same type and title}, and
+    inserted when a staging row does not match a live row on all of
+    \texttt{(code,\ type,\ title)}. So a title change expires the old
+    row and inserts the new --- richer than the metabase's exact-tuple
+    match, because the key (\texttt{code}) is narrower than the tracked
+    columns. \texttt{title} comparison uses
+    \texttt{IS\ NOT\ DISTINCT\ FROM} so null-title nodes round-trip
+    correctly.
+  \item
+    \textbf{Edges} --- pure presence/absence on
+    \texttt{(parent\_code,\ child\_code)}, exactly like the metabase
+    pattern.
+  \item
+    A \textbf{bootstrap branch} (empty live set) bulk-inserts both
+    tables with no anti-join, same rationale as the metabase.
+  \end{itemize}
+\end{enumerate}
+
+The TOC ingest runs inside the main run's connection and advisory lock
+(it does not take its own). It is folded into the scheduled job rather
+than separately scheduled (Section 9), and runs \emph{before} the
+metabase alert stage so folder resolution (Section 7.3) uses the
+freshest tree. Its failure is isolated: a TOC ingest error emails the
+maintainer but does \textbf{not} block metabase alerting --- folder
+resolution then falls back to the last successfully ingested tree, which
+is correct degradation.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Change detection}\label{change-detection}
+
+The change-detection read ---
+\texttt{UMARaccessR::sql\_get\_eurostat\_metabase\_changes\_from\_snapshot(con,\ snapshot\_id)},
+wrapping the \texttt{eurostat.get\_metabase\_changes} Postgres function
+--- returns one row per affected dataset for the given snapshot. It
+classifies at the dataset level first, then breaks down dimension and
+level changes for datasets that were neither newly added nor wholly
+removed. (A companion read,
+\texttt{sql\_get\_eurostat\_removed\_levels\_from\_snapshot}, returns
+the specific removed level codes for a set of datasets, used to list ---
+not merely count --- removed levels in alert emails.)
+
+\subsubsection{6.1 Event types}\label{event-types}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\texttt{event}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Meaning
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{dataset\_added} & Dataset appeared for the first time (no prior
+rows at all) \\
+\texttt{dataset\_removed} & Dataset had live rows before, none survive
+after \\
+\texttt{changed} & Existing dataset with dimension and/or level
+changes \\
+\end{longtable}
+}
+
+For \texttt{changed} rows the query also returns:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{dim\_changes} --- a text list like
+  \texttt{geo:dim\_added,\ unit:dim\_removed}, or NULL if no
+  dimension-level change.
+\item
+  \texttt{level\_added} / \texttt{level\_removed} --- counts of
+  code-list positions added/removed (excluding \texttt{time}).
+\end{itemize}
+
+New and removed datasets are reported as a \textbf{single} event each;
+their per-dimension changes are suppressed, because a whole-dataset
+event should not also emit a \texttt{dim\_added}/\texttt{dim\_removed}
+for every one of its dimensions.
+
+\subsubsection{6.2 What counts as
+``breaking''}\label{what-counts-as-breaking}
+
+This is a \textbf{subscription} concept, not a detection concept, so it
+is defined in the application (R), next to the subscription logic, not
+in the SQL. A change is breaking if it can break an existing query:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{dataset\_removed}
+\item
+  any dimension change (\texttt{dim\_added} or \texttt{dim\_removed})
+\item
+  \texttt{level\_removed\ \textgreater{}\ 0}
+\end{itemize}
+
+Not breaking:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{level\_added} only --- a new code rarely breaks anything that
+  already runs
+\item
+  \texttt{dataset\_added} --- a new dataset cannot break an existing
+  query
+\end{itemize}
+
+\texttt{dim\_added} is treated as breaking because an added dimension
+changes granularity, which silently breaks downstream aggregations and
+joins --- this is precisely the failure that originally motivated the
+project.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Subscription system}\label{subscription-system}
+
+\subsubsection{7.1 The spreadsheet}\label{the-spreadsheet}
+
+Subscriptions are maintained by users themselves in a shared Excel file
+on the network share.
+
+The location is:
+\texttt{"O:\textbackslash{}Avtomatizacija\textbackslash{}umar-automation-scripts\textbackslash{}data\textbackslash{}umar\_data\_bot\_subscriptions\textbackslash{}}
+\texttt{eurostat\_email\_prijave.xlsx"}
+
+Columns: \texttt{email}, \texttt{dataset}, \texttt{scope}, and an
+optional free-text \texttt{notes} column that the system ignores
+entirely. One row per \texttt{(email,\ dataset)}. Users add the dataset
+codes they depend on; \texttt{scope} defaults to \texttt{breaking} if
+left blank; \texttt{dataset\ =\ *} opts into everything.
+
+Putting the sheet where the knowledge lives (with the people who know
+their own dependencies) is deliberate --- it removes the maintainer as a
+bottleneck. The spreadsheet is the human interface; the
+\texttt{subscription} table is the validated, normalised truth derived
+from it.
+
+\subsubsection{7.2 Load and validation}\label{load-and-validation}
+
+\texttt{load\_subscriptions(con)} reads the sheet and reloads the table.
+It:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Selects columns by name}, so an extra column (like
+  \texttt{notes}) cannot shift anything; a missing required column is a
+  hard error.
+\item
+  \textbf{Normalises}: lowercases and trims email and dataset; defaults
+  blank scope to \texttt{breaking}.
+\item
+  \textbf{Validates}, collecting problems without halting:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    unknown codes --- each non-\texttt{*} code is checked against
+    \emph{both} the live metabase datasets \emph{and} the live TOC
+    folders; it is rejected only if it matches neither. This is the
+    critical check; a typo'd code that matches nothing would otherwise
+    silently deliver no alerts. Folder codes are entered exactly as they
+    appear in the online Detailed-datasets tree (unprefixed); a
+    \texttt{t\_}-prefixed Tables-hierarchy code will not match and is
+    reported (the two hierarchies are genuinely different --- the system
+    does not silently remap one to the other).
+  \item
+    invalid scope values,
+  \item
+    duplicate \texttt{(email,\ dataset)} pairs. Bad rows are
+    \textbf{skipped, not fatal} --- one person's mistake must not block
+    everyone else's subscriptions. Problems are emailed to the
+    maintainer. Each surviving row is stamped with a derived
+    \texttt{kind} (\texttt{dataset} or \texttt{folder}) from which
+    lookup it matched.
+  \end{itemize}
+\item
+  \textbf{Safety gate against corruption:} if the load would
+  \emph{remove} existing subscriptions for \textbf{more than one email
+  address}, it refuses (raises) rather than applying the change. The
+  editing convention is that no one touches another person's rows, so
+  removals spanning multiple people mean the sheet was mangled (cleared,
+  truncated, saved empty). A single person editing their own rows passes
+  fine. This protects the authoritative table from a corrupted sheet
+  without a merge engine --- it is a sanity gate, not a diff.
+\item
+  \textbf{Truncate + reload} the clean rows, in one transaction. The
+  sheet is authoritative, so idempotent full replacement is the simplest
+  correct model; the gate handles the ``authoritative until someone
+  breaks it'' case.
+\end{enumerate}
+
+\texttt{load\_subscriptions} runs on \textbf{every} run, not only on
+change days, so that a corrupted sheet surfaces (via the gate) the same
+night it happens rather than lying in wait until the next structural
+change.
+
+\subsubsection{7.3 Folder subscriptions}\label{folder-subscriptions}
+
+A subscription code may be a \textbf{folder} rather than a dataset. A
+folder subscription matches structural changes on \emph{any} dataset
+beneath that folder in the TOC tree, so a user can subscribe to, say,
+\texttt{mar} (maritime transport) and receive alerts for every
+\texttt{mar\_*} dataset without listing them.
+
+Resolution happens \textbf{at alert time, not load time}: the
+subscription table stores the folder code as the user entered it, and
+\texttt{filter\_alerts} resolves it to its descendant dataset/table
+codes each run via
+\texttt{UMARaccessR::sql\_resolve\_eurostat\_folder\_datasets} (a
+recursive CTE over the \emph{live} TOC edges). The consequence --- and
+the point --- is that a folder subscription \textbf{automatically covers
+datasets added to that folder later}, with no re-subscription. Storing
+the folder code (not a frozen expansion) also keeps the subscription
+table honest: it records what the user asked for, and the current tree
+is consulted at use.
+
+The design keeps \textbf{dataset-code subscriptions as the reliable
+backbone and folder subscriptions as an advisory layer on top.} A direct
+dataset-code match never depends on the TOC; only folder matches do. So
+if the TOC is momentarily stale (ingest failed, or Eurostat's tree lags
+the metabase), a folder match may be slightly delayed but a direct code
+match is unaffected --- and folder resolution can only ever point at
+monitored datasets (verified: every dataset any folder resolves to is
+present in the metabase).
+
+\subsubsection{7.4 Automatic subscription of ingested pipeline
+dependencies}\label{automatic-subscription-of-ingested-pipeline-dependencies}
+
+\texttt{subscribe\_bot\_to\_ingested(con)} subscribes a dedicated bot
+address to every Eurostat dataset the agency currently ingests, so a
+structural change to any pipeline dependency is alerted on without
+anyone having to maintain the list by hand. The ingested set is read
+from \texttt{platform.table\ WHERE\ source\_id\ =\ 7} (Eurostat), which
+is the source of truth for ``what we ingest''.
+
+It runs \textbf{after} \texttt{load\_subscriptions} in \texttt{main},
+because \texttt{load\_subscriptions} truncate-reloads the whole table
+from the Excel sheet; the bot's rows come from \texttt{platform.table},
+not the sheet, so they must be re-applied afterwards. It replaces only
+its own rows (\texttt{DELETE\ WHERE\ email\ =\ bot\_email}, then
+insert), so it never touches human subscriptions.
+
+Two design points:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{The bot address must be distinct from any human subscriber's},
+  because the function owns and replaces all rows for that address every
+  run. The bot uses a dot-free variant of the maintainer's Gmail
+  address: Gmail ignores dots in the local part, so mail still lands in
+  the same inbox, but the string differs from the dotted address a human
+  would enter in the sheet --- so the two never collide. (A
+  \texttt{+alias} would be more self-documenting; the dot-free form is
+  functionally equivalent.)
+\item
+  \textbf{A metabase cross-check is the real value.} Every run, the
+  function compares the ingested codes against the live metabase and
+  emails the maintainer about any ingested table that is \textbf{not} in
+  the current metabase. That is precisely a pipeline dependency that may
+  have been renamed or removed upstream --- the \texttt{agr\_r\_animal}
+  failure mode, where a dependency vanished and was only discovered
+  weeks later by a failing test. Unlike a \texttt{dataset\_removed}
+  alert (which is event-based --- it fires only on a live→gone
+  transition the monitor observed, and only if subscribed), the
+  cross-check is state-based: it catches a dependency that is
+  \emph{already absent}, whenever and however it went, and does not
+  depend on subscription state. It is a standing audit of the pipeline's
+  foundations.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Alerting}\label{alerting}
+
+The orchestrator (\texttt{main}) runs, in order:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Connect, take the advisory lock, configure email auth.
+\item
+  \texttt{load\_subscriptions} --- validate the human input first, fail
+  fast if corrupt.
+\item
+  \texttt{subscribe\_bot\_to\_ingested} --- re-apply the bot's
+  pipeline-dependency subscriptions and run the metabase cross-check
+  (Section 7.4).
+\item
+  \texttt{ingest\_toc} --- refresh the TOC tree so folder resolution is
+  current. Wrapped in its own \texttt{tryCatch} that emails the
+  maintainer on failure but does \textbf{not} re-raise: a TOC failure
+  must not block metabase alerting.
+\item
+  \texttt{ingest} (metabase) --- wrapped so any failure emails the
+  maintainer and still records the traceback in the log.
+\item
+  If \texttt{unchanged}, exit.
+\item
+  If \texttt{changed}: read changes via
+  \texttt{UMARaccessR::sql\_get\_eurostat\_metabase\_changes\_from\_snapshot}
+  → filter per subscriber → send one email per affected subscriber. This
+  whole stage is wrapped so a failure in the alert query or send emails
+  the maintainer rather than dying silently in the log.
+\end{enumerate}
+
+\subsubsection{8.1 Per-person filtering}\label{per-person-filtering}
+
+\texttt{filter\_alerts} joins the run's change rows to the subscription
+table, resolving each distinct folder once per run and reusing the
+result across subscribers:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{dataset\ =\ \textquotesingle{}*\textquotesingle{}} matches all
+  change rows.
+\item
+  \texttt{kind\ =\ \textquotesingle{}folder\textquotesingle{}} matches
+  rows whose dataset is in the folder's resolved descendant set (Section
+  7.3).
+\item
+  \texttt{kind\ =\ \textquotesingle{}dataset\textquotesingle{}} matches
+  by exact dataset code.
+\item
+  \texttt{scope\ =\ \textquotesingle{}breaking\textquotesingle{}} then
+  keeps only breaking rows (6.2);
+  \texttt{scope\ =\ \textquotesingle{}all\textquotesingle{}} keeps
+  everything for the matched datasets.
+\end{itemize}
+
+One email is sent per affected subscriber, containing only their matched
+rows, and only if they have at least one; silence on non-events.
+
+\subsubsection{8.2 Email format}\label{email-format}
+
+Alerts are HTML email with the change table wrapped in
+\texttt{\textless{}pre\textgreater{}} for a monospace font, so the
+space-padded columns actually align.
+
+A \texttt{dataset\_removed} row carries an added note suggesting the
+dataset may have been renamed and to check for a replacement code. This
+is a cheap mitigation of the rename-detection gap (Section 10): the
+system cannot yet link a removal to its replacement, but it can tell the
+affected subscriber to go look.
+
+\subsubsection{8.3 Two distinct email
+concerns}\label{two-distinct-email-concerns}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Operational failure} (ingest broke, sheet corrupt, alert query
+  failed, pipeline dependency missing from metabase) → goes to the
+  maintainer. Distinctive subject prefix for inbox filtering.
+\item
+  \textbf{Structural alert} (something changed) → goes to subscribers.
+\end{itemize}
+
+These are separate functions with separate recipients and must not be
+merged.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. Operations}\label{operations}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Schedule:} Windows Task Scheduler runs the batch script
+  \texttt{O:\textbackslash{}Avtomatizacija\textbackslash{}umar-automation-scripts\textbackslash{}batch-scripts\textbackslash{}eurostat-update-metabase.bat}
+  a few minutes after the Eurostat evening refresh (\textasciitilde23:00
+  CET), and after the 11:00 refresh. The task name is
+  \texttt{eurostat-update-metabase}. Exact timing is not critical: the
+  \texttt{sha256} dedup makes a catch-up run after downtime free (it
+  exits immediately if nothing changed). The \textbf{TOC ingest is
+  folded into this same job} rather than separately scheduled: the TOC
+  regenerates \textasciitilde00:11 CET, but folder resolution only needs
+  a reasonably current tree, so refreshing it twice daily alongside the
+  metabase run is ample. (If TOC \emph{change alerts} --- folder
+  renames, dataset moves --- are built later, revisit whether they
+  warrant their own cadence.)
+\item
+  \textbf{Batch wrapper:} the batch script calls \texttt{Rscript} on the
+  runner (\texttt{R\textbackslash{}eurostat-update-metabase.R}), which
+  sources the function files and calls \texttt{main()} inside a
+  \texttt{tryCatch}. Output is redirected to the log; the batch then
+  \texttt{pushd}es into the repo and commits the log.
+\item
+  \textbf{Logging:} stdout/stderr are redirected to
+  \texttt{logs\textbackslash{}eurostat\_metabase.Rout} on the share,
+  which is committed to git for an audit trail. The \texttt{.Rout} is
+  overwritten each run; git preserves the history. The log is \emph{not}
+  the alert channel --- alerts and failures are emailed from within the
+  script via \texttt{gmailr}.
+\item
+  \textbf{Alert channel is email only.} Failure surfaces as a maintainer
+  email plus a log entry; there is no second channel.
+\item
+  \textbf{Secrets:} the DB password is read from an environment
+  variable; the Gmail OAuth credentials and token cache are at absolute
+  paths on the share. The scheduled account must be able to read the
+  credentials and write the token cache.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. Known limitations and
+backlog}\label{known-limitations-and-backlog}
+
+Recorded honestly so a future maintainer knows the edges.
+
+\begin{itemize}
+\item
+  \textbf{Dataset renames are detected but not yet linked (now enabled
+  by the TOC).} A renamed dataset appears as an unrelated
+  \texttt{dataset\_removed} (old code) and \texttt{dataset\_added} (new
+  code); the metabase alone cannot connect them (codes, no titles). The
+  \texttt{dataset\_removed} alert includes a ``check for a replacement''
+  hint as a stopgap. The TOC is now ingested and carries titles, so the
+  \emph{mechanism} for the fix now exists --- match a removed node's
+  title to an added node's title to identify a rename near-decisively.
+  \emph{Backlog:} build TOC change detection (node title changes =
+  renames; edge changes = folder moves) and surface renamed datasets in
+  the \texttt{dataset\_removed} alert. The infrastructure is in place;
+  the detection query and wiring are not yet built.
+\item
+  \textbf{Level (code) renames are not distinguished from drop+add.} A
+  code renamed within a dimension shows as \texttt{level\_removed} +
+  \texttt{level\_added}, unlinked, for the same reason (no labels in the
+  metabase).
+\item
+  \textbf{Dimension renames rely on a heuristic.} A dimension rename
+  shows as \texttt{dim\_removed} + \texttt{dim\_added} in the same
+  dataset and run; a matching ordered position signature makes it
+  near-decisive, but it remains a candidate, not a certainty. (The
+  signature logic was prototyped but is not currently wired into the
+  change-detection function; fold it back in when a real dimension
+  rename first occurs.)
+\item
+  \textbf{Reorder-without-rename is not detected.} If Eurostat reorders
+  a code list without changing membership, no rows change, so nothing
+  fires; \texttt{ord} on surviving rows also goes stale. Out of scope by
+  choice --- reordering does not break code-based queries.
+\item
+  \textbf{The observation timestamp is fetch time, not publication time}
+  for the metabase, because the endpoint provides no
+  \texttt{Last-Modified}. Change \emph{ordering} is preserved by
+  snapshot id; only the absolute ``when did Eurostat publish this'' is
+  approximate. (The TOC, by contrast, carries a real
+  \texttt{creationDate}.)
+\item
+  \textbf{OAuth token expiry is the most likely silent-death mode.} If
+  the Gmail refresh token expires or the token cache becomes unwritable
+  by the scheduled account, all alerting fails silently --- no alerts,
+  no failure emails. \emph{Mitigation:} periodically confirm alerts
+  still arrive; consider a heartbeat or second channel if the system
+  becomes critical.
+\item
+  \textbf{Comext data monitoring gap.} Comext (detailed trade,
+  \texttt{ds-*}) is a separate Eurostat dissemination system, present in
+  \emph{neither} the metabase nor the TOC. Structural changes to those
+  datasets are not detected, and they cannot be folder-subscribed. They
+  are also not currently ingested by EUROSTATfetchR, so it is a moot
+  point for now. If Comext data becomes a dependency, monitoring it
+  would mean a third parallel SCD2 source pointed at the Comext
+  catalogue.
+\item
+  \textbf{The TOC XML omits some tables that exist in the metabase.} A
+  handful of tables (e.g.~\texttt{tet00071}) appear in the metabase and
+  in the online browser but are simply absent from the \texttt{toc/xml}
+  file --- confirmed by grepping the raw source, not a parser fault (the
+  browser stitches in listings the machine- readable file does not
+  contain, the same way it does for Comext). Consequence: these tables
+  are \textbf{folder-unreachable but code-reachable} --- a folder
+  subscription will not surface them, but a direct dataset-code
+  subscription will (they are monitored in the metabase). This is a
+  Eurostat source- completeness gap, not fixable on our side, and
+  benign: the affected codes are obscure \texttt{t*} tables, and the
+  dataset-code backbone covers them.
+\item
+  \textbf{TOC change detection is not built.} The TOC is snapshotted
+  with full SCD2 history, but nothing yet \emph{diffs} consecutive TOC
+  snapshots to alert on folder renames, dataset moves between folders,
+  or (per the item above) dataset renames. Folder subscriptions use the
+  TOC only for \emph{resolution}, always against the current tree.
+  Building TOC change alerts is backlog; the history is being
+  accumulated (including the no-op snapshots noted in 4.5) so it will be
+  available when built.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11. Design principles applied
+throughout}\label{design-principles-applied-throughout}
+
+For future changes, the principles this system was built on:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Detect, don't schedule.} Eurostat publishes no change
+  schedule; monitoring is necessarily proactive and
+  after-the-fact-but-before-consumption.
+\item
+  \textbf{Fail loud.} Every stage that can fail either raises or emails
+  the maintainer; nothing swallows an error silently. The one thing a
+  monitor must never do is fail quietly.
+\item
+  \textbf{State audits complement event alerts.} Event-based detection
+  (a change observed between two snapshots) misses anything already
+  broken before the monitor looked or before a subscription existed; the
+  ingested-dependency cross-check (7.4) is a state audit that catches
+  those. Both are needed.
+\item
+  \textbf{One source of truth per fact.} Redundant columns encoding the
+  same thing (a flag plus a timestamp; a stored classification plus the
+  data it derives from) were rejected in favour of deriving one from the
+  other. Derived-and-cached is acceptable; stored-as-a-second-primary
+  drifts.
+\item
+  \textbf{Content identity over metadata.} Dedup on the file's hash, not
+  on unreliable timestamps or headers.
+\item
+  \textbf{Keys over coincidences.} Lineage joins on integer snapshot
+  ids, never on timestamp equality.
+\item
+  \textbf{Complexity must be justified by scale.} At \textasciitilde1.3M
+  rows, several performance defences (fingerprint tiers, full-snapshot
+  storage avoidance) were considered and dropped as unnecessary. The
+  design is sized to the actual data, not an imagined order of magnitude
+  larger.
+\item
+  \textbf{Reusable components are packages with tests; applications are
+  scripts.} The DB read functions (UMARaccessR) and the Eurostat
+  fetch/parse (EUROSTATfetchR) carry roxygen, SQL tests, and
+  dittodb/fixture tests; the ingest orchestration, filtering, and email
+  are application glue and stay in a standalone script. The test that a
+  thing belongs in a package is genuine reuse --- the metabase and TOC
+  ingests, though substantial, are source-specific jobs and stayed in
+  the app.
+\item
+  \textbf{Store what the user said; resolve at use.} Folder
+  subscriptions store the folder code the user entered and resolve it
+  against the current tree at alert time, rather than freezing an
+  expansion at load time --- so newly-added datasets are covered
+  automatically and the stored record stays honest.
+\end{itemize}
+
+\end{document}
