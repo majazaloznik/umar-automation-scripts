@@ -23,36 +23,39 @@ V Task Schedulerju desni klik na task › Run, ali poženi .bat. Izid je v logu 
 
 ```mermaid
 flowchart LR
-  src_wb_cmo["src_wb_cmo<br/><small></small>"]:::source
-  src_elektrika["src_elektrika<br/><small>AK</small>"]:::source
-  src_fin_distress["src_fin_distress<br/><small>HM</small>"]:::source
-  src_denis_place["src_denis_place<br/><small>DR</small>"]:::source
-  src_mf_trosarine["src_mf_trosarine<br/><small>LF</small>"]:::source
-  platform_UMAR_AK["platform_UMAR_AK<br/><small>tabele AK0xx na platformi</small>"]:::store
-  platform_UMAR_DR["platform_UMAR_DR<br/><small>tabele DR0xx na platformi</small>"]:::store
-  platform_UMAR_HM["platform_UMAR_HM<br/><small>tabele HM0xx na platformi</small>"]:::store
-  platform_UMAR_LF["platform_UMAR_LF<br/><small>tabele LF0xx na platformi</small>"]:::store
-  platform_UMAR_UB["platform_UMAR_UB<br/><small>tabele UB0xx na platformi</small>"]:::store
-  platform_UMAR_other["platform_UMAR_other<br/><small>ostale UMAR tabele na platformi (AJPES, CE, J</small>"]:::store
-  umardata_AK["umardata_AK<br/><small>umar-data/AK/umar_serije_podatki_AK.xlsx</small>"]:::store
-  umardata_DR["umardata_DR<br/><small>umar-data/DR/umar_serije_podatki_DR.xlsx</small>"]:::store
-  umardata_HM["umardata_HM<br/><small>umar-data/HM/umar_serije_podatki_HM.xlsx</small>"]:::store
-  umardata_LF["umardata_LF<br/><small>umar-data/LF/umar_serije_podatki_LF.xlsx</small>"]:::store
-  umardata_UB["umardata_UB<br/><small>umar-data/UB/umar_serije_podatki_UB.xlsx</small>"]:::store
-  umardata_other["umardata_other<br/><small>ostale mape v umar-data (AJPES, CE, JK, MH, M</small>"]:::store
-  out_trosarine_preracuni["out_trosarine_preracuni<br/><small>četrtletni koeficienti rasti trošarin</small>"]:::output
-  feed_commodity_prices_UB["feed_commodity_prices_UB<br/><small>task umar-add_data</small>"]:::step
-  feed_elektrika_AK["feed_elektrika_AK<br/><small>task umar-add_data</small>"]:::step
-  feed_fin_vzdrznost_HM["feed_fin_vzdrznost_HM<br/><small>task umar-add_data</small>"]:::step
-  feed_place_DR["feed_place_DR<br/><small>task umar-add_data</small>"]:::step
-  feed_trosarine_LF["feed_trosarine_LF<br/><small>task umar-add_data</small>"]:::step
-  ingest_AK["ingest_AK<br/><small>task umar-add_data</small>"]:::step
-  ingest_DR["ingest_DR<br/><small>task umar-add_data</small>"]:::step
-  ingest_HM["ingest_HM<br/><small>task umar-add_data</small>"]:::step
-  ingest_LF["ingest_LF<br/><small>task umar-add_data</small>"]:::step
-  ingest_UB["ingest_UB<br/><small>task umar-add_data</small>"]:::step
-  ingest_other["ingest_other<br/><small>task umar-add_data</small>"]:::step
-  trosarine_preracuni["trosarine_preracuni<br/><small>task umar-add_data</small>"]:::step
+  src_wb_cmo["src_wb_cmo"]:::source
+  src_elektrika["src_elektrika<br/>AK"]:::source
+  src_fin_distress["src_fin_distress<br/>HM"]:::source
+  src_denis_place["src_denis_place<br/>DR"]:::source
+  src_mf_trosarine["src_mf_trosarine<br/>LF"]:::source
+  platform_UMAR_AK["platform_UMAR_AK<br/>tabele AK0xx na platformi"]:::store
+  platform_UMAR_DR["platform_UMAR_DR<br/>tabele DR0xx na platformi"]:::store
+  platform_UMAR_HM["platform_UMAR_HM<br/>tabele HM0xx na platformi"]:::store
+  platform_UMAR_LF["platform_UMAR_LF<br/>tabele LF0xx na platformi"]:::store
+  platform_UMAR_UB["platform_UMAR_UB<br/>tabele UB0xx na platformi"]:::store
+  platform_UMAR_other["platform_UMAR_other<br/>ostale UMAR tabele na platfor…"]:::store
+  umardata_AK["umardata_AK<br/>umar-data/AK/umar_serije_poda…"]:::store
+  umardata_DR["umardata_DR<br/>umar-data/DR/umar_serije_poda…"]:::store
+  umardata_HM["umardata_HM<br/>umar-data/HM/umar_serije_poda…"]:::store
+  umardata_LF["umardata_LF<br/>umar-data/LF/umar_serije_poda…"]:::store
+  umardata_UB["umardata_UB<br/>umar-data/UB/umar_serije_poda…"]:::store
+  umardata_other["umardata_other<br/>ostale mape v umar-data (AJPE…"]:::store
+  out_trosarine_preracuni["out_trosarine_preracuni<br/>četrtletni koeficienti rasti …"]:::output
+  subgraph task_umar_add_data["task: umar-add_data"]
+    feed_commodity_prices_UB["feed_commodity_prices_UB"]:::step
+    feed_elektrika_AK["feed_elektrika_AK"]:::step
+    feed_fin_vzdrznost_HM["feed_fin_vzdrznost_HM"]:::step
+    feed_place_DR["feed_place_DR"]:::step
+    feed_trosarine_LF["feed_trosarine_LF"]:::step
+    ingest_AK["ingest_AK"]:::step
+    ingest_DR["ingest_DR"]:::step
+    ingest_HM["ingest_HM"]:::step
+    ingest_LF["ingest_LF"]:::step
+    ingest_UB["ingest_UB"]:::step
+    ingest_other["ingest_other"]:::step
+    trosarine_preracuni["trosarine_preracuni"]:::step
+  end
+  style task_umar_add_data fill:none,stroke:#888780,stroke-dasharray:4 3,color:#888780
   src_wb_cmo --> feed_commodity_prices_UB
   feed_commodity_prices_UB --> umardata_UB
   src_elektrika --> feed_elektrika_AK
@@ -77,10 +80,10 @@ flowchart LR
   ingest_other --> platform_UMAR_other
   platform_UMAR_LF --> trosarine_preracuni
   trosarine_preracuni --> out_trosarine_preracuni
-  classDef source fill:#FAECE7,stroke:#993C1D
-  classDef step fill:#F1EFE8,stroke:#5F5E5A
-  classDef store fill:#E1F5EE,stroke:#0F6E56
-  classDef output fill:#EEEDFE,stroke:#534AB7
+  classDef source fill:#F0997B,stroke:#712B13,color:#4A1B0C,stroke-width:1px
+  classDef step fill:#D3D1C7,stroke:#444441,color:#2C2C2A,stroke-width:1px
+  classDef store fill:#5DCAA5,stroke:#085041,color:#04342C,stroke-width:1px
+  classDef output fill:#AFA9EC,stroke:#3C3489,color:#26215C,stroke-width:1px
 ```
 
 ## Napaja

@@ -22,23 +22,26 @@ V Task Schedulerju desni klik na task › Run, ali poženi .bat. Izid je v logu 
 
 ```mermaid
 flowchart LR
-  platform_SURS["platform_SURS<br/><small>SURS tabele na platformi</small>"]:::store
-  platform_UMAR_DR["platform_UMAR_DR<br/><small>tabele DR0xx na platformi</small>"]:::store
-  out_eo_tabele["out_eo_tabele<br/><small>EO tabele (ID, EX; SLO in ENG)</small>"]:::output
-  eo_02_ind["eo_02_ind<br/><small>task eo_tabele_update</small>"]:::step
-  eo_03_trg_dela["eo_03_trg_dela<br/><small>task eo_tabele_update</small>"]:::step
-  eo_04_place["eo_04_place<br/><small>task eo_tabele_update</small>"]:::step
-  eo_05_cene["eo_05_cene<br/><small>task eo_tabele_update</small>"]:::step
-  eo_06_pb["eo_06_pb<br/><small>task eo_tabele_update</small>"]:::step
-  eo_07_fin_trgi["eo_07_fin_trgi<br/><small>task eo_tabele_update</small>"]:::step
-  eo_08_jf["eo_08_jf<br/><small>task eo_tabele_update</small>"]:::step
+  platform_SURS["platform_SURS<br/>SURS tabele na platformi"]:::store
+  platform_UMAR_DR["platform_UMAR_DR<br/>tabele DR0xx na platformi"]:::store
+  out_eo_tabele["out_eo_tabele<br/>EO tabele (ID, EX; SLO in ENG)"]:::output
+  subgraph task_eo_tabele_update["task: eo_tabele_update"]
+    eo_02_ind["eo_02_ind"]:::step
+    eo_03_trg_dela["eo_03_trg_dela"]:::step
+    eo_04_place["eo_04_place"]:::step
+    eo_05_cene["eo_05_cene"]:::step
+    eo_06_pb["eo_06_pb"]:::step
+    eo_07_fin_trgi["eo_07_fin_trgi"]:::step
+    eo_08_jf["eo_08_jf"]:::step
+  end
+  style task_eo_tabele_update fill:none,stroke:#888780,stroke-dasharray:4 3,color:#888780
   platform_SURS --> eo_04_place
   platform_UMAR_DR --> eo_04_place
   eo_04_place --> out_eo_tabele
-  classDef source fill:#FAECE7,stroke:#993C1D
-  classDef step fill:#F1EFE8,stroke:#5F5E5A
-  classDef store fill:#E1F5EE,stroke:#0F6E56
-  classDef output fill:#EEEDFE,stroke:#534AB7
+  classDef source fill:#F0997B,stroke:#712B13,color:#4A1B0C,stroke-width:1px
+  classDef step fill:#D3D1C7,stroke:#444441,color:#2C2C2A,stroke-width:1px
+  classDef store fill:#5DCAA5,stroke:#085041,color:#04342C,stroke-width:1px
+  classDef output fill:#AFA9EC,stroke:#3C3489,color:#26215C,stroke-width:1px
 ```
 
 ## Napaja

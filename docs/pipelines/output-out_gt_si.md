@@ -8,26 +8,41 @@ Uporabniki: UB, TNS, BBF
 
 ```mermaid
 flowchart LR
-  src_surs["src_surs<br/><small></small>"]:::source
-  src_bs["src_bs<br/><small></small>"]:::source
-  src_eurostat["src_eurostat<br/><small></small>"]:::source
-  src_ecb["src_ecb<br/><small></small>"]:::source
-  src_desez_trg_dela["src_desez_trg_dela<br/><small>DR</small>"]:::source
-  src_desez_zunanja["src_desez_zunanja<br/><small>DR</small>"]:::source
-  src_denis_gt_place["src_denis_gt_place<br/><small>DR</small>"]:::source
-  src_donosnosti["src_donosnosti<br/><small>MP</small>"]:::source
-  src_surs_koledar["src_surs_koledar<br/><small></small>"]:::source
-  src_zrsz_days["src_zrsz_days<br/><small></small>"]:::source
-  platform_SURS["platform_SURS<br/><small>SURS tabele na platformi</small>"]:::store
-  platform_BS["platform_BS<br/><small>BS tabele na platformi</small>"]:::store
-  platform_EUROSTAT["platform_EUROSTAT<br/><small>Eurostat tabele na platformi</small>"]:::store
-  platform_ECB["platform_ECB<br/><small>ECB tabele na platformi</small>"]:::store
-  out_gt_si["out_gt_si<br/><small>GT tabela SI (SLO in ENG)</small>"]:::output
-  bs_import["bs_import<br/><small>task bs-update-database-daily</small>"]:::step
-  surs_import["surs_import<br/><small>task surs-update-database</small>"]:::step
-  gt_tabela_si["gt_tabela_si<br/><small>task gt-tabela-si-update</small>"]:::step
-  ecb_import["ecb_import<br/><small>task ecb-update-database</small>"]:::step
-  eurostat_import["eurostat_import<br/><small>task eurostat-update-database</small>"]:::step
+  src_surs["src_surs"]:::source
+  src_bs["src_bs"]:::source
+  src_eurostat["src_eurostat"]:::source
+  src_ecb["src_ecb"]:::source
+  src_desez_trg_dela["src_desez_trg_dela<br/>DR"]:::source
+  src_desez_zunanja["src_desez_zunanja<br/>DR"]:::source
+  src_denis_gt_place["src_denis_gt_place<br/>DR"]:::source
+  src_donosnosti["src_donosnosti<br/>MP"]:::source
+  src_surs_koledar["src_surs_koledar"]:::source
+  src_zrsz_days["src_zrsz_days"]:::source
+  platform_SURS["platform_SURS<br/>SURS tabele na platformi"]:::store
+  platform_BS["platform_BS<br/>BS tabele na platformi"]:::store
+  platform_EUROSTAT["platform_EUROSTAT<br/>Eurostat tabele na platformi"]:::store
+  platform_ECB["platform_ECB<br/>ECB tabele na platformi"]:::store
+  out_gt_si["out_gt_si<br/>GT tabela SI (SLO in ENG)"]:::output
+  subgraph task_bs_update_database_daily["task: bs-update-database-daily"]
+    bs_import["bs_import"]:::step
+  end
+  style task_bs_update_database_daily fill:none,stroke:#888780,stroke-dasharray:4 3,color:#888780
+  subgraph task_surs_update_database["task: surs-update-database"]
+    surs_import["surs_import"]:::step
+  end
+  style task_surs_update_database fill:none,stroke:#888780,stroke-dasharray:4 3,color:#888780
+  subgraph task_gt_tabela_si_update["task: gt-tabela-si-update"]
+    gt_tabela_si["gt_tabela_si"]:::step
+  end
+  style task_gt_tabela_si_update fill:none,stroke:#888780,stroke-dasharray:4 3,color:#888780
+  subgraph task_ecb_update_database["task: ecb-update-database"]
+    ecb_import["ecb_import"]:::step
+  end
+  style task_ecb_update_database fill:none,stroke:#888780,stroke-dasharray:4 3,color:#888780
+  subgraph task_eurostat_update_database["task: eurostat-update-database"]
+    eurostat_import["eurostat_import"]:::step
+  end
+  style task_eurostat_update_database fill:none,stroke:#888780,stroke-dasharray:4 3,color:#888780
   src_bs --> bs_import
   bs_import --> platform_BS
   src_surs --> surs_import
@@ -47,10 +62,10 @@ flowchart LR
   ecb_import --> platform_ECB
   src_eurostat --> eurostat_import
   eurostat_import --> platform_EUROSTAT
-  classDef source fill:#FAECE7,stroke:#993C1D
-  classDef step fill:#F1EFE8,stroke:#5F5E5A
-  classDef store fill:#E1F5EE,stroke:#0F6E56
-  classDef output fill:#EEEDFE,stroke:#534AB7
+  classDef source fill:#F0997B,stroke:#712B13,color:#4A1B0C,stroke-width:1px
+  classDef step fill:#D3D1C7,stroke:#444441,color:#2C2C2A,stroke-width:1px
+  classDef store fill:#5DCAA5,stroke:#085041,color:#04342C,stroke-width:1px
+  classDef output fill:#AFA9EC,stroke:#3C3489,color:#26215C,stroke-width:1px
 ```
 
 ## Viri

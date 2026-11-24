@@ -8,19 +8,22 @@ Uporabniki: TODO
 
 ```mermaid
 flowchart LR
-  src_surs["src_surs<br/><small></small>"]:::source
-  platform_SURS["platform_SURS<br/><small>SURS tabele na platformi</small>"]:::store
-  out_indicator_report["out_indicator_report<br/><small>poročilo o indikatorjih</small>"]:::output
-  surs_import["surs_import<br/><small>task surs-update-database</small>"]:::step
-  indicator_report["indicator_report<br/><small>task surs-update-database</small>"]:::step
+  src_surs["src_surs"]:::source
+  platform_SURS["platform_SURS<br/>SURS tabele na platformi"]:::store
+  out_indicator_report["out_indicator_report<br/>poročilo o indikatorjih"]:::output
+  subgraph task_surs_update_database["task: surs-update-database"]
+    surs_import["surs_import"]:::step
+    indicator_report["indicator_report"]:::step
+  end
+  style task_surs_update_database fill:none,stroke:#888780,stroke-dasharray:4 3,color:#888780
   src_surs --> surs_import
   surs_import --> platform_SURS
   platform_SURS --> indicator_report
   indicator_report --> out_indicator_report
-  classDef source fill:#FAECE7,stroke:#993C1D
-  classDef step fill:#F1EFE8,stroke:#5F5E5A
-  classDef store fill:#E1F5EE,stroke:#0F6E56
-  classDef output fill:#EEEDFE,stroke:#534AB7
+  classDef source fill:#F0997B,stroke:#712B13,color:#4A1B0C,stroke-width:1px
+  classDef step fill:#D3D1C7,stroke:#444441,color:#2C2C2A,stroke-width:1px
+  classDef store fill:#5DCAA5,stroke:#085041,color:#04342C,stroke-width:1px
+  classDef output fill:#AFA9EC,stroke:#3C3489,color:#26215C,stroke-width:1px
 ```
 
 ## Viri

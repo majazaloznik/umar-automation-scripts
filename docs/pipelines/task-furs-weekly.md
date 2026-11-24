@@ -20,20 +20,23 @@ V Task Schedulerju desni klik na task › Run, ali poženi .bat. Izid je v logu 
 
 ```mermaid
 flowchart LR
-  src_furs_racuni["src_furs_racuni<br/><small></small>"]:::source
-  src_udb_metadata["src_udb_metadata<br/><small>UDB</small>"]:::source
-  platform_DAVCNE["platform_DAVCNE<br/><small>davčne serije (UDB) na platformi</small>"]:::store
-  davcne_db["davcne_db<br/><small>baza davcne, tabela davcni_racuni</small>"]:::store
-  furs_weekly_update["furs_weekly_update<br/><small>task furs-weekly</small>"]:::step
-  davcne_update_platform["davcne_update_platform<br/><small>task furs-weekly</small>"]:::step
+  src_furs_racuni["src_furs_racuni"]:::source
+  src_udb_metadata["src_udb_metadata<br/>UDB"]:::source
+  platform_DAVCNE["platform_DAVCNE<br/>davčne serije (UDB) na platfo…"]:::store
+  davcne_db["davcne_db<br/>baza davcne, tabela davcni_ra…"]:::store
+  subgraph task_furs_weekly["task: furs-weekly"]
+    furs_weekly_update["furs_weekly_update"]:::step
+    davcne_update_platform["davcne_update_platform"]:::step
+  end
+  style task_furs_weekly fill:none,stroke:#888780,stroke-dasharray:4 3,color:#888780
   src_furs_racuni --> furs_weekly_update
   furs_weekly_update --> davcne_db
   davcne_db --> davcne_update_platform
   src_udb_metadata --> davcne_update_platform
   davcne_update_platform --> platform_DAVCNE
-  classDef source fill:#FAECE7,stroke:#993C1D
-  classDef step fill:#F1EFE8,stroke:#5F5E5A
-  classDef store fill:#E1F5EE,stroke:#0F6E56
-  classDef output fill:#EEEDFE,stroke:#534AB7
+  classDef source fill:#F0997B,stroke:#712B13,color:#4A1B0C,stroke-width:1px
+  classDef step fill:#D3D1C7,stroke:#444441,color:#2C2C2A,stroke-width:1px
+  classDef store fill:#5DCAA5,stroke:#085041,color:#04342C,stroke-width:1px
+  classDef output fill:#AFA9EC,stroke:#3C3489,color:#26215C,stroke-width:1px
 ```
 

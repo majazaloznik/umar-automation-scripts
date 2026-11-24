@@ -25,7 +25,7 @@ Generirano iz `registry/pipelines.yml` z `R/registry/render_registry.R`. Ne urej
 | [donosnosti-update-database](task-donosnosti-update-database.md) | dnevno 12:00 | `logs/donosnosti-update-database.log` |
 | [ecb-update-database](task-ecb-update-database.md) | dnevno 10:00 | `logs/ecb-update-database.Rout` |
 | [ecb_tecaji-update_daily](task-ecb_tecaji-update_daily.md) | dnevno 16:00 | `logs/tecaji-update_daily.Rout` |
-| [ecb_tecaji-update_monthly_quarterly](task-ecb_tecaji-update_monthly_quarterly.md) | enkratni sprožilci, zadnji 7. 12. 2026 | `logs/tecaji-update_monthly_quarterly.Rout` |
+| [ecb_tecaji-update_monthly_quarterly](task-ecb_tecaji-update_monthly_quarterly.md) | enkratni sprožilci, ob 10:00 po ECB koledarju za Harmonized Competitiveness Indicators EXR, vneseni enkrat na leto za 12 mesecev naprej. | `logs/tecaji-update_monthly_quarterly.Rout` |
 | [eurostat-update-database](task-eurostat-update-database.md) | dnevno 11:00 in 23:00 | `logs/eurostat-update-database.Rout` |
 | [eurostat-update-metabase](task-eurostat-update-metabase.md) | dnevno 11:03 in 23:03 | `logs/eurostat_metabase.Rout` |
 | [gt-tabela-ea-update](task-gt-tabela-ea-update.md) | petek 13:00 | `logs/gt-tabela-ea-update.Rout` |
@@ -33,7 +33,7 @@ Generirano iz `registry/pipelines.yml` z `R/registry/render_registry.R`. Ne urej
 | [ice-update-database](task-ice-update-database.md) | dnevno 07:00 | `logs/ice-update-database.log` |
 | [jk-update_smtk_data](task-jk-update_smtk_data.md) | dnevno 10:15 (samo ko je mzaloznik prijavljena!) | `logs/jk_update_smtk_data.Rout` |
 | [mf_update_database](task-mf_update_database.md) | mesečno, prvi in zadnji delovni dan 10:15 | `logs/mf_update.Rout` |
-| [produktivnost-eurostat_update](task-produktivnost-eurostat_update.md) | enkratni sprožilci, zadnji 7. 12. 2026 | `logs/produktivnost-eurostat_update.Rout` |
+| [produktivnost-eurostat_update](task-produktivnost-eurostat_update.md) | enkratni sprožilci, zadnji 7. 12. 2026, Get dates from Eurostat release calendar for GDP main aggregates and employment and flash estimates | `logs/produktivnost-eurostat_update.Rout` |
 | [produktivnost-surs_update](task-produktivnost-surs_update.md) | dnevno 10:30 | `logs/produktivnost-surs_update.Rout` |
 | [surs-changes-api-update](task-surs-changes-api-update.md) | dnevno 17:25 | `logs/surs-changes-api-update.Rout` |
 | [zrsz-update-database](task-zrsz-update-database.md) | mesečno 4. in 5. ob 09:00 | `logs/zrsz-update-database.Rout` |

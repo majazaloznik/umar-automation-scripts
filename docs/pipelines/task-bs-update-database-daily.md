@@ -20,15 +20,18 @@ V Task Schedulerju desni klik na task › Run, ali poženi .bat. Izid je v logu 
 
 ```mermaid
 flowchart LR
-  src_bs["src_bs<br/><small></small>"]:::source
-  platform_BS["platform_BS<br/><small>BS tabele na platformi</small>"]:::store
-  bs_import["bs_import<br/><small>task bs-update-database-daily</small>"]:::step
+  src_bs["src_bs"]:::source
+  platform_BS["platform_BS<br/>BS tabele na platformi"]:::store
+  subgraph task_bs_update_database_daily["task: bs-update-database-daily"]
+    bs_import["bs_import"]:::step
+  end
+  style task_bs_update_database_daily fill:none,stroke:#888780,stroke-dasharray:4 3,color:#888780
   src_bs --> bs_import
   bs_import --> platform_BS
-  classDef source fill:#FAECE7,stroke:#993C1D
-  classDef step fill:#F1EFE8,stroke:#5F5E5A
-  classDef store fill:#E1F5EE,stroke:#0F6E56
-  classDef output fill:#EEEDFE,stroke:#534AB7
+  classDef source fill:#F0997B,stroke:#712B13,color:#4A1B0C,stroke-width:1px
+  classDef step fill:#D3D1C7,stroke:#444441,color:#2C2C2A,stroke-width:1px
+  classDef store fill:#5DCAA5,stroke:#085041,color:#04342C,stroke-width:1px
+  classDef output fill:#AFA9EC,stroke:#3C3489,color:#26215C,stroke-width:1px
 ```
 
 ## Napaja

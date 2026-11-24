@@ -47,12 +47,12 @@ read_registry <- function(file) {
   reg <- yaml::read_yaml(file, fileEncoding = "UTF-8")
 
   simple_nodes <- purrr::imap(c(sources = "source", stores = "store", outputs = "output"),
-    \(type, section) {
-      items <- reg[[section]]
-      if (is.null(items)) return(NULL)
-      data.frame(id = names(items), type = type, task = NA_character_,
-                 what = purrr::map_chr(items, \(i) i$what %||% NA_character_))
-    }) |> purrr::list_rbind()
+                              \(type, section) {
+                                items <- reg[[section]]
+                                if (is.null(items)) return(NULL)
+                                data.frame(id = names(items), type = type, task = NA_character_,
+                                           what = purrr::map_chr(items, \(i) i$what %||% NA_character_))
+                              }) |> purrr::list_rbind()
 
   task_nodes <- data.frame(id = names(reg$tasks), type = "task", task = NA_character_,
                            what = purrr::map_chr(reg$tasks, \(t) t$schedule %||% NA_character_))
@@ -239,22 +239,35 @@ md_esc <- function(x) {
 mermaid <- function(ids, nodes, edges, reg) {
   n <- nodes[nodes$id %in% ids & nodes$type != "task", ]
   e <- edges[edges$kind == "flow" & edges$from %in% n$id & edges$to %in% n$id, ]
-  label <- function(i, type, task) {
+  short <- function(x, k = 30) ifelse(nchar(x) > k, paste0(substr(x, 1, k - 1), "\u2026"), x)
+  label <- function(i, type) {
     sub <- switch(type,
-      source = reg$sources[[i]]$owner %||% "",
-      step   = paste("task", task),
-      store  = reg$stores[[i]]$what %||% "",
-      output = reg$outputs[[i]]$what %||% "")
-    sub <- gsub('"', "'", substr(sub, 1, 45))
-    sprintf('%s["%s<br/><small>%s</small>"]:::%s', mmd_id(i), i, sub, type)
+                  source = reg$sources[[i]]$owner %||% "",
+                  step   = "",
+                  store  = reg$stores[[i]]$what %||% "",
+                  output = reg$outputs[[i]]$what %||% "")
+    sub <- gsub('"', "'", short(sub))
+    txt <- if (nzchar(sub)) paste0(i, "<br/>", sub) else i
+    sprintf('%s["%s"]:::%s', mmd_id(i), txt, type)
   }
+  other <- n[n$type != "step", ]
+  steps <- n[n$type == "step", ]
+  # steps grouped in a box per task, so the task name needn't be on every node
+  task_boxes <- unlist(purrr::map(unique(steps$task), \(t) c(
+    sprintf('  subgraph %s["task: %s"]', mmd_id(paste0("task_", t)), t),
+    paste0("    ", purrr::map_chr(steps$id[steps$task == t], \(i) label(i, "step"))),
+    "  end",
+    sprintf("  style %s fill:none,stroke:#888780,stroke-dasharray:4 3,color:#888780",
+            mmd_id(paste0("task_", t))))))
+  # mid-tone fills with dark text: readable in both light and dark GitHub themes
   c("```mermaid", "flowchart LR",
-    purrr::pmap_chr(n[, c("id", "type", "task")], \(id, type, task) paste0("  ", label(id, type, task))),
+    paste0("  ", purrr::map2_chr(other$id, other$type, label)),
+    task_boxes,
     if (nrow(e)) paste0("  ", mmd_id(e$from), " --> ", mmd_id(e$to)),
-    "  classDef source fill:#FAECE7,stroke:#993C1D",
-    "  classDef step fill:#F1EFE8,stroke:#5F5E5A",
-    "  classDef store fill:#E1F5EE,stroke:#0F6E56",
-    "  classDef output fill:#EEEDFE,stroke:#534AB7",
+    "  classDef source fill:#F0997B,stroke:#712B13,color:#4A1B0C,stroke-width:1px",
+    "  classDef step fill:#D3D1C7,stroke:#444441,color:#2C2C2A,stroke-width:1px",
+    "  classDef store fill:#5DCAA5,stroke:#085041,color:#04342C,stroke-width:1px",
+    "  classDef output fill:#AFA9EC,stroke:#3C3489,color:#26215C,stroke-width:1px",
     "```")
 }
 
@@ -282,10 +295,10 @@ render_docs <- function(r, problems) {
       "## Od kod pride", "", mermaid(up, r$nodes, r$edges, reg), "",
       "## Viri", "", "| Vir | Kdo | Kje | Kdaj pride |", "|---|---|---|---|",
       purrr::map_chr(srcs, \(s) { x <- reg$sources[[s]]
-        sprintf("| %s | %s | %s | %s |", md_esc(x$what), md_esc(x$owner), md_esc(x$where), md_esc(x$arrives)) }),
+      sprintf("| %s | %s | %s | %s |", md_esc(x$what), md_esc(x$owner), md_esc(x$where), md_esc(x$arrives)) }),
       "", "## Taski", "", "| Task | Kdaj | .bat | Log |", "|---|---|---|---|",
       purrr::map_chr(tasks, \(t) { x <- reg$tasks[[t]]
-        sprintf("| [%s](task-%s.md) | %s | `%s` | `%s` |", t, t, md_esc(x$schedule), x$bat %||% "", fmt_log(x$log)) })))
+      sprintf("| [%s](task-%s.md) | %s | `%s` | `%s` |", t, t, md_esc(x$schedule), x$bat %||% "", fmt_log(x$log)) })))
   }
 
   # tasks
@@ -316,19 +329,19 @@ render_docs <- function(r, problems) {
 
   # index
   src_rows <- purrr::map_chr(names(reg$sources), \(s) { x <- reg$sources[[s]]
-    outs <- downstream_outputs(s, r$edges, r$nodes)
-    sprintf("| %s | %s | %s | %s |", md_esc(x$what), md_esc(x$owner), md_esc(x$arrives),
-            if (length(outs)) paste0("[", outs, "](output-", outs, ".md)", collapse = ", ") else "—") })
+  outs <- downstream_outputs(s, r$edges, r$nodes)
+  sprintf("| %s | %s | %s | %s |", md_esc(x$what), md_esc(x$owner), md_esc(x$arrives),
+          if (length(outs)) paste0("[", outs, "](output-", outs, ".md)", collapse = ", ") else "—") })
   w("index.md", c(
     "# UMAR pipelines", "",
     "Generirano iz `registry/pipelines.yml` z `R/registry/render_registry.R`. Ne urejaj ročno.", "",
     "## Izhodi", "", "| Izhod | Tip | Uporabniki |", "|---|---|---|",
     purrr::imap_chr(reg$outputs, \(o, id)
-      sprintf("| [%s](output-%s.md) | %s | %s |", o$what %||% id, id, md_esc(o$type),
-              md_esc(paste(unlist(o$users), collapse = ", ")))),
+                    sprintf("| [%s](output-%s.md) | %s | %s |", o$what %||% id, id, md_esc(o$type),
+                            md_esc(paste(unlist(o$users), collapse = ", ")))),
     "", "## Taski", "", "| Task | Kdaj | Log |", "|---|---|---|",
     purrr::imap_chr(reg$tasks, \(t, id)
-      sprintf("| [%s](task-%s.md) | %s | `%s` |", id, id, md_esc(t$schedule), fmt_log(t$log))),
+                    sprintf("| [%s](task-%s.md) | %s | `%s` |", id, id, md_esc(t$schedule), fmt_log(t$log))),
     "", "## Viri", "", "| Vir | Kdo | Kdaj pride | Vpliva na |", "|---|---|---|---|", src_rows,
     if (nrow(problems)) c("", "## Odprte točke", "", paste0("- ", problems$level, ": ", problems$msg))))
 }
