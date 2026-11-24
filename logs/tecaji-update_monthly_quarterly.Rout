@@ -1,0 +1,57 @@
+UMAR proxy is set!script started
+Attaching package: 'gmailr'
+
+The following object is masked from 'package:utils':
+
+    history
+
+The following objects are masked from 'package:base':
+
+    body, date, labels, message
+
+function (diff) 
+{
+    if (nrow(diff) > 0) {
+        html_table <- kable_styling(kable(diff, "html"), bootstrap_options = c("striped", 
+            "hover", "condensed"), full_width = FALSE, font_size = 12)
+        email_body <- "To je avtomatsko generirano sporoèilo o posodobitvah tabel teèajev na bazi produktivost.<br><br>"
+        email_body <- paste0(email_body, "<b>Naslednje tabele imajo novo število vrstic:</b><br><br>", 
+            html_table, "<br><br>")
+        email_body <- paste0(email_body, "<br>Tvoj Umar Data Bot &#129302;")
+        email_body
+    }
+    else {
+        NULL
+    }
+}
+
+Attaching package: 'dplyr'
+
+The following object is masked from 'package:kableExtra':
+
+    group_rows
+
+The following object is masked from 'package:gmailr':
+
+    id
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: 'zoo'
+
+The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric
+
+No encoding supplied: defaulting to UTF-8.
+Error in check_status(req) : HTTP failure: 504
+<html lang="en"><head><title>European Central Bank</title><style type="text/css"> body{ font-family: "Droid Sans", sans-serif; margin:0; padding:0; background-color: #9099ab; text-align: center; } h1{  font-size:38px; font-weight: normal; color:#003299; }  @media screen and (max-width: 480px) { h1{ font-size: 30px; } }  p { font-size: 15px; line-height: 20px; color: #333; margin-bottom: 20px; }  p.signature{ font-style: italic; color:#DF0101; }  .centredFrame { margin: 0 auto; text-align: center; width: 70%;   } .content{ margin-top:40px; padding:40px; background-color: #fff; border:1px solid #CDE3E0; -moz-border-radius: 20px; border-radius: 20px; } </style><link href="//fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css"></head><body><div class="centredFrame"><div class="content"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACACAYAAACx1FRUAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VG
+Calls: source ... eval -> eval -> get_data -> make_request -> check_status
+Execution halted
