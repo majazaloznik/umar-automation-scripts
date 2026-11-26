@@ -27,16 +27,19 @@ flowchart LR
   src_elektrika["src_elektrika<br/>AK"]:::source
   src_fin_distress["src_fin_distress<br/>HM"]:::source
   src_denis_place["src_denis_place<br/>DR"]:::source
+  src_smtk["src_smtk<br/>AK"]:::source
   src_mf_trosarine["src_mf_trosarine<br/>LF"]:::source
   platform_UMAR_AK["platform_UMAR_AK<br/>tabele AK0xx na platformi"]:::store
   platform_UMAR_DR["platform_UMAR_DR<br/>tabele DR0xx na platformi"]:::store
   platform_UMAR_HM["platform_UMAR_HM<br/>tabele HM0xx na platformi"]:::store
+  platform_UMAR_JK["platform_UMAR_JK<br/>tabele JK001, JK002 na platfo…"]:::store
   platform_UMAR_LF["platform_UMAR_LF<br/>tabele LF0xx na platformi"]:::store
   platform_UMAR_UB["platform_UMAR_UB<br/>tabele UB0xx na platformi"]:::store
   platform_UMAR_other["platform_UMAR_other<br/>ostale UMAR tabele na platfor…"]:::store
   umardata_AK["umardata_AK<br/>umar-data/AK/umar_serije_poda…"]:::store
   umardata_DR["umardata_DR<br/>umar-data/DR/umar_serije_poda…"]:::store
   umardata_HM["umardata_HM<br/>umar-data/HM/umar_serije_poda…"]:::store
+  umardata_JK["umardata_JK<br/>umar-data/JK/umar_serije_poda…"]:::store
   umardata_LF["umardata_LF<br/>umar-data/LF/umar_serije_poda…"]:::store
   umardata_UB["umardata_UB<br/>umar-data/UB/umar_serije_poda…"]:::store
   umardata_other["umardata_other<br/>ostale mape v umar-data (AJPE…"]:::store
@@ -46,10 +49,12 @@ flowchart LR
     feed_elektrika_AK["feed_elektrika_AK"]:::step
     feed_fin_vzdrznost_HM["feed_fin_vzdrznost_HM"]:::step
     feed_place_DR["feed_place_DR"]:::step
+    feed_smtk_JK["feed_smtk_JK"]:::step
     feed_trosarine_LF["feed_trosarine_LF"]:::step
     ingest_AK["ingest_AK"]:::step
     ingest_DR["ingest_DR"]:::step
     ingest_HM["ingest_HM"]:::step
+    ingest_JK["ingest_JK"]:::step
     ingest_LF["ingest_LF"]:::step
     ingest_UB["ingest_UB"]:::step
     ingest_other["ingest_other"]:::step
@@ -64,6 +69,8 @@ flowchart LR
   feed_fin_vzdrznost_HM --> umardata_HM
   src_denis_place --> feed_place_DR
   feed_place_DR --> umardata_DR
+  src_smtk --> feed_smtk_JK
+  feed_smtk_JK --> umardata_JK
   src_mf_trosarine --> feed_trosarine_LF
   feed_trosarine_LF --> umardata_LF
   umardata_AK --> ingest_AK
@@ -72,6 +79,8 @@ flowchart LR
   ingest_DR --> platform_UMAR_DR
   umardata_HM --> ingest_HM
   ingest_HM --> platform_UMAR_HM
+  umardata_JK --> ingest_JK
+  ingest_JK --> platform_UMAR_JK
   umardata_LF --> ingest_LF
   ingest_LF --> platform_UMAR_LF
   umardata_UB --> ingest_UB

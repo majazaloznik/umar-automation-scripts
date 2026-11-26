@@ -31,7 +31,6 @@ Generirano iz `registry/pipelines.yml` z `R/registry/render_registry.R`. Ne urej
 | [gt-tabela-ea-update](task-gt-tabela-ea-update.md) | petek 13:00 | `logs/gt-tabela-ea-update.Rout` |
 | [gt_grafi_update](task-gt_grafi_update.md) | dnevno 11:03, petek še 12:03, 13:03, 14:03 | `logs/gt_grafi_update.Rout` |
 | [ice-update-database](task-ice-update-database.md) | dnevno 07:00 | `logs/ice-update-database.log` |
-| [jk-update_smtk_data](task-jk-update_smtk_data.md) | dnevno 10:15 (samo ko je mzaloznik prijavljena!) | `logs/jk_update_smtk_data.Rout` |
 | [mf_update_database](task-mf_update_database.md) | mesečno, prvi in zadnji delovni dan 10:15 | `logs/mf_update.Rout` |
 | [produktivnost-eurostat_update](task-produktivnost-eurostat_update.md) | enkratni sprožilci, zadnji 7. 12. 2026, Get dates from Eurostat release calendar for GDP main aggregates and employment and flash estimates | `logs/produktivnost-eurostat_update.Rout` |
 | [produktivnost-surs_update](task-produktivnost-surs_update.md) | dnevno 10:30 | `logs/produktivnost-surs_update.Rout` |
@@ -57,6 +56,7 @@ Generirano iz `registry/pipelines.yml` z `R/registry/render_registry.R`. Ne urej
 | poraba elektrike po odjemnih skupinah | AK | Andrej odloži novo datoteko v mapo | — |
 | finančna vzdržnost gospodinjstev | HM | ročno odložena datoteka | — |
 | masa plač in prejemniki plač po SKD | DR | Denis posodobi datoteko po objavi SURS (~45 dni po koncu meseca) | [out_eo_tabele](output-out_eo_tabele.md) |
+| rezultati kratkoročnega dinamičnega faktorskega modela (nowcast BDP) | AK | Andrej odloži novo datoteko ob vsaki oceni modela; ob reestimaciji se spremenijo tudi pretekle vrednosti | — |
 | mesečni podatki o trošarinah | LF | MF pošlje datoteko, ki jo je treba ročno odložiti v mapo | [out_trosarine_preracuni](output-out_trosarine_preracuni.md) |
 | desezonirani delovno aktivni, registrirani brezposelni, ILO | DR | Denis desezonira podatke in jih odloži v mapo tekočega meseca | [out_gt_si](output-out_gt_si.md) |
 | desezonirani realni izvoz in uvoz blaga | DR | Denis desezonira podatke in jih odloži v mapo tekočega meseca | [out_gt_si](output-out_gt_si.md) |
@@ -79,7 +79,6 @@ Generirano iz `registry/pipelines.yml` z `R/registry/render_registry.R`. Ne urej
 - warning: ecb_tecaji-update_monthly_quarterly/tecaji_monthly: no reads/writes yet
 - warning: gt-tabela-ea-update/gt_tabela_ea: no reads/writes yet
 - warning: gt_grafi_update/gt_eo_grafi: no reads/writes yet
-- warning: jk-update_smtk_data/jk_smtk: no reads/writes yet
 - warning: mf_update_database/mf_import: no reads/writes yet
 - warning: produktivnost-eurostat_update/produktivnost_eurostat: no reads/writes yet
 - warning: produktivnost-surs_update/produktivnost_surs: no reads/writes yet
@@ -89,6 +88,7 @@ Generirano iz `registry/pipelines.yml` z `R/registry/render_registry.R`. Ne urej
 - warning: umar-add_series_metadata/add_metadata: no reads/writes yet
 - warning: umar-update_indicator_report/indicator_report_manual: no reads/writes yet
 - warning: spicka-posodobitev_tabele_zaposlenih/spicka: no reads/writes yet
+- warning: bat not in any task: batch-scripts/jk-update_smtk_data.bat
 - warning: bat not in any task: batch-scripts/local-surs-changes-api-update.bat
 - warning: bat not in any task: batch-scripts/mf_database_update_and_excels.bat
 - warning: bat not in any task: batch-scripts/umar_dd_app_start.bat
