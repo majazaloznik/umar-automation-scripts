@@ -10,19 +10,22 @@ checklist when migrating the next one. For *what* each pipeline connects, see
 ```
 R/
   common/admin-common.R        platform_con(), admin_do() and the generic admin functions
-<source>/                    one folder per data source or job
-<stem>.R                   the scheduled runner
-<source>-admin.R           manual admin functions (see §7)
-umar-data/
-  umar_data_update.R         runner: feeders -> ingest -> post-processing -> derived
-feeders/_helpers.R         newest_file(), upsert_umar_data()
-feeders/feed_<content>_<FOLDER>.R
-derived/<output>.R
-archive/                   one-off backfills, never sourced
+  <source>/                    one folder per data source or job
+    <stem>.R                   the scheduled runner
+    <source>-admin.R           manual admin functions (see §7)
+  umar-data/
+    umar_data_update.R         runner: feeders -> ingest -> post-processing -> derived
+    feeders/_helpers.R         newest_file(), upsert_umar_data()
+    feeders/feed_<content>_<FOLDER>.R
+    derived/<output>.R
+    archive/                   one-off backfills, never sourced
+  registry/render_registry.R   checks the registry, writes docs/pipelines/
 batch-scripts/<stem>.bat
 logs/<stem>.Rout               runner log, overwritten each run, history in git
 logs/<SOURCE>-admin.log        admin log, appended
-registry/pipelines.yml
+registry/pipelines.yml         the pipeline registry (hand-written)
+docs/pipelines/                generated from it: index, one page per task and output
+docs/runner-conventions.md     this file
 ```
 
 **One stem per job.** The script, the UmarDataBotR run name (= email subject),
@@ -33,7 +36,7 @@ the script and the log.
 
 - Runs **R 4.5.2**. Move a runner to 4.5.2 when you migrate it.
 - Redirects all output to `logs\<stem>.Rout` (`> ... 2>&1`). This catches crashes
-before `run_start()`, such as a failed `library()`. Don't add `log_file` to
+  before `run_start()`, such as a failed `library()`. Don't add `log_file` to
   scheduled runners: the redirect plus git history is the archive.
 - Commits and pushes the log, then exits with R's exit code, so Task Scheduler's
   "Last Result" is meaningful.
@@ -91,7 +94,7 @@ UmarDataBotR::with_run(run, {
 - **Gate expensive post-processing on new data.** Vintage cleanup only for tables
   that got new vintages; view refresh only if anything was imported.
 - **Derived outputs check for themselves.** They compare their inputs' latest period
-with the output's and write only when the input is ahead. A run that failed is
+  with the output's and write only when the input is ahead. A run that failed is
   caught up by the next one.
 - Where re-running has a side effect (emails users, overwrites a "last updated"
   date), say so in the registry's `rerun_note`.
@@ -99,7 +102,7 @@ with the output's and write only when the input is ahead. A run that failed is
 ## 5. Packages vs. scripts
 
 - **Fix behaviour in the package, not with a wrapper.** If a fetch function swallows
-errors or returns the wrong thing, change it in its package (BSfetchR, UMARfetchR …).
+  errors or returns the wrong thing, change it in its package (BSfetchR, UMARfetchR …).
 - **Package import functions:**
   - raise errors, don't return them in a list;
   - signal "nothing new" with a classed condition (e.g. `bs_not_new`) that the
@@ -134,8 +137,8 @@ A feeder turns a source file into a umar-data Excel file, which the ingest then 
 - Uses `newest_file()` and `upsert_umar_data()`, which writes only when something
   changed and logs the outcome.
 - **Check the source's structure before renaming by position.** Number of columns
-and rows, or better, the labels. A colleague inserting a row must cause an error,
-not shifted series codes.
+  and rows, or better, the labels. A colleague inserting a row must cause an error,
+  not shifted series codes.
 
 ## 7. Manual admin tasks
 
@@ -144,9 +147,9 @@ No commented-out one-off code in runners. Manual operations are functions in
 `R/common/admin-common.R` (generic: `delete_table()`, `delete_latest_vintages()`).
 
 - Every call goes through `admin_do()`, which logs to `logs/<SOURCE>-admin.log`
-with the Windows user and the action.
+  with the Windows user and the action.
 - Destructive functions show a preview (table code, name, counts) and ask for
-confirmation. `askYesNo()` defaults to no in non-interactive sessions.
+  confirmation. `askYesNo()` defaults to no in non-interactive sessions.
 - Log what was actually done: counts of inserted or deleted rows.
 - Usage: `source("R/<source>/<source>-admin.R"); <source>_add_table("CODE")`.
 
@@ -154,8 +157,8 @@ confirmation. `askYesNo()` defaults to no in non-interactive sessions.
 
 One timestamped line per step plus a summary. Specifically:
 
-  - no package attach messages: `pkg::fn()`, or `suppressPackageStartupMessages()` for
-old scripts that need `library()`;
+- no package attach messages: `pkg::fn()`, or `suppressPackageStartupMessages()` for
+  old scripts that need `library()`;
 - `download.file(..., quiet = TRUE)`;
 - `read_excel(..., .name_repair = "unique_quiet")`;
 - known, harmless warnings are suppressed **at the call**, with a comment saying why;
@@ -165,12 +168,12 @@ old scripts that need `library()`;
 
 1. Note the installed commit: `packageDescription("<pkg>")$RemoteSha`.
 2. Install the new version into a test library, without dependencies:
-  `pak::pkg_install("majazaloznik/<pkg>", lib = "C:/R/lib-test", dependencies = FALSE)`.
+   `pak::pkg_install("majazaloznik/<pkg>", lib = "C:/R/lib-test", dependencies = FALSE)`.
 3. Test with a **copy of the `.bat`** pointing at the new runner, whose first line is
-`.libPaths(c("C:/R/lib-test", .libPaths()))`. A fresh R session, no interactive
-prompts, same conditions as the scheduled run.
+   `.libPaths(c("C:/R/lib-test", .libPaths()))`. A fresh R session, no interactive
+   prompts, same conditions as the scheduled run.
 4. Switch: install into the main library from the same R the task uses, remove the
-`.libPaths()` line, point the scheduled `.bat` at the new runner.
+   `.libPaths()` line, point the scheduled `.bat` at the new runner.
 5. Revert if needed: `pak::pkg_install("majazaloznik/<pkg>@<sha>")` and the old `.bat`.
 
 A loaded package isn't replaced by reinstalling: restart R.
@@ -185,4 +188,4 @@ A loaded package isn't replaced by reinstalling: restart R.
 - [ ] Task Scheduler: runs when not logged in
 - [ ] Log reads cleanly (§8)
 - [ ] Entry in `registry/pipelines.yml` filled in (reads, writes, sources' `arrives`);
-`render_registry.R` runs clean; `docs/pipelines/` committed
+      `render_registry.R` runs clean; `docs/pipelines/` committed
