@@ -77,6 +77,10 @@ tasks:
         script: R/umar-data/feeders/feed_place_DR.R
         reads: [src_denis_place]
         writes: [umardata_DR]
+      feed_smtk_JK:
+        script: R/umar-data/feeders/feed_smtk_JK.R
+        reads: [src_smtk]
+        writes: [umardata_JK]
       feed_trosarine_LF:
         script: R/umar-data/feeders/feed_trosarine_LF.R
         reads: [src_mf_trosarine]
@@ -85,6 +89,7 @@ tasks:
       ingest_AK:    {script: R/umar-data/umar_data_update.R, reads: [umardata_AK], writes: [platform_UMAR_AK]}
       ingest_DR:    {script: R/umar-data/umar_data_update.R, reads: [umardata_DR], writes: [platform_UMAR_DR]}
       ingest_HM:    {script: R/umar-data/umar_data_update.R, reads: [umardata_HM], writes: [platform_UMAR_HM]}
+      ingest_JK:    {script: R/umar-data/umar_data_update.R, reads: [umardata_JK], writes: [platform_UMAR_JK]}
       ingest_LF:    {script: R/umar-data/umar_data_update.R, reads: [umardata_LF], writes: [platform_UMAR_LF]}
       ingest_UB:    {script: R/umar-data/umar_data_update.R, reads: [umardata_UB], writes: [platform_UMAR_UB]}
       ingest_other: {script: R/umar-data/umar_data_update.R, reads: [umardata_other], writes: [platform_UMAR_other]}
@@ -251,14 +256,6 @@ tasks:
         reads: [src_ice]
         writes: [platform_ICE]
 
-  jk-update_smtk_data:
-    scheduler: '\jk-update_smtk_data'
-    schedule: dnevno 10:15 (samo ko je mzaloznik prijavljena!)
-    bat: batch-scripts/jk-update_smtk_data.bat
-    log: logs/jk_update_smtk_data.Rout
-    r: 4.1.3
-    steps:
-      jk_smtk: {script: R/jk-update_smtk_data.R}
 
   mf_update_database:
     scheduler: '\mf_update_database'
@@ -377,6 +374,11 @@ sources:
     owner: DR
     where: Users/DRogan/EO/Plače (nove SKD skupine).xlsx
     arrives: Denis posodobi datoteko po objavi SURS (~45 dni po koncu meseca)
+  src_smtk:
+    what: rezultati kratkoročnega dinamičnega faktorskega modela (nowcast BDP)
+    owner: AK
+    where: Users/AKuštrin/Dinamični_faktorski_model/smtk_YYYY_qN.xlsx
+    arrives: Andrej odloži novo datoteko ob vsaki oceni modela; ob reestimaciji se spremenijo tudi pretekle vrednosti
   src_mf_trosarine:
     what: mesečni podatki o trošarinah
     owner: LF
@@ -420,17 +422,19 @@ stores:
   platform_UMAR_AK:    {what: tabele AK0xx na platformi}
   platform_UMAR_DR:    {what: tabele DR0xx na platformi}
   platform_UMAR_HM:    {what: tabele HM0xx na platformi}
+  platform_UMAR_JK:    {what: "tabele JK001, JK002 na platformi (nowcast)"}
   platform_UMAR_LF:    {what: tabele LF0xx na platformi}
   platform_UMAR_UB:    {what: tabele UB0xx na platformi}
-  platform_UMAR_other: {what: "ostale UMAR tabele na platformi (AJPES, CE, JK, MH, MK, UDB)"}
+  platform_UMAR_other: {what: "ostale UMAR tabele na platformi (AJPES, CE, MH, MK, UDB)"}
   davcne_db:         {what: "baza davcne, tabela davcni_racuni"}
   eurostat_metabase: {what: "shema eurostat (metabaza, SCD2)"}
   umardata_AK:       {what: umar-data/AK/umar_serije_podatki_AK.xlsx}
   umardata_DR:       {what: umar-data/DR/umar_serije_podatki_DR.xlsx}
   umardata_HM:       {what: umar-data/HM/umar_serije_podatki_HM.xlsx}
+  umardata_JK:       {what: umar-data/JK/umar_serije_podatki_JK.xlsx}
   umardata_LF:       {what: umar-data/LF/umar_serije_podatki_LF.xlsx}
   umardata_UB:       {what: umar-data/UB/umar_serije_podatki_UB.xlsx}
-  umardata_other:    {what: "ostale mape v umar-data (AJPES, CE, JK, MH, MK, UDB), ki jih avtorji polnijo ročno"}
+  umardata_other:    {what: "ostale mape v umar-data (AJPES, CE, MH, MK, UDB), ki jih avtorji polnijo ročno"}
 
 # ==============================================================================
 outputs:
